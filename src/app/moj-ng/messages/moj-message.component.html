@@ -1,0 +1,13 @@
+﻿<div class="moj-message-img {{messageTypeString}}"></div>
+<div class="moj-window-message-data">
+    <span *ngIf="data.messageText" id='ui-dialog-description'>
+        {{data.messageText | translate}}
+    </span>
+    <span *ngIf="data.messageHtml" [innerHtml]="data.messageHtml" id='ui-dialog-description'></span>
+</div>
+<moj-buttons-line [isInDialogFooter]=true>
+    <moj-button *ngIf="data.messageType==6" buttonStyle={{buttonStyle.SmallLight}} (click)="onCancelButtonClick()"
+        [textKey]="data.cancelButtonText ? data.cancelButtonText : 'MojTexts.cancel'"></moj-button>
+    <moj-button #approve buttonStyle={{buttonStyle.SmallDark}} (click)="onApproveButtonClick()" [textKey]="data.okButtonText ? data.okButtonText : 'MojTexts.approve'"></moj-button>
+</moj-buttons-line>
+<a id='stopFocus' tabindex='0'></a>

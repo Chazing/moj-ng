@@ -1,0 +1,11 @@
+<moj-grid-panel [editOptions]="editOptions" [editOptions]="editOptions">
+    <moj-quick-filter></moj-quick-filter>
+    <moj-grid-add-button></moj-grid-add-button>
+    <ag-grid-angular 
+        class="ag-theme-balham"
+        [gridOptions]=gridOptions
+        [columnDefs]="columns"
+        rowModelType="serverSide"
+        (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+</moj-grid-panel>

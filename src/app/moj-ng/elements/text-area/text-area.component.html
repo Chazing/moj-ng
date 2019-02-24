@@ -1,0 +1,28 @@
+<div  [ngClass]="[groupColWidth, showValidationMsg ? 'moj-invalid': '']">
+  <label-before-content [labelStyle]="labelStyle" [labelAlign]="labelAlign" [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [widthColumns]="labelWidthColumns" 
+  [isLabelAboveControl]="isLabelAboveControl" [textKey]="labelTextKey" [isAutoWidth]="isLabelAutowidth">
+  </label-before-content>
+  <div class="moj-input-container" [ngClass]="controlColWidth">
+      <span class="input-pure">
+        <textarea class="ui-textbox ui-inputtext ui-state-default ui-corner-all"
+                [ngClass]="{'ui-state-disabled':disabled}"
+                [id]="identifier"
+                [(ngModel)]="value"
+                (change)="onChange()"
+                name="identifier"
+                [rows]="rows"
+                (focus)="onFocusIn($event)"
+                (blur)="onBlur()"
+                [disabled]="disabled"
+                [placeholder]="placeholder"
+                [maxlength]="maxTextLength">
+        </textarea>
+      </span>  
+      <validation-messages [forId]="identifier"
+                           *ngIf="showValidationMsg"
+                           [controlName]="labelTextKey"
+                           [messages]="control.errors"
+                           [customValidationErrors]="customValidationErrors">
+      </validation-messages>
+  </div>
+</div>

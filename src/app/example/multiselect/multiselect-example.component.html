@@ -1,0 +1,17 @@
+﻿<moj-example [title]="'MultiSelect'"
+             primengLink="https://www.primefaces.org/primeng/#/multiselect"
+             [instructions]="instructions"
+             [properties]="properties"
+             [events]="events">
+    <moj-multiselect name="multiselectValue"
+                     labelTextKey="Texts.Choose"
+                     labelWidthColumns="1"
+                     controlWidthColumns="2"
+                     [isLabelAboveControl]=true
+                     [(ngModel)]="multiselectValue"
+                     [items]="listItems"
+                     fieldName="ProductName"
+                     fieldID="ID"
+                     [filter]="true">
+    </moj-multiselect>
+</moj-example>

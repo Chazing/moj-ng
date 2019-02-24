@@ -1,0 +1,15 @@
+<div class="doc-preview-panel" [ngClass]="{'open': isOpen, 'close': !isOpen, 'on-resize': onResize}"
+  [ngStyle]="style" 
+  mwlResizable
+  [enableGhostResize]="false"
+  [resizeEdges]="{bottom: true, right: true }" 
+  [validateResize]="validate"
+  (resizing)="onResizing($event)"
+  (resizeEnd)="onResizeEnd()"
+  >
+  <div class="open-close" (click)="isOpen=!isOpen">
+    <i class="fas fa-search"></i>
+  </div>
+  <div *ngIf="!src" class="doc-no-preview">{{ 'MojTexts.previewNotFound' | translate}}</div>
+  <doc-iframe class="doc-preview" [src]="src"></doc-iframe>
+</div>

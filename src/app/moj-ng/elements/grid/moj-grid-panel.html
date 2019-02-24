@@ -1,0 +1,17 @@
+﻿<div [class.hide-on-edit]="editOptions && editOptions.editType==editType.ReplaceGrid && inEdit">
+    <div id="grid-wrapper">
+        <ng-content></ng-content>  <!-- ag-grid-angular (+ Controls) -->
+        <moj-paging [grid]="grid" [enableChangePageSize]="enableChangePageSize"></moj-paging>
+    </div>
+</div>
+<label class="offscreen" id="{{labelId}}">{{gridDescription}}</label>
+<div cl>
+    <div *ngIf="editOptions && editOptions.editType==editType.Dialog">
+        <p-dialog [(visible)]="inEdit" [header]="editOptions.editDialogTitle" modal="modal" [width]="editOptions.editDialogWidth"
+            [responsive]="true">
+            <div #editComponentContainer></div>
+        </p-dialog>
+    </div>
+    <div class="child" *ngIf="editOptions && editOptions.editType!=editType.Dialog" [class.hide-on-edit]="!inEdit">
+        <div #editComponentContainer></div>
+</div>

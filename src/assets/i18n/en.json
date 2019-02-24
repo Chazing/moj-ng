@@ -1,0 +1,18 @@
+{
+    "Texts": {
+      "selectionField": "Selection Field",
+      "productID": "productID",
+      "ProductName": "ProductName",
+      "ID": "ID",
+      "price": "price",
+      "dialogTitle": "more details",
+      "generalDetails": "general details"
+    },
+    "Menu": {
+      "mainTab": "main tab",
+      "files": "files",
+      "docs": "docs",
+      "requests": "requests"
+    }
+  }
+  

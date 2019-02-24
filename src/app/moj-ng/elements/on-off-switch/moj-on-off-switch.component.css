@@ -1,0 +1,44 @@
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  
+  label {
+    grid-area: input;
+    cursor: pointer;
+    background: #DBDBDB;
+    border-radius: 1em;
+    transition: 0.3s;
+    display: grid;
+    justify-self: start;
+    grid-template-columns: 1fr 1fr;
+  }
+  label:before, label:after {
+    padding: 5px 15px;
+    text-align: center;
+  }
+  
+  label:before {
+    content: attr(data-text-off);
+    font-weight: bold;
+    border: 1px solid #2497CB;
+    box-shadow: 2px 2px 3px #A1A4A7;
+    background: #fff;
+    border-radius: 1em;
+    transition: 0.3s;
+  }
+
+  label:after {
+    content: attr(data-text-on);
+  }
+  
+  input:checked + label:before {
+    content: attr(data-text-on);
+    transform: translateX(-100%);
+  }
+  input:checked + label::after {
+    content: attr(data-text-off);
+    transform: translateX(100%);
+  }
+  

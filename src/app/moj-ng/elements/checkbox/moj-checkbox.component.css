@@ -1,0 +1,9 @@
+.fa-check:before {
+    content: "\F00C" !important;
+    color: #006bc0;
+}
+
+.chk{
+    padding-right: 10px;
+    margin-left: 0px;
+}

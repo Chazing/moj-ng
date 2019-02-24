@@ -1,0 +1,128 @@
+<sliding-menu>
+
+</sliding-menu>
+<form #form="ngForm" #pnlGeneral mojForm>
+    <moj-dynamic-label [textKey]="'Texts.productID'"></moj-dynamic-label>
+    
+    <moj-panel [isOpen]="true" [panelStyle]="panelStyle.grey">
+        <moj-label [textKey]="'גוף פונה'" [widthColumns]="1"></moj-label>
+    </moj-panel>
+    <moj-panel [isOpen]="true" [panelStyle]="panelStyle.card">
+        <moj-line>
+            <moj-label textKey="{{labelText}}" [widthColumns]="1" [isAutoWidth]="true"></moj-label>
+            <moj-label-for name="labelText" [(ngModel)]="labelText" [labelWidthColumns]=2 [contentWidthColumns]=2></moj-label-for>
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField" labelWidthColumns="2" controlWidthColumns="2"
+                         email [required]="checkBoxValue" [isLabelAboveControl]="true">
+            </moj-textbox>
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField1" labelWidthColumns="2" controlWidthColumns="2"
+                         email [required]="checkBoxValue" [isLabelAboveControl]="false">
+            </moj-textbox>
+        </moj-line>
+        <moj-line>
+            <moj-label [textKey]="'משרד הבריאות'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+            <moj-label [textKey]="'סטאטוס הליך'" [widthColumns]="2"></moj-label>
+            <moj-label [textKey]="'פעיל ועוד כמה דברים'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+            <moj-label [textKey]="'סטאטוס תיק'" [widthColumns]="2"></moj-label>
+            <moj-label [textKey]="'מנותק'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+            <moj-label [textKey]="'סטאטוס פונה'" [widthColumns]="2"></moj-label>
+            <moj-label [textKey]="'לא פעיל'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+        </moj-line>
+        <moj-line>
+            <moj-label [textKey]="'הליך אחרון'" [widthColumns]="1" [isAutoWidth]="true"></moj-label>
+            <moj-label [textKey]="'הליך שומה'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+            <moj-label [textKey]="'סטאטוס הליך'" [widthColumns]="2"></moj-label>
+            <moj-label [textKey]="'פעיל'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+        </moj-line>
+    </moj-panel>
+    <moj-panel [titleKey]="'Texts.generalDetails'" [isOpen]="true" [id]="'pnl1'" [addCloseButton]="true" [isExpandable]="true">
+        <div #pnlToAddHtml></div>
+        <moj-line>
+            <moj-on-off-switch [(ngModel)]="checkBoxValue" name="checkBoxValue" [textKeyOff]="'Texts.exampleTextOff'" [textKeyOn]="'Texts.exampleTextOn'" 
+                [controlWidthColumns]="3" [labelWidthColumns]="2"></moj-on-off-switch>
+            <i class="fas fa-abacus"></i>
+            <i class="fab fa-accessible-icon"></i>
+            <moj-textarea #tt="ngModel" [(ngModel)]="formModel.title1" name="title1" labelWidthColumns="2" controlWidthColumns="2" labelTextKey="Texts.textField"
+                          [required]="checkBoxValue">
+            </moj-textarea>
+            <moj-textbox [(ngModel)]="formModel.password" name="password" [required]="false" minlength="3" labelWidthColumns="1" controlWidthColumns="2"
+                         inputType="password">
+            </moj-textbox>
+        </moj-line>
+        <div class="advanced-section">
+            <moj-line>
+                <moj-checkbox [required]="true" [controlWidthColumns]=1 [labelWidthColumns]=2 [(ngModel)]="checkBoxValue" name="checkBoxValue" [labelTextKey]="'Texts.areYouInterested'">
+                </moj-checkbox>
+                <moj-label [textKey]="'שלום וברכה'" [widthColumns]="3" [labelStyle]="labelStyle.White"></moj-label>
+            </moj-line>
+            <moj-line>
+                <moj-checkbox [controlWidthColumns]=1 [labelWidthColumns]=2 [(ngModel)]="checkBoxValue" name="checkBoxValue" [labelTextKey]="'Texts.areYouInterested'">
+                </moj-checkbox>
+                
+                <moj-label [textKey]="'שלום וברכה'" [widthColumns]="3" [labelStyle]="labelStyle.White"></moj-label>
+            </moj-line>
+        </div>
+    </moj-panel>
+    <moj-panel [titleKey]="'וולידציות חדשות'" [isOpen]="false">
+        <moj-line>
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField2" [labelTextKey]="'טקסטבוקס מעל'" labelWidthColumns="2" controlWidthColumns="2"
+                         email [required]="checkBoxValue" [isLabelAboveControl]="true" minlength="10">
+                          <button>sdfsf</button> 
+            </moj-textbox>
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField3" [labelTextKey]="'טקסטבוקס ליד'" labelWidthColumns="2" controlWidthColumns="2"
+                         email [required]="checkBoxValue" [isLabelAboveControl]="false" minlength="10">
+                          <button>sdfsf</button> 
+            </moj-textbox>
+        </moj-line>
+        <moj-line>
+            <moj-textarea [(ngModel)]="stringFrom" name="stringFrom222" required labelWidthColumns="2" controlWidthColumns="2" [maxTextLength]="5" [labelTextKey]="'טקסט מעל'" [isLabelAboveControl]="true"></moj-textarea>
+            <moj-textarea [(ngModel)]="stringFrom" name="stringFrom333" required labelWidthColumns="2" controlWidthColumns="2" [maxTextLength]="5" [labelTextKey]="'טקסט ליד'"></moj-textarea>
+        </moj-line>
+        <moj-line>
+            <moj-dropdownlist [isLabelAboveControl]="true" required [labelWidthColumns]="2" [controlWidthColumns]="2" [required]="true" [(ngModel)]="fileTypeValue"
+                name="fileTypeValue" [filter]="true" [editable]="false" [items]="dropDownListItems" [fieldID]="'id'" [fieldName]="'name'">
+            </moj-dropdownlist>
+            <moj-dropdownlist required [labelWidthColumns]="2" [controlWidthColumns]="1" [required]="true" [(ngModel)]="fileTypeValue"
+                name="fileTypeValue2" [editable]="false" [items]="dropDownListItems" [fieldID]="'id'" [fieldName]="'name'">
+            </moj-dropdownlist>
+        </moj-line>
+        <moj-line>
+            <moj-datepicker [isLabelAboveControl]="true" [(ngModel)]="dateFrom" [timeOnly]="true" name="dateFrom" [labelWidthColumns]="2" [controlWidthColumns]="2"
+                            #dateFromVal="ngModel" required [labelTextKey]="'תאריך מעל'"></moj-datepicker>
+            <moj-datepicker [(ngModel)]="dateTo" [showButtonBar]=true [monthNavigator]="false" [yearNavigator]="false" [numberOfMonths]=3 [selectionMode]="'range'" name="dateTo" [labelWidthColumns]="2" [controlWidthColumns]="2" #dateToVal="ngModel"
+                            [greaterThan]="dateFromVal" required [labelTextKey]="'תאריך ליד'"></moj-datepicker>
+        </moj-line>
+        <moj-line>
+            <moj-multiselect [isLabelAboveControl]="true" name="autocompleteValueFrom" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2"
+                              [items]="numberItems" [fieldName]="'name'" [(ngModel)]="autocompleteValueFrom" #autocompleteValueFrom1="ngModel"
+                              (onSelect)="select($event)" [required]="true" [labelTextKey]="'בחר מעל'">
+            </moj-multiselect>
+            <moj-multiselect name="autocompleteValueTo2" labelTextKey="Texts.Choose" labelWidthColumns="2" controlWidthColumns="2" [items]="numberItems"
+                               [fieldName]="'name'" [required]="true" [labelTextKey]="'בחר ליד'" [(ngModel)]="autocompleteValueTo" [greaterThan]="autocompleteValueFrom1">
+            </moj-multiselect>
+        </moj-line>
+        <moj-line>
+            <moj-autocomplete [isLabelAboveControl]="true" [labelWidthColumns]="2" [controlWidthColumns]="2" [required]="true"  [dropdown]="true" [(ngModel)]="fileTypeValue"
+                name="fileTypeValue3" [items]="dropDownListItems" [labelTextKey]="'בחר מעל'" [fieldID]="'id'" [fieldName]="'name'">
+            </moj-autocomplete>
+            <moj-autocomplete [labelWidthColumns]="2" [controlWidthColumns]="2" [required]="true" [(ngModel)]="fileTypeValue" [dropdown]="true"
+                name="fileTypeValue4" [items]="dropDownListItems" [labelTextKey]="'בחר ליד'" [fieldID]="'id'" [fieldName]="'name'">
+                <ng-template let-item pTemplate="custom">
+                    <i style='color: orange;padding-left: 15px' class="far fa-smile-beam"></i><label>{{item.name}}</label>
+            </ng-template>
+            </moj-autocomplete>
+        </moj-line>
+    </moj-panel>
+    <moj-buttons-line>
+        <moj-button buttonStyle={{buttonStyle.Green}} (click)="openConfirm()" [textKey]="'פתח חלון לאישור'" [tooltip]="'sdfsdfsdfsdf sdf sdf '"></moj-button>
+        <moj-button buttonStyle={{buttonStyle.Dark}} (click)="openErrorDialog()" [textKey]="'פתח חלון לשגיאה'"></moj-button>
+        <moj-button buttonStyle={{buttonStyle.SmallLight}} (click)="openSuccessDialog()" [textKey]="'פתח חלון להצלחה'"></moj-button>
+        <moj-button buttonStyle={{buttonStyle.SmallDark}} (click)="openContentDialog()" [textKey]="'פתח חלון תוכן'"></moj-button>
+        <moj-button buttonStyle={{buttonStyle.SmallDark}} (click)="save()" [textKey]="'שמור'"></moj-button>
+        <moj-button  buttonStyle={{buttonStyle.IconText}} [iconClass]="'fab fa-accessible-icon'" [textKey]="'כפתור'"></moj-button>
+        <moj-button  buttonStyle={{buttonStyle.Icon}} [iconClass]="'fab fa-accessible-icon'" [tooltip]="'Texts.aa'"></moj-button>
+    </moj-buttons-line>
+    <moj-buttons-line>
+        <moj-clear-button [form]=form></moj-clear-button>
+        <moj-submit-button [form]="form" buttonStyle={{buttonStyle.IconText}} textKey="אישור" iconClass="fas fa-plus"></moj-submit-button>
+    </moj-buttons-line>
+</form>

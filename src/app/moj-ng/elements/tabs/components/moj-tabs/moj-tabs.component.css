@@ -1,0 +1,183 @@
+.moj-tabs-container {
+    /* margin: 0 4%; */
+}
+
+.moj-tabs-content {
+    display: flex;
+    width: 100%;
+    background: #f6f7f9;
+    position: relative;
+    margin: 0px;
+    bottom: 10px;
+    top: 0px;
+}
+
+.moj-tabs-content-wrapper {
+    padding: 1% 2% 3%;
+    width: 100%;
+    min-height: calc(100vh - 150px);
+}
+
+.moj-tabs-side-menu {
+    padding: 0px;
+    display: -webkit-box;
+    width: 160px;
+}
+
+.moj-tabs-content .moj-tabs-side-menu ul {
+    padding: 0 0 30px 0;
+    display: block;
+    width: 100%;
+    background: -webkit-linear-gradient(right, #ddd, #f1f1f1, #ddd) !important;
+}
+
+.moj-tabs-content .moj-tabs-side-menu li {
+    padding: 20px 0px;
+    list-style-type: none;
+    cursor: pointer;
+    width: 100%;
+    height: 65px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+    .moj-tabs-content .moj-tabs-side-menu li a {
+        display: inline-table;
+        background-position: center 4%;
+        background-repeat: no-repeat;
+    }
+
+        .moj-tabs-content .moj-tabs-side-menu li a i {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .moj-tabs-content .moj-tabs-side-menu li a span {
+            font-size: 13px;
+            font-weight: bold;
+            color: #283c64;
+            padding: 3px;
+        }
+
+
+    .moj-tabs-content .moj-tabs-side-menu li span.moj-sideitem-star::before {
+        content: "";
+        border-left: 20px solid transparent;
+        border-top: 19px solid;
+        position: absolute;
+        top: 0px;
+        right: 0;
+    }
+
+    .moj-tabs-content .moj-tabs-side-menu li span.moj-sideitem-star i {
+        position: absolute;
+        display: block;
+        margin-top: -2.5em;
+        margin-right: 2px;
+        color: white !important;
+        font-size: 7px;
+    }
+
+    .moj-tabs-content .moj-tabs-side-menu li.moj-sideitem-selected {
+        background-color: #f6f7f9;
+    }
+
+    .moj-tabs-content .moj-tabs-side-menu li:not(.moj-sideitem-selected):hover {
+        background: linear-gradient(to bottom, #b7b7b7 0, #e6e6e6 35%, #ededed 50%, #e6e6e6 65%, #b7b7b7 100%);
+    }
+
+.moj-tabs-stripe {
+    display: block;
+    padding: 0px;
+    width: 100%;
+    margin: 0px;
+}
+
+.moj-tabs-stripe-table {
+    display: table;
+}
+
+ul.moj-tabs-stripe-list {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    line-height: 1.3;
+    text-decoration: none;
+    font-size: 100%;
+    list-style: none;
+    background: transparent;
+}
+
+    ul.moj-tabs-stripe-list li {
+        list-style: none;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        position: relative;
+        display: block;
+        margin: 0px 0px 1px 4px;
+        float: right;
+        border: none;
+        height: 34px;
+        background: #d3d3d3;
+        top: 5px;
+    }
+
+        ul.moj-tabs-stripe-list li a.moj-tab-title {
+            float: right;
+            width: 174px;
+            padding: .5em 1em;
+            text-decoration: none !important;
+            cursor: pointer;
+            color: #0f5082;
+            font-weight: bold;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        ul.moj-tabs-stripe-list li span.moj-tab-star {
+            font-size: 7px;
+            right: 1em;
+            top: 1.5em;
+            position: absolute;
+        }
+
+        ul.moj-tabs-stripe-list li span.moj-tab-close {
+            color: #727479;
+            margin: .5em 0 0 .3em;
+            cursor: pointer;
+        }
+
+        ul.moj-tabs-stripe-list li.moj-tab-selected {
+            background: #f6f7f9;
+            height: 38px;
+            top: 1px;
+        }
+
+            ul.moj-tabs-stripe-list li.moj-tab-selected a {
+                padding-top: 0.7em;
+            }
+
+            ul.moj-tabs-stripe-list li.moj-tab-selected.uncolorizable {
+                border-top: 4px solid #0194c5;
+            }
+
+        ul.moj-tabs-stripe-list li:not(.uncolorizable)::after {
+            content: "";
+            display: block;
+            width: 0;
+            margin-top: -23px;
+            border-left: 10px solid transparent;
+            border-top: 10px solid;
+        }
+
+.tab-sep {
+    bottom: -5px;
+    position: relative;
+    margin: 0 3% !important;
+    width: 94% !important;
+    height: 2px !important;
+    background: -webkit-linear-gradient(top, #c8c8c8 50%, #fff 50%);
+}

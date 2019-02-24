@@ -1,0 +1,107 @@
+:host{
+    display: flex;    
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 400;
+}
+
+.menu-panel-container{
+    transition:all 450ms ease-in-out;
+    margin-right: 2px;
+}
+
+.menu-panel {   
+    width:0;  
+    display: flex;    
+}
+
+.menu-panel .menu-panel-view {    
+    width:100%; 
+    display:table;        
+    background-color:#fff; 
+    border:2px solid #60bfe8;   
+    box-shadow: 2px 2px 2px 0 #B7CAE1; 
+}
+.menu-panel .menu-panel-view .title {
+    width:99%;
+    height:36px; 
+    margin:2px auto; 
+    padding:5px 10px 0; 
+    color:#464646; 
+    font-size:1.1em; 
+    font-weight:bold; 
+    background-color: #edeeee;    
+}
+
+.menu-panel .open-close {
+    margin-left: -2px;
+    display: block;
+    position: relative;
+    top:41px; 
+    cursor: pointer;        
+    height: 46px;
+    font-size: 19px;
+    padding: 10px 5px;
+    border: 2px solid #60bfe8;
+    border-left-width: 0px;
+    background-color: #fff;   
+    box-shadow: 2px 2px 2px 0 #B7CAE1;
+}
+
+.menu-panel .open-close:hover {
+    color: grey;     
+}
+
+.menu-panel .open-close:focus, .menu-panel .open-close:active  {
+    color: grey;
+     font-size: 16px;
+     padding: 12px 6.5px;     
+}
+
+.menu-panel .pin
+{    
+    cursor: pointer;   
+    float: left;    
+    font-size: 18px;
+}
+.menu-panel .pin-on{
+    color: #0473ab;
+    font-size: 20px;
+}
+
+.menu-panel .pin:focus, .menu-panel .pin:active  {
+    color: grey;
+}
+
+.menu-details-panel
+{ 
+    position: relative;
+    min-height: 50px;
+    width: 100%; 
+    padding:5px 13px; 
+    margin: 0px auto; 
+}
+
+.ok-btn{
+    position: absolute;
+    bottom: 3px;
+    background: white;
+    border: 1px solid #0473ab;
+    padding: 4px 8px;
+    color: #0473ab;
+    font-weight: bold;
+    margin-top: 5px;
+    left: 8px;
+    cursor: pointer;
+}
+
+.ok-btn:hover{
+     opacity: 0.9;
+}
+
+.ok-btn:active{
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}

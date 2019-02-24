@@ -1,0 +1,33 @@
+﻿<div class="moj-panel {{panelStyle}}" *ngIf="!isClosed" [ngClass]="{'no-border-bottom' : !isBorderBottom, 'no-border-top' : !isBorderTop, 'hide' : !isVisible }"
+    [attr.id]=id>
+    <div class="moj-form-title" [ngClass]="{'no-border-bottom': !isOpen }" (click)="onTitleCLick($event)" *ngIf="showTitle">
+        <div [innerHTML]="titleTag"></div>
+        <div *ngIf="isCollapse" class="button-open-close">
+            <div [ngClass]="state==='open' ? 'minus' : 'plus'">
+                <a [attr.aria-label]="state==='close' ? ('MojTexts.showContent' | translate) : ('MojTexts.closeContent' | translate)" href="javascript:void(0);"></a>
+            </div>
+            <div *ngIf="addCloseButton" class="close-panel" (click)="onCloseClick()">
+                <a [attr.aria-label]="'MojTexts.closeContent' | translate" class="fa fa-times" href="javascript:void(0);"></a>
+            </div>
+        </div>
+        <div class="sep"></div>
+    </div>
+    <div class="moj-panel-container" [@bodyExpansion]="state==='close' ? 'collapsed' : 'expanded'">
+        <fieldset *ngIf="isFieldSet">
+            <legend class="offscreen">{{ titleKey | translate}}</legend>
+            <ng-content></ng-content>
+        </fieldset>
+        <moj-line class="moj-line-row" *ngIf="isExpandable">
+            <div class="toggle-additional" (click)="onAdditionalClick()">
+                <i [ngClass]="{'fas':true, 'fa-plus-square' : isBasicMode,'fa-minus-square' : !isBasicMode}"></i>
+                <a href=" javascript:void(0)">{{getExpandableText() | translate}}</a>
+            </div>
+        </moj-line>
+        <div id="advanced-section" *ngIf="isExpandable" [@bodyExpansion]="isBasicMode ? 'collapsed' : 'expanded'">
+            <div class="moj-design-line7 "></div>
+            <div class="moj-design-line8 "></div>
+            <ng-content select=".advanced-section "> </ng-content>
+        </div>
+        <ng-content select="moj-buttons-line"></ng-content>
+    </div>
+</div>

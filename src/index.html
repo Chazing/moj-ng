@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>אנגולר- אתר דוגמה</title>
+    <script type="text/javascript" 
+        id="_cls_detector" src="assets/scripts/detector-dom.min.js?rev=5.6.184_B186" 
+        data-clsconfig="reportURI=https://shoko.efasi.org/glassbox/reporting/cls_report;recordScrolls=true;recordMouseMoves=true">
+//     <script type="text/javascript" 
+//         id="_cls_detector" src="assets/scripts/detector-dom.min.js?rev=5.6.184_B186" 
+//         data-clsconfig="recordScrolls=true;recordMouseMoves=true">
+//   </script>
+    <script>
+        function isInternetExplorer() {
+            var myNav = navigator.userAgent.toLowerCase();
+            if (myNav.indexOf('msie') != -1)
+                return parseInt(myNav.split('msie')[1]);
+            if (myNav.indexOf('rv:') != -1)
+                return parseInt(myNav.split('rv:')[1]);
+            return false;
+        }
+        function isFF() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('firefox') != -1);
+        }
+        function isEdge() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('edge') != -1);
+        }
+        (IsSupportBrowser = function (isSupportEdge, isSupportFF) {
+            if ((isInternetExplorer() && isInternetExplorer() < 11) || (!isSupportEdge && isEdge()) || (!isSupportFF && isFF())) {
+                window.location.href = "/assets/unsupported-browser.html";
+            }
+        })(true, true);
+    </script>
+</head>
+<body>
+    <my-app>
+        האתר בטעינה...
+    </my-app>
+
+</body>
+
+</html>

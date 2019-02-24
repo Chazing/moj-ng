@@ -1,0 +1,14 @@
+<div class="header-main">
+    <div class="content-placeholder">
+        <p-menubar [model]="barItems" (click)="onclick($event)">
+            <div>
+                <p-dropdown *ngIf="showSearchCombo" [options]="searchItems" [(ngModel)]="selectedSearch" [ngClass]="{'col-lg-6': addSearch}"
+                            optionLabel="label" placeholder="{{searchSystemText}}" (onChange)="searchComboChange($event)"></p-dropdown>
+                <div class="ui-inputgroup" *ngIf="addSearch" [ngClass]="{'col-lg-6': showSearchCombo}">
+                    <input type="text" placeholder="{{searchPlaceholder}}" [(ngModel)]="searchInput" (keyup.enter)="search($event)">
+                    <button pButton type="button" (click)="search($event)" icon="fas fa-search"></button>
+                </div>
+            </div>
+        </p-menubar>
+    </div>
+</div>

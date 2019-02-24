@@ -1,0 +1,89 @@
+﻿<div [ngClass]="{'ui-steps ui-widget ui-helper-clearfix':true,'ui-steps-readonly':readonly,'moj-disabled':readonly}">
+    <ul class="ul-main-menu" role="tablist">
+        <li *ngFor="let item of items; let i = index; trackBy" class="ui-steps-item"
+            [ngClass]="{'ui-state-highlight':(i === activeIndex),'ui-state-default':(i !== activeIndex),
+                        'ui-state-disabled':(i !== activeIndex && readonly),
+                        'moj-disabled':item.readonly}"
+            [style.width]="item.width" [style.flex]="item.width ? 'none': 'auto'">
+            <a class="ui-menuitem-link" (click)="itemChange($event, i)">
+                <span class="ui-steps-number">{{i + 1}}</span>
+                <span class="ui-steps-title">{{item.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--sub menu-->
+<div>
+    <ul *ngIf="items[activeIndex] && items[activeIndex].wizardSubItems" class="ul-main-menu" role="tablist">
+        <li *ngFor="let item of items[activeIndex].wizardSubItems; let i = index; trackBy" class="ui-steps-item"
+            [ngClass]="{'ui-state-highlight':(i === subActiveIndex),'ui-state-default':(i !== subActiveIndex),
+                        'ui-state-disabled':(i !== subActiveIndex && readonly),'moj-disabled':(readonly || item.readonly)}"
+            [style.width]="item.width" [style.flex]="item.width ? 'none': 'auto'">
+            <a class="ui-menuitem-link" (click)="itemChange($event, activeIndex, i)">
+                <span class="ui-steps-number">{{i + 1}}</span>
+                <span class="ui-steps-title">{{item.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="metroAlign == alighment.top && metroItems && metroItems.length">
+    <ng-container *ngTemplateOutlet="metroTemplate"></ng-container>
+</div>
+
+<div *ngFor="let item of items;let i=index">
+    <!--item without sub items-->
+    <moj-wizard-item *ngIf="(!item.wizardSubItems || !item.wizardSubItems.length) && activeIndex == i"
+                     [item]="item">
+    </moj-wizard-item>
+    <div *ngFor="let subItem of item.wizardSubItems;let j=index">
+        <!--sub items-->
+        <moj-wizard-item *ngIf="activeIndex == i && subActiveIndex == j"
+                         [item]="subItem">
+        </moj-wizard-item>
+    </div>
+</div>
+
+
+<div class="wizard-navigation-container">
+    <div class="menu-navigation-btn">
+        <div class="menu-prev-navigation-btn">
+            <div class="action-base col moj-button moj-back">
+                <input (click)="prevClick($event)" 
+                       type="button" 
+                       [value]="backText | translate"
+                       [style.display]="activeIndex == 0 && subActiveIndex == 0 ? 'none' : 'block'">
+            </div>
+        </div>
+        <div class="menu-next-navigation-btn">
+            <div class="action-base col moj-button moj-next" id="div_btnGoToNextView">
+                <input *ngIf="!isLastItem"
+                       (click)="nextClick($event)" 
+                       type="button" 
+                       [value]="nextText | translate">
+                <input *ngIf="submitButton && isLastItem"
+                       (click)="nextClick($event)"
+                       type="button"
+                       [value]="submitText | translate">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="metroItems && metroItems.length">
+        <div *ngIf="metroAlign == alighment.bottom && metroItems && metroItems.length">
+            <ng-container *ngTemplateOutlet="metroTemplate"></ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #metroTemplate>
+    <ul class="ul-main-menu">
+        <li *ngFor="let metroItem of metroItems; trackBy" class="ui-steps-item"
+            [ngClass]="{'ui-state-highlight':(metroItem.index === activeIndex && metroItem.subIndex === subActiveIndex),
+                'ui-state-default':(metroItem.index !== activeIndex || metroItem.subIndex !== subActiveIndex),
+                'moj-disabled':!enableNavigationByMetro}">
+            <a class="ui-menuitem-link" (click)="itemChange($event, metroItem.index, metroItem.subIndex)">
+                <span class="ui-steps-title">{{metroItem.wizardItem.label}}</span>
+            </a>
+        </li>
+    </ul>
+</ng-template>

@@ -1,0 +1,30 @@
+<div *ngIf="editedItem">
+    <form #form="ngForm">
+        <moj-line>
+            <!-- new file component: {{files | json}} -->
+        </moj-line>
+        <moj-line>
+            <moj-datepicker [(ngModel)]="editedItem.fileDate" name="fileDate" labelTextKey="'תאריך'" labelWidthColumns="3"
+                         controlWidthColumns="7">
+            </moj-datepicker>
+        </moj-line>
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.fileType" name="fileType" [required]="true" labelTextKey="'סוג קובץ'" labelWidthColumns="3"
+                         controlWidthColumns="7">
+            </moj-textbox>
+        </moj-line>
+        <moj-line>
+            <moj-file-upload [id]="'fldold4'" [enabledFileTypes]="'pdf|png'" [(ngModel)]="files" name="ffff" [sendFilesOnUpload]="false" [multiple]="false"></moj-file-upload>
+        </moj-line>
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.ticNum" name="ticNum" [required]="true" labelTextKey="'מספר תיק'" labelWidthColumns="3"
+                controlWidthColumns="7">
+            </moj-textbox>
+        </moj-line>
+
+        <moj-buttons-line>
+            <moj-grid-cancel-button></moj-grid-cancel-button>
+            <moj-grid-save-button [disabled]="false" (saveClick)="saveFile()"></moj-grid-save-button>
+        </moj-buttons-line>
+    </form>
+</div>

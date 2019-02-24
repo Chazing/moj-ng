@@ -1,0 +1,13 @@
+main tab2 &#9728;
+<moj-slide-preview-doc [src]="'http://itportal/ItDocuments/Dev/infrastructureUi/תשתיות%20UI/mvc.pdf'"></moj-slide-preview-doc>
+<!-- http://qa-docpl-cs1.justice.gov.il:9080/ACS/servlet/ACS?command=read&version=2.3&docbaseid=00938d&basepath=%5C%5Cmain-jr-doc6%5CI%24%5Cdocumentum%5Cdata%5CProjects_Prodlike%5CProjects_Prodlike%5Ccontent_storage_01%5C0000938d&filepath=80%5C7f%5C73%5C66.pdf&objectid=0900938d80a06d65&cacheid=dAAEAgA%3D%3DZnN%2FgA%3D%3D&format=pdf&pagenum=0&signature=MTT6VkxV1jeYP2bFEj8JVliH46HVHKjMfBQxY8YL1Xm2bDtyIopN81Vv834PpsT8Cni464%2FQhTu6uxYZPw3IBKlXx8%2Buked7oKDHqBVPQhi3kzwuqkM9lBs8VL9rr9FlQo79rCV1cd%2Fdk8xGubl2DO0jmkbib0zW0Er50RC%2Bw7U%3D&servername=QA-DOCPL-CS1ACS1&mode=1&timestamp=1542779672&length=1968796&mime_type=application%2Fpdf&parallel_streaming=true&encryption_mode=disable&expire_delta=360 -->
+<!-- [src]="'http://itportal/ItDocuments/Dev/infrastructureUi/תשתיות%20UI/mvc.pdf'" -->
+<moj-grid-panel [editOptions]="editOptions" [gridDescription]="'רשימת מוצרים'">
+    <moj-line>
+        <moj-grid-add-button></moj-grid-add-button>
+        <ag-grid-angular class="ag-theme-balham" [gridOptions]=gridOptions [rowData]="rowData1" [columnDefs]="columns1"
+            (gridReady)="onGridReady1($event)">
+        </ag-grid-angular>
+    </moj-line>
+</moj-grid-panel>
+

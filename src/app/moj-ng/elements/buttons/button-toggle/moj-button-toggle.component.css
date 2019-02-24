@@ -1,0 +1,16 @@
+.moj-button-toggle{
+    border-radius:0px !important;
+    padding: 5px 16px;
+    color:#D6D6D6;
+    background-color: #5F5F5F
+}
+
+.moj-button-toggle-checked{
+    color:#424242;
+    background-color: #DCDCDC;
+}
+
+.btn.moj-button-toggle:focus{
+    text-decoration: none !important;
+    outline: none;
+}

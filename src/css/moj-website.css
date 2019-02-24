@@ -1,0 +1,474 @@
+﻿/**--general---------------------------------------------------**/
+html {
+  background-color: #fff;
+}
+
+body {
+  width: 100%;
+  min-height: calc(100% - 70px) !important;
+  position: relative;
+  display: table;
+}
+
+.web-site-container {
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+}
+
+.moj-fixed {
+  width: 100%;
+  display: table;
+}
+
+.moj-panel {
+  background-color: #fff !important;
+  width: 100%;
+}
+
+.layout-line {
+  border-top: #244c83 3px solid;
+  width: 100%;
+}
+
+input[readonly],
+textarea[readonly] {
+  background-color: #f7f7f7;
+}
+
+.main-menu {
+  width: 100%;
+}
+
+/**--action buttons---------------------------------------------------**/
+.moj-cancel,
+.moj-action,
+.moj-light,
+.moj-green,
+.moj-green-light,
+.moj-white,
+.moj-gradient-white,
+.moj-small,
+.moj-small-dark,
+.moj-small-light,
+.moj-icon-text {
+  height: 30px;
+  min-width: 65px !important;
+}
+
+@media (max-width: 767px) {
+  .moj-cancel,
+  .moj-action,
+  .moj-light,
+  .moj-green,
+  .moj-green-light,
+  .moj-white,
+  .moj-gradient-white,
+  .moj-small,
+  .moj-small-dark,
+  .moj-small-light,
+  .moj-icon-text {
+    height: 48px;
+  }
+}
+
+.moj-big-white {
+  height: 73px;
+  min-width: 65px !important;
+  float: right;
+}
+
+.moj-icon-text {
+  color: #0473ab;
+  border-color: #0473ab;
+}
+
+.moj-icon-text:hover button:focus {
+  outline-color: #956707;
+}
+
+.moj-icon-text:hover {
+  color: #956707;
+  border-color: #956707;
+  outline-color: #956707;
+}
+
+.moj-icon-text[disabled] {
+  color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.moj-button.action-base button {
+  min-width: 53px;
+  font-weight: normal !important;
+}
+
+@media (max-width: 767px) {
+  .moj-button.action-base button {
+    min-width: 83px;
+  }
+}
+
+.moj-action.action-base button,
+.moj-small-dark button {
+  background-color: #0473ab;
+  border: 1px solid #3583d6;
+}
+
+.moj-action.action-base:hover button,
+.moj-small-dark:hover button {
+  background-color: #327090;
+}
+
+.moj-light button,
+.moj-small-light button {
+  background-color: #c5e4f6;
+  border: 1px solid #3583d6;
+  color: #00578a;
+}
+
+.moj-light:hover button,
+.moj-small-light:hover button {
+  background-color: #ddedf7;
+}
+
+.moj-green button {
+  background-color: #2b7615;
+  border: 1px solid #229201;
+  color: #fff;
+}
+
+.moj-green:hover button {
+  background-color: #205810;
+}
+
+.moj-green-light button {
+  background-color: #b0cca8;
+  border: 1px solid #229201;
+  color: #205810;
+}
+
+.moj-green-light:hover button {
+  background-color: #d9efd3;
+}
+
+.moj-white button {
+  border: 1px solid rgb(147, 180, 198);
+  color: #207087;
+}
+
+.moj-white:hover button {
+  background-color: rgb(233, 243, 249);
+}
+
+.moj-gradient-white button {
+  border: 1px solid rgb(193, 200, 204);
+  background: linear-gradient(#fff, rgb(245, 245, 248));
+}
+
+.moj-gradient-white:hover button {
+  background: linear-gradient(#fff, rgb(230, 232, 240));
+  box-shadow: none !important;
+}
+
+.moj-big-white button {
+  border: 1px solid rgb(147, 180, 198);
+  box-shadow: 2px 2px 5px #c8c8c8;
+  color: #207087;
+  font-size: 1em;
+  padding-top: 32px !important;
+  height: calc(100% - 34px) !important;
+  transition: none;
+}
+
+.moj-big-white:hover button {
+  background-color: rgb(233, 243, 249);
+}
+/**************************************************************************************************************************************************************/
+.icon-button {
+  border-radius: 2px;
+  width: 28px;
+}
+
+@media (max-width: 767px) {
+  .icon-button {
+    width: 48px;
+  }
+}
+
+.div-text-icon-button .icon-button .icon,
+.div-text-icon-button .icon-button-only .icon {
+  float: right;
+  margin-right: 11px;
+  margin-top: 7px;
+}
+
+.icon-button-text {
+  float: right;
+  color: #026e8a;
+  text-align: right;
+  line-height: 27px;
+  padding-right: 5px;
+}
+
+.icon-button[disabled] .icon-button-text {
+  color: #c2c7cb;
+}
+
+.icon-button {
+  border-color: #c2c7cb;
+  background: -webkit-linear-gradient(#fffffd, #f5f5f7); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#fffffd, #f5f5f7); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#fffffd, #f5f5f7); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#fffffd, #f5f5f7); /* Standard syntax */
+}
+
+.icon-button button {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+/**********************************************************************************************/
+@media (max-width: 767px) {
+  .side-bar {
+    padding: 0 0 20px 0 !important;
+  }
+}
+
+.main-content {
+  padding: 0px !important;
+  /*width: 78%;*/
+}
+
+.panel-container {
+  width: 100%;
+  /*display: table;*/
+  vertical-align: top;
+  border: 1px solid #d3d3d3;
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.panel-container .title {
+  color: #a65200 !important;
+  font-size: 1.142em;
+  margin-bottom: 10px;
+  width: 100%;
+  font-weight: bold;
+}
+
+/****************************************************************************************************************/
+body.container-fluid {
+  margin: 0 !important;
+  /*padding: 0 !important;*/
+}
+/************************************************************************************************/
+.moj-form-title .button-open-close div.minus {
+  width: 14px !important;
+  height: 8px !important;
+  top: 11px !important;
+}
+
+.moj-form-title .button-open-close div.plus {
+  width: 8px !important;
+  height: 13px !important;
+  top: 9px !important;
+}
+
+.moj-form-title .button-open-close div.minus a:focus {
+  outline: auto;
+}
+
+.moj-form-title .button-open-close div.plus a:focus {
+  outline: auto;
+}
+
+.moj-form-title .button-open-close div.minus a {
+  background-image: url(../assets/MojImages/icons/OpenStateReg.png);
+  width: 14px !important;
+  height: 8px !important;
+}
+
+.moj-form-title .button-open-close div.plus a {
+  background-image: url(../assets/MojImages/icons/CloseStateReg.png);
+  width: 8px !important;
+  height: 13px !important;
+}
+
+.input-validation-error {
+  border: 1px solid #a5000f !important;
+}
+
+/************************************************************************************************/
+.moj-link {
+  color: #0064b4 !important;
+}
+
+.moj-link:focus {
+  text-decoration: underline !important;
+}
+
+span:focus {
+  text-decoration: underline !important;
+}
+
+span:focus {
+  text-decoration: underline !important;
+}
+
+.moj-link:focus {
+  text-decoration: underline !important;
+}
+
+.k-pager-nav:focus {
+  background-color: #cdcbcb !important;
+}
+
+.k-pager-nav:focus {
+  background-color: #cdcbcb !important;
+}
+
+.col.moj-button input:focus {
+  text-decoration: underline !important;
+}
+
+button:focus {
+  text-decoration: underline !important;
+}
+
+a:focus {
+  text-decoration: underline !important;
+  font-weight: bold;
+}
+
+.fonts input:focus {
+  /*border-bottom: 1px solid #184e84 !important;*/
+  /*background-color:#c8c8c8;*/
+  border-bottom: solid 1px #005b8f;
+  box-sizing: content-box;
+}
+
+.moj-action-middle-button button,
+.moj-small-dark-middle-button button,
+.moj-light-middle-button button,
+.moj-small-light-middle-button button {
+  font-weight: normal;
+  font-size: 1.25em;
+}
+
+/***new icons*****************************************************************************/
+
+.login-top-image {
+  top: 0px !important;
+}
+
+.center-content {
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+}
+
+.center-container {
+  position: relative;
+  width: 100%;
+}
+
+.login-title-div {
+  height: 50px;
+}
+
+.login-title-div .center-content {
+  top: 70%;
+}
+
+.login-form {
+  width: 410px;
+  margin: 90px auto 0;
+  background-color: white;
+  border-radius: 3px;
+  opacity: 0.85;
+  padding: 10px;
+  position: relative;
+  flex: 1;
+}
+/*******************************************************************************************************************************/
+/*ag-grid*/
+/*******************************************************************************************************************************/
+.ag-root {
+  border: 0px solid #9eb3c7 !important;
+  border-top: 1px solid #9eb3c7 !important;
+  border-bottom: 1px solid #9eb3c7 !important;
+}
+.ag-header-viewport {
+  background-color: #c7e7fa;
+  background: linear-gradient(to top, #c7e7fa 99%, #fff 99%);
+  color: #0f4682;
+}
+.ag-header-row,
+.ag-header {
+  border-bottom: 0px !important;
+}
+.ag-row {
+  border-bottom: 1px solid #d1e1f5 !important;
+}
+.ag-row-focus,
+.ag-row-selected {
+  background-color: #fae1c3 !important;
+}
+.ag-header-cell,
+.ag-cell {
+  border-right: 0px solid #9eb3c7 !important;
+}
+.ag-paging-panel {
+  border: 0px solid #9eb3c7 !important;
+  border-bottom: 1px solid #9eb3c7 !important;
+}
+
+/* ag-grid-accessibility */
+
+span[ref='eLabel']:focus {
+  text-decoration: underline;
+}
+
+.ag-header-cell-label:focus {
+  text-decoration: underline;
+}
+
+.ag-cell-focus .btn-grid {
+  text-decoration: underline;
+}
+
+.btn-grid:before {
+  color: #0473ab;
+}
+.btn-grid:hover:before {
+  color: #c68602;
+}
+
+/* end ag-grid-accessibility */
+/*******************************************************************************************************************************/
+/*end ag-grid*/
+/*******************************************************************************************************************************/
+/*moj-tabs*/
+ul.moj-tabs-stripe-list li {
+  background: #fff !important;
+  border: 1px solid #c8c8c8 !important;
+  border-bottom-width: 0px !important; 
+} 
+
+.moj-tabs-content {
+  background-color: #fff !important;
+  border: 1px solid #c8c8c8;
+}
+
+.moj-tab-selected {
+  transform: translateY(1px);
+  z-index: 99;
+}

@@ -1,0 +1,17 @@
+<moj-bo-header [hideJusticeLogo]=true [moreMenuItems]="moreMenuItems" [version]="'1.0.0.1'" [appLogoClass]="'someClass'" username="אסתר קאופמן" mainTitle="אופק 2" subTitle="אגף שומת מקרקעין" [envType]="currentEnvType"></moj-bo-header>
+<moj-bo-menubar [barItems]="barItems" [searchItems]="searchItems" (searchComboChanged)="searchComboChanged($event)" [searchPlaceholder]="searchPlaceholder" (searchClick)="searchClick($event)"></moj-bo-menubar>
+<button (click)="openNewTab()">פתיחת טאב חדש</button>
+<button routerLink="/bo-example/root/tab2/">tab2</button>
+<button routerLink="/bo-example/root/tab3/">tab3</button>
+<button routerLink="/bo-example/root/tab4/">tab4</button>
+<button routerLink="/bo-example/root/tab5/">tab5</button>
+<button routerLink="/bo-example/root/tab6/">tab6</button>
+<button routerLink="/bo-example/root/tab7/">tab7</button>
+<button routerLink="/bo-example/root/tab8/">tab8</button>
+dfgdjg ldlfgk jdlfgj ldfjlg
+
+<!-- <div style="margin-top: -39px;"> -->
+    <moj-tabs [colorizable]="true" [limit]="2"></moj-tabs>
+<!-- </div> -->
+
+<!-- <router-outlet></router-outlet> -->

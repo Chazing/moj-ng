@@ -1,0 +1,105 @@
+.fu-wrap {
+    grid-template-areas: "file input delete" "msg msg msg" "progress progress progress" "files files files";
+    grid-template-columns: 1fr;
+    grid-column-gap: 5px;
+    /* justify-content: right; */
+}
+.file-name {
+    background-color: #E8E6E7;
+    border-radius: 4px;
+    color: #696969;
+    height: 30px;
+    grid-area: file;
+}
+.file-name div {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+input + label:not(.single) {
+    grid-area: 1/1/2/span 2;
+}
+input + label {
+    grid-area: input;
+}
+.single-delete {
+    grid-area: delete;
+}
+input + label, .single-delete {
+    width: 120px;
+    height: 30px;
+    color: #184e84;
+    font-weight: normal;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c2c7cb;
+    border-radius: 3px;
+    background: linear-gradient(#fffffd, #f5f5f7);
+    cursor: pointer;
+    margin: 0;
+    box-sizing: border-box;
+}
+input + label.single, .single-delete {
+    width: 30px;
+}
+input + label:not(.single) i {
+    margin-left: 5px;
+}
+
+input[disabled] + label, .single-delete[disabled] {
+    border: 1px solid #C8CAC9;
+    cursor: auto !important;
+    color: #C8CAC9;
+}
+input[disabled] + label span {
+    color: #C8CAC9;
+}
+
+input:focus:not([disabled]) + label, input:not([disabled]) + label:hover, .single-delete:not([disabled]):focus, .single-delete:not([disabled]):hover {
+    background: linear-gradient(#fffffd, #f5f5f7);
+    border: 1px solid #FABEA1;
+    text-decoration: underline;
+}
+.progress {
+    grid-area: progress;
+}
+.ul-files {
+    padding: 0; margin: 5px 0 0; list-style-type: none;
+    grid-area: files;
+}
+.ul-files li {
+    display: flex;
+    padding: 2px 10px;
+}
+.ul-files li:hover {
+    background-color: #f5f5f7;
+}
+
+.ul-files li span {
+    color: #00a1Ce;
+    flex: 1 1 100%;
+}
+.ul-files li button {
+    color: #00a1Ce;
+    background-color: transparent;
+    border: none;
+    flex: 0 0 30px;
+}
+.ul-files li:hover span, .ul-files li:hover button {
+    color: #017ea1;
+}
+
+.message {
+    color: red;
+}

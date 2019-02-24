@@ -1,0 +1,32 @@
+﻿<div  [ngClass]="[groupColWidth, showValidationMsg ? 'moj-invalid': '']">
+    <label-before-content [labelStyle]="labelStyle" [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [widthColumns]="labelWidthColumns" 
+        [textKey]="labelTextKey" [isLabelAboveControl]="isLabelAboveControl" [isAutoWidth]="isLabelAutowidth">
+    </label-before-content>
+    <div class="moj-input-container" [ngClass]="controlColWidth">
+        <p-multiSelect [options]="items"
+                       optionLabel="{{fieldName}}"
+                       [(ngModel)]="value"
+                       [disabled]="disabled"
+                       [filter]="filter"
+                       [maxSelectedLabels]="maxSelectedLabels"
+                       [selectedItemsLabel]="selectedItemsLabel| translate"
+                       (onChange)="onchange($event)"
+                       (onFocus)="onFocusIn()"
+                       (onBlur)="onBlur()"
+                       [inputId]="identifier" 
+                       (onPanelShow)="onPanelshow($event)"
+                       (onPanelHide)="onPanelhide($event)">
+                    <ng-template let-item pTemplate="item">
+                        <ng-container *ngTemplateOutlet="customTemplate; context: {$implicit: item, index:index}"></ng-container>
+                        <label *ngIf="!customTemplate" [title]="item.label">{{item.label}}</label>
+                    </ng-template>
+        </p-multiSelect>
+        <validation-messages [forId]="identifier"
+                             *ngIf="showValidationMsg"
+                             [controlName]="labelTextKey"
+                             [messages]="control.errors"
+                             [customValidationErrors]="customValidationErrors">
+        </validation-messages>
+    </div>
+</div>
+

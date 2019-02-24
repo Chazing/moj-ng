@@ -1,0 +1,90 @@
+﻿<div class="content-section introduction">
+    <div>
+        <span class="feature-title">AutoComplete</span>
+        <a href="https://www.primefaces.org/primeng/#/autocomplete" target="_blank">לצפיה בפקד המקורי</a>
+    </div>
+</div>
+
+<div class="content-section implementation">
+<moj-dropdownlist [isLabelAboveControl]=true name="ddValue" labelTextKey="Texts.Choose" labelWidthColumns="1"
+    controlWidthColumns="2" [items]="listItems" [fieldID]="''" [(ngModel)]="ddValue">
+    <ng-template let-item pTemplate="custom">
+        <div style="background-color: crimson">{{item.value.value}}</div>
+    </ng-template>
+</moj-dropdownlist>
+    <h3 class="first">רגיל</h3>
+    <moj-line>
+        <moj-autocomplete [isLabelAboveControl]=true name="autocompleteValue" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="listItems"
+            [fieldName]="'value'" [fieldID]="'key'" required [(ngModel)]="autocompleteValue">
+            <ng-template let-item pTemplate="custom">
+                    <div style="background-color: red;height: 15px;color: black">{{item.value}}</div>
+            </ng-template>
+        </moj-autocomplete>
+        <label>
+            <b>ערך: </b>{{autocompleteValue|json}}</label>
+    </moj-line>
+    <br />
+    <br />
+    <h3>רשימה נפתחת</h3>
+    <moj-line>
+        <!-- <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="listItems"
+            [fieldName]="'Value'" fieldID="'Key'" [(ngModel)]="autocompleteValueDropDown" [dropdown]="true">
+        </moj-autocomplete> -->
+        <label>
+            <b>ערך: </b>{{autocompleteValueDropDown|json}}</label>
+    </moj-line>
+    <br />
+    <br />
+    <h3>multiple</h3>
+    <moj-line>
+        <!-- <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="listItems"
+           [(ngModel)]="autocompleteValueMultiple" fieldName="Value" fieldID="Key" [multiple]="true">
+        </moj-autocomplete> -->
+        <label>
+            <b>ערך: </b>{{autocompleteValueMultiple|json}}</label>
+    </moj-line>
+</div>
+
+<div class="content-section documentation">
+    <p-tabView effect="fade">
+        <p-tabPanel [header]="'Texts.documentation'| translate">
+            <pre>
+פקד AutoComplete יכול לעבוד עם מערכי strings או מערכי אוביקטים.
+כאשר עובדים עם אוביקטים ישנה אפשרות לקבל ערך ID מספרי או את האוביקט כולו.
+יש לתת ערך fieldName ובמקרה של אוביקט גם fieldID.
+ברירת מחדל אם לא נותנים פרמטרים אלו היא key,value
+שליחת הנתונים לפקד יכולה להיות ע"י הפרמטר items המכיל מערך של נתונים, 
+או ע"י הפרמטר itemsUrl שמביא נתונים מהשרת בעת ההקלדה
+</pre>
+        </p-tabPanel>
+        <p-tabPanel [header]="'Texts.source'| translate">
+
+        </p-tabPanel>
+    </p-tabView>
+</div>
+<br />
+<moj-line>
+    <h3>Properties</h3>
+</moj-line>
+<moj-line>
+    <div class="col-sm-6">
+        <!-- <p-dataTable [value]="properties">
+            <p-column field="name" header="שם"></p-column>
+            <p-column field="type" header="סוג"></p-column>
+            <p-column field="default" header="ברירת מחדל"></p-column>
+            <p-column field="description" header="תאור"></p-column>
+        </p-dataTable> -->
+    </div>
+</moj-line>
+<br />
+<moj-line>
+    <h3>Events</h3>
+</moj-line>
+<moj-line>
+    <div class="col-sm-4">
+        <!-- <p-dataTable [value]="events">
+            <p-column field="name" header="שם"></p-column>
+            <p-column field="description" header="תאור"></p-column>
+        </p-dataTable> -->
+    </div>
+</moj-line>

@@ -1,0 +1,10 @@
+﻿<div class="col chk">
+    <input type="checkbox" [id]="identifier" [(ngModel)]="value" name="identifier" (focus)="onFocusIn($event)" [disabled]="disabled"
+           class="fa" [ngClass]="{'fa-check' : value }" />
+    <validation-messages [forId]="identifier" *ngIf="showValidationMsg" [controlName]="labelTextKey" [messages]="control.errors"
+                         [customValidationErrors]="customValidationErrors">
+    </validation-messages>
+</div>
+<label-before-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [textKey]="labelTextKey" [widthColumns]="labelWidthColumns"
+                      [labelAlign]="labelAlign" [isAutoWidth]="isLabelAutowidth" [labelStyle]="labelStyle">
+</label-before-content>    

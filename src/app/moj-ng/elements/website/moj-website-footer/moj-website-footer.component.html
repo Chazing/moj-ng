@@ -1,0 +1,18 @@
+﻿<footer class="footer-bottom" role="contentinfo">
+    <sticky-alert [message]="message"></sticky-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 ftrLnks">
+                <ul>
+                    <li><a title="{{'MojTexts.justice' | translate}}" href="https://www.gov.il/he/Departments/ministry_of_justice" target="_blank">{{'MojTexts.main'  | translate}}</a></li>
+                    <li *ngFor="let link of links">| &nbsp;
+                        <a title="{{link.textKey | translate}}" href="{{link.href}}" target="_blank" (click)="onLinkClick($event)" [attr.id]="link.linkId">{{link.textKey | translate}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5 copy">
+                {{'MojTexts.allRightsReserved' | translate}} {{curYear}} {{'MojTexts.justice' | translate}} ©&nbsp;&nbsp;&nbsp;&nbsp;{{'MojTexts.versionNo' | translate}}: {{versionNumber}}&nbsp;&nbsp;&nbsp;&nbsp;{{'MojTexts.browser' | translate}}: {{getBrowserVersion()}}
+            </div>
+        </div>
+    </div>
+</footer>

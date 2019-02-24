@@ -1,0 +1,3 @@
+p-editor .ql-formats button, p-editor .ql-formats span{ /*rtl support*/
+    float: right
+}

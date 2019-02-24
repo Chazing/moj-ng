@@ -1,0 +1,8 @@
+.moj-design-line {
+    margin: 7px auto;
+    height: 1px;
+    background: #8B9f9F;
+}
+.moj-design-line.dots {
+    background: repeating-linear-gradient(to right ,#0062B2 0px, #0062B2 1px, #fff 1px, #fff 3px);
+}

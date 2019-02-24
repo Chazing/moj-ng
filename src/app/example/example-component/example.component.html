@@ -1,0 +1,39 @@
+﻿<div *ngIf="title">
+    <h2>{{title}}</h2>
+    <a *ngIf="primengLink" href="{{primengLink}}" target="_blank">לצפיה בפקד המקורי</a>
+</div>
+<pre class="container-fluid" *ngIf="instructions">
+{{instructions}}
+</pre>
+<moj-line>
+    <ng-content></ng-content>
+</moj-line>
+<div *ngIf="properties">
+    <moj-line>
+        <h3>Properties</h3>
+    </moj-line>
+    <moj-line>
+        <div class="col-sm-6">
+            <!-- <p-dataTable [value]="properties">
+                <p-column field="name" header="שם"></p-column>
+                <p-column field="type" header="סוג"></p-column>
+                <p-column field="default" header="ברירת מחדל"></p-column>
+                <p-column field="description" header="תאור"></p-column>
+            </p-dataTable> -->
+        </div>
+    </moj-line>
+</div>
+
+<div *ngIf="events">
+    <moj-line>
+        <h3>Events</h3>
+    </moj-line>
+    <moj-line>
+        <div class="col-sm-4">
+            <!-- <p-dataTable [value]="events">
+                <p-column field="name" header="שם"></p-column>
+                <p-column field="description" header="תאור"></p-column>
+            </p-dataTable> -->
+        </div>
+    </moj-line>
+</div>

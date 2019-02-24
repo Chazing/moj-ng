@@ -1,0 +1,40 @@
+<div class="content-placeholder">
+
+  <div class="moj-tabs-stripe">
+    <div class="moj-tabs-stripe-table">
+      <ul class="moj-tabs-stripe-list">
+        <li *ngFor="let tab of mojTabsService.tabs" [attr.data-id]="tab.id" [ngClass]="{'moj-tab-selected':tab.url == mojTabsService.activeTabUrl, 'uncolorizable':!colorizable}"
+          [ngStyle]="colorizable && tab.mainTab ? {'height':'38px','top':'1px', 'border-top':'4px solid ' + tab.color , 'color':'rgba(0,0,0,0)'} : (colorizable ? {'color': tab.color ? tab.color: 'rgba(0,0,0,0)'} : '')"
+          (click)="mojTabsService.onTabClick(tab)" (mousedown)="onMousedown(tab, $event)">
+          <span *ngIf="tab.asteriskColor" class="moj-tab-star fas fa-asterisk" [style.color]="tab.asteriskColor"></span>
+          <a class="moj-tab-title" title="{{tab.title$ | async}}">
+            {{tab.title$ | async}}
+          </a>
+          <span *ngIf="tab.removable" class="moj-tab-close fas fa-times" (click)="mojTabsService.onCloseTabClick(tab)"></span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="moj-tabs-content">
+    <div class="moj-tabs-side-menu" *ngIf="mojTabsService.showSideMenu()">
+      <ul>
+        <li [routerLink]="mojTabsService.getSideItemUrl(sideItem.url)" *ngFor="let sideItem of mojTabsService.getCurrentTab().sideMenuItems" [ngClass]="{'moj-sideitem-selected':mojTabsService.getCurrentTab().sideMenuItemSelected?.url == sideItem.url}">
+          <span *ngIf="sideItem.asteriskColor" class="moj-sideitem-star" [style.color]="sideItem.asteriskColor">
+              <i class="fas fa-asterisk"></i>
+          </span>
+          <a [style.background-image]="sideItem.imgUrl ? 'url(' + sideItem.imgUrl + ')' : null">
+            <i [ngClass]="sideItem.icon" [style.color]="sideItem.color"></i>
+            <span>{{ sideItem.title$ | async }}</span>
+          </a>
+          <div class="tab-sep"></div>
+        </li>
+      </ul>
+    </div>
+    <div class="moj-tabs-content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<moj-panel [isOpen]="true" [panelStyle]="panelStyle.card">
+    <moj-line>
+        <moj-label [textKey]="'גוף פונה'" [widthColumns]="1" [isAutoWidth]="true"></moj-label>
+        <moj-label [textKey]="'משרד הבריאות'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+        <moj-label [textKey]="'סטאטוס הליך'" [widthColumns]="2"></moj-label>
+        <moj-label [textKey]="'פעיל ועוד כמה דברים'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+        <moj-label [textKey]="'סטאטוס תיק'" [widthColumns]="2"></moj-label>
+        <moj-label [textKey]="'מנותק'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+        <moj-label [textKey]="'סטאטוס פונה'" [widthColumns]="2"></moj-label>
+        <moj-label [textKey]="'לא פעיל'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+    </moj-line>
+    <moj-line>
+        <moj-label [textKey]="'הליך אחרון'" [widthColumns]="1" [isAutoWidth]="true"></moj-label>
+        <moj-label [textKey]="'הליך שומה'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+        <moj-label [textKey]="'סטאטוס הליך'" [widthColumns]="2"></moj-label>
+        <moj-label [textKey]="'פעיל'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
+    </moj-line>
+</moj-panel>
+<moj-button  buttonStyle={{buttonStyle.Icon}} [iconClass]="'fab fa-accessible-icon'"></moj-button>
+<moj-dynamic-label>
+    תוכן מאלחילגדכ לדגחיכ לדחגילכ
+    <br>
+    lskdjf lsdjlf jsdlf jlsdjf lsdjf lsdjlf jsdljf lsdjflsdj
+</moj-dynamic-label>
+<!-- <moj-textbox [(ngModel)]="str" [readOnly]="true"></moj-textbox> -->
+<moj-input-file [(ngModel)]="files" [enabledFileTypes]="'pdf'" [designType]="fuDesignType.Single"></moj-input-file>
+{{files.length}}
+
+<router-outlet></router-outlet>

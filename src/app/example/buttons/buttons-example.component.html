@@ -1,0 +1,15 @@
+<h3>Button toggle</h3>
+<moj-line>
+    <moj-button-toggle
+        [items]="buttonToggleItems"
+        [(ngModel)]="toggleValue">
+    </moj-button-toggle> ערך:{{toggleValue}}
+</moj-line>
+<br/>
+<moj-line>
+    <moj-button-toggle
+        [items]="buttonToggleItems"
+        (onChange)="onToggleChange($event)"
+        buttonCssClasses="orange1 font-20">
+    </moj-button-toggle> 
+</moj-line>

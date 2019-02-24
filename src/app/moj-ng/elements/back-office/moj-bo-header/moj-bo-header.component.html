@@ -1,0 +1,27 @@
+<div id="topPanel1" class="{{ envClass }}">
+  <div class="content-placeholder">
+    <div *ngIf="!hideJusticeLogo" id="divMainLogo" class="logo-menora"></div>
+    <div *ngIf="appLogoClass" class="app-logo {{ appLogoClass }}"></div>
+    <div class="logo">
+      <span class="BN-font">{{ mainTitle }}</span> <span class="BN-font" *ngIf="subTitle"> - </span>
+      <span class="BN-font font-size24">{{ subTitle }}</span>
+    </div>
+    <span id="app-environment"> {{ appEnvTitle }} </span>
+    <div class="login">
+      <div class="username" *ngIf="username">
+        <section>{{ welcomeText }}{{ username }}{{ areaName ? ', ' : '' }}{{ areaName }}</section>
+      </div>
+      <div class="login" *ngIf="addLogin">
+        <div class="sign-img"></div>
+        <ul class="user-menu">
+          <li>
+            <a (click)="handleLogoutClick($event)">{{ logoutText }}</a>
+          </li>
+          <li *ngFor="let item of moreMenuItems">
+            <a (click)="item.command($event)">{{ item.text }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

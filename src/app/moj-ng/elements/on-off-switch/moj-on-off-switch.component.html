@@ -1,0 +1,21 @@
+<div  [ngClass]="groupColWidth">
+  <label-before-content [labelStyle]="labelStyle" [forId]="identifier" [labelAlign]="labelAlign" [isAutoWidth]="isLabelAutowidth" [isRequiredIndication]="isControlRequired$ | async" [widthColumns]="labelWidthColumns" [isLabelAboveControl]="isLabelAboveControl" [textKey]="labelTextKey">
+  </label-before-content>
+  <div class="moj-input-container" [ngClass]="controlColWidth">
+      <input type="checkbox"
+        [id]="identifier"
+        [(ngModel)]="value"
+        name="identifier"
+        (blur)="onBlur()"
+        [disabled]="disabled"
+        [readOnly]="readOnly"
+      />
+      <label [for]="identifier" [attr.data-text-off]="textKeyOff | translate" [attr.data-text-on]="textKeyOn | translate"></label>
+      <validation-messages [forId]="identifier"
+                           *ngIf="control.invalid && ((control.touched) || control.submitted)"
+                           [controlName]="labelTextKey"
+                           [messages]="control.errors"
+                           [customValidationErrors]="customValidationErrors">
+      </validation-messages>
+  </div>
+</div>

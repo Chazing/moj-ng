@@ -1,0 +1,59 @@
+.moj-document-format{
+    font-size: 1.5em;
+    line-height: 26px;
+    height: 22px;;
+}
+
+.moj-document-format[disabled]{
+    color: #939393;
+}
+
+i:hover{
+    box-shadow: 0.1em 0.1em 0.2em black;
+}
+
+.fa-file-pdf{
+    color: #CA2F3F;
+}
+
+.fa-file-image{
+    color: #F0646D;
+}
+
+.fa-file-word{
+    color:#0E5DBD;
+}
+
+.fa-file-alt{
+    color: #B37A25;
+}
+
+.fa-file-excel{
+    color: #418A39;
+}
+
+.fa-file-powerpoint{
+    color: #D92108;
+}
+
+.fa-file-code{
+    color: #5298CE;
+}
+
+.fa-file-archive{
+    color: #94951F;
+}
+
+.fa-envelope-square{
+    color: #CD6606;
+}
+
+.fa-file-audio{
+    color: #7C1FA3;
+}
+
+.fa-file-video{
+    color: #39838A;
+}
+
+

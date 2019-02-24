@@ -1,0 +1,37 @@
+﻿<div [ngClass]="[groupColWidth, showValidationMsg ? 'moj-invalid': '']">
+    <label-before-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [widthColumns]="labelWidthColumns" 
+        [textKey]="labelTextKey" [isLabelAboveControl]="isLabelAboveControl" [isAutoWidth]="isLabelAutowidth" [labelStyle]="labelStyle"> 
+    </label-before-content>
+    <div class="moj-input-container" [ngClass]="controlColWidth">
+        <p-autoComplete [(ngModel)]="value"
+                        [suggestions]="filteredItems"
+                        field={{fieldName}}
+                        [placeholder]="placeholder| translate"
+                        (completeMethod)="search($event)"
+                        [disabled]="disabled"
+                        (onFocus)="onFocusIn()"
+                        (onBlur)="onBlur($event)"
+                        (onKeyUp)="onkeyup($event)"
+                        (onSelect)="onselect($event)"
+                        (onClear)="onclear($event)"
+                        [minLength]="minLength"
+                        [multiple]="multiple"
+                        [dropdown]="dropdown"
+                        [forceSelection]="forceSelection"
+                        [dropdownMode]="dropdownMode"
+                        [delay]="delay"  
+                        [inputId]="identifier"                   
+                        [emptyMessage]="emptyMessage| translate">
+                        <ng-template let-item let-index="index" pTemplate="item">
+                            <ng-container *ngTemplateOutlet="customTemplate; context: {$implicit: item, index:index}"></ng-container>
+                            <label *ngIf="!customTemplate" [title]="fieldName != ''? item[fieldName]:item ">{{fieldName != ''? item[fieldName]:item}}</label>
+                        </ng-template>
+                    </p-autoComplete>
+                    <validation-messages [forId]="identifier"
+                    *ngIf="showValidationMsg"
+                    [controlName]="labelTextKey"
+                    [messages]="control.errors"
+                    [customValidationErrors]="customValidationErrors">
+        </validation-messages>
+    </div>
+</div>

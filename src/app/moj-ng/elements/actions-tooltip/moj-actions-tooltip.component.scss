@@ -1,0 +1,119 @@
+:host {
+    z-index: 200;
+    position: absolute;
+    left: 20px;
+}
+
+.actions-tooltip-container {
+    width: 100%;
+    cursor: pointer;
+    .action-menu-container {
+        position: absolute;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        .action-menu-icon {
+            background-image: url('/assets/Icn_MenuReg.png');
+            background-repeat: no-repeat;
+            width: 18px;
+            height: 15px;
+        }
+        .btn-action-menu {
+            padding: 0 5px 0 0;
+            height: 35px;
+        }
+    }
+    .action-items {
+        position: relative;
+        background: #888;
+        width: 300px;
+        height: 300px;
+    }
+    .action-items:after {
+        left: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: #b4b4b4;
+        border-left-color: #888;
+        border-width: 30px;
+        margin-top: -30px;
+    }
+    .actions-tooltip-box {
+        display: flex;
+        background: #ffffff;
+        border: 1px solid #a7a7a7;
+        border-radius: 4px;
+        box-shadow: 5px 5px 3px 0 rgba(0, 0, 0, 0.05), 3px 5px 3px 0 rgba(0, 0, 0, 0.1);
+        font-size: 1.2rem;
+        padding: 0;
+        position: relative;
+        top: 34px;
+        left: 12px;
+        list-style: none;
+        cursor: pointer;
+        flex-wrap: wrap;
+        max-width: 267px;
+        display: none;
+    }
+    .actions-tooltip-box:hover,
+    .action-tooltip-hover {
+        display: flex !important;
+    }
+    .actions-tooltip-box li {
+        border-left: #dcdcdc 1px solid;
+        border-bottom: #dcdcdc 1px solid;
+        .action-box {
+            width: 87px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 6px;
+            border: none;
+            outline: none;
+            background: none;
+            .action-label {
+                font-size: 14px;
+                color: #646464;
+                margin-top: 5px;
+            }
+            .action-label-hover {
+                color: #0060AC;
+                font-weight: bold;
+            }
+            .action-icon {
+                width: 48px;
+                height: 48px;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+    .actions-tooltip-box li:nth-child(3n+3) {
+        border-left: none;
+    }
+    .actions-tooltip-box li:nth-last-child(-n+3) {
+        border-bottom: none;
+    }
+    .actions-tooltip-arrow {
+        border-left: 16px solid transparent;
+        border-top: 16px solid #ffffff;
+        top: -6.5px;
+        position: absolute;
+        left: 30px;
+        z-index: 2;
+        transform: rotate(-45deg);
+    }
+    .actions-tooltip-arrow-border {
+        border-left: 16px solid transparent;
+        border-top: 16px solid #b4b4b4;
+        top: -8px;
+        position: absolute;
+        left: 30px;
+        z-index: 1;
+        transform: rotate(-45deg);
+    }
+}

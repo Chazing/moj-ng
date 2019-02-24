@@ -1,0 +1,46 @@
+﻿<form mojForm #form="ngForm">
+    <div #areaToReplace>
+        <moj-example title="Grid" primengLink="https://www.ag-grid.com/angular-getting-started/">
+            
+            <br />
+            <br /> ag grid
+            <moj-grid-xls-export (exportClick)="onBtExport()"></moj-grid-xls-export>
+            <moj-grid-print-button [grid]="grid"></moj-grid-print-button>
+            <moj-line>
+                <moj-grid-panel [editOptions]="editOptions" [gridDescription]="'רשימת מוצרים'">
+                    <moj-line>
+                        <moj-grid-add-button></moj-grid-add-button>
+                    </moj-line>
+                    <moj-line>
+                        <ag-grid-angular #grid class="ag-theme-balham" [gridOptions]=gridOptions [rowData]="rowData1" [enableFilter]="true"
+                            [columnDefs]="columns1" (gridReady)="onGridReady1($event)">
+                        </ag-grid-angular>
+                    </moj-line>
+                </moj-grid-panel>
+            </moj-line>
+            <moj-line>
+                <moj-button (click)="printDataToConsole()" textKey="הדפס נתונים לconsole"></moj-button>
+            </moj-line>
+            <br> <br>
+        </moj-example>
+    </div>
+    <moj-buttons-line>
+        <moj-cancel-button [textKey]="'שמירה בגריד הראשון'"></moj-cancel-button>
+        <moj-submit-button [form]="form"></moj-submit-button>
+    </moj-buttons-line>
+</form>
+<form mojForm #form1="ngForm">
+    <moj-grid-panel [editOptions]="editOptions" [enableChangePageSize]="true">
+        <moj-line>
+            <moj-quick-filter></moj-quick-filter>
+        </moj-line>
+        <moj-line>
+            <ag-grid-angular class="ag-theme-balham" mojGridOptions [rowData]="rowData2" [columnDefs]="columns2">
+            </ag-grid-angular>
+        </moj-line>
+    </moj-grid-panel>
+    <moj-buttons-line>
+        <moj-cancel-button [textKey]="'שמירה בגריד השני'"></moj-cancel-button>
+        <moj-submit-button [form]="form"></moj-submit-button>
+    </moj-buttons-line>
+</form>

@@ -1,0 +1,10 @@
+﻿<div class="{{controlColWidth}}">
+    <div class="radio-input col-xs-2">
+        <input [(ngModel)]="value" (change)="onCheckedChange($event)" type="radio" [value]="radiovalue" [id]="identifier" [name]="name" [ngClass]="{'ie':isIE}" />
+        <div *ngIf="isIE" class="before"></div>
+        <div *ngIf="isIE" class="after"></div>
+    </div>
+    <label-before-content [forId]="identifier" [widthColumns]="9" [textKey]="labelTextKey" [labelAlign]="labelAlignEnum.Right"
+        [styleClass]="value==radiovalue? 'bold col-xs-10': 'col-xs-10'" [isAutoWidth]="isLabelAutowidth">
+    </label-before-content>
+</div>

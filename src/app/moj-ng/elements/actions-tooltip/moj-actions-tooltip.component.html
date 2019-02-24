@@ -1,0 +1,25 @@
+<div *ngIf="actionList.length > 0" class="actions-tooltip-container">
+    <div class="action-menu-container" (mouseover)="isHovered=true" (mouseleave)="isHovered=false">
+        <div class="action-menu-icon"> </div>
+        <div>
+            <input name="btnActionMenu" type="button" value="{{headerText}}" class="btn btn-link btn-action-menu" />
+        </div>
+    </div>
+    <div class="actions-tooltip-box-container">
+        <ul class="actions-tooltip-box" [ngClass]="{'action-tooltip-hover' :
+                isHovered}">
+            <li *ngFor="let action of actionList" [title]="action.title">
+                <button class="action-box" (click)="onActionClick(action.id)" (mouseover)="action.isHovered= true" (mouseleave)="action.isHovered=false" [disabled]="action.isDisabled">
+                        <div class="action-icon"
+                            [ngStyle]="{ 'background-image':
+                            'url(' + getActionImageUrl(action) + ')' }">
+                        </div>
+                        <div class="action-label" [ngClass]="{'action-label-hover' :
+                            action.isHovered}">{{action.label}}</div>
+                    </button>
+            </li>
+            <div class="actions-tooltip-arrow"></div>
+            <div class="actions-tooltip-arrow-border"></div>
+        </ul>
+    </div>
+</div>

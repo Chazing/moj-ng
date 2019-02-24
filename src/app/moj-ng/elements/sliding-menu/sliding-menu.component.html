@@ -1,0 +1,18 @@
+<div class="menu-panel-container" [ngStyle]="{'width.px': expanded ? width + 40 :30}">
+  <div class="menu-panel">
+      <div class="open-close" title="{{'Texts.close' | translate}}" (click)="toggleMenu()">
+          <i class="glyphicon" [ngClass]="{'glyphicon-chevron-right': !expanded, 'glyphicon-chevron-left': expanded}"></i>
+      </div>
+      <div class="menu-panel-view" [style.min-width.px]="width" >
+          <div class="title"><span>{{title}}</span>
+              <div class="pin fa fa-thumb-tack" title="{{ (pinOn ? 'Texts.pinOff' : 'Texts.pinOn') | translate}}" (click)="togglePin()" [ngClass]="{'pin-on' : pinOn}"></div>
+          </div>
+          <div class="menu-details-panel">
+              <ng-content> </ng-content>
+               <div class="ok-btn" (click)="okClick($event)" *ngIf="!hideOkBtn">
+                  <i class="{{btnIcon}}" aria-hidden="true"></i> {{btnTitle}}
+              </div>
+          </div>            
+      </div>
+  </div>
+</div>

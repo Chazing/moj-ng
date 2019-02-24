@@ -1,0 +1,24 @@
+<div class="offscreen"><a (click)="goToContent()" id="access-content">דילוג לתוכן העמוד</a></div>
+
+<div class="accessible-bar" [ngClass]="state==='in' ? 'open' : ''">
+    <button class="open-menu" href='javascript:void(0)' (click)="state=state=='in'? 'out' : 'in'" [attr.aria-labelledby]="'MojTexts.accessibleMenu' | translate"></button>
+    <button class="close" (click)="state=state=='in'? 'out' : 'in'"></button>
+    <div class="accessible-menu">
+        <div class="accessible-menu-wrap">
+            <h2 class="title">{{'MojTexts.accessibleMenu' | translate}}</h2>
+            <h3>{{'MojTexts.accessibleShortcutKeys' | translate}}</h3>
+            <ul class="item-group"><li><a href='javascript:void(0)' onclick="document.getElementById('access-content').click();">{{'MojTexts.accessibleGoToContent' | translate}}</a></li></ul>
+            <h3>{{'MojTexts.fontSize' | translate}}</h3>
+            <ul class="item-group">
+                <li><a href='javascript:void(0)' title="{{'MojTexts.bigFontTxt' | translate}}" [attr.aria-label]="'MojTexts.bigFontTxt' | translate" (click)="changeFontSize(0)">{{'MojTexts.bigFont' | translate}} <bdo class="large-font">אA</bdo></a></li>
+                <li><a href='javascript:void(0)' title="{{'MojTexts.normalFontTxt' | translate}}" [attr.aria-label]="'MojTexts.normalFontTxt' | translate" (click)="changeFontSize(1)">{{'MojTexts.normalFont' | translate}} <bdo class="standart-font">אA</bdo></a></li>
+                <li><a href='javascript:void(0)' title="{{'MojTexts.smallFontTxt' | translate}}" [attr.aria-label]="'MojTexts.smallFontTxt' | translate" (click)="changeFontSize(2)">{{'MojTexts.smallFont' | translate}} <bdo class="smaller-font">אA</bdo></a></li>
+            </ul>
+            <h3>{{'MojTexts.accessibleMore' | translate}}</h3>
+            <ul class="item-group">
+                <li id='access-dec'><a href='http://content.justice.gov.il/accessibility/declaration1.html' target='_blank'>{{'MojTexts.accessibleDeclaration' | translate}}</a></li>
+                <li (click)="state=state=='in'? 'out' : 'in'"><a href='javascript:void(0)' class="link-close">{{'MojTexts.accessibleCloseMenu' | translate}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
