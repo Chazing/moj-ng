@@ -1,0 +1,98 @@
+[
+  {
+    "title": "תחילת העבודה",
+    "file": "get-started.md"
+  },
+  {
+    "title": "רכיבים",
+    "file": "controls.md",
+    "children": [
+      {
+        "title": "קטלוג רכיבים",
+        "file": "control-catalog.md"
+      },
+      {
+        "title": "מבנה הפרוייקט",
+        "file": "app-structure.md"
+      },
+      {
+        "title": "וולידציות",
+        "file": "validation.md"
+      }
+    ]
+  },
+  {
+    "title": "גריד",
+    "file": "grid.md",
+    "children": [
+      {
+        "title": "איך עובדים עם גריד",
+        "file": "grid.md"
+      },
+      {
+        "title": "עריכת טבלה",
+        "file": "grid-details.md"
+      },
+      {
+        "title": "אפשרויות בגריד",
+        "file": "grid-features.md"
+      }
+    ]
+  },
+  {
+    "title": "תהליך wizard",
+    "file": "wizard.md"
+  },
+  {
+    "title": "פתיחת Dialog",
+    "file": "dialog.md"
+  },
+  {
+    "title": "נושאים כלליים",
+    "file": "empty.md",
+    "children": [
+      {
+        "title": "קונפיגורציה לאתר",
+        "file": "site-configuration.md"
+      },
+      {
+        "title": "תמיכה בריבוי שפות",
+        "file": "i18n.md"
+      },
+      {
+        "title": "עבודה עם tfs",
+        "file": "tfvc.md"
+      },
+      {
+        "title": "תמיכה בדפדפנים",
+        "file": "browser-supported.md"
+      },
+      {
+        "title": "נגישות",
+        "file": "accessibility.md"
+      },
+      {
+        "title": "glassbox",
+        "file": "glassbox.md"
+      },
+      {
+        "title": "עדכוני גרסאות",
+        "file": "empty.md",
+        "children": [
+          {
+            "title": "מעבר לאנגולר 6",
+            "file": "update-angular6.md"
+          },
+          {
+            "title": "מעבר לגרסת תשתיות 3",
+            "file": "update-moj-ng3.md"
+          }
+        ]
+      },
+      {
+        "title": "בעיות נפוצות",
+        "file": "common-errors.md"
+      }
+    ]
+  }
+]
