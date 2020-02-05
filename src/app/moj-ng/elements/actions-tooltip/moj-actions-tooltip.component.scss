@@ -117,3 +117,55 @@
         transform: rotate(-45deg);
     }
 }
+.moj-ltr
+{
+    :host {
+        left: 0px !important;
+        right: 20px;
+    }
+    
+    .actions-tooltip-container {
+        width: 100%;
+        cursor: pointer;
+        .action-menu-container {
+            left: 0px !important;
+            right: 10px;
+            .btn-action-menu {
+                padding: 0 5px 0 0;
+              
+            }
+        }
+       
+        .action-items:after {
+            right: 100%;
+            left:initial !important;
+            pointer-events: none;
+            border-color: #b4b4b4;
+            border-left-color: #b4b4b4 !important;
+            border-right-color: #888;
+        }
+        .actions-tooltip-box {
+            left: 0px !important;
+            right: 12px;
+        }
+       
+        .actions-tooltip-box li {
+            border-right: #dcdcdc 1px solid;
+            .action-box {   
+                padding: 12px 6px;
+            }
+        }
+      
+        .actions-tooltip-arrow {
+            right: 0px!important;
+            left: 30px;
+        }
+        .actions-tooltip-arrow-border {
+            left: 0px !important;
+            right: 30px;
+         
+        }
+    }
+}
+
+

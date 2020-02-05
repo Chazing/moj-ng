@@ -6,9 +6,10 @@ import { MojClearButtonComponent } from "./moj-clear-button.component";
 import { MojCancelButtonComponent } from "./moj-cancel-button.component";
 import { MojSubmitButtonComponent } from "./moj-submit-button.component";
 import { MojButtonToggleComponent } from "./button-toggle/moj-button-toggle.component";
+import { ValidationsModule } from "../../validations/validation.module";
 
 @NgModule({
-    imports: [CommonModule, TranslateModule],
+    imports: [CommonModule, TranslateModule, ValidationsModule],
     exports: [MojButtonComponent, MojClearButtonComponent, MojCancelButtonComponent, MojSubmitButtonComponent, MojButtonToggleComponent],
     declarations: [MojButtonComponent, MojClearButtonComponent, MojCancelButtonComponent, MojSubmitButtonComponent, MojButtonToggleComponent]
 })

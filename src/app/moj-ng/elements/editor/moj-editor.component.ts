@@ -5,7 +5,7 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
 @Component({
     selector:'moj-editor',
     templateUrl:'./moj-editor.component.html',
-    styleUrls:['./moj-editor.component.css'],
+    styleUrls:['./moj-editor.component.scss'],
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: MojEditorComponent,

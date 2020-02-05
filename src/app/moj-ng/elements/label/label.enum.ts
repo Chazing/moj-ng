@@ -8,11 +8,16 @@
     White = "moj-white-text",
     Green = "moj-green-text",
     GreenBold = "moj-green-bold-text",
-    RedBold = "moj-red-bold-text"
+    RedBold = "moj-red-bold-text",
 }
 
 export enum LabelAlign {
     Left,
     Right
+}
+
+export enum TitleType {
+    Primary,
+    Secondary
 }
 

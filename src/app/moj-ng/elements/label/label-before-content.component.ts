@@ -8,19 +8,19 @@ import { TranslateService } from "@ngx-translate/core";
 import { LabelBase } from "./label-base";
 
 @Component({
-  selector: "label-before-content",
-  template: `<div class="{{labelClasses}}" [ngClass]="styleClass" *ngIf="widthColumns > 0 || isAutoWidth" [ngClass]="{'margin-top':isLabelAboveControl}">
-                    <label [attr.for]="forId">{{ getLabelText }}<span class="star" *ngIf="isRequiredIndication">*</span>
-                    </label>
-               </div>`,
+  selector: "label-for-content",
+  template: `<label *ngIf="isDisplayLabel" class="{{labelClasses}}" [ngStyle]="{display: isLabelAboveControl? 'block' : ''}" [attr.for]="forId">{{ getLabelText }}<span class="star" *ngIf="isRequiredIndication">*</span>
+             </label>`,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LabelBeforContentComponent extends LabelBase implements OnInit {
+export class LabelForContentComponent extends LabelBase implements OnInit {
+  isDisplayLabel: boolean;
   constructor(protected translateService: TranslateService) {
     super(translateService);
   }
 
   ngOnInit(): void {
     super.ngOnInit();
+    this.isDisplayLabel = this.textKey !== '';
   }
 }

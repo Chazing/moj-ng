@@ -1,6 +1,8 @@
-﻿import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ButtonStyle } from './button-style';
 import { Alignment } from '../general/general.enum';
+import { PermissionService } from '../../permissions/permission.service';
+import { ButtonBase } from '../base/moj-button.base';
 
 /**
   * Usage example
@@ -22,27 +24,36 @@ import { Alignment } from '../general/general.enum';
  */
 @Component({
     selector: 'moj-button',
-    template: `<div (click)="!isEnable? $event.stopPropagation() : isEnable=isEnable" class="{{baseClass}} {{buttonStyle}}" [style.float]="alignment === alignmentList.left ? 'left' : 'right'">
-                    <button [attr.data-tooltip]="tooltip | translate" #button type="{{type}}" [disabled]="!isEnable">
-                        <i *ngIf="buttonStyle==buttonStyleList.IconText || buttonStyle==buttonStyleList.Icon" class="{{iconClass}}"></i>{{textKey | translate}}
-                    </button>
-               </div>`,
-    styles: [`:host{ margin-right: 10px; display: inline-block;}`]
+    templateUrl: 'moj-button.component.html',
+    styles: [`:host{ margin-right: 10px;margin-bottom:20px}`]
 })
-export class MojButtonComponent {
-    @Input() textKey: string;
-    @Input() buttonStyle: ButtonStyle = ButtonStyle.Dark;
-    @Input() isEnable: boolean = true;
+export class MojButtonComponent extends ButtonBase implements AfterViewInit {
     @Input() type: string = 'button';
     @Input() iconClass: string;
+    @Input() iconClassLeft: string;
     @Input() tooltip: string;
     @Input() alignment: Alignment;
-    @ViewChild('button') button;
+    @Input() cssClass?: string;
+    @Input() isGridButton?: boolean = false;
+    @Input() isAutoWidth?: boolean = true;
+
+    @ViewChild('button', { static: true }) button;
     buttonStyleList = ButtonStyle;
     alignmentList = Alignment;
-    baseClass: string = "";
-    ngOnInit() {
-        if (this.buttonStyle != ButtonStyle.Icon)
-            this.baseClass = "action-base moj-button";
+
+    constructor(permissionService: PermissionService, el: ElementRef) {
+
+        super(permissionService, el);
+        this.buttonStyle = ButtonStyle.Primary;
+        this.isEnable = true;
     }
+
+    ngAfterViewInit() {
+        if (this.isGridButton) {
+            super.setIdentifier();
+            super.setPermissions();
+        }
+
+    }
+
 }

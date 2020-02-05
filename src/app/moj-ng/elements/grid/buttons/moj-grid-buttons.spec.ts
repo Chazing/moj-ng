@@ -30,22 +30,22 @@ import { ButtonStyle } from "../../buttons/button-style";
                         (gridReady)="onReady($event)">
                     </ag-grid-angular>
                 </moj-grid-panel>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestComponent implements OnInit {
-    @ViewChild(MojGridPanelComponent) mojGridPanel: MojGridPanelComponent;
-    @ViewChild(MojGridAddButtonComponent) mojGridAddButton: MojGridAddButtonComponent;
-    rowData:any;
-    gridOptions:GridOptions;
+    @ViewChild(MojGridPanelComponent, { static: true }) mojGridPanel: MojGridPanelComponent;
+    @ViewChild(MojGridAddButtonComponent, { static: true }) mojGridAddButton: MojGridAddButtonComponent;
+    rowData: any;
+    gridOptions: GridOptions;
     columns: ColDef[];
-    gridApi:GridApi;
+    gridApi: GridApi;
     editOptions: EditOptions = new EditOptions();
     editService: EditServiceBase;
-    
+
     constructor(public gridService: GridService) {
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.rowData = products;
         this.gridOptions = this.gridService.getMojGridOptions();
         this.columns = [
@@ -54,7 +54,7 @@ class TestComponent implements OnInit {
         this.editOptions.editComponentType = TestEditComponent;
     }
 
-    onReady(params){
+    onReady(params) {
         this.gridApi = params.api;
     }
 }
@@ -68,23 +68,23 @@ class TestComponent implements OnInit {
                 </moj-buttons-line>
                 </form>`
 })
-class TestEditComponent extends EditComponentBase{
+class TestEditComponent extends EditComponentBase {
 }
 
 describe('MojGridButtons', () => {
     let testComponent: TestComponent;
     let fixture: ComponentFixture<TestComponent>;
-    let translate:TranslateService;
+    let translate: TranslateService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations:[TestComponent,TestEditComponent],
+            declarations: [TestComponent, TestEditComponent],
             imports: [MojSharedModule,
                 MojGridModule,
                 TranslateModule.forRoot({
-                    loader: {provide: TranslateLoader, useClass: MockTranslateLoader}
-                  })
-                ],
+                    loader: { provide: TranslateLoader, useClass: MockTranslateLoader }
+                })
+            ],
             providers: [GridService,
                 TranslateService,
                 MojUtilsService,
@@ -93,9 +93,9 @@ describe('MojGridButtons', () => {
         });
         TestBed.overrideModule(BrowserDynamicTestingModule, { //because testbed doesnt have entryComponents, we need to override
             set: {
-              entryComponents: [ TestEditComponent ],
+                entryComponents: [TestEditComponent],
             }
-          });
+        });
 
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.debugElement.componentInstance;
@@ -121,7 +121,7 @@ describe('MojGridButtons', () => {
         expect(divEl.className).toContain('moj-small-dark');
     }));
 
-    function openEditComponent(){
+    function openEditComponent() {
         let addButtonEl = fixture.debugElement.query(By.css('moj-grid-add-button button')).nativeElement;
         addButtonEl.dispatchEvent(new Event('click'));
     }
@@ -197,18 +197,18 @@ describe('MojGridButtons', () => {
 
     it('edit - should open edit component on click', async(() => {
         fixture.detectChanges();
-        fixture.whenStable().then(() => { 
+        fixture.whenStable().then(() => {
             testComponent.gridApi.setColumnDefs([testComponent.gridService.getEditColumn()]);
             let editButtonEl = fixture.debugElement.query(By.css('moj-grid-edit-button button')).nativeElement;
             editButtonEl.dispatchEvent(new Event('click'));
             expect(testComponent.mojGridPanel.editComponent).toBeTruthy();
-          });
+        });
     }));
 
     it('edit - properties should work', async(() => {
         fixture.detectChanges();
-        fixture.whenStable().then(() => { 
-            testComponent.gridApi.setColumnDefs([testComponent.gridService.getEditColumn({headerName:"edit",cssClass:"orange2",disabled:true})]);
+        fixture.whenStable().then(() => {
+            testComponent.gridApi.setColumnDefs([testComponent.gridService.getEditColumn({ headerName: "edit", cssClass: "orange2", disabled: true })]);
             let editButtonEl = fixture.debugElement.query(By.css('moj-grid-edit-button button')).nativeElement;
             //editButtonEl
         });

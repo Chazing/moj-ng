@@ -1,6 +1,10 @@
-﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
 import { ButtonStyle } from './button-style';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
+import { MojUtilsService } from '../../shared/utils';
+import { PermissionService } from '../../permissions/permission.service';
+import { ButtonBase } from '../base/moj-button.base';
+
 
 /**
   * Usage example
@@ -15,26 +19,23 @@ import { NgForm } from '@angular/forms';
     template: `<moj-button type="submit" [textKey]="textKey" [buttonStyle]="buttonStyle" [iconClass]="iconClass"
     [isEnable]="isEnable" (click)="setSubmit($event)"></moj-button>`
 })
-export class MojSubmitButtonComponent {
-    @Input() textKey: string = 'MojTexts.save';
-    @Input() buttonStyle: ButtonStyle = ButtonStyle.SmallDark;
-    @Input() isEnable: boolean = true;
+export class MojSubmitButtonComponent extends ButtonBase {
     @Input() iconClass: string;
-    @Input() form: NgForm;
-
+    @Input() form: NgForm | FormGroup;
     @Output() onSubmit = new EventEmitter();
 
-    setSubmit(event) {
-        if(this.form){
-            Object.keys(this.form.controls).forEach(key => {
-                (<any>this.form.controls[key]).submitted = true;
-                this.form.controls[key].updateValueAndValidity();
-              })
-        }
-
-        if(this.form.valid){
-            this.onSubmit.emit(event);
-        }
+    constructor(private mojUtilsService: MojUtilsService, permissionService: PermissionService, el: ElementRef) {
+        super(permissionService, el)
+        this.textKey = 'MojTexts.save';
+        this.buttonStyle = ButtonStyle.Primary;
     }
 
+    setSubmit(event) {
+        if (this.form) {
+            this.mojUtilsService.setSubmitToFormGroup(this.form);
+            if (this.form.valid) {
+                this.onSubmit.emit(event);
+            }
+        }
+    }
 }

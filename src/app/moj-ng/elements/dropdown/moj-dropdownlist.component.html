@@ -1,33 +1,34 @@
-<div  [ngClass]="[groupColWidth, showValidationMsg ? 'moj-invalid': '']">
-    <label-before-content [labelStyle]="labelStyle" [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [widthColumns]="labelWidthColumns" [textKey]="labelTextKey" 
-        [isLabelAboveControl]="isLabelAboveControl" [isAutoWidth]="isLabelAutowidth">
-    </label-before-content>
-    <div class="moj-input-container" [ngClass]="controlColWidth">
-        <i *ngIf="!editable && !disabled" [style.display]="!value ? 'none' : 'block'" class="fas fa-times clear-botton" (click)="remove()"> </i>
-        <p-dropdown [options]="items"
+<div  [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}" class="moj-input-container" [ngClass]="[showValidationMsg ? 'moj-invalid': '',controlColWidth]">
+    <span class="float-label">
+    <i *ngIf="!editable && !disabled" [style.display]="!value ? 'none' : 'block'" class="fas fa-times clear-botton" (click)="remove()"> </i>
+        <p-dropdown [options]="items" #dropdownElement [ngClass]="{'moj-input-filled':filled,'moj-input-disabled':disabled}"
                     optionLabel="{{fieldName}}"
                     [(ngModel)]="value"
                     [disabled]="disabled"
-                    [placeholder]="(placeholder| translate) || 'a'"
+                    [placeholder]="(placeholder| translate)"
+                    [autoDisplayFirst]=false
                     [editable]="editable"
                     [filter]="filter"
-                    [autoWidth]="autoWidth"
                     emptyFilterMessage=""
                     (onChange)="onchange($event)"
                     (onFocus)="onFocusIn()"
-                    [inputId]="identifier" 
+                    [inputId]="identifier"
                     (onBlur)="onBlur()">
                     <ng-template let-item pTemplate="item">
                             <ng-container *ngTemplateOutlet="customTemplate; context: {$implicit: item, index:index}"></ng-container>
                             <label *ngIf="!customTemplate" [title]="item.label">{{item.label}}</label>
                     </ng-template>
                 </p-dropdown>
+                <label-for-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [textKey]="labelTextKey">
+    </label-for-content>
+  </span>  
         <validation-messages [forId]="identifier"
                              *ngIf="showValidationMsg"
                              [controlName]="labelTextKey"
                              [messages]="control.errors"
-                             [customValidationErrors]="customValidationErrors">
+                             [customValidationErrors]="customValidationErrors"
+                             role="alert">
         </validation-messages>
-    </div>
+        <input-help-text [forId]="identifier" [message]=helpText *ngIf="!showValidationMsg"></input-help-text>
 </div>
 

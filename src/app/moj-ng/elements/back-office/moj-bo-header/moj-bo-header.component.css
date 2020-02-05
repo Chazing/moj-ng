@@ -44,7 +44,7 @@
   float: right;
   width: 28px;
   height: 33px;
-  background-image: url(../../../../../assets/MojImages/icons/MenoraLogo.png);
+  background-image: url("../../../../../assets/MojImages/icons/MenoraLogo.png");
   margin-top: 5px;
 }
 .logo {
@@ -105,7 +105,7 @@
   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, transform 0.3s ease-in-out 0.25s;
 }
 
-.login:hover .user-menu {
+.login div:hover .user-menu {
   visibility: visible; /* shows sub-menu */
   opacity: 1;
   z-index: 1;

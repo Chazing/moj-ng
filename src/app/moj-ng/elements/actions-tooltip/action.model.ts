@@ -5,6 +5,7 @@ export class TooltipAction {
   imgUrl: string;
   imgUrlOnHover: string;
   imgUrlDisabled: string;
+  icon?:string;
   isDisabled: boolean;
   isHovered?: boolean;
 }

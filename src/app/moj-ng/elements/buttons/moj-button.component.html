@@ -1,0 +1,10 @@
+<div (click)="!isEnable? $event.stopPropagation() : isEnable=isEnable" class="moj-button {{buttonStyle}} {{cssClass}}"
+    [ngClass]="{'button-state-disabled': !isEnable}"
+    [ngStyle]="{'visibility':visible ? 'visible' : 'hidden','width': isAutoWidth ? '' : '100%'}">
+    <button [attr.data-tooltip]="tooltip | translate" #button type="{{type}}" [disabled]="!isEnable"
+        [hidden]="isGridButton">
+        <i *ngIf="iconClass" class="{{iconClass}}"></i>
+        <span>{{textKey | translate}}</span>
+        <i *ngIf="iconClassLeft" class="{{iconClassLeft}}"></i>
+    </button>
+</div>

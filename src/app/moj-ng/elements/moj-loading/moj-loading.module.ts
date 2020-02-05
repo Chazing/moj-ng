@@ -8,7 +8,7 @@ import { MojLoadingService } from "./moj-loading.service";
   imports: [ProgressSpinnerModule, CommonModule],
   exports: [ProgressSpinnerModule, MojLoadingComponent],
   declarations: [MojLoadingComponent],
-  entryComponents:[MojLoadingComponent],
+  entryComponents: [MojLoadingComponent],
   providers: [MojLoadingService]
 })
-export class MojLoadingModule {}
+export class MojLoadingModule { }

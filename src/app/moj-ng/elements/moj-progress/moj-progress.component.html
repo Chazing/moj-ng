@@ -1,0 +1,6 @@
+<div class="circle">
+  <svg class="progress-svg">
+    <circle class="progress-circle" cx="50%" cy="50%" r="40" stroke="#89BCD1" stroke-width="3" fill="none" [ngStyle]="{'stroke-dasharray': (_percent/100 * 252).toString()+',200'}"/>
+  </svg>
+  <span>{{_percentText}}</span>%
+</div>

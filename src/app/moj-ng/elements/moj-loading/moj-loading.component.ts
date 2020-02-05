@@ -5,9 +5,9 @@ import { ILoadingOverlayParams } from 'ag-grid-community';
 @Component({
   selector: 'moj-loading',
   templateUrl: './moj-loading.component.html',
-  styleUrls: ['./moj-loading.component.css']
+  styleUrls: ['./moj-loading.component.scss']
 })
-export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp   {
+export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp {
   getGui(): HTMLElement {
     throw new Error("Method not implemented.");
   }
@@ -15,9 +15,9 @@ export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp  
   agInit(params: ILoadingOverlayParams): void {
 
   }
-  
+
   // componentId:string;
-  show:boolean;
+  show: boolean;
   // @ViewChild("loadCanvas") canvas;
   // ctx: CanvasRenderingContext2D;
   // start: number = 0;
@@ -28,15 +28,15 @@ export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp  
   // i:number = 0;
   // colors: string[] = ["rgba(240, 237, 61, 1)", "rgba(240, 61, 61, 1)", "rgba(61, 67, 240, 1)", "rgba(108, 240, 61, 1)"];
 
-  constructor(public elRef:ElementRef) { 
-    
+  constructor(public elRef: ElementRef) {
+
   }
 
   ngOnInit() {
-    
+
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     // this.ctx = this.canvas.nativeElement.getContext('2d');
     // this.width = this.canvas.nativeElement.width;
     // this.height = this.canvas.nativeElement.height;
@@ -44,7 +44,7 @@ export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp  
     // this.ctx.lineCap = 'round';
     // window.requestAnimationFrame(() => this.draw());
   }
-  
+
   // draw(){
   //   this.ctx.clearRect(0, 0, this.width, this.height);
   //   if(this.i == 4)  this.i = 0;
@@ -59,7 +59,7 @@ export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp  
   //   else {
   //     this.start += 0.1;
   //   }
-    
+
   //   if(this.end - this.start >= Math.PI + Math.PI)
   //   {
   //     this.direction = false;
@@ -69,7 +69,7 @@ export class MojLoadingComponent implements OnInit, ILoadingOverlayAngularComp  
   //     this.direction = true;   
   //     this.i++; 
   //   }
-    
+
   //   window.requestAnimationFrame(() => this.draw());
   // }
 

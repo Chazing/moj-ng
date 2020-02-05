@@ -1,6 +1,8 @@
-﻿import { Component, Input, ElementRef } from '@angular/core';
+﻿import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { ButtonStyle } from './button-style';
 import { NgForm } from '@angular/forms';
+import { PermissionService } from '../../permissions/permission.service';
+import { ButtonBase } from '../base/moj-button.base';
 
 /**
   * Usage example
@@ -13,12 +15,9 @@ import { NgForm } from '@angular/forms';
  */
 @Component({
     selector: 'moj-clear-button',
-    template: `<moj-button [textKey]="textKey" [buttonStyle]="buttonStyle" [isEnable]="isEnable" (click)="clearFields()"></moj-button>`
+    template: `<moj-button [textKey]="textKey" [buttonStyle]="buttonStyle" [isEnable]="isEnable" (click)="clearFields()" ></moj-button>`
 })
-export class MojClearButtonComponent {
-    @Input() textKey: string = 'MojTexts.clear';
-    @Input() buttonStyle: ButtonStyle = ButtonStyle.SmallLight;
-    @Input() isEnable: boolean = true;
+export class MojClearButtonComponent extends ButtonBase {
     @Input() form: NgForm;
 
     clearFields() {
@@ -29,5 +28,12 @@ export class MojClearButtonComponent {
         }
     }
 
-    constructor(private el:ElementRef){}
+    constructor(el: ElementRef, permissionService: PermissionService) {
+        super(permissionService, el);
+        this.textKey = 'MojTexts.clear';
+        this.buttonStyle = ButtonStyle.Secondary;
+    }
+
+
+
 }

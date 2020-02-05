@@ -2,7 +2,7 @@ import {
   Injectable,
   ComponentFactoryResolver,
   Inject,
-  ViewContainerRef, 
+  ViewContainerRef,
   Renderer2,
   RendererFactory2
 } from '@angular/core';
@@ -51,7 +51,6 @@ export class MojLoadingService {
       this.loadingStack.push(divComponent);
     } else {
       let loadingComponent = this.createLoadingComponent(elementToOverlay);
-      this.addStylesToDiv(elementToOverlay);
       this.renderer.appendChild(
         elementToOverlay.element.nativeElement,
         loadingComponent.injector.get(MojLoadingComponent).elRef.nativeElement
@@ -61,6 +60,7 @@ export class MojLoadingService {
         component: loadingComponent.instance
       });
     }
+    this.addStylesToDiv(elementToOverlay);
   }
 
   //add styles for the element really be overlay
@@ -91,7 +91,9 @@ export class MojLoadingService {
     } else {
       loadingToHide = this.loadingStack.pop();
     }
-    loadingToHide.component.show = false;
-    loadingToHide.div.element.nativeElement.removeAttribute('style');
+    if (loadingToHide) {
+      loadingToHide.component.show = false;
+      loadingToHide.div.element.nativeElement.removeAttribute('style');
+    }
   }
 }

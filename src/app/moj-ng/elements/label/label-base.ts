@@ -1,11 +1,9 @@
 ﻿import { OnInit, Input } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { LabelAlign, LabelStyle } from "./label.enum";
-import { Observable, of } from "rxjs";
-import { map } from "rxjs/operators";
 
 export abstract class LabelBase implements OnInit {
-  @Input() textKey: string = "";
+  @Input() textKey: string;
   @Input() widthColumns: number;
   @Input() isLabelAboveControl: boolean;
   @Input() labelAlign: LabelAlign = LabelAlign.Left;
