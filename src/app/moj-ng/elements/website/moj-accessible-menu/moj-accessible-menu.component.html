@@ -1,8 +1,8 @@
 <div class="offscreen"><a (click)="goToContent()" id="access-content">דילוג לתוכן העמוד</a></div>
 
 <div class="accessible-bar" [ngClass]="state==='in' ? 'open' : ''">
-    <button class="open-menu" href='javascript:void(0)' (click)="state=state=='in'? 'out' : 'in'" [attr.aria-labelledby]="'MojTexts.accessibleMenu' | translate"></button>
-    <button class="close" (click)="state=state=='in'? 'out' : 'in'"></button>
+    <button class="open-menu" href='javascript:void(0)' (click)="state=state=='in'? 'out' : 'in'" [attr.aria-label]="'MojTexts.accessibleMenu' | translate"></button>
+    <button class="close" (click)="state=state=='in'? 'out' : 'in'" [attr.aria-label]="'MojTexts.closeAccessibleMenu' | translate"></button>
     <div class="accessible-menu">
         <div class="accessible-menu-wrap">
             <h2 class="title">{{'MojTexts.accessibleMenu' | translate}}</h2>

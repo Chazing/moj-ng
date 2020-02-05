@@ -1,0 +1,219 @@
+.accessible-bar {
+    background-color: #000040;
+    position: fixed;
+    top: 50px;
+    box-sizing: border-box;
+    background-image: url(~/assets/MojImages/icons/Icn_AccessLogo.png);
+    background-repeat: no-repeat;
+    background-position: top 5px right 5px;
+    z-index: 9999999999;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+
+    > .open-menu {
+        color: #fff;
+        font-size: 1em;
+        cursor: pointer;
+        display: block;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        border: none;
+    }
+
+    .accessible-menu-wrap {
+        display: none;
+    }
+
+    .accessible-menu {
+        position: absolute;
+        top: 49px;
+        right: 5px;
+        border: 3px solid #1982b9;
+        border-radius: 5px;
+        width: 206px;
+        padding: 0;
+        margin: 0;
+        transition: top 0.5s, opacity 0.5s, z-index 0s 0.5s;
+        box-shadow: #4b788d 0px 2px 5px;
+        top: -300px;
+        opacity: 0;
+        background-color: #fff;
+        z-index: -1;
+
+        .title {
+            background: #f0f5f7;
+            border-bottom: solid 0px #c8c8c8;
+            height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #194c83 !important;
+            box-sizing: border-box;
+            padding: 6px 12px;
+            display: block;
+        }
+        h3 {
+            display: block;
+            padding: 11px 12px 3px;
+            color: #0064b4;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .item-group {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            padding-bottom: 11px;
+            border-bottom: 1px solid #dde0e8;
+            a {
+                color: #0064b4;
+                font-size: 1em;
+                cursor: pointer;
+            }
+            li {
+                box-sizing: border-box;
+                padding: 3px 24px 0;
+            }
+            bdo {
+                font-weight: bold;
+            }
+        }
+        
+    }
+
+    .close {
+        background-image: url(~/assets/MojImages/icons/CloseBox.png);
+        background-position: 0px 0px !important;
+        width: 26px;
+        height: 26px;
+        background-size: 100%;
+        position: absolute;
+        left: -178px;
+        top: 40px;
+        cursor: pointer;
+        top: -300px;
+        opacity: 0;
+        transition: 0.5s;
+        z-index: 9999999999;
+        background-color: transparent;
+        border: 0;
+        &:focus {
+            border: 1px dotted #1982b9;
+        }
+    }
+
+    &.open {
+        .accessible-menu-wrap {
+            display: block;
+        }
+        .accessible-menu {
+            top: 49px;
+            opacity: 1;
+            z-index: 99999997;
+        }
+        .close {
+            top: 40px;
+            opacity: 1;
+        }
+    }
+
+    a, .open-menu {
+        &:hover, &:focus{
+            text-decoration: underline;
+            color: #fff;
+            font-weight: normal;
+        }
+    }
+}
+
+.large-font, .standart-font, .smaller-font {
+    padding-right: 5px;
+}
+
+.large-font {
+    font-size: 13px;
+    &:first-letter {
+        font-size: 16px;
+    }
+}
+
+.standart-font {
+    font-size: 11px;
+    &:first-letter { 
+        font-size: 14px;
+    }
+}
+
+.smaller-font {
+    font-size: 10px;
+    &:first-letter {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 767px){
+    .accessible-bar {
+        left: 0;
+        border-top-left-radius: 0%;
+        border-bottom-left-radius: 0%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+
+        .accessible-menu {
+            left: 5px; 
+            right: initial;
+        }
+
+        .close {
+            right: -178px;
+            left: initial;
+        }
+    }
+} 
+.moj-ltr
+{
+    .accessible-bar {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-top-left-radius: initial !important;
+        border-bottom-left-radius: initial !important;
+        .accessible-menu {
+            right: initial !important;  
+            left: 5px;  
+            h3 {
+                padding: 11px initial 3px 12px;
+            }
+        }
+    
+        .close {
+            left: initial !important;
+            right: -178px;
+        }
+    }
+    
+    .large-font, .standart-font, .smaller-font {
+        padding-right: initial !important;
+        padding-left: 5px;
+    }
+        
+    @media(max-width: 767px){
+        .accessible-bar {
+            left:initial;
+            right: 0;
+            border-top-right-radius: 0%;
+            border-bottom-right-radius: 0%;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+    
+            .accessible-menu {
+                left: 5px; 
+                right: initial !important;
+            }
+    
+            .close {
+                right: -178px;
+                left: initial!important;
+            }
+        }
+    } 
+}

@@ -1,0 +1,15 @@
+@import '../../../../css/moj-config-css.scss';
+.padding-right-0 {
+  padding-right: 0px;
+}
+.label-for {
+  float: $start-direction;
+  margin-#{$end-direction}: 0.5em;
+}
+
+.content-label-for {
+  float: $start-direction;
+}
+.auto-width {
+  display: inline-block;
+}

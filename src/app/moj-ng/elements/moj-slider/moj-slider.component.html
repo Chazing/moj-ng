@@ -1,0 +1,17 @@
+<div [ngClass]="[controlColWidth, showValidationMsg ? 'moj-invalid' : '']" [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}">
+    <label-for-content *ngIf="showValueLabel"
+                          [isRequiredIndication]="isControlRequired$ | async"
+                          textKey="{{ labelText }}">
+    </label-for-content>
+    <div class="moj-input-container">
+        <p-slider [(ngModel)]="value"
+                  [min]="minValue"
+                  [max]="maxValue"
+                  [range]="isRange"
+                  [step]="step"
+                  [orientation]="orientation"
+                  (onChange)="change($event)"
+                  [disabled]="disabled">
+        </p-slider>
+    </div>
+</div>

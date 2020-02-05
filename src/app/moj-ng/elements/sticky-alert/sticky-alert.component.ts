@@ -5,10 +5,10 @@ import { MojConfigService } from '../../shared/moj-config.service';
 @Component({
   selector: 'sticky-alert',
   templateUrl: './sticky-alert.component.html',
-  styleUrls: ['./sticky-alert.component.css'],
+  styleUrls: ['./sticky-alert.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StickyAlertComponent   {
+export class StickyAlertComponent {
   @Input() showAlert: boolean;
   @Input() message: string;
 
@@ -16,7 +16,7 @@ export class StickyAlertComponent   {
     this.showAlert = _configService.configuration.isGlassboxOn;
   }
 
-  hideAlert(){
+  hideAlert() {
     this.showAlert = false;
   }
 }

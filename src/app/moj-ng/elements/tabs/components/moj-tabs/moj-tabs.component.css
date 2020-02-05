@@ -136,7 +136,7 @@ ul.moj-tabs-stripe-list {
             overflow: hidden;
             white-space: nowrap;
         }
-
+       
         ul.moj-tabs-stripe-list li span.moj-tab-star {
             font-size: 7px;
             right: 1em;
@@ -156,9 +156,9 @@ ul.moj-tabs-stripe-list {
             top: 1px;
         }
 
-            ul.moj-tabs-stripe-list li.moj-tab-selected a {
-                padding-top: 0.7em;
-            }
+        ul.moj-tabs-stripe-list li.moj-tab-selected a {
+            padding-top: 0.7em;
+        }
 
             ul.moj-tabs-stripe-list li.moj-tab-selected.uncolorizable {
                 border-top: 4px solid #0194c5;

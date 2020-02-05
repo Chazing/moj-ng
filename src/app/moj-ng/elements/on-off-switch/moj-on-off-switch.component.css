@@ -17,6 +17,7 @@ input[type=checkbox] {
   label:before, label:after {
     padding: 5px 15px;
     text-align: center;
+    min-height: 2em;
   }
   
   label:before {
@@ -41,4 +42,4 @@ input[type=checkbox] {
     content: attr(data-text-off);
     transform: translateX(100%);
   }
-  
+

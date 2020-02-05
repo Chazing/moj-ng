@@ -1,0 +1,33 @@
+.textbox-icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  &:not([disabled]) {
+    cursor: pointer;
+    &:hover,&:focus {
+      text-shadow: 2px 2px 5px #c8c8c8;
+      color: #02518e;
+      outline: none;
+    }
+  }
+
+  .moj-rtl & {
+    left: 0px;
+    margin-left: 6px;
+  }
+
+  .moj-ltr & {
+    right: 0px;
+    margin-right: 6px;
+  }
+}
+
+.input-with-icon {
+  .moj-rtl & {
+    padding-left: 2em;
+  }
+  .moj-ltr & {
+    padding-right: 2em;
+  }
+}

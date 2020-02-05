@@ -11,6 +11,7 @@ import { DocFontSize } from '../dynamic-font-size.directive';
 @Component({
     selector: 'moj-accessible-menu',
     templateUrl: "moj-accessible-menu.component.html",
+    styleUrls: ["./moj-accessible-menu.component.scss"]
 })
 export class MojAccessibleMenuComponent {
     @Output()
@@ -23,7 +24,7 @@ export class MojAccessibleMenuComponent {
 
     goToContent() {
         this.state = 'out';
-        var element = document.querySelector('.container-fluid');
+        var element = document.querySelector('main');
         if (element) {
             element.scrollIntoView();
             (<HTMLElement>element).focus();

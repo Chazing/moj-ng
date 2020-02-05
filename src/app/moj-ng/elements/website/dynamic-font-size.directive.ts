@@ -6,25 +6,25 @@ export enum DocFontSize { Large, Normal, Small };
 @Directive({
     selector: "[moj-dynamic-fontsize]",
 })
-export class MojDynamicFontsize implements AfterContentInit{
+export class MojDynamicFontsize implements AfterContentInit {
     constructor(private el: ElementRef) {
     }
 
-    @ContentChild(MojAccessibleMenuComponent) accessibleMenu: MojAccessibleMenuComponent;
+    @ContentChild(MojAccessibleMenuComponent, { static: true }) accessibleMenu: MojAccessibleMenuComponent;
 
     ngAfterContentInit() {
-            if (this.accessibleMenu != undefined) {
-                this.accessibleMenu.changeFontSizeClick.subscribe(docFontSize => {
-                    this.changeFontSize(docFontSize);
-                });
-            }
+        if (this.accessibleMenu != undefined) {
+            this.accessibleMenu.changeFontSizeClick.subscribe(docFontSize => {
+                this.changeFontSize(docFontSize);
+            });
+        }
     }
 
     changeFontSize(docFontSize: DocFontSize) {
         switch (docFontSize) {
-            case 0: this.el.nativeElement.style.fontSize = '16px'; break;
-            case 1: this.el.nativeElement.style.fontSize = '14px'; break;
-            case 2: this.el.nativeElement.style.fontSize = '12px'; break;
+            case 0: this.el.nativeElement.style.fontSize = '18px'; break;
+            case 1: this.el.nativeElement.style.fontSize = '16px'; break;
+            case 2: this.el.nativeElement.style.fontSize = '14px'; break;
         }
     }
 }
