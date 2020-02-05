@@ -1,39 +1,23 @@
-﻿import {
-  NgModule,
-  ErrorHandler,
-  APP_INITIALIZER,
-} from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpModule } from "@angular/http";
-import {
-  LocationStrategy,
-  HashLocationStrategy,
-} from "@angular/common";
-
-import { MojSharedModule } from "./moj-ng/shared/moj.shared.module";
-import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateService
-} from "@ngx-translate/core";
-
-import { AppComponent } from "./app.component";
-import { GlobalErrorHandler } from "./moj-ng/error-handling/global-error-hander";
-import { AppRoutingModule } from "./app-routing.module";
-import { HttpClient } from "@angular/common/http";
-import { MojTranslateLoader } from "./moj-ng/shared/moj-translate-loader";
-import { GridService } from "./moj-ng/elements/grid/service/moj-grid.service";
-import { MojConfigService } from "./moj-ng/shared/moj-config.service";
-import { MojUtilsService } from "./moj-ng/shared/utils";
-import { environment } from "../environments/environment";
+﻿import { NgModule, ErrorHandler, APP_INITIALIZER, Injector } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { MojSharedModule } from './moj-ng/shared/moj.shared.module';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClient } from '@angular/common/http';
+import { MojTranslateLoader } from './moj-ng/shared/moj-translate-loader';
+import { MojConfigService } from './moj-ng/shared/moj-config.service';
+import { MojUtilsService } from './moj-ng/shared/utils';
+import { environment } from '../environments/environment';
+import { GlobalErrorHandler } from './moj-ng';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
     MojSharedModule,
     AppRoutingModule,
     TranslateModule.forRoot({
@@ -43,7 +27,7 @@ import { environment } from "../environments/environment";
         deps: [HttpClient]
       }
     })
-  ],
+  ],  
   bootstrap: [AppComponent],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

@@ -1,5 +1,8 @@
-﻿import { Component } from "@angular/core"
+﻿import { Component, OnInit, Renderer2 } from "@angular/core"
 import { TranslateService } from '@ngx-translate/core';
+import { MojUtilsService } from "./moj-ng";
+import { MojDirection } from "./moj-ng/elements/website/language";
+
 
 @Component({
     selector: "my-app",
@@ -7,7 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
     title = 'app';
-    constructor(private translate: TranslateService) {
+    constructor() {
+
         // this language will be used as a fallback when a translation isn't found in the current language
         // translate.setDefaultLang('he');
 
@@ -15,4 +19,5 @@ export class AppComponent {
         //  translate.use('en');
 
     }
+
 }
