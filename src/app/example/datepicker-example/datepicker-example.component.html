@@ -1,7 +1,12 @@
 <moj-line>
-    <moj-datepicker [isLabelAboveControl]=true [showTime]=true name="dateTimeValue" labelTextKey="Texts.DateTimeField" labelWidthColumns="1" controlWidthColumns="2"
-        [(ngModel)]="dateTimeValue" [placeholder]="'בחר תאריך'">
+    <moj-datepicker [showTime]=true name="dateTimeValue" labelTextKey="Texts.DateTimeField"  controlWidthColumns="2"
+        [(ngModel)]="dateTimeValue">
     </moj-datepicker>
-    <moj-datepicker name="dateValue" labelTextKey="Texts.DateField" labelWidthColumns="1" controlWidthColumns="2" [(ngModel)]="dateValue" [placeholder]="'בחר תאריך'">
+    <moj-datepicker name="dateValue" [maxEnableDate]="maxDate" selectionMode="range"  [minEnableDate]="minDate" labelTextKey="Texts.DateField"  controlWidthColumns="2"
+     [(ngModel)]="dateValue" >
     </moj-datepicker>
+    <moj-datepicker name="timeValue" labelTextKey="Texts.DateField"  controlWidthColumns="2" [(ngModel)]="timeValue" [timeOnly]=true >
+    </moj-datepicker>{{timeValue}}
+    <!-- <moj-datepicker  name="dateValue" [maxEnableDate]="maxDate" selectionMode="range"  [minEnableDate]="minDate" labelTextKey="Texts.DateField"   controlWidthColumns="2" [(ngModel)]="dateValue" [placeholder]="'בחר תאריך'">
+    </moj-datepicker> -->
 </moj-line>

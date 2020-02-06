@@ -40,6 +40,7 @@ label: 'דין קדימה', component: MultiSelectExampleComponent, isForMetro: 
 
 }
 ```
+
 ```html
 <moj-wizard [items]="items"\>
 
@@ -70,9 +71,27 @@ Inputs:
 
 11. submitText - טקסט לכפתור submit
 
+12. checkValidationOnPrevious- האם לבדוק וולידציות בניווט לשלב קודם
+
+13. beforeMove- אפשרות לספק פונקציה שתחסום התקדמות לשלב הבא.
+
+    דוגמה לשימוש:
+
+    ```typescript
+    beforeMove(params: OnMovedEventParams): Observable<boolean> {
+    return of(false);
+    }
+    ```
+    ```html
+    <moj-wizard [items]="items" [beforeMove]="beforeMove">
+    </moj-wizard>
+    ```
+
 output:
 
 1.  onSubmit – יקרא בלחיצה על כפתור submit.
+
+2. onMoved- ארוע לאחר ניווט בין השלבים. חושף את האינדקס הקודם, והנוכחי
 
 ### WizardItem:
 
@@ -109,7 +128,7 @@ constructor() { super(); this.wizardItemModel = 'productModel';}
 
 2.  methodAfterExit – פונקציה שתקרא לאחר יציאה מטאב.
 
-###גישה לנתונים מטאבים אחר ים
+### גישה לנתונים מטאבים אחרים
 
 הגישה לנתונים היא דרך WizardService בו שמור מערך הנתונים.
 
@@ -120,25 +139,58 @@ constructor() { super(); this.wizardItemModel = 'productModel';}
 2.  getWizardItemModel – מקבלת שם טאב (עפ"י המשתנה wizardItemModelשהוגדר
     בקומפוננטה) ומחזירה את הנתונים של הטאב.
 
-
 #### דוגמא למימוש WizardItemComponentBase
 
 ```typescript
 export class MultiSelectExampleComponent extends WizardItemComponentBase {
+  multiselectModel: any = {};
 
-constructor(private wizardService: WizardService) {
+  constructor(private wizardService: WizardService) {
+    super();
+    this.wizardItemModel = "multiselectModel";
+  }
 
-super();
-
-this.wizardItemModel = 'multiselectModel';
-
+  getList() {
+    //קבלת נתונים מטאבים אחרים
+    console.log(this.wizardService.getWizardItemModel("formModel"));
+  }
 }
+```
 
-getList() {//קבלת נתונים מטאבים אחרים
+## עבודה עם Reactive Forms בתוך Wizard
 
-console.log(this.wizardService.getWizardItemModel('formModel'));
+במקרה שהקומפוננטה מכילה טופס המפותח ב reactive יש לבצע-
 
-}
+- הצבת ה FormGroup של הקומפוננטה במשתנה formGroup של ה WizardItemComponentBase שממנה יורשים.
 
-}
+* בחזרה לטאב פעם שניה, הערכים יוצבו במודל של הקומפוננטה. כמובן שצריך להציב אותם שוב ב formGroup כדי שיגיעו לקומפוננטה.
+
+* יש לקחת את הערכים מהform לתוך המודל לפני שיוצאים מהקומפוננטה.
+
+דוגמה-
+
+```typescript
+ngOnInit() {
+    this.createForm();
+    this.exampleForm.patchValue(this.reactiveModel);
+  }
+
+  createForm() {
+    this.exampleForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      type: '',
+      startDate: '',
+      endDate: '',
+      dropDownValue: ['', Validators.max(1)],
+      checkBoxValue: '',
+      multiselectValues: ''
+      // details: this.formBuilder.array([]),
+    });
+    this.formGroup = this.exampleForm;
+  }
+
+  methodBeforeExit(){
+    this.reactiveModel = this.exampleForm.value;
+    return true
+  }
 ```

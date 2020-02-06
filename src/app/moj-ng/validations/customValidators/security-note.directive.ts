@@ -1,6 +1,7 @@
 import { Directive } from "@angular/core";
 import { NG_VALIDATORS } from "@angular/forms";
-import { SecurityValidator, securityPatterns } from "./security.directive";
+import { SecurityValidator } from "./security.directive";
+import { ValidationPatterns } from "./validation-patterns";
 
 @Directive({
     selector: '[securityNote][ngModel]',
@@ -11,6 +12,6 @@ import { SecurityValidator, securityPatterns } from "./security.directive";
 export class SecurityNoteValidator extends SecurityValidator {
     constructor() {
         super();
-        this.pattern = securityPatterns.note;
+        this.security =  new RegExp(ValidationPatterns.note);
     }
 }

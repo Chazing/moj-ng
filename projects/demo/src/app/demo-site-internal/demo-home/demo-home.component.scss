@@ -1,0 +1,23 @@
+.search-input-wrapper {
+    display: flex;
+    justify-content: center;
+
+    div.search-input {
+        background: #EEF6FF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 3px;
+        padding: 1em 1em 0 1em;
+        display: inline-block;
+        width: 100%;
+
+        input.ui-state-default {
+            border: none;
+            padding: 0.5em 1em;
+            font-size: 1.2em;
+            &:hover,&:focus{
+                border-width: 0px !important;
+                // border-right:none !important ;
+            }
+        }
+    }
+}

@@ -3,23 +3,23 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { TranslateModule } from "@ngx-translate/core";
 
-import { DataTableModule, DialogModule } from "primeng/primeng";
+import { DialogModule } from "primeng/primeng";
 import {
-  MojGridAddButtonComponent,
-  MojGridSaveButtonComponent,
-  MojGridCancelButtonComponent,
-  MojGridDeleteButtonComponent,
-  MojGridEditButtonComponent,
-  MojGridDuplicateButtonComponent,
+    MojGridAddButtonComponent,
+    MojGridSaveButtonComponent,
+    MojGridCancelButtonComponent,
+    MojGridDeleteButtonComponent,
+    MojGridEditButtonComponent,
+    MojGridDuplicateButtonComponent,
 } from "./buttons/moj-grid-buttons";
 import {
-  MojLinkColumnComponent,
-  MojStateColumnComponent,
-  MojVColumnComponent,
-  MojIconColumnComponent,
-  MojGridActionsPopupButtonComponent
+    MojLinkColumnComponent,
+    MojStateColumnComponent,
+    MojVColumnComponent,
+    MojIconColumnComponent,
+    MojGridActionsPopupButtonComponent
 } from "./custom-columns/moj-grid-columns";
-import { MojGridPanelComponent } from "./moj-grid-panel";
+import { MojGridPanelComponent } from "./moj-grid-panel.component";
 import { MojGridOptionsDirective } from "./moj-grid-options";
 import { AgGridModule } from "ag-grid-angular";
 import { MojRadiobuttonColumnComponent } from "./custom-columns/moj-radiobutton-column/moj-radiobutton-column.component";
@@ -31,12 +31,14 @@ import { MojGridXlsExportComponent } from "./moj-grid-xls-export/moj-grid-xls-ex
 import { MojViewRowDetailsComponent } from './view-row-details/view-row-details.component';
 import { MojPipesModule } from "../../pipes/moj-pipes-module";
 import { MojInputModule } from "../input.module";
-import { MojTextboxColumnComponent, 
-  MojTextAreaColumnComponent,
-  MojDropdownColumnComponent,
-  MojAutoCompleteColumnComponent,
-  MojMultiSelectColumnComponent,
-  MojDatePickerColumnComponent } from "./edit-inline/edit-inline-columns";
+import {
+    MojTextboxColumnComponent,
+    MojTextAreaColumnComponent,
+    MojDropdownColumnComponent,
+    MojAutoCompleteColumnComponent,
+    MojMultiSelectColumnComponent,
+    MojDatePickerColumnComponent
+} from "./edit-inline/edit-inline-columns";
 import { MojQuickFilterComponent } from "./filters/moj-quick-filter";
 import { MojPagingComponent } from "./pagination/moj-paging.component";
 import { DropdownModule } from "primeng/primeng";
@@ -45,99 +47,109 @@ import { MojGridPrintButtonComponent } from './moj-grid-print-button/moj-grid-pr
 import { MojSharedModule } from "../../shared/moj.shared.module";
 import { GridService } from "./service/moj-grid.service";
 import { MojFileUploadModule } from "../file-upload/moj-file-upload.module";
+import { MojListItemComponent } from "./list-view/moj-list-item.component";
+import { MojListItemHeaderComponent } from "./list-view/moj-list-item-header.component"
+import { MojListItemBodyComponent } from "./list-view/moj-list-item-body.component"
+import { MojListItemExtensionComponent } from "./list-view/moj-list-item-ext.component";
+import { MojDataViewToggleComponent } from "./list-view/moj-list-design-toggle.component";;
+import { MojGridMenuColumnComponent } from './buttons/moj-grid-menu-column/moj-grid-menu-column.component'
 
 LicenseManager.setLicenseKey(
-  "Software_Sources_Ltd._on_behalf_of_Israeli_Ministry_Of_Justice_MultiApp_1Devs11_April_2019__MTU1NDkzNzIwMDAwMA==1baea05d9fd5b715079f6fd9434861d6"
+    "Software_Sources_Ltd._on_behalf_of_Israeli_Ministry_Of_Justice_MultiApp_1Devs11_April_2019__MTU1NDkzNzIwMDAwMA==1baea05d9fd5b715079f6fd9434861d6"
 );
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    TranslateModule,
-    DialogModule,
-    MojInputModule,
-    MojSharedModule,
-    MojPipesModule,
-    DropdownModule,
-      MojDirectiveModule,
-      MojFileUploadModule,
-    AgGridModule.withComponents([
-      MojGridDeleteButtonComponent,
-      MojGridEditButtonComponent,
-      MojGridDuplicateButtonComponent,
-      MojLinkColumnComponent,
-      MojIconColumnComponent,
-      MojVColumnComponent,
-      MojStateColumnComponent,
-      ActionsPopupComponent,
-      MojTextboxColumnComponent,
-      MojTextAreaColumnComponent,
-      MojDropdownColumnComponent,
-      MojAutoCompleteColumnComponent,
-      MojMultiSelectColumnComponent,
-      MojDatePickerColumnComponent
-    ])
-  ],
-  exports: [
-    MojGridAddButtonComponent,
-    MojGridSaveButtonComponent,
-    MojGridCancelButtonComponent,
-    MojIconColumnComponent,
-    MojCheckBoxColumnComponent,
-    MojLinkColumnComponent,
-    MojStateColumnComponent,
-    MojVColumnComponent,
-    MojGridPanelComponent,
-    MojGridDeleteButtonComponent,
-    MojGridEditButtonComponent,
-    MojGridOptionsDirective,
-    MojRadiobuttonColumnComponent,
-    MojGridActionsPopupButtonComponent,
-    ActionsPopupComponent,
-    AgGridModule,
-    MojGridXlsExportComponent,
-    MojQuickFilterComponent,
-    MojPagingComponent,
-    MojGridPrintButtonComponent
-  ],
-  declarations: [
-    MojGridAddButtonComponent,
-    MojGridSaveButtonComponent,
-    MojGridCancelButtonComponent,
-    MojIconColumnComponent,
-    MojCheckBoxColumnComponent,
-    MojLinkColumnComponent,
-    MojStateColumnComponent,
-    MojVColumnComponent,
-    MojGridPanelComponent,
-    MojGridDeleteButtonComponent,
-    MojGridEditButtonComponent,
-    MojGridDuplicateButtonComponent,
-    MojGridOptionsDirective,
-    MojRadiobuttonColumnComponent,
-    MojGridActionsPopupButtonComponent,
-    ActionsPopupComponent,
-    MojDocumentFormatColumnComponent,    
-    MojGridXlsExportComponent, 
-    MojViewRowDetailsComponent,
-    MojTextboxColumnComponent, 
-    MojTextAreaColumnComponent,
-    MojDropdownColumnComponent,
-    MojAutoCompleteColumnComponent,
-    MojMultiSelectColumnComponent,
-    MojDatePickerColumnComponent,
-    MojQuickFilterComponent,
-    MojPagingComponent,
-    MojGridPrintButtonComponent],
-  entryComponents: [
-    MojIconColumnComponent,
-    MojRadiobuttonColumnComponent,
-    MojGridActionsPopupButtonComponent,
-    MojCheckBoxColumnComponent,
-    MojDocumentFormatColumnComponent,
-    MojViewRowDetailsComponent
-  ],
-  providers:[GridService]
+    imports: [
+        CommonModule,
+        FormsModule,
+        TranslateModule,
+        DialogModule,
+        MojInputModule,
+        MojSharedModule,
+        MojPipesModule,
+        DropdownModule,
+        MojDirectiveModule,
+        MojFileUploadModule,
+        AgGridModule.withComponents([
+            MojGridDeleteButtonComponent,
+            MojGridEditButtonComponent,
+            MojGridDuplicateButtonComponent,
+            MojLinkColumnComponent,
+            MojIconColumnComponent,
+            MojVColumnComponent,
+            MojStateColumnComponent,
+            ActionsPopupComponent,
+            MojTextboxColumnComponent,
+            MojTextAreaColumnComponent,
+            MojDropdownColumnComponent,
+            MojAutoCompleteColumnComponent,
+            MojMultiSelectColumnComponent,
+            MojDatePickerColumnComponent
+        ])
+    ],
+    exports: [
+        MojGridAddButtonComponent,
+        MojGridSaveButtonComponent,
+        MojGridCancelButtonComponent,
+        MojIconColumnComponent,
+        MojCheckBoxColumnComponent,
+        MojLinkColumnComponent,
+        MojStateColumnComponent,
+        MojVColumnComponent,
+        MojGridPanelComponent,
+        MojGridDeleteButtonComponent,
+        MojGridEditButtonComponent,
+        MojGridOptionsDirective,
+        MojRadiobuttonColumnComponent,
+        MojGridActionsPopupButtonComponent,
+        ActionsPopupComponent,
+        AgGridModule,
+        MojGridXlsExportComponent,
+        MojQuickFilterComponent,
+        MojPagingComponent,
+        MojGridPrintButtonComponent,
+        MojListItemComponent, MojListItemExtensionComponent, MojDataViewToggleComponent, 
+        MojListItemHeaderComponent, MojListItemBodyComponent, MojGridMenuColumnComponent
+    ],
+    declarations: [
+        MojGridAddButtonComponent,
+        MojGridSaveButtonComponent,
+        MojGridCancelButtonComponent,
+        MojIconColumnComponent,
+        MojCheckBoxColumnComponent,
+        MojLinkColumnComponent,
+        MojStateColumnComponent,
+        MojVColumnComponent,
+        MojGridPanelComponent,
+        MojGridDeleteButtonComponent,
+        MojGridEditButtonComponent,
+        MojGridDuplicateButtonComponent,
+        MojGridOptionsDirective,
+        MojRadiobuttonColumnComponent,
+        MojGridActionsPopupButtonComponent,
+        ActionsPopupComponent,
+        MojDocumentFormatColumnComponent,
+        MojGridXlsExportComponent,
+        MojViewRowDetailsComponent,
+        MojTextboxColumnComponent,
+        MojTextAreaColumnComponent,
+        MojDropdownColumnComponent,
+        MojAutoCompleteColumnComponent,
+        MojMultiSelectColumnComponent,
+        MojDatePickerColumnComponent,
+        MojQuickFilterComponent,
+        MojPagingComponent,
+        MojListItemComponent, MojListItemExtensionComponent, MojDataViewToggleComponent, 
+        MojListItemHeaderComponent, MojListItemBodyComponent, MojGridMenuColumnComponent, 
+        MojGridPrintButtonComponent],
+    entryComponents: [
+        MojIconColumnComponent,
+        MojRadiobuttonColumnComponent,
+        MojGridActionsPopupButtonComponent,
+        MojCheckBoxColumnComponent,
+        MojDocumentFormatColumnComponent,
+        MojViewRowDetailsComponent
+    ],
+    providers: [GridService]
 })
 export class MojGridModule { }

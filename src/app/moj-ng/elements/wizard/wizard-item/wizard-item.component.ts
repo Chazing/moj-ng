@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { WizardItem } from './wizard-item.model';
-import { WizardItemComponentBase } from './wizard-item-component.base';
 import { WizardService } from '../service/moj-wizard.service';
 
 @Component({
@@ -13,7 +11,7 @@ export class WizardItemComponent implements OnInit {
 
     @Input() item: WizardItem;
 
-    @ViewChild("dynamicContainer", { read: ViewContainerRef }) dynamicContentContainer: ViewContainerRef;
+    @ViewChild("dynamicContainer", { read: ViewContainerRef, static: true }) dynamicContentContainer: ViewContainerRef;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver,
         private wizardService: WizardService) { }
@@ -26,7 +24,6 @@ export class WizardItemComponent implements OnInit {
         if (this.wizardService.componentRef) {
             this.wizardService.componentRef.destroy();
         }
-
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.item.component);
         this.dynamicContentContainer.clear();
         let componentRef = this.dynamicContentContainer.createComponent(componentFactory);

@@ -1,0 +1,50 @@
+<moj-container [title]="'טופס'" [containerType]="enums.ContainerType.Secondary"></moj-container>
+<div class="container">
+  <form #form=ngForm mojForm>
+    <moj-line>
+      <moj-textbox [(ngModel)]="model.firstName" name="firstName" [minlength]="3" required
+        controlWidthColumns="3"></moj-textbox>
+      <moj-textbox [(ngModel)]="model.lastName" name="lastName" minlength="3" required
+        controlWidthColumns="3">
+      </moj-textbox>
+    </moj-line>
+    <moj-line>
+      <moj-datepicker [(ngModel)]="model.dateFrom" name="dateFrom" controlWidthColumns="3" [monthNavigator]=false [yearNavigator]=false required [selectionMode]="'range'" [numberOfMonths]=3
+        #dateFromVal="ngModel">
+      </moj-datepicker>
+      <moj-datepicker [(ngModel)]="model.dateTo" name="dateTo" [greaterThan]=dateFromVal 
+        controlWidthColumns="3">
+      </moj-datepicker>
+    </moj-line>
+    <moj-line>
+      <moj-textbox [(ngModel)]="model.age" name="age" max="120" min="12" required
+        [inputType]="'number'" controlWidthColumns="3">
+      </moj-textbox>
+      <moj-autocomplete name="country" controlWidthColumns="3" [items]="countryLists" required [dropdown]=true
+        [fieldName]="'name'" [fieldID]="'id'" [(ngModel)]="model.country" [multiple]=true>
+      </moj-autocomplete>
+    </moj-line>
+    <!-- <nested-form></nested-form> -->
+    <moj-line>
+      <moj-checkbox [labelTextKey]="'האם מסכים לקבלת דיוור במייל'" ngModel=[(model.isAgree)] name="isAgree" [helpText]="'חובה לסמן את השדה'"
+        [controlWidthColumns]=3></moj-checkbox>
+    </moj-line>
+    <moj-line>
+     <moj-dropdownlist required [controlWidthColumns]="3" [(ngModel)]="model.country1" name="country1" [items]="countryLists" [fieldID]="'id'" [fieldName]="'name'"></moj-dropdownlist>
+    </moj-line>
+    <moj-line>
+    <moj-multiselect required [controlWidthColumns]="5" [(ngModel)]="model.countries" name="countries" [items]="countryLists" [fieldID]="'id'" [fieldName]="'name'"></moj-multiselect>
+    </moj-line>
+    <moj-line>
+      <moj-label [textKey]="'Texts.radioOptionstxt'" [widthColumns]="2"></moj-label>
+      <moj-radiobutton   [controlWidthColumns]="2" [(ngModel)]="model.radioOptions" [radiovalue]="1" name="radioOptions"
+        [labelTextKey]="'אפשרות 1'"></moj-radiobutton>
+      <moj-radiobutton   [controlWidthColumns]="2" [(ngModel)]="model.radioOptions" [radiovalue]="2" name="radioOptions"
+        [labelTextKey]="'אפשרות 2'"></moj-radiobutton>
+    </moj-line>
+    <moj-buttons-line>
+      <moj-clear-button [form]=form></moj-clear-button>
+      <moj-submit-button [form]="form" (onSubmit)="submit(form)"></moj-submit-button>
+    </moj-buttons-line>
+  </form>
+</div>

@@ -3,13 +3,13 @@
 /**
  * ```html
  * <moj-line>
-            <moj-textbox [(ngModel)]="formModel.textField" name="textField" [rangeLength]="[5, 9]" labelWidthColumns="1" controlWidthColumns="2"
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField" [rangeLength]="[5, 9]" controlWidthColumns="2"
                 [securityIf]="checkboxValue">
             </moj-textbox>
-            <moj-textbox #tt="ngModel" [(ngModel)]="formModel.title1" name="title1" minlength="3" labelWidthColumns="1" controlWidthColumns="2"
+            <moj-textbox #tt="ngModel" [(ngModel)]="formModel.title1" name="title1" minlength="3" controlWidthColumns="2"
                 labelTextKey="Texts.textField" [requiredIf]="checkboxValue">
             </moj-textbox>
-            <moj-textbox [(ngModel)]="formModel.password" name="password" [required]="false" minlength="3" labelWidthColumns="1" controlWidthColumns="2"
+            <moj-textbox [(ngModel)]="formModel.password" name="password" [required]="false" minlength="3" controlWidthColumns="2"
                 inputType="password">
             </moj-textbox>
    </moj-line>

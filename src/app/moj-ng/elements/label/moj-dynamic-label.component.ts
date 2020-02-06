@@ -1,6 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CaptionType } from '../general/general.enum';
-import { TitleType, LabelStyle } from './label.enum';
 
 /**
  * ```html

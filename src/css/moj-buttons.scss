@@ -1,0 +1,71 @@
+.div-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    &.buttons-right{
+        justify-content: flex-start;
+    }
+}
+
+.moj-button {
+    @include moj-button;
+
+    &.moj-primary {
+    }
+
+    &.moj-secondary {
+        button {
+            background-color: #fff;
+            border: 1px solid $moj-primary-color;
+            color: $moj-primary-color;
+
+            &[disabled] {
+                color: $moj-secondary-text-color;
+                border-color: $moj-secondary-text-color;
+                background-color: #fff !important;
+            }
+            
+            &:not([disabled]):hover, &:not([disabled]):focus {
+                color: #fff;
+            }
+        }
+    }
+
+    &.moj-attention {
+        button {
+            background-color: $moj-secondary-color;
+            border: 1px solid $moj-primary-dark-color;
+            color: $moj-primary-dark-color;
+
+            &:not([disabled]):hover, &:not([disabled]):focus {
+                background-color: #56ECCA;
+            }
+
+            &:not([disabled]):active {
+                background-color: $moj-secondary-light-color !important;
+            }
+
+            &[disabled] {
+                @include button-disabled;
+                border: none;
+            }
+        }
+    }
+
+    button:focus {
+        outline: none;
+    }
+}
+
+
+.moj-col-button {
+    cursor: pointer;
+    height: 16px !important;
+    width: 16px !important;
+    min-width: 16px !important;
+    display: inline-block;
+    background: none;
+    border: none;
+    background-repeat: no-repeat;
+}

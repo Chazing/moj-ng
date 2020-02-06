@@ -1,0 +1,14 @@
+<moj-container [title]="'Invisible Recaptcha'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+<div class="container">
+<form #form=ngForm>
+  <moj-line>
+    <moj-textbox required [(ngModel)]="model.someInput" name="someInput"
+      [controlWidthColumns]="2">
+    </moj-textbox>
+  </moj-line>
+  <moj-buttons-line>
+    <moj-button [buttonStyle]="buttonStyle.Primary" MojRecaptcha [textKey]="'MojTexts.save'"
+      (captchaOk)="onSubmit($event)" [(captchaValue)]="model.recaptchaString" name="recaptchaString" [isEnable]=form.valid></moj-button>
+  </moj-buttons-line>
+</form>
+</div>

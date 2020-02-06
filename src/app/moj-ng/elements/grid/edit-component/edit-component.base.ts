@@ -9,7 +9,7 @@ export class EditComponentBase {
     editedItem: any;
     data: any;//accept any data
 
-    @ViewChild(NgForm) ngForm: NgForm;
+    @ViewChild(NgForm, { static: false}) ngForm: NgForm;
     internalGridService: InternalGridService;
 
     cancelSubscription: Subscription;
@@ -25,7 +25,7 @@ export class EditComponentBase {
     }
 
     _cancelBtn;
-    @ViewChild(MojGridCancelButtonComponent) set cancelBtn(btn: MojGridCancelButtonComponent) {
+    @ViewChild(MojGridCancelButtonComponent, { static: false}) set cancelBtn(btn: MojGridCancelButtonComponent) {
         if (btn) {
             this._cancelBtn = btn;
             if (!this.cancelSubscription) {
@@ -41,7 +41,7 @@ export class EditComponentBase {
     }
 
     _saveBtn;
-    @ViewChild(MojGridSaveButtonComponent) set saveBtn(btn: MojGridSaveButtonComponent) {
+    @ViewChild(MojGridSaveButtonComponent, { static: false}) set saveBtn(btn: MojGridSaveButtonComponent) {
         if (btn) {
             this._saveBtn = btn;
             if (!this.SaveSubscription) {

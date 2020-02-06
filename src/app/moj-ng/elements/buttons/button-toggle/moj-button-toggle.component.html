@@ -3,7 +3,7 @@
     <!-- <div class="moj-input-container"> -->
     <div class="{{buttonToggleStyle}}" [ngStyle]="style" [ngClass]="[showValidationMsg ? 'moj-invalid': '']">
         <button *ngFor="let item of items;trackBy" type="button" (click)="onClick(item)"
-            [class]="'moj-button-toggle' + buttonCssClasses + ' ' + item.cssClasses"
+            [class]="'moj-button-toggle ' + buttonCssClasses + ' ' + item.cssClasses"
             [ngClass]="{'moj-button-toggle-checked': isSelected(item)}" [disabled]="item.disabled"
             [hidden]="!item.visible">
             <i *ngIf="item.iconClass" [class]="item.iconClass"></i>

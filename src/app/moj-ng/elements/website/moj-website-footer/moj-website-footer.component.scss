@@ -1,0 +1,91 @@
+
+@import "../../../../../css/moj-config-css.scss";
+.footer-container {
+    padding:1em 0 1em ;
+    width: 1700px;
+    color: $moj-text-color;
+}
+.row
+{
+  display: flex;
+  justify-content: space-between;
+}
+  
+  .ftrLnks {
+    width: fit-content;
+    align-self: flex-start;
+  }
+  
+  .version
+  {
+    width: fit-content;
+    font-size: 0.8em;
+    align-self: flex-start;
+  }
+  .ftrLnks ul {
+    padding: 0;
+    margin: 0;
+    display: table;
+  }
+  
+  .ftrLnks li {
+    float: right;
+    padding: 0 0.8em;
+   
+  }
+  
+  .ftrLnks li a {
+    font-size: 0.857em;
+    color: $moj-text-color;
+  }
+    .ftrLnks li a:hover{
+        text-decoration: none;
+        color: $moj-active-color;
+
+    }
+  .noPadding
+  {
+    padding: 0 0 !important;
+  }
+  .copy {
+    width: max-content;
+    font-size: 0.857em;
+    text-align: left;
+    align-self: flex-start;
+    >span{
+  margin-right: 35px;
+    }
+  }
+  .site-logo
+  {
+  //  background: url('../../../../../assets/MojImages/Icons/sm-logo.png') no-repeat right 2px;
+  //  background-size: contain;
+  }
+  
+  @media (max-width: 767px) {
+    .copy {
+      text-align: right;
+    }
+  }
+
+.moj-ltr
+{
+  
+  .ftrLnks li {
+    float: left;
+    padding: 0 0 0 1.125em;
+  }
+  
+ 
+  .copy {
+    text-align: right;
+  }
+  
+  @media (max-width: 767px) {
+    .copy {
+      text-align: left;
+    }
+  }
+
+
+}

@@ -1,0 +1,19 @@
+@import "../../../../../css/moj-config-css.scss";
+
+.moj-recaptcha .field-validation-error span {
+    margin-top: 0.5em;
+    &::before {
+        @include error-icon();
+        margin-left: 0.3em;
+    }
+}
+.moj-ltr
+{
+    .moj-recaptcha .field-validation-error span {
+        &::before {
+            @include error-icon();
+            margin-right: 0.3em;      
+            margin-left: initial !important;
+        }
+    }
+}

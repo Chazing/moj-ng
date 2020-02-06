@@ -1,0 +1,67 @@
+@import "../../../../css/moj-config-css.scss";
+
+
+.moj-filter-list {
+    background: #ffffff;
+    padding: 1em 1em 1em 1em;
+    box-shadow: 0px 3px 6px rgba(0,0,0, 0.16);
+    min-width: 300px;
+
+    li {
+        padding: 0.5em 0;
+        margin-right: 1em;
+        
+        &.main {
+            border-bottom: 1px solid $moj-primary-text-color;
+            padding: 1em 0;
+        }
+    }
+    .header-checkBox
+    {
+        min-width: 300px;
+        
+    }
+    .filter-header {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+       
+        &.bold {
+            font-weight: bold;
+        }
+       
+        
+    }
+    
+
+    .filter-header-content
+    {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width:100%;
+    }
+
+    .label-above, .moj-label-content {
+        &[class*='col-sm'] {
+            padding: 0 !important;
+        }
+    }
+
+    .moj-form-line {
+        margin-top: 7px !important;
+    }
+}
+.moj-rtl{
+        .moj-filter-list {
+           
+            padding: 1em 1em 1em 1em;
+            li {
+                padding: 0.5em 0;
+                margin-right: initial;
+                margin-left: 1em;
+            }
+        }
+}

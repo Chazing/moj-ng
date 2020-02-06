@@ -1,0 +1,54 @@
+<demo-container [title]="'Autocomplete'">
+    <!--  <a href="https://www.primefaces.org/primeng/#/autocomplete" target="_blank">לצפיה בפקד המקורי</a> -->
+    <div class="demo-section">
+        <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+            <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose"
+                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'" [fieldID]="'key'"
+                [(ngModel)]="autocompleteValue">
+            </moj-autocomplete>
+        </moj-line>
+    </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'רשימה עם עיצוב מותאם אישית'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        מיועד למקרים בהם יש צורך לתת לכל פריט ברשימה תבנית מסויימת לדוג':הוספת אייקון או צבע מסויים וכד'
+        <moj-line>
+            <moj-autocomplete name="autocompleteCustomTemplateValue" labelTextKey="Texts.Choose"
+                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'" [fieldID]="'key'"
+                [(ngModel)]="autocompleteCustomTemplateValue">
+                <ng-template let-item pTemplate="custom">
+                    <div style="background-color:cadetblue;height: 15px;color: black">{{item.value}}</div>
+                </ng-template>
+            </moj-autocomplete>
+        </moj-line>
+    </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'רשימה נפתחת'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+            <moj-autocomplete name="autocompleteValueDropDown" [dropdown]=true labelTextKey="Texts.Choose"
+                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'"
+                [fieldID]="'key'" [(ngModel)]="autocompleteValueDropDown">
+            </moj-autocomplete>
+        </moj-line>
+    </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'בחירה מרובה'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+            <moj-autocomplete name="autocompleteValueMultiple" [multiple]=true labelTextKey="Texts.Choose"
+                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'"
+                [fieldID]="'key'" [(ngModel)]="autocompleteValueMultiple">
+            </moj-autocomplete>
+        </moj-line>
+    </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'רשימה עם פילטר מכיל'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line> ברירת המחדל של הפקד היא שהסינון נעשה לפי התחילית.במקרה שרוצים שהסינון יהיה לפי הכלה של הערך המוזן יש
+            להגדיר את הפילטר מסוג includes </moj-line>
+        <moj-line>
+            <moj-autocomplete name="autocompleteValueMultiple" [filterType]="enums.FilterType.includes"
+                labelTextKey="Texts.Choose" controlWidthColumns="2" [items]="listItems"
+                [fieldName]="'value'" [fieldID]="'key'" [(ngModel)]="autocompleteValueMultiple">
+            </moj-autocomplete>
+        </moj-line>
+    </div>
+</demo-container>

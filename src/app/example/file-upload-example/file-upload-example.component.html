@@ -5,28 +5,37 @@
 		<moj-checkbox [(ngModel)]="isRequired2" name="isRequired2"></moj-checkbox>
 	</moj-line>
 	<moj-line>
-		<moj-file-upload name="fldold1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'" 
-			[(ngModel)]="files" [isLabelAboveControl]="true" [controlWidthColumns]="4"
-			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)">
+		<moj-file-upload name="fldold1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg|doc|docx|ppt|pptx|xls|xlsx'" 
+			[(ngModel)]="files"  [controlWidthColumns]="4"
+			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)" [maxFileSize]="1048576">
 		</moj-file-upload>
 		<moj-file-upload name="fld3" [labelTextKey]="'Texts.fileToUpload2'" [enabledFileTypes]="'pdf'" 
-			[(ngModel)]="files2" [isLabelAboveControl]="true" [controlWidthColumns]="4"
-			[designType]="fuDesignType.Single" [required]="isRequired2">
+			[(ngModel)]="files2"  [controlWidthColumns]="4"
+			[designType]="fuDesignType.Single" [required]="isRequired2" [multiple]="false" [disabled]="true" (fileUploadComplete)="fileUploadComplete($event)">
 		</moj-file-upload>
 	</moj-line>
 	<moj-line>
 		<moj-file-upload name="fldold11" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'" 
-			[(ngModel)]="files" [isLabelAboveControl]="false" [controlWidthColumns]="4" [labelWidthColumns]="2"
-			[required]="isRequired1">
+			[(ngModel)]="files"  [controlWidthColumns]="4"
+			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)">
 		</moj-file-upload>
 		<moj-file-upload name="fld31" [labelTextKey]="'Texts.fileToUpload2'" [enabledFileTypes]="'pdf'" 
-			[(ngModel)]="files2" [isLabelAboveControl]="false" [controlWidthColumns]="4" [labelWidthColumns]="2"
-			[designType]="fuDesignType.Single" [required]="isRequired2">
+			[(ngModel)]="files2"  [controlWidthColumns]="4"
+			[designType]="fuDesignType.Single" [required]="isRequired2" (fileUploadComplete)="fileUploadComplete($event)">
 		</moj-file-upload>
-	</moj-line>
+    </moj-line>
+    <moj-line>
+        <moj-input-file name="fldold9" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg|doc|docx|ppt|pptx|xls|xlsx'" 
+			[(ngModel)]="files"  [controlWidthColumns]="4"
+			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)">
+		</moj-input-file>
+    </moj-line>
 	<ul>
 		<li *ngFor="let item of files">{{item.name}} == GUID: {{item.GUID}} == docType: {{item.docType}}</li>
-	</ul>
+    </ul>
+    <ul>
+            <li *ngFor="let item of files2">{{item.name}} == GUID: {{item.GUID}} == docType: {{item.docType}}</li>
+        </ul>
 </moj-line>
 
 {{frmSearch.valid}}
@@ -36,11 +45,26 @@
 <moj-submit-button [form]="frmSearch"></moj-submit-button>
 
 </form>
+<style>
+    moj-button {
+        display: inline-block;
+    }
+</style>
+<br>
+<br>
+<form>
 
+    <div>
+        <moj-textbox [(ngModel)]="files2" name="searchText" minlength="3" [size]="size.large"
+                    controlWidthColumns="8" labelTextKey="Texts.textField" style="display: inline-block; width: 90%;">
+                    
+        </moj-textbox>
+        <moj-button [textKey]="'חיפוש'" [iconClass]="'fas fa-search'"  style="display: inline-block; width: 10%;"></moj-button>
+    </div>
+    
+    </form>
 <br>
-<br>
-<br>
-<moj-grid-panel [editOptions]="editOptions" [gridDescription]="'קבצים'">
+<!-- <moj-grid-panel [editOptions]="editOptions" [gridDescription]="'קבצים'" [supportResponsive]="false" >
 	<moj-line>
 	<moj-grid-add-button></moj-grid-add-button>
 	<div mojDragAndDrop>
@@ -53,4 +77,4 @@
 		</ag-grid-angular>
 	</div>
 </moj-line>
-</moj-grid-panel>
+</moj-grid-panel> -->

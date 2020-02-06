@@ -1,84 +1,69 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width">
     <style>
-        .logo-justice {
-            background-image: url(./MojImages/unsupported-browser/LogoJustice.png);
-            float: right;
-            background-repeat: no-repeat;
-            width: 200px;
-            height: 50px;
-        }
-
-        .logo-system {
-            background-image: url(./MojImages/unsupported-browser/LogoSystem.png);
-            float: left;
-            background-repeat: no-repeat;
-            width: 200px;
-            height: 50px;
-        }
-
-        .blue-line {
-            background-color: #3263a0;
-            width: 100%;
-            height: 8px;
-        }
-
         html {
-            background: radial-gradient(#f4f7f8 50%, #e6ecee);
-            height: 100%;
-        }
-
-        .center-img {
-            background-image: url(./MojImages/unsupported-browser/BrowserUpdated.png);
-            background-repeat: no-repeat;
-            margin: auto;
-            width: 300px;
-            height: 300px;
-            margin-top: 100px;
-            margin-bottom: 100px;
-        }
-
-        .font-arial {
+            background: #fff;
+            height: 100vh;
             font-family: Arial;
-            color: #336699;
+            color: #0b2784;
+            direction: rtl;
         }
-
-        .bold-28 {
-            font-size: 28px;
-            font-weight: bold;
+        header { border-bottom: 8px solid #0b2784; }
+        main { text-align: center; }
+        main .img {
+            margin: 20px auto 50px;
+            width: 375px;
+            height: 248px;
         }
-
         .font-24 {
             font-size: 24px;
-        }
-
-        .line {
-            display: table;
-            width: 100%;
-            direction: rtl;
-            text-align: center;
+            line-height: 1.5em;
         }
     </style>
+    <script>
+        function isInternetExplorer() {
+            var myNav = navigator.userAgent.toLowerCase();
+            if (myNav.indexOf('msie') != -1)
+                return parseInt(myNav.split('msie')[1]);
+            if (myNav.indexOf('rv:') != -1)
+                return parseInt(myNav.split('rv:')[1]);
+            return false;
+        }
+        function isFF() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('firefox') != -1);
+        }
+        function isEdge() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('edge') != -1);
+        }
+        (function redirectToBaseUrl() {
+            if (!isInternetExplorer() && !isFF() && !isEdge()) {
+                var curUrl = window.location.href;
+                var i = curUrl.indexOf('/assets/unsupported-browser.html');
+                if (i > 0) {
+                    var newRedirectUrl = curUrl.substring(0, i);
+                    console.log(newRedirectUrl);
+                    window.location.href = newRedirectUrl;
+                }
+            }
+        })();
+    </script>
 </head>
-<header>
-    <div class="line">
-        <div class="logo-justice"></div>
-        <div class="logo-system"></div>
-    </div>
-    <div class="blue-line"></div>
-</header>
-
 <body>
-    <div class="center-img"> </div>
-    <div class="line">
-        <span class="font-arial bold-28">לצערנו אי אפשר לגלוש לאתר בגרסת הדפדפן הנוכחית.</span>
-    </div>
-    <div class="line">
-        <span class="font-arial font-24">כדי להנות מהחוויה הטובה ביותר מומלץ לשדרג את הקיים או להחליף לדפדפן אחר.</span>
-    </div>
+    <header>
+        <img src="./MojImages/unsupported-browser/LogoJustice.png">
+    </header>
+    <main>
+        <div class="img">
+            <img src="./MojImages/unsupported-browser/EX.png">
+        </div>
+        <div class="font-24">
+            מצטערים, האתר אינו נתמך בדפדפן זה<br>
+            עליך לגלוש בדפדפן מסוג כרום Chrome</div>
+    </main>
 </body>
 </html>

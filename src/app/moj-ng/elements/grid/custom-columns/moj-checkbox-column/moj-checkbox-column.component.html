@@ -1,5 +1,6 @@
 <div class="txt-left col-xs-2">
-<input type="checkbox" [checked]="params.value"
-[ngClass]="{'fa-check' : params.value}"
-  class="fa" (change)="onChanged($event)"/>
-  </div>
+    <input type="checkbox" [checked]="params.value" 
+        (change)="onChanged($event)" />
+</div>
+
+<!-- [ngClass]="{'fa-check' : params.value}" class="fa" -->

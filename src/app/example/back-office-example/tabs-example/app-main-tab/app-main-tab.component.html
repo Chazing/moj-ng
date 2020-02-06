@@ -16,14 +16,21 @@
         <moj-label [textKey]="'פעיל'" [widthColumns]="2" [labelStyle]="labelStyle.Bold" [isAutoWidth]="true"></moj-label>
     </moj-line>
 </moj-panel>
-<moj-button  buttonStyle={{buttonStyle.Icon}} [iconClass]="'fab fa-accessible-icon'"></moj-button>
+<!-- <moj-button  buttonStyle={{buttonStyle.Secondary}} [iconClass]="'fab fa-accessible-icon'"></moj-button>
 <moj-dynamic-label>
     תוכן מאלחילגדכ לדגחיכ לדחגילכ
     <br>
     lskdjf lsdjlf jsdlf jlsdjf lsdjf lsdjlf jsdljf lsdjflsdj
 </moj-dynamic-label>
-<!-- <moj-textbox [(ngModel)]="str" [readOnly]="true"></moj-textbox> -->
+<moj-textbox [(ngModel)]="str" [readOnly]="true"></moj-textbox> 
 <moj-input-file [(ngModel)]="files" [enabledFileTypes]="'pdf'" [designType]="fuDesignType.Single"></moj-input-file>
 {{files.length}}
+
+<moj-button (click)="testCSRF()" [textKey]="'Transfer Money'"></moj-button>
+<form action="http://localhost:56074/Home/GetData/" method="post">
+
+<button id="post" name="post">Transfer Money</button>
+
+</form> -->
 
 <router-outlet></router-outlet>

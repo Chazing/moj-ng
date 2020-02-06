@@ -1,0 +1,47 @@
+<demo-container [title]="'popup'">
+    <div class="content-section implementation">
+
+        <div class="demo-section">
+            <moj-title [textKey]="'חלונות חיווי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+
+            <moj-buttons-line style="float: right;">
+                <moj-button (click)="openAttentionDialog()" [textKey]="'Texts.attentionDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openErrorDialog()" [textKey]="'Texts.errorDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openAlertDialog()" [textKey]="'Texts.alertDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openConfirmDialog(true)" [textKey]="'Texts.confirmDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openSuccessDialog()" [textKey]="'Texts.successDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openConfirmDialog(false)" [textKey]="'Texts.noXDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+            </moj-buttons-line>
+
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'חלונות תוכן'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+
+            <moj-buttons-line style="float: right;">
+                <moj-button (click)="openContentDialog()" [textKey]="'Texts.contentDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openNoScrollDialog()" [textKey]="'Texts.noScrollDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openScrollDialog()" [textKey]="'Texts.scrollDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+
+                <moj-button (click)="openNoFooterDialog()" [textKey]="'Texts.noFooterDialog'"
+                    buttonStyle="{{Enums.ButtonStyle.Secondary }}"></moj-button>
+            </moj-buttons-line>
+        </div>
+    </div>
+</demo-container>

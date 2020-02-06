@@ -1,0 +1,27 @@
+<demo-container [title]="'Multiselect'">
+  <div class="demo-section">
+    <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <moj-line>
+      <moj-multiselect name="multiselectValue" labelTextKey="Texts.Choose" controlWidthColumns="2"
+         [(ngModel)]="multiselectValue" [items]="listItems">
+      </moj-multiselect>
+    </moj-line>
+  </div>
+  <div class="demo-section">
+    <moj-title [textKey]="'עם פילטר'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <moj-line>
+      <moj-multiselect name="multiselectValue" labelTextKey="Texts.Choose" controlWidthColumns="2"
+         [(ngModel)]="multiselectFilterValue" [items]="listItems" [filter]=true>
+      </moj-multiselect>
+    </moj-line>
+  </div>
+  <div class="demo-section">
+    <moj-title [textKey]="'שינוי תוית בחירה'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <moj-line>
+      <moj-multiselect name="multiselectLableValue" labelTextKey="Texts.Choose"
+        controlWidthColumns="2" [(ngModel)]="multiselectLableValue" [items]="listItems"
+        [selectedItemsLabel]="'תוית מותאמת אישית'">
+      </moj-multiselect>
+    </moj-line>
+  </div>
+</demo-container>

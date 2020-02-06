@@ -6,18 +6,13 @@
 </div>
 
 <div class="content-section implementation">
-<moj-dropdownlist [isLabelAboveControl]=true name="ddValue" labelTextKey="Texts.Choose" labelWidthColumns="1"
-    controlWidthColumns="2" [items]="listItems" [fieldID]="''" [(ngModel)]="ddValue">
-    <ng-template let-item pTemplate="custom">
-        <div style="background-color: crimson">{{item.value.value}}</div>
-    </ng-template>
-</moj-dropdownlist>
     <h3 class="first">רגיל</h3>
     <moj-line>
-        <moj-autocomplete [isLabelAboveControl]=true name="autocompleteValue" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="listItems"
-            [fieldName]="'value'" [fieldID]="'key'" required [(ngModel)]="autocompleteValue">
+        <moj-autocomplete [dropdown]=true name="autocompleteValue" labelTextKey="Texts.Choose" controlWidthColumns="2" [items]="listItems"
+                          [fieldName]="'value'" [fieldID]="'key'" required [(ngModel)]="autocompleteValue">
+            <!--[formControlName]="'myname'"-->
             <ng-template let-item pTemplate="custom">
-                    <div style="background-color: red;height: 15px;color: black">{{item.value}}</div>
+                <div style="background-color: red;height: 15px;color: black">{{item.value}}</div>
             </ng-template>
         </moj-autocomplete>
         <label>
@@ -27,7 +22,7 @@
     <br />
     <h3>רשימה נפתחת</h3>
     <moj-line>
-        <!-- <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="listItems"
+        <!-- <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose" controlWidthColumns="2" [items]="listItems"
             [fieldName]="'Value'" fieldID="'Key'" [(ngModel)]="autocompleteValueDropDown" [dropdown]="true">
         </moj-autocomplete> -->
         <label>
@@ -37,7 +32,7 @@
     <br />
     <h3>multiple</h3>
     <moj-line>
-        <!-- <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="listItems"
+        <!-- <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose" controlWidthColumns="2" [items]="listItems"
            [(ngModel)]="autocompleteValueMultiple" fieldName="Value" fieldID="Key" [multiple]="true">
         </moj-autocomplete> -->
         <label>

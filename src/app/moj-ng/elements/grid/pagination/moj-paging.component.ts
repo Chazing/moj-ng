@@ -15,6 +15,8 @@ export class MojPagingComponent implements OnInit{
     pageText:string;
     ofText:string;   
     resultsText:string;
+    displayOfText:string;
+    toText:string;
     
     gridApi;
     isPaging:boolean = true;
@@ -25,7 +27,9 @@ export class MojPagingComponent implements OnInit{
 
     currentPage:number;
     totalPages:number;
-    totalRows
+    totalRows:number;
+    startRow:number;
+    endRow:number;
 
     pageSize:number;
     pageSizeList = pageSizeList;
@@ -49,6 +53,8 @@ export class MojPagingComponent implements OnInit{
         this.pageText = this.translateService.instant("MojTexts.grid.page");
         this.ofText = this.translateService.instant("MojTexts.grid.of");
         this.resultsText = this.translateService.instant("MojTexts.grid.results");
+        this.displayOfText = this.translateService.instant("MojTexts.grid.displayOf");
+        this.toText = this.translateService.instant("MojTexts.grid.to");
     }
     
     onPaginationChanged(event){
@@ -63,6 +69,7 @@ export class MojPagingComponent implements OnInit{
         this.totalPages = this.gridApi.paginationGetTotalPages();
         this.totalRows = this.gridApi.paginationGetRowCount();
         this.setCurrentPage(event.newData);
+        this.setFirstLastInPage();
         this.enableOrDisableButtons();
         this.cdr.markForCheck();
     }
@@ -84,6 +91,19 @@ export class MojPagingComponent implements OnInit{
             this.currentPage = 0;
         }
     };
+
+    setFirstLastInPage(){
+        if (this.isZeroPagesToDisplay()) {
+            this.startRow = 0;
+            this.endRow = 0;
+        } else {
+            this.startRow = (this.pageSize * (this.currentPage - 1)) + 1;
+            this.endRow = this.startRow + this.pageSize - 1;
+            if (this.currentPage === this.totalPages) {
+                this.endRow = this.totalRows;
+            }
+        }
+    }
 
     enableOrDisableButtons(){
         //if no rowData disable paging

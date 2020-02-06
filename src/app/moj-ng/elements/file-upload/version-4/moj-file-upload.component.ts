@@ -7,14 +7,15 @@ import { MojFileUploadDesignType, MojBaseFileUploadComponent } from '../moj-file
 import { TranslateService } from '@ngx-translate/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ElementBase } from '../../base/element.base';
+import { PermissionService } from '../../../../moj-ng/permissions/permission.service';
 
 /**
   * Usage example
   ```html
-  <moj-new-file-upload name="docsForApprove" [labelTextKey]="'Texts.docsForApprove'" [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [isLabelAboveControl]="true" [controlWidthColumns]="4"
-			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)"></moj-new-file-upload>
-<moj-new-file-upload name="docsForCheck" [labelTextKey]="'Texts.docsForCheck'" [enabledFileTypes]="'pdf'" [(ngModel)]="files2" [isLabelAboveControl]="true" [controlWidthColumns]="4"
-			[designType]="fuDesignType.Single" [required]="isRequired2"></moj-new-file-upload>
+  <moj-sync-file-upload name="docsForApprove" [labelTextKey]="'Texts.docsForApprove'" [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [controlWidthColumns]="4"
+			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)"></moj-sync-file-upload>
+<moj-sync-file-upload name="docsForCheck" [labelTextKey]="'Texts.docsForCheck'" [enabledFileTypes]="'pdf'" [(ngModel)]="files2" [controlWidthColumns]="4"
+			[designType]="fuDesignType.Single" [required]="isRequired2"></moj-sync-file-upload>
   ```
   * ```typescript
   import { MojFileUploadDesignType } from "../../moj-ng/elements/website/moj-file-upload/moj-file-upload.base";
@@ -30,18 +31,18 @@ import { ElementBase } from '../../base/element.base';
   *```
  */
 @Component({
-  selector: 'moj-new-file-upload',
-  templateUrl: '../moj-file-upload.component.html',
-  styleUrls: ['../moj-file-upload.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default,
-  providers: [{ 
-    provide: NG_VALUE_ACCESSOR,
-    multi: true,
-    useExisting: forwardRef(() => MojNewFileUploadComponent),
-  },
-  {provide: ElementBase, useExisting: forwardRef(() => MojNewFileUploadComponent)}]
+    selector: 'moj-sync-file-upload',
+    templateUrl: '../moj-file-upload.component.html',
+    styleUrls: ['../moj-file-upload.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        multi: true,
+        useExisting: forwardRef(() => MojSyncFileUploadComponent),
+    },
+    { provide: ElementBase, useExisting: forwardRef(() => MojSyncFileUploadComponent) }]
 })
-export class MojNewFileUploadComponent extends MojBaseFileUploadComponent {
+export class MojSyncFileUploadComponent extends MojBaseFileUploadComponent {
     uploadSubscription: Subscription;
     sendFiles(files: any[] = []) {
         this.totalSize = 0;
@@ -60,7 +61,7 @@ export class MojNewFileUploadComponent extends MojBaseFileUploadComponent {
                     this.mojUploadService.uploadFile(file).subscribe(
                         data => {
                             switch (data.event.type) {
-                                case HttpEventType.Sent: 
+                                case HttpEventType.Sent:
                                     this.fileUploadStart.emit(data.file);
                                     break;
                                 case HttpEventType.UploadProgress:
@@ -70,10 +71,10 @@ export class MojNewFileUploadComponent extends MojBaseFileUploadComponent {
                                     }
                                     break;
                                 case HttpEventType.ResponseHeader:
-                                    if(!data.event.ok)
+                                    if (!data.event.ok)
                                         this.handleError();
                                     break;
-                                case HttpEventType.Response: 
+                                case HttpEventType.Response:
                                     data.file.GUID = data.event.body;
                                     this.addFileUploadedToFilesArray(data.file);
                                     observer.next();
@@ -83,7 +84,7 @@ export class MojNewFileUploadComponent extends MojBaseFileUploadComponent {
                                 default:
                                     break;
                             }
-                        }, 
+                        },
                         error => {
                             this.handleError();
                             this.fileUploadError.emit(error);
@@ -101,21 +102,19 @@ export class MojNewFileUploadComponent extends MojBaseFileUploadComponent {
                 this.generalUploadError.emit(error);
             },
             () => {
-                if(this.designType == MojFileUploadDesignType.Single)
-                    this.addMoreFileEnable = false;
                 this.init();
                 this.generalUploadComplete.emit();
             }
         );
     }
 
-    constructor(protected mojUploadService: MojFileUploadService, protected mojMessagesService: MojMessagesService, 
-        protected translateService: TranslateService, protected cdr: ChangeDetectorRef,protected el: ElementRef, protected _injector: Injector) {
-        super(mojUploadService, mojMessagesService, translateService, cdr, el, _injector);
+    constructor(protected mojUploadService: MojFileUploadService, protected mojMessagesService: MojMessagesService,
+        protected translateService: TranslateService, protected cdr: ChangeDetectorRef, protected el: ElementRef, protected _injector: Injector, permissionService: PermissionService) {
+        super(mojUploadService, mojMessagesService, translateService, cdr, el, _injector, permissionService);
     }
 
     ngOnDestroy() {
-        if(this.uploadSubscription)
+        if (this.uploadSubscription)
             this.uploadSubscription.unsubscribe();
     }
 }

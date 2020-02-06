@@ -1,0 +1,91 @@
+<moj-container [title]="'רשימות תצוגה בסגנונות שונים'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+<div class="container">
+    <moj-title [textKey]="'רשימה בסגנון של כותרת ופרטים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Details">
+                    <moj-list-item-header>
+                        <div class="demo-title-item">מספר בקשה/סימן: <b>256845</b></div>
+                        <div class="demo-title-item">לקוח מוביל: <b>G. DAES ASD</b></div>
+                        <div class="demo-title-item">מיופה כוח: <b>ד"ר יצחק הס ושותפיו</b></div>
+                        <div style="float: left;">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                    </moj-list-item-header>
+                    <moj-list-item-body>
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, כפתורים, רכיבים שונים, קישורים וכל דבר</span>
+                        <div>
+                            <ul class="ul-demo-item">
+                                <li>12</li>
+                                <li>85</li>
+                                <li>37</li>
+                                <li>92</li>
+                                <li>10</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: left;">
+                            <moj-dynamic-label [color]="Enums.MojColor.Primary" [fontWeight]="Enums.FontWeight.bold">סה"כ: 12,345
+                            </moj-dynamic-label>
+                        </div>
+                    </moj-list-item-body>
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+
+    <moj-title [textKey]="'רשימה עם כפתורי פעולות מרחפים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Details">
+                    <moj-list-item-header [data]="headerData">
+                        <div class="moj-list-item-key">מספר בקשה/סימן: <span class="moj-list-item-value">256845</span></div>
+                        <div class="moj-list-item-key">לקוח מוביל: <span class="moj-list-item-value">G. DAES ASD</span></div>
+                        <div class="moj-list-item-key">מיופה כוח: <span class="moj-list-item-value">ד"ר יצחק הס ושותפיו</span></div>
+                    </moj-list-item-header>
+                    <moj-list-item-body [data]="headerData">
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, כפתורים, רכיבים שונים, קישורים וכל דבר</span>
+                    </moj-list-item-body>
+                    <moj-list-item-ext>
+                        <!-- <moj-grid-menu-button></moj-grid-menu-button> -->
+                        <!-- <moj-grid-edit-button [item]="item"></moj-grid-edit-button> -->
+                        <!-- <moj-grid-delete-button [item]="item"></moj-grid-delete-button> -->
+                        <button><i class="fas fa-lock-alt"></i></button>
+                        <button><i class="fas fa-exclamation"></i></button>
+                        <button><i class="fas fa-pencil"></i></button>
+                        <button><i class="fas fa-share-alt"></i></button>
+                    </moj-list-item-ext>
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+
+    <moj-title [textKey]="'חלוקה של הרשימה למספר פריטים בשורה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line style="margin-bottom: 1em;">
+        <moj-textbox [labelTextKey]="'מספר פריטים בשורה'" [(ngModel)]="cols"
+            [controlWidthColumns]="2" (input)="changeCols()"></moj-textbox>
+    </moj-line>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Details" [cols]="cols">
+                    <moj-list-item-header>
+                        <div class="demo-title-item">מספר בקשה/סימן: <b>256845</b></div>
+                        <div class="demo-title-item">לקוח מוביל: <b>G. DAES ASD</b></div>
+                        <div class="demo-title-item">מיופה כוח: <b>ד"ר יצחק הס ושותפיו</b></div>
+                    </moj-list-item-header>
+                    <moj-list-item-body>
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, כפתורים, רכיבים שונים, קישורים וכל דבר</span>
+                    </moj-list-item-body>
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+</div>

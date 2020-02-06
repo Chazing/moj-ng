@@ -1,0 +1,37 @@
+<demo-container [title]="'Slider'">
+    <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <div class="demo-section">
+        <moj-line>
+            <moj-label [textKey]="'כמות בקשות בתיק'" [widthColumns]="2"></moj-label>
+            <moj-slider [controlWidthColumns]="2" [(ngModel)]="sliderValue" name="sliderValue"></moj-slider>
+        </moj-line>
+        <br />
+    </div>
+    <moj-title [textKey]="'עם קפיצות קבועות'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <div class="demo-section">
+        <moj-line>
+            <moj-label [textKey]="'כמות בקשות בתיק'" [widthColumns]="2"></moj-label>
+            <moj-slider [controlWidthColumns]="2" [(ngModel)]="sliderStepValue" [showValueLabel]="true" [step]="5"
+                name="sliderStepValue"></moj-slider>
+        </moj-line>
+        <br />
+    </div>
+    <moj-title [textKey]="'אפשרות לטווח'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <div class="demo-section">
+        <moj-line>
+            <moj-label [textKey]="'טווח שנים לחיפוש'" [widthColumns]="2"></moj-label>
+            <moj-slider [controlWidthColumns]="2" [(ngModel)]="sliderRangeValue" [showValueLabel]="true"
+                [isRange]="true" [minValue]="1950" [maxValue]="2019" name="sliderValue"></moj-slider>
+        </moj-line>
+        <br />
+    </div>
+    <moj-title [textKey]="'לאורך'" [titleType]="enums.TitleType.Secondary"></moj-title>
+    <div class="demo-section">
+        <moj-line>
+            <moj-label [textKey]="'אחוז בקשות לשיבוץ'" [widthColumns]="2"></moj-label>
+            <moj-slider [controlWidthColumns]="2" [(ngModel)]="sliderVerticalValue" [showValueLabel]="true"
+                name="sliderValue" [orientation]="'vertical'"></moj-slider>
+        </moj-line>
+        <br />
+    </div>
+</demo-container>

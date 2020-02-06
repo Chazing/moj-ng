@@ -1,0 +1,88 @@
+<demo-container [title]="'כפתורים'">
+    <div class="demo-section">
+        <moj-title [textKey]="'בסיסי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-button buttonStyle={{Enums.ButtonStyle.Primary}} (click)="onButtonClick()" [textKey]="'MojTexts.approve'">
+        </moj-button>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'הגדרת שורת כפתורים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <div>שימוש ב- moj-button-line נעשה כאשר רוצים להציג שורת כפתורים.</div>
+        <moj-buttons-line style="float: right;">
+            <moj-button [iconClass]="'fas fa-search'" [tooltip]="'Texts.aa'"></moj-button>
+            <moj-button [textKey]="'כפתור עם אייקון מצד ימין'" buttonStyle="{{Enums.ButtonStyle.Secondary }}"
+                [iconClass]="'fas fa-search'"></moj-button>
+            <moj-button [textKey]="'כפתור עם אייקון מצד שמאל'" buttonStyle="{{Enums.ButtonStyle.Secondary }}"
+                [iconClassLeft]="'fas fa-search'"></moj-button>
+            <moj-button [textKey]="'כפתור'" buttonStyle="{{Enums.ButtonStyle.Primary }}"></moj-button>
+            <moj-button [textKey]="'כפתור'" buttonStyle="{{Enums.ButtonStyle.Success }}"></moj-button>
+            <moj-button [textKey]="'כפתור'" buttonStyle="{{Enums.ButtonStyle.Attention }}"></moj-button>
+        </moj-buttons-line>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'כפתורי Form'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <div>יפורט בהרחבה ב- <a href="../comming-soon">Forms</a></div>
+        <moj-buttons-line style="float: right;">
+            <moj-submit-button></moj-submit-button>
+            <moj-cancel-button></moj-cancel-button>
+            <moj-clear-button></moj-clear-button>
+        </moj-buttons-line>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'Toggle Button'" [titleType]="Enums.TitleType.Primary"></moj-title>
+    </div>
+
+
+    <div class="demo-section">
+        <moj-title [textKey]="'בסיסי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-button-toggle [items]="buttonToggleItems" [(ngModel)]="toggleValue1" required [controlWidthColumns]=3 >
+        </moj-button-toggle>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'ניתן גם לשימוש עם אייקונים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-button-toggle [items]="buttonToggleItems3" [(ngModel)]="toggleValue1">
+        </moj-button-toggle>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'ניתן גם לשימוש עם טקסט משולב עם אייקונים'" [titleType]="Enums.TitleType.Secondary">
+        </moj-title>
+        <moj-button-toggle [items]="buttonToggleItems4" [(ngModel)]="toggleValue1">
+        </moj-button-toggle>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'בחירה מרובה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-button-toggle [(ngModel)]="toggleValue2" [items]="buttonToggleItems" buttonCssClasses="orange1 font-20"
+            [multiple]=true [isObjectModel]="true">
+        </moj-button-toggle>
+    </div>
+
+
+    <div class="demo-section">
+        <moj-title [textKey]="'תצוגה טורית'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <div>
+            ישנה אפשרות לשנות את התצוגה ע"י שימוש ב-buttonToggleStyleType=List. ניתן לשלוט על מספר הטורים הרצויים ע"י
+            buttoCols
+        </div>
+        <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.List" [buttonCols]="4" [(ngModel)]="toggleValue2"
+            [items]="buttonToggleItems2">
+        </moj-button-toggle>
+    </div>
+</demo-container>
+
+
+
+
+<!-- @Input() textKey: string = "";
+  @Input() widthColumns: number;
+  @Input() isLabelAboveControl: boolean;
+  @Input() labelAlign: LabelAlign = LabelAlign.Left;
+  @Input() labelStyle: LabelStyle = LabelStyle.Standard;
+  @Input() isAutoWidth: boolean;
+  @Input() isRequiredIndication: boolean = false;
+  @Input() forId: string;
+  @Input() styleClass: string; -->

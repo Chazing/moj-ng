@@ -33,6 +33,7 @@ export class MojRadiobuttonColumnComponent implements AgRendererComponent {
     });
     this.params.api.updateRowData({ update: data })
     this.params.setValue(true);
+    this.params.api.selectNode(this.params.node);
     this.params.api.redrawRows();
 
   

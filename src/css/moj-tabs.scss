@@ -1,0 +1,190 @@
+moj-tabs {
+    height: 100%;
+    display: grid;
+    grid-template-areas: "strip" "content-wrap";
+    grid-template-rows: minmax(0, auto) 1fr;
+}
+
+.moj-tabs-stripe {
+    grid-area: strip;
+    border-bottom: 1px solid $moj-border-area-color;
+
+    ul.moj-tabs-stripe-list 
+    {
+        background-color: #fff;
+        li {
+            position: relative;
+            display: inline-block;
+            margin: 0 0.5em;
+            box-sizing: border-box;
+            padding: 0 0.3em;
+
+            &.moj-tab-selected {
+                border-bottom: 3px solid $moj-border-area-color;
+                a { font-weight: bold; }
+            }
+
+            &:not(.uncolorizable) span.moj-tab-color {
+                display: inline-block;
+                width: 0.6em;
+                height: 0.6em;
+                border-radius: 50%;
+                margin-#{$start-direction}: 0.4em;
+            } 
+
+            a.moj-tab-title {
+                padding: .5em;
+                display: inline-block;
+                text-decoration: none !important;
+                cursor: pointer;
+                color: $moj-primary-text-color;
+                white-space: nowrap;
+
+                min-width: $moj-tab-min-width;
+                @if $moj-tab-max-width == auto {
+                    width: auto;
+                }
+                @else {
+                    max-width: $moj-tab-max-width;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+
+            span.moj-tab-star {
+                display: none;
+            }
+
+            span.moj-tab-close {
+                color: $moj-primary-text-color;
+                cursor: pointer;
+                font-weight: 200;
+            }
+        }
+    }
+}
+
+.moj-tabs-content-wrapper {
+    grid-area: content-wrap;
+    display: grid;
+    grid-template-areas: "header header" "side-menu content";
+    grid-template-columns: minmax(0, auto) 1fr;
+    grid-template-rows: minmax(0, auto) 1fr;
+
+    background: #F5F7F9;
+    position: relative;
+
+    .moj-tabs-header {
+        grid-area: header;
+        background-color: #E9EEF1;
+        border-bottom: 1px solid #5F91B6;
+        padding: 0.9em 1.8em;
+      
+        ul li {
+          display: inline-block;
+      
+          span {
+            padding: 0 2px;
+          }
+      
+          span + span {
+            font-weight: bold;
+            color: #2A5776;
+          }
+      
+          &:after {
+            content: "|";
+            padding: 0 5px;
+          }
+        }
+    }
+
+    .moj-tabs-content {
+        grid-area: content;
+        padding: 1em 1.8em;
+    }
+
+    .moj-tabs-side-menu {
+        grid-area: side-menu;
+        min-width: 180px;
+        transition: 0.3s;
+        > ul {
+            padding: 1em 0;
+        }
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+        li {
+            cursor: pointer;
+            position: relative;
+
+            a {
+                display: block;
+                background-position: center;
+                color: $moj-grey-color;
+                white-space: nowrap;
+                padding: 0.5em 1.2em;
+                
+                &:hover {
+                    color: $moj-blue-color;
+                    text-decoration: none;
+                }
+
+                i {
+                    margin-#{$end-direction}: 0.7em;
+                }
+
+                span {
+                    font-weight: bold;
+                    display: inline-block;
+                    transition: 0.3s linear;
+                }
+            }
+
+            span.moj-sideitem-star {
+                &::before {
+                    content: "";
+                    border-#{$end-direction}: 20px solid transparent;
+                    border-top: 19px solid;
+                    position: absolute;
+                    top: 0px;
+                    #{$start-direction}: 0;
+                }
+
+                i {
+                    position: absolute;
+                    display: block;
+                    margin-top: -2.5em;
+                    margin-#{$start-direction}: 2px;
+                    color: white !important;
+                    font-size: 7px;
+                }
+            }
+
+            &.moj-sideitem-selected > a {
+                color: $moj-blue-color;
+            }
+
+            li {
+                margin-#{$start-direction}: 2em;
+            }
+        }
+
+        &.moj-tabs-side-menu-collapse {
+            width: 50px;
+            min-width: 50px;
+            li a span {
+                opacity: 0;
+                transform: translateX(200%);
+                grid-auto-rows: 0;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

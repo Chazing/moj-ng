@@ -8,7 +8,7 @@ export class EditComponentWithFileBase extends EditComponentBase implements Afte
     filesToAdd = [];//use in mojGridPanel
     files = [];//the input for fileUpload component
 
-    @ViewChild(MojFileUploadComponent) fileUpload: MojFileUploadComponent;
+    @ViewChild(MojFileUploadComponent, { static: true}) fileUpload: MojFileUploadComponent;
     
     constructor(protected mojUploadService: MojFileUploadService){
         super();
@@ -20,7 +20,8 @@ export class EditComponentWithFileBase extends EditComponentBase implements Afte
             let config = {
                     enabledFileTypes: this.fileUpload.enabledFileTypes,
                     multiple: this.fileUpload.multiple,
-                    maxFileSize: this.fileUpload.maxFileSize
+                    maxFileSize: this.fileUpload.maxFileSize,
+                    FileSizeType:this.fileUpload.fileSizeType
                 }
             //check the files according to fileUpload component properties
             let canAddFiles = this.mojUploadService.checkFilesBeforeUpload(this.filesToAdd, config);

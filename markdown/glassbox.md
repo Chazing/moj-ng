@@ -1,24 +1,32 @@
 # glassbox הוראות הטמעה
 
-## index.html
-יש להוסיף הפניה בראש הדף לקובץ js כך:
-```
-<script type="text/javascript" 
-        id="_cls_detector" src="assets/scripts/detector-dom.min.js?rev=5.6.184_B186" 
-        data-clsconfig="reportURI=https://shoko.efasi.org/glassbox/reporting/cls_report;recordScrolls=true;recordMouseMoves=true">
-```
-
 ## site.config
-יש להוסיף לכל קובץ קונפיג את המפתח isGlassboxOn
-ולתת לו את הערכים הנכונים לפי הסביבה
+
+יש להוסיף לכל קובץ קונפיג את המפתחות הבאים
+
 ```
 {
     "recaptchaSiteKey":"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
     ...
     "isGlassboxOn": true
+    "isGlassboxWithCss": boolean;
+    "isGlassboxWithAjaxData": string;
+    "glassboxVersion": string;
 }
 ```
 
+פרוט המפתחות:
+
+* "isGlassboxOn" - הדלקה וכיבוי של מנגנון ה glassbox.
+* "isGlassboxWithCss" - עבור אתרים מזוהים (כרטיס חכם, והזדהות ממשלתית) שישודר גם ה css.
+* "isGlassboxWithAjaxData" - כאשר רוצים הקלטה מלאה של כל קריאות ה ajax עם ה header, body וכל ה meta data
+* "glassboxVersion" - גרסה עבור הסקריפט של gs, מספר הגרסה המדוייק לא משנה, מעבר לזה שהוא מונע cache בדפדפנים של משתמשי הקצה. ולכן יש צורך לעדכן את הפרמטר, בכל פעם שגרסת הסקריפט משתנה.
+
+
 ## הצגת הודעה למשתמש על הקלטת הפעולות
+
 נוספה הודעה מובנית מוכנה להצגה בפוטר של האתרים, ברגע שההקלטה פועלת ההודעה תוצג באופן אוטומטי
 
+כאשר רוצים למנוע העברת ערכי שדות להקלטה כיון שמדובר בשדות עם ערך רגיש כמו למשל מספר כרטיס אשראי וכד' ניתן להגדיר את השדה כשדה מושחר שאינו מועבר להקלטה כמו שהוא.
+תעשו זאת כך,תוסיפו לשדה class בשם cls_mask 
+כשאר רוצים למסך קטע שלם מבלי  להיכנס לכל שדה ושדה ניתן יהיה להגדיר על אלמנט שלם (מקטע שלם בדף המכיל תוכן בתוכו) את ה class  cls_mask ואז כל התוכן שבתוכו יושחר.

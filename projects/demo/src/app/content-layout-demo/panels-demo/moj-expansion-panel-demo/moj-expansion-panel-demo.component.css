@@ -1,0 +1,22 @@
+.header{display: flex;
+    align-items: center;
+    justify-content: centers;
+    
+}
+.bankIcon{
+ 
+    background-image: url('../../../../assets/icons/bank.svg' );
+    background-repeat:no-repeat;
+    width: 2em;
+    height: 2em;
+    ;
+}
+
+
+.subTitle{
+    font-size: 0.7em;
+    font-weight: normal;
+}
+.body{
+    justify-content: right;
+}

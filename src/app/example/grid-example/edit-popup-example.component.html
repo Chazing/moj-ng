@@ -1,27 +1,55 @@
 ﻿<div *ngIf="editedItem">
-    <form #form="ngForm">
-        <moj-line>
-            {{editedItem.ProductName}}
-        </moj-line>
-        <moj-line>
-            <moj-textbox [(ngModel)]="editedItem.ID" name="productID" [required]="true" labelTextKey="'קוד מוצר'" labelWidthColumns="3"
-                         controlWidthColumns="7">
-            </moj-textbox>
-        </moj-line>
-        <moj-line>
-            <moj-textbox [(ngModel)]="editedItem.ProductName" name="productName" [required]="true" labelTextKey="'שם מוצר'" labelWidthColumns="3"
-                         controlWidthColumns="7">
-            </moj-textbox>
-        </moj-line>
-        <moj-line>
-            <moj-textbox [(ngModel)]="editedItem.UnitPrice" name="unitPrice" [required]="true" labelTextKey="'מחיר'" labelWidthColumns="3"
-                         controlWidthColumns="7">
-            </moj-textbox>
-        </moj-line>
-
-        <moj-buttons-line>
-            <moj-grid-cancel-button></moj-grid-cancel-button>
-            <moj-grid-save-button [disabled]="false"></moj-grid-save-button>
-        </moj-buttons-line>
-    </form>
+  <form #form="ngForm">
+    <moj-line>
+      {{ editedItem.ProductName }}
+    </moj-line>
+    <moj-line>
+      <moj-textbox
+        [(ngModel)]="editedItem.ID"
+        name="productID"
+        [required]="true"
+        labelTextKey="'קוד מוצר'"
+        controlWidthColumns="7"
+      >
+      </moj-textbox>
+    </moj-line>
+    <moj-line>
+      <moj-textbox
+        [(ngModel)]="editedItem.ProductName"
+        name="productName"
+        [required]="true"
+        labelTextKey="'שם מוצר'"
+        controlWidthColumns="7"
+      >
+      </moj-textbox>
+    </moj-line>
+    <moj-line>
+      <moj-textbox
+        [(ngModel)]="editedItem.UnitPrice"
+        name="unitPrice"
+        [required]="true"
+        labelTextKey="'מחיר'"
+        controlWidthColumns="7"
+      >
+      </moj-textbox>
+    </moj-line>
+    <moj-line>
+      <moj-dropdownlist
+        required
+        [controlWidthColumns]="7"
+        [required]="true"
+        [(ngModel)]="editedItem.fileTypeValue"
+        name="fileTypeValue"
+        [filter]="true"
+        [editable]="false"
+        [items]="items"
+        [fieldID]="'id'"
+        [fieldName]="'name'"
+      ></moj-dropdownlist>
+    </moj-line>
+    <moj-buttons-line>
+      <moj-grid-cancel-button></moj-grid-cancel-button>
+      <moj-grid-save-button [form]="form" [disabled]="false"></moj-grid-save-button>
+    </moj-buttons-line>
+  </form>
 </div>

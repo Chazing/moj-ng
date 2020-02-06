@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 export class DatepickerExampleComponent implements OnInit {
   dateTimeValue: Date;
   dateValue: Date;
+  timeValue:Date;
+  public maxDate:Date=new Date(new Date().setMonth(new Date().getMonth() + 3));
+    public minDate:Date= new Date();
   constructor() { }
 
   ngOnInit() {

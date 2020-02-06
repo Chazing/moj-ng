@@ -5,6 +5,9 @@ import { EditServiceBase } from "../../moj-ng/elements/grid/service/edit-service
 import { GridService } from "../../moj-ng/elements/grid/service/moj-grid.service";
 import { NewFileComponent } from "./new-file.component";
 import { MojFileUploadDesignType } from "../../moj-ng/elements/file-upload/moj-file-upload.base";
+import { ElementSize } from "../../moj-ng/elements/base/element-size.enum";
+import { MojDataViewType } from "../../moj-ng/elements/grid/models/dataview-type.enum";
+import { FileSizeType } from "../../moj-ng/elements/file-upload/file-size-type";
 
 @Component({
     selector: "file-upload-example",
@@ -13,13 +16,17 @@ import { MojFileUploadDesignType } from "../../moj-ng/elements/file-upload/moj-f
 export class FileUploadExampleComponent implements OnInit {
 
     // files = [{name: "file1.pdf", GUID: "0c496f04-4030-4b13-8ba8-dc8a615bd4cf", docType: 3}, {name: "file2.pdf", GUID: "0cec6cf0-0bb0-4e3e-ba29-d34c3d1fa233", docType: 2}, {name: "file3.pdf", GUID: "1bf5010d-f6f5-4bd2-9cbb-7a34d1cab0ab", docType: 3}];
-    files: any;
+    files: any; 
+    dataViewType = MojDataViewType;
+    files2;// = [{name: "files2"}, {name: "files2"}, {name: "files2"}];
+    files3;
 
-    files2;
+    sizeType = FileSizeType;
 
     fuDesignType = MojFileUploadDesignType;
-                                            
-    fileUploadComplete(file){
+    size = ElementSize;
+
+    fileUploadComplete(file) {
         file.docType = 4;
     }
 
@@ -34,10 +41,10 @@ export class FileUploadExampleComponent implements OnInit {
 
     constructor(private gridService: GridService) {
     }
-    
+
     ngOnInit() {
-        this.rowData=[{fileDate:new Date(), fileType:'doc', fileName:'שם מסמך', ticNum:'1'}];
-        
+        this.rowData = [{ fileDate: new Date(), fileType: 'doc', fileName: 'שם מסמך', ticNum: '1' }];
+
         this.columns = [
             this.gridService.getMojDateColumn("fileDate"),
             this.gridService.getMojColumn("fileType"),

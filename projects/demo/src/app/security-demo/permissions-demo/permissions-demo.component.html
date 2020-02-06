@@ -1,0 +1,157 @@
+<h1>הרשאות</h1>
+<br />
+<h2> הרשאות ברמת ניווט </h2>
+<p>
+  מערכת הרשאות ברמת ניווט מאפשרת לחסום למשתמש גישה למסכים ספציפיים בעזרת הגדרתם כחסומי גישה במערכת LDAP.
+  <br />
+  למשתמש יוצג פופאפ
+  עם הודעה כי לא קיימת הרשאת גישה למסך
+
+  <a href="componentsDemo/blocked-page-demo">להצגת ההודעה לחץ כאן</a>
+  <br />
+  בכדי לממש את ההרשאות יש לצרוך GUARD בשם mojGuard
+  <br />
+  ולשלוח ב DATA שב router משתנה בשם routerID שערכו שווה לערך routerID שמוגדר במודול שבמערכת LDAP
+  <br/>
+דוגמא ל router
+<br/>
+  &#123; path: 'example-page', component: PermissionsDemoComponent ,canActivate:[MojGuard],data: &#123;routerID:"#routerIDExample" &#125; &#125;
+
+  <br />
+  *פירוט על הגרת המודול למטה
+</p>
+
+
+<h2> הרשאות ברמת פקדים </h2>
+<p>
+  המערכת מאפשרת לחסום פקד תחת מסך ספציםי וכן פקדים אשר לא נמצאים תחת מסך מסוים
+  :בנוסף ניתן לחסום איזורים שלמים :
+  <li>פקדים הנמצאים ברכיב moj-panel תחת fieldset </li>
+  <li> פקדים היושבים בטופס שמשתמש ב mojFormDirective </li>
+
+  בכדי לממש הרשאות על פקד מסוים
+
+  יש לתת במערכת לפקד attribute - name/formcontrolname בהתאם לשם הפקד שמוגדר במודול במערכת LDAP
+  <br />
+  ישנם פקדים ספציפים ששם הפקד שהוגדר במודול נשלח אליהם ע"י משתנה שונה מ name/formcontrolname להלן הפירוט :
+  <li><b>moj-tabs-by-visibility</b> יש לשלוח את שם הפקד במשתנה name שקיים באוביקט MojTab </li>
+  <li> <b>moj-wizard</b> יש לשלוח את שם הפקד במשתנה name שקיים באוביקט WizardItem </li>
+  <li><b>moj-panel </b> במידה ומעונינים לממש הרשאןת על fieldset שקיים ברכיב יש לשלוח את הערך(שם הפקד שהוגדר במודול )
+    בinput-fieldSetname </li>
+  <li><b>moj-bo-header</b> יש לשלוח את שם הפקד במשתנה name שקיים באוביקט MojTab BOHeaderMenuItem</li>
+  <li> <b> חסימת פקדים בטופס שמשתמש MojFormDirective ב</b> יש לתת במערכת לטופס שמשתמש ב attribute-name/formgroupName
+    MojFormDirectiveבהתאם לשם הפקד בניתן ב LDAP </li>
+
+
+</p>
+<h2> הגדרת המודול ב LDAP</h2>
+<p>
+  אמורה לגדיר את המסך באופן חד ערכי הגדרת המודול ב LDAP
+  ןלכן ההגדרה מכילה 1/2 אלמנטים
+  <li>הגדרת מסך בלבד routerID -</li>
+  <li>הגדרת פקד ספציפי באצמעות השם שינתן לו במערכת
+   <br/>
+   בברירת המחדל יש הרשאות מלאות*
+</p>
+
+<h2>כיצד מגדירים הרשאות?</h2>
+<br />
+<h4>הגדרת המודולים:</h4>
+<p>
+  
+  יש להכנס במערכת LDAP לטאב מערכות בו נמצאת טבלת המודולים
+  עבור כל פקד או מסך שמעוניינים לתת עליו הרשאה מגדירים מודול
+  הגדרת המודול היא בעצם טקסט הבנוי מתוים מפרידים שיאפשרו לתשתית לזהות באיזה פקד/מסך מדובר.
+
+  המחחרוזת מכילה 2 חלקים אופציונלים
+  <li>routerID שמתחיל ב #</li>
+  <li> שם פקד שמתחיל ב ^ במידה והפקד הוא גנרי ולא למסך ספציםי יש להגדיר ב routerID="generalRouter" </li>
+  <br/>
+   בין החלקים יש להפריד ב ;
+</p>
+
+
+
+<h4>
+  קישור המודולים לרולים הרצויים בהרשאה המתאימה
+</h4>
+<p>
+  יש להכנס במערכת LDAP לטאב קישור מודולים לרולים ולהגדיר את ההרשאות בהתאמה
+<br/>
+  אלו הם סוגי ההרשאות הקיימים:
+  <li><b>Blocked </b> מסך חסום לגישת המשתמש</li>
+  <li><b>Read </b> פקד לא מאופשד</li>
+  <li><b>Hidden</b> פקד מוסתר תוך שמירה על מקומו ע"מ לא לשבש את תצוגת המסך </li>
+</p>
+
+<p>
+  בכניסת המשתמש למערכת יש לעדכן את ההרשאה שלו,
+  <br/>
+  על המערכת הצורכת לשלוך את ההרשאות מLDAP ולשלוח את הנתונים לתשתיות ע"י פניה לשרות PermissoinService לפונקציה setUesrPermission
+  <br/>
+  הפונקציה מקבלת list במבנה הנמודול permissionsModule :
+  <br/>
+  moduleString: string
+  <br />
+  type: PermissionType
+  <h4>
+    אופן השליפה ממערכת LDAP
+  </h4>
+  <p dir="ltr"  class="code"  >
+    <br />
+    public UserResponse LoginUser(string userName)
+    <br />
+    &#123;
+    <br />
+      var response = new UserResponse();
+      <br />
+      var user = _ldap.Channel.GetUserDetails(userName, null);
+      <br />
+      if (user != null)
+      <br />
+      &#123;
+      <br />
+      var ldapPermissions = _ldap.Channel.GetUserPermissions(userName, (int)LDAPApplications.Parsil);
+      <br />
+      var modules = ldapPermissions.SelectMany(p => p.Permissions);
+      <br />
+      var modulePermissions = new ModulePermissions();
+      <br />
+      foreach (var item in modules)
+      <br />
+      &#123;
+      <br />
+      modulePermissions.AddModule(item.ModuleName, (PermissionType)item.PermissionLevel);
+      <br />
+      &#125;
+      <br />
+      response.UserPermissions = modulePermissions;
+      <br />
+      &#125;
+      <br />
+      _ldap.Dispose();
+      <br />
+      return response;
+      <br />
+    &#125;
+    <br />
+  </p>
+  <h4> פניה לשרות PermissoinService</h4>
+  <p>
+     
+      <br />
+      ;this.permisssionService.setUesrPermission(response.UserPermissions)
+  </p>
+    
+  <h2>
+    דוגמא לפקדים בלתי מאופשרים
+  </h2>
+  <moj-line>
+    <moj-autocomplete name="'autocomplete'" labelTextKey="Texts.Choose" controlWidthColumns="2"
+      [items]="listItems" [fieldName]="'value'" [fieldID]="'key'" [(ngModel)]="autocompleteValue">
+    </moj-autocomplete>
+
+  </moj-line>
+  <moj-line>
+    <moj-button (click)="doSome()" name="button" [textKey]="'demo button'"></moj-button>
+  </moj-line>

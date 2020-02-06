@@ -28,7 +28,7 @@ export class MojMessagesService {
         });
       * ```
      */
-    public confirm(message: string, title: string, messageHtml?: string, width: number = 300, okButtonText?: string, cancelButtonText?: string, isApproveOnEnter?: boolean): Observable<DialogResult> {
+    public confirm(message: string, title: string, messageHtml?: string, width: number = 300, okButtonText?: string, cancelButtonText?: string, isApproveOnEnter?: boolean,closable:boolean=true): Observable<DialogResult> {
         let data: MessageData = {
             messageType: MessageType.Confirm,
             messageText: message,
@@ -40,7 +40,7 @@ export class MojMessagesService {
         if (!title) {
             title = "MojMessages." + MessageType[MessageType.Confirm];
         }
-        this.dialogService.openDialog(title ? this.translateService.instant(title) : null, MojMessageComponent, width, null, data);
+        this.dialogService.openDialog(title ? this.translateService.instant(title) : null, MojMessageComponent, width, null, data,true,null,null,null,closable);
         return Observable.create(observer => {
             this.dialogService.dialogResult.subscribe((result) => {
                 observer.next(result);
@@ -58,7 +58,7 @@ export class MojMessagesService {
   * });
   * ```
   */
-    public showMessage(message: string, title: string, messageHtml?: string, messageType: MessageType = MessageType.Error, width: number = 300, okButtonText?: string, isApproveOnEnter?: boolean, appendTo?: ViewContainerRef): Observable<DialogResult> {
+    public showMessage(message: string, title: string, messageHtml?: string, messageType: MessageType = MessageType.Error, width: number = 300, okButtonText?: string, isApproveOnEnter?: boolean, appendTo?: ViewContainerRef,closable:boolean=true): Observable<DialogResult> {
         let data: MessageData = {
             messageType: messageType,
             messageText: message,
@@ -69,7 +69,7 @@ export class MojMessagesService {
         if (!title) {
             title = "MojMessages." + MessageType[messageType];
         }
-        this.dialogService.openDialog(title ? this.translateService.instant(title) : null, MojMessageComponent, width, null, data);
+        this.dialogService.openDialog(title ? this.translateService.instant(title) : null, MojMessageComponent, width, null, data,true,null,null,null,closable);
         return Observable.create(observer => {
             this.dialogService.dialogResult.subscribe((result) => {
                 observer.next(result);

@@ -1,9 +1,59 @@
 <p>
-  entity-layout works!
+    entity-layout works!
 </p>
-<button routerLink="entityFiles">תיקים</button>
-<button routerLink="entityDocs">מסמכים</button>
-<button routerLink="entityRequests">בקשות</button>
-<!-- <router-outlet></router-outlet> -->
 
-<moj-tabs></moj-tabs>
+<moj-tabs [tabs]="items"></moj-tabs>
+
+<moj-grid-panel [gridDescription]="'רשימת מוצרים'" [dataViewType]="dataViewType.List">
+    <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="3">
+        <ng-template let-item pTemplate="listItem">
+            <moj-list-item [listItemType]="listItemType.Details">
+                <moj-list-item-header>
+                    מספר בקשה/סימן: <b>256845</b>
+                    לקוח מוביל: <b>G. DAES ASD</b>
+                    מיופה כוח: <b>ד"ר יצחק הס ושותפיו</b>
+                </moj-list-item-header>
+                <moj-list-item-body>
+                    סוגים לחידוש: <b>12</b>
+                    <br>
+                    <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                </moj-list-item-body>
+                <moj-list-item-ext>
+                    <moj-grid-menu-button></moj-grid-menu-button>
+                    <moj-grid-edit-button [item]="item"></moj-grid-edit-button>
+                    <moj-grid-delete-button [item]="item"></moj-grid-delete-button>
+                    <button><i class="fas fa-lock-alt"></i></button>
+                    <button><i class="fas fa-exclamation"></i></button>
+                    <button><i class="fas fa-pencil"></i></button>
+                    <button><i class="fas fa-share-alt"></i></button>
+                </moj-list-item-ext>
+            </moj-list-item>
+        </ng-template>
+    </p-dataView>
+</moj-grid-panel>
+
+<moj-grid-panel [gridDescription]="'רשימת מוצרים'" [dataViewType]="dataViewType.List">
+    <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="3">
+        <ng-template let-item pTemplate="listItem">
+            <moj-list-item [listItemType]="listItemType.Info" [cols]="2">
+                <moj-list-item-header>
+                    <h3>הפרטה בעברית</h3>
+                </moj-list-item-header>
+                <moj-list-item-body>
+                    סוגים לחידוש: <b>12</b>
+                    <br>
+                    <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                    <moj-list-item-ext>
+                        <moj-grid-edit-button [item]="item"></moj-grid-edit-button>
+                        <moj-grid-delete-button [item]="item"></moj-grid-delete-button>
+                        <button><i class="fas fa-lock-alt"></i></button>
+                        <button><i class="fas fa-exclamation"></i></button>
+                        <button><i class="fas fa-pencil"></i></button>
+                        <button><i class="fas fa-share-alt"></i></button>
+                    </moj-list-item-ext>
+                </moj-list-item-body>
+
+            </moj-list-item>
+        </ng-template>
+    </p-dataView>
+</moj-grid-panel>

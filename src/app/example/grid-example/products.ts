@@ -428,7 +428,7 @@ export const products = [{
     "SupplierID": 6,
     "CategoryID": 8,
     "QuantityPerUnit": "2 kg box",
-    "UnitPrice": 6.0000,
+    "UnitPrice": 60000,
     "UnitsInStock": 24,
     "UnitsOnOrder": 0,
     "ReorderLevel": 5,

@@ -1,0 +1,44 @@
+<demo-container [title]="'Date Picker'">
+  <div class="demo-section">
+    <moj-title [textKey]="'בסיסי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line>
+      <moj-datepicker name="datepickerValue" labelTextKey="Texts.DateField"
+        controlWidthColumns="2" [(ngModel)]="datepickerValue">
+      </moj-datepicker>
+    </moj-line>
+  </div>
+  <div class="demo-section">
+    <moj-title [textKey]="'תאריכון עם שעה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line>
+      <moj-datepicker [showTime]=true name="dateTimeValue" labelTextKey="Texts.DateTimeField"
+        controlWidthColumns="2" [(ngModel)]="dateTimeValue">
+      </moj-datepicker>
+    </moj-line>
+  </div>
+  <div class="demo-section">
+    <moj-title [textKey]="'עם טווח תאריכים לבחירה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line>
+      <moj-datepicker [(ngModel)]="dateRangeValue" name="dateRangeValue" labelTextKey="Texts.DateField"
+         [maxEnableDate]="maxDate" [minEnableDate]="minDate" [hideOnDateTimeSelect]="true"
+        controlWidthColumns="2" [selectionMode]="'range'">
+      </moj-datepicker>
+    </moj-line>
+  </div>
+  <div class="demo-section">
+    <moj-title [textKey]="'תאריכון עם item template'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line>ניתן לקסטם את מראה התאריכים והפונקציונאליות באמצעות ng-template<br> לדוג:ניתן להגדיר על תאריך בודד יכולות
+      drag&drop או לתת class לתאריכים תפוסים וכד'</moj-line>
+    <moj-line>
+      <moj-datepicker [numberOfMonths]="4" [showButtonBar]=false name="empty" labelTextKey="Texts.DateField"
+         controlWidthColumns="2" [(ngModel)]="dateItemTemplate"
+        [monthNavigator]="false" [yearNavigator]="false">
+        <ng-template pTemplate="date" let-date>
+          <div class="date" [ngClass]="{'yellow':true}" [draggable]=true (dragstart)="dragDate = date"
+            [attr.data-tooltip]="tooltipTxt">
+            {{date.day}}
+          </div>
+        </ng-template>
+      </moj-datepicker>
+    </moj-line>
+  </div>
+</demo-container>

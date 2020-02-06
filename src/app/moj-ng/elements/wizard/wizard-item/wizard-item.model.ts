@@ -4,9 +4,8 @@ export interface WizardItem {
     label?: string;
     component?: Type<any>;
     componentData?: any;
-    width?: string;
     readonly?: boolean;
     wizardSubItems?: WizardItem[];
-    isForMetro?: boolean;
-    indexForMetro?: number;
+    name?: string;
+    valid?: boolean;
 }

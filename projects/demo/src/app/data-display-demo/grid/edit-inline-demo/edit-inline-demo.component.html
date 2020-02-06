@@ -1,0 +1,11 @@
+<demo-container [title]="'Grid Edit Inline Demo'">
+  <moj-grid-panel [gridDescription]="'רשימת מוצרים'" [editOptions]="editOptions">
+    <moj-line>
+      <moj-grid-add-button></moj-grid-add-button>
+    </moj-line>
+    <moj-line>
+      <ag-grid-angular class="ag-theme-balham" [gridOptions]=gridOptions [rowData]="rowData" [columnDefs]="columns">
+      </ag-grid-angular>
+    </moj-line>
+  </moj-grid-panel>
+</demo-container>

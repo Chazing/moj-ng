@@ -5,6 +5,8 @@ import { MultiSelectExampleComponent } from '../multiselect/multiselect-example.
 import { FormExampleComponent } from '../form-example/form-example.component';
 import { Alignment } from '../../moj-ng/elements/general/general.enum';
 import { WizardItemModel } from '../../moj-ng/elements/wizard/service/moj-wizard.service';
+import { FileUploadExampleComponent } from '../file-upload-example/file-upload-example.component';
+import { ReactiveFormExampleComponent } from '../form-example/reactive-form-example/reactive-form-example.component';
 
 @Component({
     selector: 'moj-wizard-example',
@@ -20,23 +22,27 @@ export class WizardExampleComponent implements OnInit {
 
     ngOnInit() {
         this.items = [{
-            label: 'סוג הבקשה', component: AutocompleteExampleComponent,
+            label: 'בחירת פניה', component: FileUploadExampleComponent,
             //wizardSubItems: [{ label: 'דין קדימה', component: AutocompleteExampleComponent },
             //    { label: 'דין קדימה', component: AutocompleteExampleComponent, isForMetro: true,  },
             //{ label: 'דין קדימה', component: MultiSelectExampleComponent }]
         },
         {
-            label: 'דין קדימה', component: MultiSelectExampleComponent,
-            //wizardSubItems: [{ label: 'בקשה ראשונה', component: MultiSelectExampleComponent, isForMetro: true },
-            //    { label: 'בקשה שניה', component: AutocompleteExampleComponent, isForMetro: true}]
+          label: 'הוספת בקשה', component: MultiSelectExampleComponent,
         },
-        //, width:'150px', readonly: true
         {
-            label: 'דין קדימה', component: FormExampleComponent,
+            label: 'אישור הבקשה', component: MultiSelectExampleComponent, 
+        },
+        {
+            label: 'ביצוע התשלום', component: MultiSelectExampleComponent, 
+        },
+        {
+            label: 'טופס', component: FormExampleComponent,
             componentData: { name: 'my form', id: 1 },
         },
         {
-            label: 'דין קדימה', component: MultiSelectExampleComponent, isForMetro: true,
+            label: 'Reactive', component: ReactiveFormExampleComponent,
+            componentData: { name: 'my form', id: 1 },
         }]
     }
 

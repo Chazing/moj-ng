@@ -6,14 +6,25 @@ import { NavigationService } from "../../../../moj-ng/elements/tabs/services/nav
 import { GridExampleModule } from "../../../grid-example/grid-example.module";
 import { MojSharedModule } from "../../../../moj-ng/shared/moj.shared.module";
 import { MojSlidePreviewDocModule } from "../../../../moj-ng/elements/documents/moj-slide-preview-doc/moj-slide-preview-doc.module"
+import { Tab2SecondComponent } from "./tab2-second/tab2-second.component";
+import { Tab2Side1Component } from "./tab2-side1/tab2-side1.component";
+import { Tab2Side3Component } from "./tab2-side3/tab2-side3.component";
+import { Tab2Side2Component } from "./tab2-side2/tab2-side2.component";
+import {DataViewModule} from 'primeng/dataview';
+import { MojFilterModule } from "../../../../moj-ng/elements/filter/moj-filter.module";
 
 @NgModule({
-    imports: [CommonModule, MojSharedModule, GridExampleModule, MojSlidePreviewDocModule, RouterModule.forChild([
+    imports: [CommonModule, DataViewModule, MojSharedModule, GridExampleModule, MojSlidePreviewDocModule, MojFilterModule, RouterModule.forChild([
         { path: "", pathMatch: "full", redirectTo: "hello-tab2" },
-        { path: "hello-tab2", component: MainTab2Component, canActivate: [NavigationService]}
+        { path: "hello-tab2", component: MainTab2Component, canActivate: [NavigationService], children:[
+            { path: 'sub1', pathMatch: "full", component:Tab2Side1Component },
+            { path: 'sub2', pathMatch: "full", component:Tab2Side2Component /*,data:{routerID:"#sub2"}*/},
+            { path: 'sub3', pathMatch: "full", component:Tab2Side3Component },
+        ]},
+        { path: "hello-tab2-second", component: Tab2SecondComponent, canActivate: [NavigationService]}
     ])],
     exports: [RouterModule],
-    declarations: [MainTab2Component]
+    declarations: [MainTab2Component, Tab2SecondComponent,Tab2Side1Component,Tab2Side2Component, Tab2Side3Component]
 })
 export class MainTab2Module {
 

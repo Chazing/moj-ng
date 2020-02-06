@@ -1,0 +1,13 @@
+<moj-container [title]="'Quick Filter'" [containerType]="containerType.Secondary"></moj-container>
+<div class="container">
+    <moj-grid-panel [gridDescription]="'רשימת מוצרים'">
+        <moj-line>
+            <moj-quick-filter></moj-quick-filter>
+        </moj-line>
+        <moj-line>
+            <ag-grid-angular class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columns"
+                [gridOptions]="gridOptions">
+            </ag-grid-angular>
+        </moj-line>
+    </moj-grid-panel>
+</div>

@@ -6,7 +6,7 @@ export class EditServiceBase {
     constructor( protected http: HttpClient) { }
     
 
-    beforeSave(rowData:any,editedItem: any): boolean {// grid for submit
+    beforeSave(rowData: any, editedItem: any): boolean | Promise<boolean> {// grid for submit
         return true;
     }
 

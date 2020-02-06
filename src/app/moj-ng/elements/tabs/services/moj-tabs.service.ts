@@ -1,35 +1,38 @@
-import { Injectable } from "@angular/core";
-import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MojTab } from '../models/moj-tabs.models';
 import { NavigationService } from './navigation.service';
-import { MojMessagesService } from "../../../messages/moj-messages.service";
-import { MessageType } from "../../../../moj-ng/messages/message.enum";
+import { MojMessagesService } from '../../../messages/moj-messages.service';
+import { MessageType } from '../../../../moj-ng/messages/message.enum';
+import { Router } from '@angular/router';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class MojTabsService {
-
-
     private isMainTabOpen: boolean;
     private unsubscribe$ = new Subject();
 
     private movingSubject = new Subject<MojTab>();
     private moving = this.movingSubject.asObservable().pipe(takeUntil(this.unsubscribe$));
 
-    private closingSubject = new Subject<MojTab>();
-    private closing = this.closingSubject.asObservable();
+    tabSelected: BehaviorSubject<MojTab> = new BehaviorSubject<MojTab>(null);
 
     activeTabUrl: string;
     tabsUrlStack: string[] = [''];
     tabs: MojTab[] = [];
     limit: number = 7;
 
-    constructor(private navigationService: NavigationService, private  messageService: MojMessagesService) {
+    private _returnUrl;
+
+    constructor(
+        private navigationService: NavigationService,
+        private messageService: MojMessagesService,
+        private router: Router
+    ) {
         this.navigationService.handleNavigatedUrl.subscribe(url => this.openTabForUrl(url));
         this.navigationService.handleCanActivateUrl.subscribe(url => {
-
             let tab = this.getTab(url);
             if (tab || this.tabs.length < this.limit) {
                 let tabWithUrl = tab ? tab : new MojTab(url, null);
@@ -37,10 +40,14 @@ export class MojTabsService {
                     tabWithUrl.url = url;
                 }
                 this.onTabClick(tabWithUrl);
-            }
-            else {
+            } else {          
                 //alert("The tabs is limited to :" + this.limit);
-                this.messageService.showMessage("MojTexts.errorTabsLimitMessage", "MojTexts.alertMessage", null, MessageType.Alert);
+                this.messageService.showMessage(
+                    'MojTexts.errorTabsLimitMessage',
+                    'MojTexts.alertMessage',
+                    null,
+                    MessageType.Alert
+                );
             }
         });
     }
@@ -52,8 +59,7 @@ export class MojTabsService {
             //Check if need to throw moving event
             if (this.getCurrentTab().hasMoving()) {
                 this.movingSubject.next(tab);
-            }
-            else {
+            } else {
                 // Move to tab
                 this.move(tab);
             }
@@ -62,41 +68,43 @@ export class MojTabsService {
 
     onCloseTabClick(tab: MojTab) {
         if (tab.hasClosing()) {
-            this.closingSubject.next(tab);
-        }
-        else {
+            tab.closingSubject.next(tab);
+        } else {
             this.close(tab);
         }
     }
 
-    //Internal Functions-----------------  
+    //Internal Functions-----------------
 
     private goBackInStack(): string {
         let newUrl = '';
-        if (this.tabsUrlStack.length > 1) {
-            this.tabsUrlStack.pop();// Remove current closed url
-            newUrl = this.tabsUrlStack.pop();
+        if (this.tabsUrlStack.length > 0) {
+            this.tabsUrlStack.pop(); // Remove current closed url
+            if (this.tabsUrlStack.length > 1)
+                newUrl = this.tabsUrlStack.pop();
         }
         return newUrl;
     }
-    private clearUrlInStack(url:string){
+    private clearUrlInStack(url: string) {
         let index = this.tabsUrlStack.findIndex(t => t == url);
         if (index > -1) {
             this.tabsUrlStack.splice(index, 1);
         }
-    }    
+    }
 
     private pushUrlToStack(url: string): any {
-       this.clearUrlInStack(url);
+        this.clearUrlInStack(url);
         this.tabsUrlStack.push(url);
     }
 
-    public showSideMenu() { //For html view
+    public showSideMenu() {
+        //For html view
         let tab = this.getCurrentTab();
         return tab != null && tab.sideMenuItems != null && tab.sideMenuItems.length > 0;
     }
 
-    public getSideItemUrl(url: string) {//For html view
+    public getSideItemUrl(url: string) {
+        //For html view
         return url.startsWith('/') ? url : this.activeTabUrl + '/' + url;
     }
 
@@ -105,7 +113,7 @@ export class MojTabsService {
         if (!this.isMainTabOpen) {
             let appMainTab = this.getAppMainTab();
 
-            if (appMainTab != null && appMainTab.url != tabToGoUrl && (this.getTab(appMainTab.url) == undefined)) {
+            if (appMainTab != null && appMainTab.url != tabToGoUrl && this.getTab(appMainTab.url) == undefined) {
                 this.openTab(appMainTab.url, appMainTab);
                 this.isMainTabOpen = true;
             }
@@ -121,6 +129,7 @@ export class MojTabsService {
         this.unsubscribeAll();
         this.activeTabUrl = tab.url;
         this.pushUrlToStack(this.activeTabUrl);
+        this.tabSelected.next(tab);
     }
 
     private unsubscribeAll(): any {
@@ -128,17 +137,17 @@ export class MojTabsService {
     }
 
     private setActiveSideItemByUrl(url: string, tab: MojTab): string {
-        if (url == tab.url && tab.sideMenuItemSelected != null) {// If already has sideItem selected and url isn't the sideItem url
+        if (url == tab.url && tab.sideMenuItemSelected != null) {
+            // If already has sideItem selected and url isn't the sideItem url
             let sideUrl = `${tab.url}/${tab.sideMenuItemSelected.url}`;
-            return this.smartCompare(url, sideUrl) ? sideUrl : null;//handle url with / at end and without
+            return this.smartCompare(url, sideUrl) ? sideUrl : null; //handle url with / at end and without
         }
         if (tab.sideMenuItems != null && tab.sideMenuItems.length > 0) {
             let sideItem = tab.sideMenuItems.find(s => `${tab.url}/${s.url}` == url);
 
             if (sideItem) {
                 tab.sideMenuItemSelected = sideItem;
-            }
-            else {
+            } else {
                 tab.sideMenuItemSelected = tab.sideMenuItems[0];
             }
         }
@@ -154,7 +163,6 @@ export class MojTabsService {
     }
 
     //External Functions-----------------
-
     public move(tab: MojTab) {
         let url = tab.url;
 
@@ -167,28 +175,28 @@ export class MojTabsService {
 
     public close(tab: MojTab) {
         let index = this.tabs.findIndex(t => t.url == tab.url);
-
-        this.tabs.splice(index, 1);
-        tab.unsubscribe();
-        if (this.activeTabUrl == tab.url) {
-            let newUrl = this.goBackInStack();
-            if (tab.urlRegex != null && tab.urlRegex !== "" && newUrl.match(tab.urlRegex) != null) {
-                newUrl = this.goBackInStack();
+        if (index > -1) {
+            this.tabs.splice(index, 1);
+            tab.unsubscribe();
+            if (this.activeTabUrl == tab.url) {
+                let newUrl = this.goBackInStack();
+                if (tab.urlRegex != null && tab.urlRegex !== '' && newUrl.match(tab.urlRegex) != null) {
+                    newUrl = this.goBackInStack();
+                }
+                this.navigate(newUrl);
+            } else {
+                this.clearUrlInStack(tab.url);
             }
-            this.navigate(newUrl);
-        }else{
-            this.clearUrlInStack(tab.url);
         }
     }
 
     public openTabForUrl(url: string) {
         let tabToGo = this.getTab(url, true);
-
         if (tabToGo != null) {
             let newSideItemUrl = this.setActiveSideItemByUrl(url, tabToGo);
 
             if (tabToGo.url != this.activeTabUrl) {
-                this.openAppMainTab(tabToGo.url);// Open main tab if needed
+                this.openAppMainTab(tabToGo.url); // Open main tab if needed
                 this.openTab(url, tabToGo);
                 if (tabToGo.appMainTab) {
                     this.subscribeToMoving(tabToGo, tabToGo.appMainTabMovingSubscriber);
@@ -197,13 +205,12 @@ export class MojTabsService {
             if (newSideItemUrl) {
                 this.navigate(newSideItemUrl);
             }
-        }
-        else {
-            this.activeTabUrl = "";
+        } else {
+            this.activeTabUrl = '';
         }
     }
 
-    //Useful Functions-----------------   
+    //Useful Functions-----------------
 
     public getAppMainTab(): MojTab {
         return this.tabs.find(t => t.appMainTab);
@@ -214,12 +221,16 @@ export class MojTabsService {
     }
 
     public getTab(url: string, smartSearch: boolean = false): MojTab {
-        let tab = this.tabs.find(t => t.url === url || t.urlRegex != null && url.match(t.urlRegex) != null);
+        let tab = this.tabs.find(t => t.url === url || (t.urlRegex != null && url.match(t.urlRegex) != null));
 
         if (tab == null && smartSearch) {
-            let filteredTabs = this.tabs.filter(t => t.sideMenuItems != null && url.toLowerCase().startsWith(t.url.toLowerCase()));
+            let filteredTabs = this.tabs.filter(
+                t => t.sideMenuItems != null && url.toLowerCase().startsWith(t.url.toLowerCase())
+            );
 
-            tab = filteredTabs.find(tabItem => tabItem.sideMenuItems.findIndex(sideItem => `${tabItem.url}/${sideItem.url}` === url) != -1);
+            tab = filteredTabs.find(
+                tabItem => tabItem.sideMenuItems.findIndex(sideItem => `${tabItem.url}/${sideItem.url}` === url) != -1
+            );
         }
         return tab;
     }
@@ -233,20 +244,27 @@ export class MojTabsService {
         }
     }
 
-    public addOrGetTab(tab: MojTab, movingSubscriber?: (value: MojTab) => void, closingSubscriber?: (value: MojTab) => void): MojTab {
+    public addOrGetTab(
+        tab: MojTab,
+        movingSubscriber?: (value: MojTab) => void,
+        closingSubscriber?: (value: MojTab) => void
+    ): MojTab {
         let internalTab = this.getTab(tab.url);
 
         if (internalTab == null) {
-            if (tab.url == null || (tab.url != "" && !tab.url.startsWith('/')) || ((tab.urlRegex != null && tab.urlRegex != "" && !tab.urlRegex.startsWith('/')))) {
+            if (
+                tab.url == null ||
+                (tab.url != '' && !tab.url.startsWith('/')) ||
+                (tab.urlRegex != null && tab.urlRegex != '' && !tab.urlRegex.startsWith('/'))
+            ) {
                 throw "Tab urls must not be null and should start with slash - '/'. \nFor Example, url = '/home'\n";
             }
             if (closingSubscriber) {
-                tab.saveClosingSubscription(this.closing.subscribe(closingSubscriber));
+                tab.saveClosingSubscription(closingSubscriber);
             }
-            this.tabs.push(tab);
+            if (!this._returnUrl) this.tabs.push(tab);
             internalTab = tab;
-        }
-        else {
+        } else {
             internalTab.url = tab.url;
             internalTab.urlRegex = tab.urlRegex;
             internalTab.title$ = tab.title$;

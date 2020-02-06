@@ -1,0 +1,21 @@
+<moj-container [title]="'Loading'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+
+<div class="container">
+    <moj-panel [titleKey]="'פרטי תהליך'" [isOpen]=true>
+        <moj-line>
+            <moj-label-for [(ngModel)]=model.description></moj-label-for>
+        </moj-line>
+        <moj-line>
+            <moj-label-for [(ngModel)]=model.date></moj-label-for>
+        </moj-line>
+        <moj-line>
+            <moj-label-for [(ngModel)]=model.type></moj-label-for>
+        </moj-line>
+    </moj-panel>
+    <moj-line>
+        <moj-button [buttonStyle]="buttonStyle.Primary" [textKey]="'הפעל תהליך'" (click)="start()">
+        </moj-button>
+        <moj-button [buttonStyle]="buttonStyle.Primary" [textKey]="'סיים תהליך'" (click)="end()">
+        </moj-button>
+    </moj-line>
+</div>

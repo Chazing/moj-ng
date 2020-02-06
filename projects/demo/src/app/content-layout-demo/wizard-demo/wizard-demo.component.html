@@ -1,0 +1,15 @@
+<moj-wizard [items]="items" (onSubmit)="submit($event)" [checkValidationOnPrevious]=false
+    [customBackButtonText]="'חזרה להגשת בקשה'" (customBackButtonClicked)="returnClick($event)" [beforeMove]="beforeMove"
+    [title]="'הגשת בקשה חדשה לתיקון תוקף סימן'">
+    <moj-wizard-buttons>
+        <div style="float: left;">
+            <moj-button [textKey]="'אמשיך בפעם אחרת'" [iconClass]="'fal fa-save'" [buttonStyle]="buttonStyle.Secondary">
+            </moj-button>
+        </div>
+    </moj-wizard-buttons>
+    <moj-wizard-aside>
+        <h3>הנחיות</h3>
+        <moj-panel></moj-panel>
+        
+    </moj-wizard-aside>
+</moj-wizard>

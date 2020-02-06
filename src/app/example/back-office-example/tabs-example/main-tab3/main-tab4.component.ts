@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MojTab, MojTabsService } from '../../../../moj-ng';
 import { TranslateService } from '@ngx-translate/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-main-tab4',
@@ -19,8 +20,8 @@ export class MainTab4Component implements OnInit {
   }
 
   initMainTab() {
-    this.tab = new MojTab("/bo-example/root/tab4", this.translate.get("Menu.mainTab"));
-    this.tab = this.mojTabsService.addOrGetTab(this.tab);
+    this.tab = new MojTab("/bo-example/root/tab4", of('טאב 4'));
+    this.tab = this.mojTabsService.addOrGetTab(this.tab, null, ()=> { console.log("tab4 closed")});
   }
 
   ngOnInit() {

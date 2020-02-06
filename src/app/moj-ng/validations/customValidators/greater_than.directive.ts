@@ -1,5 +1,6 @@
-﻿import { Directive, Input, DoCheck } from '@angular/core';
-import { AbstractControl, Validator, NG_VALIDATORS, NgModel } from "@angular/forms"
+﻿import { MojValidators } from './validators';
+import { Directive, Input, DoCheck, SimpleChanges } from '@angular/core';
+import { AbstractControl, Validator, NG_VALIDATORS, NgModel, ValidatorFn } from "@angular/forms"
 import { MojUtilsService } from '../../shared/utils';
 
 @Directive({
@@ -11,6 +12,7 @@ import { MojUtilsService } from '../../shared/utils';
 export class GreaterThanValidator implements Validator, DoCheck {
     @Input() greaterThan: NgModel;
     private greaterThanValue: any;
+    private _validator: ValidatorFn;
     private _onChange: () => void;
 
     ngDoCheck() {
@@ -18,52 +20,27 @@ export class GreaterThanValidator implements Validator, DoCheck {
             this.greaterThanValue = this.greaterThan.value;
             if (this._onChange) { this._onChange() }
         }
-
     }
 
-    constructor(private mojUtils:MojUtilsService){
+    ngOnChanges(changes: SimpleChanges): void {
+        if ('greaterThan' in changes) {
+            this._createValidator();
+            if (this._onChange) this._onChange();
+        }
+    }
 
+    constructor() {
     }
 
     validate(control: AbstractControl): { [validator: string]: any } {
-        if (control.value != undefined && (control.value != undefined && control.value.getDate != undefined)) {
-            let fromDate: Date = new Date(this.greaterThan.value);
-            let toDate: Date = new Date(control.value);
-            if (fromDate > toDate)
-                return { greaterThan: this.mojUtils.getElementName(this.greaterThan.valueAccessor) };
-            else
-                return null;
-        }
-        else if ((control.value != undefined && control.value != undefined) && this.isOnlyNumber(this.greaterThan.value)) {
-            let fromNum: number;
-            let toNum: number;
-
-            fromNum = parseInt(this.greaterThan.value);
-            toNum = parseInt(control.value);
-
-            if (fromNum > toNum)
-                return { greaterThan: this.mojUtils.getElementName(this.greaterThan.valueAccessor) };
-            else
-                return null;
-        }
-        else {
-            if (!control.value || !this.greaterThan.value) {
-                return null;
-            }
-            if (control.value >= this.greaterThan.value) {
-                return null;
-            }
-        }
-        return { greaterThan: this.mojUtils.getElementName(this.greaterThan.valueAccessor) };
+        return this.greaterThan == null ? null : this._validator(control)
     }
 
     registerOnValidatorChange(fn: () => void): void {
         this._onChange = fn;
     }
 
-
-    isOnlyNumber(str) {
-        var reg = new RegExp(/^\d+$/);
-        return reg.test(str);
+    private _createValidator(): void {
+        this._validator = MojValidators.greaterThen(this.greaterThan);
     }
 }

@@ -1,15 +1,13 @@
-<div *ngIf="editedItem">
+<!-- <div *ngIf="editedItem">
     <form #form="ngForm">
+        
         <moj-line>
-            <!-- new file component: {{files | json}} -->
-        </moj-line>
-        <moj-line>
-            <moj-datepicker [(ngModel)]="editedItem.fileDate" name="fileDate" labelTextKey="'תאריך'" labelWidthColumns="3"
+            <moj-datepicker [(ngModel)]="editedItem.fileDate" name="fileDate" labelTextKey="'תאריך'"
                          controlWidthColumns="7">
             </moj-datepicker>
         </moj-line>
         <moj-line>
-            <moj-textbox [(ngModel)]="editedItem.fileType" name="fileType" [required]="true" labelTextKey="'סוג קובץ'" labelWidthColumns="3"
+            <moj-textbox [(ngModel)]="editedItem.fileType" name="fileType" [required]="true" labelTextKey="'סוג קובץ'"
                          controlWidthColumns="7">
             </moj-textbox>
         </moj-line>
@@ -17,7 +15,7 @@
             <moj-file-upload [id]="'fldold4'" [enabledFileTypes]="'pdf|png'" [(ngModel)]="files" name="ffff" [sendFilesOnUpload]="false" [multiple]="false"></moj-file-upload>
         </moj-line>
         <moj-line>
-            <moj-textbox [(ngModel)]="editedItem.ticNum" name="ticNum" [required]="true" labelTextKey="'מספר תיק'" labelWidthColumns="3"
+            <moj-textbox [(ngModel)]="editedItem.ticNum" name="ticNum" [required]="true" labelTextKey="'מספר תיק'"
                 controlWidthColumns="7">
             </moj-textbox>
         </moj-line>
@@ -25,6 +23,51 @@
         <moj-buttons-line>
             <moj-grid-cancel-button></moj-grid-cancel-button>
             <moj-grid-save-button [disabled]="false" (saveClick)="saveFile()"></moj-grid-save-button>
+        </moj-buttons-line>
+    </form>
+</div> -->
+
+<div *ngIf="editedItem">
+    <form #form="ngForm">
+
+        <h3>בחירת קבצים</h3>
+        <moj-line>
+            <moj-input-file name="myFile" [(ngModel)]="files" [enabledFileTypes]="'pdf'" [labelTextKey]="'טען קבצים'"
+                controlWidthColumns="4"></moj-input-file>
+        </moj-line>
+
+        <h3>כללי</h3>
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.CourtCaseNumber" name="CourtCaseNumber"
+                [labelTextKey]="'מספר תיק בימש'"  controlWidthColumns="6"></moj-textbox>
+            <moj-textbox [(ngModel)]="editedItem.Reference" name="Reference" [labelTextKey]="'סימוכין'"
+                 controlWidthColumns="6" [disabled]="true">
+            </moj-textbox>
+        </moj-line>
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.Name" name="CourtCaseNumber" [labelTextKey]="'כותרת/הנדון'"
+                 controlWidthColumns="12" required></moj-textbox>
+        </moj-line>
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.Name" name="CourtCaseNumber" [labelTextKey]="'לכבוד'"
+                 controlWidthColumns="6" required></moj-textbox>
+            <moj-textbox [(ngModel)]="editedItem.Name" name="CourtCaseNumber" [labelTextKey]="'חותם'"
+                 controlWidthColumns="6" required></moj-textbox>
+        </moj-line>
+
+        <h3>מאפיינים</h3>
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.Name" name="location" [labelTextKey]="'מיקום'"
+                 controlWidthColumns="4"  required></moj-textbox>
+            <moj-textbox [(ngModel)]="editedItem.Name" name="isDisclosureable" [labelTextKey]="'ניתן לגילוי'"
+                 controlWidthColumns="4"  required></moj-textbox>
+            <moj-textbox [(ngModel)]="editedItem.Name" name="nonDisclosureReason" [labelTextKey]="'סיבה לאי גילוי'"
+                 controlWidthColumns="4" required></moj-textbox>
+        </moj-line>
+
+        <moj-buttons-line>
+            <moj-grid-cancel-button></moj-grid-cancel-button>
+            <moj-grid-save-button [form]="form"></moj-grid-save-button>
         </moj-buttons-line>
     </form>
 </div>

@@ -1,11 +1,13 @@
-:host{
+
+:host:has(.rtl )
+    {
     display: flex;    
     overflow: hidden;
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 400;
-}
+   }
 
 .menu-panel-container{
     transition:all 450ms ease-in-out;

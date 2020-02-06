@@ -1,0 +1,30 @@
+<demo-container [title]="'On Off Switch'">
+    משמש למקומות שברעיון זקוקים לצ'ק בוקס אך ויזואלית רוצים להראות מצב דיפולטיבי ויציאה מהמצב הזה ע"י בחירה במצב אחר.
+    <div class="demo-section">
+        <moj-title [textKey]="'עבור מערכות BackOffice'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+            <moj-on-off-switch [(ngModel)]="checkBoxValue" [textKeyOff]="'Texts.exampleTextOff'" name="checkBoxValue"
+                [textKeyOn]="'Texts.exampleTextOn'" [controlWidthColumns]="4"
+                [switchType]="onOffSwitchType.backoffice">
+            </moj-on-off-switch>
+        </moj-line>
+        <br />
+    </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'ערכים טקסטואלים'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+            <moj-on-off-switch [(ngModel)]="checkBoxValue2" name="checkBoxValue2" [textKeyOff]="'Texts.exampleTextOff'"
+                [textKeyOn]="'Texts.exampleTextOn'" [controlWidthColumns]="4"
+                [switchType]="onOffSwitchType.text">
+            </moj-on-off-switch>
+        </moj-line>
+    </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'כיבוי והדלקה'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+            <moj-on-off-switch [(ngModel)]="checkBoxValue1" name="checkBoxValue1" [controlWidthColumns]="3"
+                [switchType]="onOffSwitchType.icon">
+            </moj-on-off-switch>
+        </moj-line>
+    </div>
+</demo-container>

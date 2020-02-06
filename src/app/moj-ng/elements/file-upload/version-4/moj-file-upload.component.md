@@ -51,7 +51,7 @@ registerHandlerUrl זהו כתובת ה api של האתר בו יושבים ה d
 
 לדוגמה רישום לאירוע:
 ```
-<moj-file-upload name="fldold1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [isLabelAboveControl]="true" [controlWidthColumns]="4"
+<moj-file-upload name="fldold1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [controlWidthColumns]="4"
 			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)"></moj-file-upload>
 ```
 לדוגמה הפונקציה שמציבה ערך נוסף כלשהו בקובץ שהתקבל:

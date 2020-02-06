@@ -1,4 +1,4 @@
-﻿import { Component, Input, ContentChild, ChangeDetectionStrategy, ViewEncapsulation  } from '@angular/core';
+﻿import { Component, Input, ContentChild, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { MojTopMenuService } from './moj-website-topmenu.service';
 import { MojTopMenuItem } from './moj-website-topmenu-item.model';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ export class MojWebsiteTopmenuItemComponent {
     }
 
     linkClick() {
-        this.mojTopMenuService.navigateItem({internalLink: this.internalLink, externalLink: this.externalLink});
+        this.mojTopMenuService.navigateItem({ internalLink: this.internalLink, externalLink: this.externalLink });
     }
 }
 
@@ -48,9 +48,9 @@ export class MojWebsiteTopmenuItemComponent {
 export class MojWebsiteTopmenuSubItemComponent extends MojWebsiteTopmenuItemComponent {
     @Input()
     isSecure: boolean = false;
-    
-    ngOnInit(){
-        this.topmenuService.addSubItem({internalLink: this.internalLink, externalLink: this.externalLink, textKey: this.textKey});
+
+    ngOnInit() {
+        this.topmenuService.addSubItem({ internalLink: this.internalLink, externalLink: this.externalLink, textKey: this.textKey });
     }
 
     constructor(protected topmenuService: MojTopMenuService) {
@@ -88,7 +88,7 @@ export class MojWebsiteTopmenuSubItemComponent extends MojWebsiteTopmenuItemComp
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MojWebsiteTopmenuMainItemComponent extends MojWebsiteTopmenuItemComponent {
-    @ContentChild(MojWebsiteTopmenuSubItemComponent) 
+    @ContentChild(MojWebsiteTopmenuSubItemComponent, { static: true })
     private _submenu: MojWebsiteTopmenuSubItemComponent;
 
     isSubMenu: boolean = false;
@@ -97,16 +97,14 @@ export class MojWebsiteTopmenuMainItemComponent extends MojWebsiteTopmenuItemCom
 
     activeId: Observable<number>;
 
-    ngOnInit()
-    {
-        if(this._submenu)
-        {
+    ngOnInit() {
+        if (this._submenu) {
             this.isSubMenu = true;
         }
-        this.id = this.mojTopMenuService.addMainItem({internalLink: this.internalLink, externalLink: this.externalLink, textKey: this.textKey});
+        this.id = this.mojTopMenuService.addMainItem({ internalLink: this.internalLink, externalLink: this.externalLink, textKey: this.textKey });
         this.activeId = this.mojTopMenuService.mainActiveId$;
     }
-  
+
     constructor(protected mojTopMenuService: MojTopMenuService) {
         super(mojTopMenuService);
     }
@@ -131,7 +129,7 @@ export class MojWebsiteTopmenuMainItemComponent extends MojWebsiteTopmenuItemCom
 @Component({
     selector: 'moj-website-topmenu',
     templateUrl: "moj-website-topmenu.component.html",
-    styleUrls: ["./moj-website-topmenu.component.css"],
+    styleUrls: ["./moj-website-topmenu.component.scss"],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -145,7 +143,7 @@ export class MojWebsiteTopmenuComponent {
 
     constructor(protected mojTopMenuService: MojTopMenuService) {
         this.breadcrumbsArr = mojTopMenuService.breadcrumbs$;
-        mojTopMenuService.menuInAction$.subscribe(data=>{
+        mojTopMenuService.menuInAction$.subscribe(data => {
             this.menuInAction = data;
             this.active = data;
         });
@@ -155,26 +153,26 @@ export class MojWebsiteTopmenuComponent {
         this.mojTopMenuService.navigateItem(item);
     }
 
-    menuClick(fromButton: boolean){
-        if(fromButton) {
+    menuClick(fromButton: boolean) {
+        if (fromButton) {
             this.active2 = false;
             this.active = !this.active;
             this.mojTopMenuService.menuStateChange(this.active);
         }
         else {
-            this.active2 = !this.active2;  
+            this.active2 = !this.active2;
             this.active = false;
             this.mojTopMenuService.menuStateChange(false);
-        }   
+        }
     }
 
     ngAfterViewInit() {
         setTimeout(() => {
             var locationPath = this.mojTopMenuService.lastLocation;
-            if(locationPath != '') {
+            if (locationPath != '') {
                 this.mojTopMenuService.handleActiveItem(locationPath);
             }
         });
     }
-      
+
 }

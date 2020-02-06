@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Size } from '../../general/general.enum';
 import { Link } from '../link';
@@ -24,7 +24,8 @@ enum OnlineType {
 @Component({
     selector: 'moj-website-header',
     templateUrl: 'moj-website-header.component.html',
-    styleUrls: ['./moj-website-header.component.css']
+    styleUrls: ['./moj-website-header.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MojWebsiteHeaderComponent {
     @Input() mainSiteName: string;
@@ -36,6 +37,7 @@ export class MojWebsiteHeaderComponent {
     @Input() isShowMember: boolean = false;
     @Input() userName: string = "";
     @Input() logoutUrl: string = "/logout";
+    @Input() logoutUrlNoRoute: string = "";
     @Input() logoutConfirmMessage: string = "MojTexts.logoutConfirmMessage";
     @Input() addLineAfterHeader: boolean = false;
 
@@ -78,8 +80,12 @@ export class MojWebsiteHeaderComponent {
                 if (result.dialogResultType == DialogResultEnum.OK) {
                     let link: Link = { textKey: '', linkId: 'exit', linkOpenType: 2, href: '' };
                     this.linkClick.emit(link);
-                    this.router.navigate([this.logoutUrl]);
-                    //   window.location.href = this.logoutUrl;
+                    if(this.logoutUrlNoRoute){
+                        window.location.href = this.logoutUrlNoRoute;
+                    }
+                    else{
+                        this.router.navigate([this.logoutUrl]);
+                    }  
                 }
             });
     }

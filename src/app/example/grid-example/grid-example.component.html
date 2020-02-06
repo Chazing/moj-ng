@@ -1,23 +1,18 @@
 ﻿<form mojForm #form="ngForm">
     <div #areaToReplace>
         <moj-example title="Grid" primengLink="https://www.ag-grid.com/angular-getting-started/">
-            
-            <br />
-            <br /> ag grid
             <moj-grid-xls-export (exportClick)="onBtExport()"></moj-grid-xls-export>
             <moj-grid-print-button [grid]="grid"></moj-grid-print-button>
-            <moj-line>
-                <moj-grid-panel [editOptions]="editOptions" [gridDescription]="'רשימת מוצרים'">
-                    <moj-line>
-                        <moj-grid-add-button></moj-grid-add-button>
-                    </moj-line>
-                    <moj-line>
-                        <ag-grid-angular #grid class="ag-theme-balham" [gridOptions]=gridOptions [rowData]="rowData1" [enableFilter]="true"
-                            [columnDefs]="columns1" (gridReady)="onGridReady1($event)">
-                        </ag-grid-angular>
-                    </moj-line>
-                </moj-grid-panel>
-            </moj-line>
+            <moj-grid-panel [editOptions]="editOptions" [gridDescription]="'רשימת מוצרים'">
+                <moj-line>
+                    <moj-grid-add-button></moj-grid-add-button>
+                </moj-line>
+                <moj-line>
+                    <ag-grid-angular #grid class="ag-theme-balham" [gridOptions]=gridOptions [rowData]="rowData1"
+                        [enableFilter]="true" [columnDefs]="columns1" (gridReady)="onGridReady1($event)">
+                    </ag-grid-angular>
+                </moj-line>
+            </moj-grid-panel>
             <moj-line>
                 <moj-button (click)="printDataToConsole()" textKey="הדפס נתונים לconsole"></moj-button>
             </moj-line>

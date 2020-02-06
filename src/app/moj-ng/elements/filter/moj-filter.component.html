@@ -1,0 +1,8 @@
+<div class="moj-filter-list"
+    [ngStyle]="style" mwlResizable
+    [enableGhostResize]="false" [resizeEdges]="{bottom: false, left: true }" [validateResize]="validate"
+    (resizing)="onResizing($event)">
+    <form [formGroup]="form">
+        <moj-tree-filter [nodes]="config.categories" [form]="form"></moj-tree-filter>
+    </form>
+</div>

@@ -1,17 +1,20 @@
 import { Injectable, NgZone } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { MojConfigService } from '../../../shared/moj-config.service';
 import { take } from 'rxjs/operators';
 declare var grecaptcha;
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class MojRecaptchaService {
   private _siteKey: string;
   private _recaptchaIdentifierNumber: number = 0;
   private _recaptchaCallback: Subject<string> = new Subject<string>();
   public recaptchaReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
 
   get siteKey(): string {
     return this._siteKey;

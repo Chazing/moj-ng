@@ -1,12 +1,18 @@
-<!-- <moj-recaptcha [(ngModel)]="model.recaptchaString"></moj-recaptcha> -->
-<form id='demo-form' action="?" method="POST">
-  <moj-buttons-line>
-    <!-- <moj-button [buttonStyle]="buttonStyle.SmallLight" MojRecaptcha [textKey]="'MojTexts.cancel'" (captchaOk)="onSubmit($event)"
-      [(captchaValue)]="model.recaptchaString" name="recaptchaString"></moj-button>
+<form #frm="ngForm">
 
+    <moj-recaptcha name="str1" [(ngModel)]="model.recaptchaString" required></moj-recaptcha>
+    <moj-recaptcha name="str2" [(ngModel)]="model.recaptchaString"></moj-recaptcha>
+{{model | json}}
+    <moj-buttons-line>
+        <!--
     <moj-button [buttonStyle]="buttonStyle.SmallDark" MojRecaptcha [textKey]="'MojTexts.cancel'" [eventToExecute]="['dblclick']"
       (captchaOk)="onSubmit($event)" [(captchaValue)]="model.recaptchaString1" name="recaptchaString"></moj-button> -->
-      <moj-button [buttonStyle]="buttonStyle.SmallDark" [textKey]="'MojTexts.cancel'"
-      (click)="onClick()"  name="recaptchaString"></moj-button>
-  </moj-buttons-line>
+        <!-- <moj-button [buttonStyle]="buttonStyle.Primary" [textKey]="'קבלת מחרוזת דרך קוד'"
+      (click)="onClick()"  name="recaptchaString"></moj-button> -->
+
+        <!-- <moj-button MojRecaptcha [textKey]="'קבלת מחרוזת דרך binding'" (captchaOk)="onSubmit($event)" 
+        [(captchaValue)]="model.recaptchaString" name="recaptchaString"></moj-button> -->
+        <moj-submit-button [form]="frm" [textKey]="'קבלת מחרוזת דרך סימון'" type="submit" (onSubmit)="onSubmit()"></moj-submit-button>
+        <moj-button buttonStyle="{{ buttonStyle.Attention }}" (click)="openContentDialog()" [textKey]="'פתח חלון עם רקפצה'"></moj-button>
+    </moj-buttons-line>
 </form>

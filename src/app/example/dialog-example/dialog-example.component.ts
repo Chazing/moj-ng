@@ -12,11 +12,13 @@ export class DialogExampleComponent implements OnInit {
   lastName: string;
   password: string;
   checkBoxValue: boolean;
+  recaptchaString: string;
   date;
   @Input() data: any;
   @Output() closeDialog: EventEmitter<DialogResult> = new EventEmitter<DialogResult>();
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onCancel(event) {
     this.closeDialog.emit({ dialogResultType: DialogResultEnum.Cancel, data: { hello: 'Chaya' } });

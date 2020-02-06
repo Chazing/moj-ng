@@ -1,0 +1,7 @@
+<demo-container [title]="'סוגי עמודות'">
+  <moj-grid-panel [gridDescription]="'גריד דוגמה לעמודות'" [dataViewType]="dataViewType.Grid">
+    <ag-grid-angular class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columns" [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+  </moj-grid-panel>
+</demo-container>

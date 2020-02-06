@@ -1,9 +1,7 @@
 ﻿// import "reflect-metadata";
 
 export function InputRequired(): any {
-    debugger;
     return (target: any, key: string) => {
-        debugger;
         //Reflect.defineMetadata("inputRequired", true, target, key);
     }
 }

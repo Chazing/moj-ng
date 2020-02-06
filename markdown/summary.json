@@ -46,6 +46,10 @@
   {
     "title": "פתיחת Dialog",
     "file": "dialog.md"
+  },  
+  {
+    "title": "dynamic form",
+    "file": "dynamic-form.md"
   },
   {
     "title": "נושאים כלליים",
@@ -76,6 +80,19 @@
         "file": "glassbox.md"
       },
       {
+        "title": "כתיבה ללוג ולכידת שגיאות",
+        "file": "logging.md"
+     
+      },
+      {
+        "title": "CSRF",
+        "file": "CSRF.md"
+      },
+      {
+        "title": "state management",
+        "file": "store.md"
+      },
+      {
         "title": "עדכוני גרסאות",
         "file": "empty.md",
         "children": [
@@ -86,6 +103,10 @@
           {
             "title": "מעבר לגרסת תשתיות 3",
             "file": "update-moj-ng3.md"
+          },
+          {
+            "title": "מעבר לאנגולר 8",
+            "file": "update-angular8.md"
           }
         ]
       },

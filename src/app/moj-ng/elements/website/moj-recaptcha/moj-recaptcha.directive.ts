@@ -32,8 +32,9 @@ export class MojRecaptchaDirective implements OnInit {
   }
 
   private renderRecaptcha(el: ElementRef) {
-    this.recaptchaService.recaptchaReady.subscribe(() => {
-      this.recaptchaId = this.recaptchaService.appendInvisibleRecaptchaToElement(this.recaptchaId,el.nativeElement,this.recaptchaCallbackFuncName);
+    this.recaptchaService.recaptchaReady.subscribe((res) => {
+      if (res)
+        this.recaptchaId = this.recaptchaService.appendInvisibleRecaptchaToElement(this.recaptchaId, el.nativeElement, this.recaptchaCallbackFuncName);
     });
   }
 

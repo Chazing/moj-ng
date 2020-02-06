@@ -35,7 +35,6 @@ export class GridServerSideExample {
             this.gridService.getDeleteColumn()
         ];
         this.editOptions.editComponentType = EditPopupExampleComponent;
-        this.editOptions.rowModelType = "serverSide"
     }
 
     onGridReady(params) {

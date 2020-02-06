@@ -1,0 +1,17 @@
+@import "../../../../../../../src/css/moj-config-css.scss";
+
+.demo-title-item {
+    display: inline-block; margin-left: 3em;
+}
+
+.ul-demo-item {
+    li {
+        background-color: $moj-primary-color;
+        border-radius: 50%;
+        color: #fff;
+        display: inline-block;
+        padding: 0.4em 0.5em;
+        margin: 0.5em 0.2em;
+        text-align: center;
+    }
+}

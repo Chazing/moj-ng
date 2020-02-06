@@ -1,0 +1,20 @@
+<moj-container [title]="'טאבים להצגת תוכן'" [containerType]="Enums.ContainerType.Secondary">
+</moj-container>
+
+
+<div class="container">
+    <div class="demo-section">
+        <moj-title [textKey]="'טאבים בסיסיים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-tabs  [tabs]="items"></moj-tabs>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'בחירת טאב דיפולטיבי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-tabs  [tabs]="items2"></moj-tabs>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'טאבים עם אפשרות סגירה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-tabs  [tabs]="items3"></moj-tabs>
+    </div>
+</div>

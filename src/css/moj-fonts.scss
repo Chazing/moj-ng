@@ -1,0 +1,67 @@
+.txt-left {
+    text-align: left;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.font-14 {
+    font-size: 0.75em;
+}
+
+.font-16 {
+    font-size: 1em;
+}
+
+.font-18 {
+    font-size: 1.142em;
+}
+
+.font-20 {
+    font-size: 1.285em;
+}
+
+.font-22 {
+    font-size: 1.428em;
+}
+
+.font-24 {
+    font-size: 1.571em;
+}
+
+.moj-uppercase {
+    text-transform: uppercase;
+}
+
+.moj-bold {
+    font-weight: bold;
+}
+
+.moj-bold label{
+    font-weight: bold;
+}
+
+.moj-primary-text-color {
+    color: $moj-primary-color;
+}
+
+.moj-secondary-text-color {
+    color: $moj-secondary-text-color;
+}
+
+.moj-danger-text-color {
+    color: $moj-danger-color;
+}
+
+.moj-orange-text-color {
+    color: $moj-orange-color;
+}
+
+.moj-purple-text-color {
+    color: $moj-purple-color;
+}
+
+.moj-white-text-color {
+    color: $moj-white-color;
+}

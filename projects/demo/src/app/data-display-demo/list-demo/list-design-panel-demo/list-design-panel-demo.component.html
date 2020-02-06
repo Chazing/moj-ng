@@ -1,0 +1,78 @@
+<moj-container [title]="'רשימות תצוגה בסגנונות שונים'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+<div class="container">
+    <moj-title [textKey]="'רשימה בסגנון של פאנל מידע'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Info">
+                    <moj-list-item-header>
+                        <h3>הפרטה בעברית</h3>
+                    </moj-list-item-header>
+                    <moj-list-item-body>
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                    </moj-list-item-body>
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+
+    <moj-title [textKey]="'רשימת פאנלים עם כפתורי פעולה מרחפים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Info">
+                    <moj-list-item-header>
+                        <h3>הפרטה בעברית</h3>
+                    </moj-list-item-header>
+                    <moj-list-item-body>
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                        <moj-list-item-ext>
+                            <!-- <moj-grid-edit-button [item]="item"></moj-grid-edit-button> -->
+                            <!-- <moj-grid-delete-button [item]="item"></moj-grid-delete-button> -->
+                            <button><i class="fas fa-lock-alt"></i></button>
+                            <button><i class="fas fa-exclamation"></i></button>
+                            <button><i class="fas fa-pencil"></i></button>
+                            <button><i class="fas fa-share-alt"></i></button>
+                        </moj-list-item-ext>
+                    </moj-list-item-body>
+
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+
+    <moj-title [textKey]="'חלוקה של הרשימה למספר פריטים בשורה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line style="margin-bottom: 1em;">
+        <moj-textbox [labelTextKey]="'מספר פריטים בשורה'" [(ngModel)]="cols"
+            [controlWidthColumns]="2" (input)="changeCols()"></moj-textbox>
+    </moj-line>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Info" [cols]="cols">
+                    <moj-list-item-header>
+                        <h3>הפרטה בעברית</h3>
+                    </moj-list-item-header>
+                    <moj-list-item-body>
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                        <moj-list-item-ext>
+                            <!-- <moj-grid-edit-button [item]="item"></moj-grid-edit-button>
+                            <moj-grid-delete-button [item]="item"></moj-grid-delete-button> -->
+                            <button><i class="fas fa-lock-alt"></i></button>
+                            <button><i class="fas fa-exclamation"></i></button>
+                            <button><i class="fas fa-pencil"></i></button>
+                            <button><i class="fas fa-share-alt"></i></button>
+                        </moj-list-item-ext>
+                    </moj-list-item-body>
+
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+</div>

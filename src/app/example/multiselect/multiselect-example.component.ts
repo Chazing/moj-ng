@@ -1,6 +1,7 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component, TemplateRef } from "@angular/core";
 import { PropertyItem } from "../example-component/model/property.model";
 import { EventItem } from "../example-component/model/event.model";
+
 
 @Component({
     selector: "moj-multiselect-example",

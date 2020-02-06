@@ -1,0 +1,21 @@
+{
+	"name": "moj-snippets",
+	"displayName": "Moj Snippets",
+	"description": "Moj Snippets",
+	"version": "1.0.2",
+	"publisher": "moj",
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "html",
+				"path": "./html-snippets.json"
+			}
+		]
+	}
+}

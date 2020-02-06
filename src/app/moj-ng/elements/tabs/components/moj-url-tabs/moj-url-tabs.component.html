@@ -1,0 +1,47 @@
+<div class="moj-tabs-stripe">
+  <ul class="moj-tabs-stripe-list">
+    <li *ngFor="let tab of mojTabsService.tabs" [attr.data-id]="tab.id"
+      [ngClass]="{'moj-tab-selected':tab.url == mojTabsService.activeTabUrl, 'uncolorizable':!colorizable}"
+      (click)="onTabClick(tab, $event)" (mousedown)="onMousedown(tab, $event)">
+      <span *ngIf="tab.asteriskColor" class="moj-tab-star fas fa-asterisk" [style.color]="tab.asteriskColor"></span>
+      <span *ngIf="colorizable && !tab.mainTab && tab.color" class="moj-tab-color"
+        [ngStyle]="{'background-color': tab.color }"></span>
+      <a class="moj-tab-title" title="{{tab.title$ | async}}">
+        {{tab.title$ | async}}
+      </a>
+      <span *ngIf="tab.removable" class="moj-tab-close fas fa-times"
+        (click)="mojTabsService.onCloseTabClick(tab)"></span>
+    </li>
+  </ul>
+</div>
+
+<div class="moj-tabs-content-wrapper">
+  <div class="moj-tabs-header" *ngIf="mojTabsService.getCurrentTab()?.headerData">
+    <ul>
+      <li *ngFor="let data of mojTabsService.getCurrentTab().headerData" class="{{data.cssClass}}">
+        <span *ngIf="data.key">{{data.key | translate}}:</span>
+        <span class="value-info">{{data.value}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="moj-tabs-side-menu" [class.moj-tabs-side-menu-collapse]="collapse" *ngIf="mojTabsService.showSideMenu()">
+    <!-- <button><i class="fas fa-bars" (click)="collapse=!collapse"></i></button> -->
+    <ul>
+      <li [routerLink]="mojTabsService.getSideItemUrl(sideItem.url)"
+        *ngFor="let sideItem of mojTabsService.getCurrentTab().sideMenuItems"
+        [ngClass]="{'moj-sideitem-selected':mojTabsService.getCurrentTab().sideMenuItemSelected?.url == sideItem.url}">
+        <span *ngIf="sideItem.asteriskColor" class="moj-sideitem-star" [style.color]="sideItem.asteriskColor">
+          <i class="fas fa-asterisk"></i>
+        </span>
+        <a>
+          <img *ngIf="sideItem.imgUrl" [src]="sideItem.imgUrl" />
+          <i [ngClass]="sideItem.icon" [style.color]="sideItem.color"></i>
+          <span>{{ sideItem.title$ | async }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="moj-tabs-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

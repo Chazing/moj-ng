@@ -1,0 +1,17 @@
+<moj-container [title]="'Recaptcha'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+<div class="container">
+  <form #form=ngForm>
+    <moj-line>
+      <moj-textbox required [(ngModel)]="model.someInput" name="someInput"
+        [controlWidthColumns]="2">
+      </moj-textbox>
+    </moj-line>
+    <moj-line>
+      <moj-recaptcha [(ngModel)]="model.recaptchaString" name="recaptchaString" required></moj-recaptcha>
+    </moj-line>
+    <moj-buttons-line>
+      <moj-button [buttonStyle]="Enums.ButtonStyle.Primary" [textKey]="'MojTexts.save'" (click)="onSubmit($event)"
+        [isEnable]="form.valid"></moj-button>
+    </moj-buttons-line>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<demo-container [title]="'Grid Demo'">
+    <moj-grid-panel [gridDescription]="'רשימת מוצרים'" [dataViewType]="dataViewType.Grid">
+        <ag-grid-angular class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columns" [gridOptions]="gridOptions"
+            (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+    </moj-grid-panel>
+    <moj-buttons-line>
+        <moj-button (click)="printDataToConsole()" textKey="הדפס נתונים לconsole"></moj-button>
+    </moj-buttons-line>
+</demo-container>

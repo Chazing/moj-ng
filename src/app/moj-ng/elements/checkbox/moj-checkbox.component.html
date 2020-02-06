@@ -1,10 +1,15 @@
-﻿<div class="col chk">
-    <input type="checkbox" [id]="identifier" [(ngModel)]="value" name="identifier" (focus)="onFocusIn($event)" [disabled]="disabled"
-           class="fa" [ngClass]="{'fa-check' : value }" />
-    <validation-messages [forId]="identifier" *ngIf="showValidationMsg" [controlName]="labelTextKey" [messages]="control.errors"
-                         [customValidationErrors]="customValidationErrors">
+﻿<div [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}" class="moj-input-container"
+    [ngClass]="[showValidationMsg ? 'moj-invalid': '',controlColWidth]">
+    <span>
+        <input class="moj-checkbox" type="checkbox" [id]="identifier" [(ngModel)]="value" [name]="identifier"
+            (change)="onchange($event)" (focus)="onFocusIn($event)" [disabled]="disabled" />
+        <label-for-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async"
+            [textKey]="labelTextKey" class="check-radio-label">
+        </label-for-content>
+    </span>
+    <validation-messages [forId]="identifier" *ngIf="showValidationMsg" [controlName]="labelTextKey"
+        [messages]="control.errors" [customValidationErrors]="customValidationErrors" role="alert">
     </validation-messages>
+
+    <input-help-text [forId]="identifier" [message]=helpText *ngIf="!showValidationMsg"></input-help-text>
 </div>
-<label-before-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [textKey]="labelTextKey" [widthColumns]="labelWidthColumns"
-                      [labelAlign]="labelAlign" [isAutoWidth]="isLabelAutowidth" [labelStyle]="labelStyle">
-</label-before-content>    

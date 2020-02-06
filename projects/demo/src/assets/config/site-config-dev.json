@@ -1,0 +1,8 @@
+{
+    "recaptchaSiteKey": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+    "webApiAddress": "/api",
+    "isWriteUIErrorsToLog": false,
+    "logApiUrl": "/log",
+    "tfsUrl": "http://main-jr-tfs:8080/tfs/defaultcollection/_versionControl?_a=contents&path=%24%2FInfrastructure_WEB%2FDevelopment%2FAngular%2FangularApp%2FangulareApp%2Fprojects%2Fdemo%2Fsrc%2Fapp%2F",
+    "compodocUrl": "http://mojng/documentation/"
+}

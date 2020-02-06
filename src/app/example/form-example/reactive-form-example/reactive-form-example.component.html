@@ -1,29 +1,36 @@
 <form [formGroup]="exampleForm">
   <moj-panel [titleKey]="'פקדים'" [isOpen]="true">
     <moj-line>
-      <moj-textbox formControlName='name' [labelTextKey]="'שם'" [labelWidthColumns]="1" [controlWidthColumns]="2"></moj-textbox>
-      <moj-radiobutton formControlName="type" [controlWidthColumns]="2" [radiovalue]="1" [labelTextKey]="'אפשרות 1'"></moj-radiobutton>
-      <moj-radiobutton formControlName="type" [controlWidthColumns]="2" [radiovalue]="2" [labelTextKey]="'אפשרות 2'"></moj-radiobutton>
+      <!-- <radio-buttons-wrapper [describedbyId]="options">
+        <label id="options"></label>
+          <moj-radiobutton formControlName="type" [controlWidthColumns]="2" [radiovalue]="1" [labelTextKey]="'אפשרות 1'"></moj-radiobutton>
+          <moj-radiobutton formControlName="type" [controlWidthColumns]="2" [radiovalue]="2" [labelTextKey]="'אפשרות 2'"></moj-radiobutton>
+      </radio-buttons-wrapper> -->
+      <moj-textbox formControlName='name' [labelTextKey]="'שם'"  [controlWidthColumns]="2"></moj-textbox>
+     
     </moj-line> 
     <moj-line>
-      <moj-datepicker [showTime]=true [labelTextKey]="'מתאריך'" labelWidthColumns="1" controlWidthColumns="2" formControlName="startDate"></moj-datepicker>
-      <moj-datepicker [labelTextKey]="'עד תאריך'" labelWidthColumns="1" controlWidthColumns="2" formControlName="endDate"></moj-datepicker>
+        <moj-datepicker [showTime]=true [labelTextKey]="'מתאריך'" controlWidthColumns="2" formControlName="startDate"></moj-datepicker>
+        <moj-datepicker [labelTextKey]="'עד תאריך'" controlWidthColumns="2" formControlName="endDate"></moj-datepicker>
     </moj-line>
     <moj-line>
-      <moj-dropdownlist [labelWidthColumns]="3" [controlWidthColumns]="2" formControlName="dropDownValue" [editable]="true" [fieldID]="'id'"
+      <moj-dropdownlist [controlWidthColumns]="2" formControlName="dropDownValue" [editable]="true" [fieldID]="'id'"
         [fieldName]="'name'" [items]="dropDownListItems">
       </moj-dropdownlist>
-      <moj-checkbox [controlWidthColumns]=1 [labelWidthColumns]=2 formControlName="checkBoxValue" [labelAlign]="labelAlign.Right"
+      <moj-checkbox [controlWidthColumns]=1  formControlName="checkBoxValue"
         [labelTextKey]="'Texts.areYouInterested'"></moj-checkbox>
     </moj-line>
     <moj-line>
-      <moj-multiselect labelTextKey="Texts.Choose" labelWidthColumns="1" controlWidthColumns="2" [items]="dropDownListItems" [fieldID]="'id'"
+      <moj-multiselect labelTextKey="Texts.Choose" controlWidthColumns="2" [items]="dropDownListItems" [fieldID]="'id'"
         [fieldName]="'name'" formControlName="multiselectValues" required>
       </moj-multiselect>
     </moj-line>
   </moj-panel>   
   <moj-buttons-line>
-    <moj-submit-button [form]="exampleForm" (onSubmit)="save()" [buttonStyle]="buttonStyle.Dark" [textKey]="'שמור'"></moj-submit-button>
+    <moj-submit-button [form]="exampleForm" (onSubmit)="save()" [buttonStyle]="buttonStyle.Primary" [textKey]="'שמור'"></moj-submit-button>
   </moj-buttons-line>
   {{exampleForm.value | json}}
+  <moj-line>
+    <moj-progress [percent]=50></moj-progress>
+  </moj-line>
 </form>

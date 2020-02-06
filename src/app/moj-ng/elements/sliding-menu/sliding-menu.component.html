@@ -1,18 +1,18 @@
-<div class="menu-panel-container" [ngStyle]="{'width.px': expanded ? width + 40 :30}">
-  <div class="menu-panel">
-      <div class="open-close" title="{{'Texts.close' | translate}}" (click)="toggleMenu()">
-          <i class="glyphicon" [ngClass]="{'glyphicon-chevron-right': !expanded, 'glyphicon-chevron-left': expanded}"></i>
-      </div>
-      <div class="menu-panel-view" [style.min-width.px]="width" >
-          <div class="title"><span>{{title}}</span>
-              <div class="pin fa fa-thumb-tack" title="{{ (pinOn ? 'Texts.pinOff' : 'Texts.pinOn') | translate}}" (click)="togglePin()" [ngClass]="{'pin-on' : pinOn}"></div>
-          </div>
-          <div class="menu-details-panel">
-              <ng-content> </ng-content>
-               <div class="ok-btn" (click)="okClick($event)" *ngIf="!hideOkBtn">
-                  <i class="{{btnIcon}}" aria-hidden="true"></i> {{btnTitle}}
-              </div>
-          </div>            
-      </div>
-  </div>
+<div  [ngClass]="{'rtl' : rtl ,'sliding-dir-expanded':expanded }" class="sliding-dir" >  
+    <div class="menu-panel-container"[ngClass]="{'expanded':expanded}">
+        <div class="menu-panel" [ngClass]="{'constricted' : !expanded}">
+            <div class="menu-panel-view" > 
+                <div class="title" (click)="toggleMenu()" >             
+                    <div class="title-content" > 
+                    <span [ngStyle]="{'visibility':expanded ? 'visible' : 'hidden'}">{{title}}</span>
+                    <i class="{{titleIcon}} title-icon" aria-hidden="true" ></i>
+                </div>    
+                </div>
+                <div class="menu-details-panel"   [ngStyle]="{'visibility':expanded ? 'visible' : 'hidden'}" >            
+                            <ng-content > </ng-content>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </div>

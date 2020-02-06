@@ -22,7 +22,7 @@ export class MojSlidePreviewDocComponent {
   @Input()
   src: string = "";
 
-  public style: object = {};
+  @Input() style: object = {};
 
   validate(event: ResizeEvent): boolean {
     const MIN_DIMENSIONS_PX_HEIGHT: number = 100;
@@ -47,6 +47,10 @@ export class MojSlidePreviewDocComponent {
     this.onResize = false;
   }
 
+  getSliderSize()
+  {
+    return this.style;
+  }
   constructor() { 
   }
 

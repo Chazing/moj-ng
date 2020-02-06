@@ -1,0 +1,28 @@
+
+<demo-container [title]="'sliding-menu'">
+
+  רכיב צף המכיל תוכן דינאמי 
+  יכול להפתח משמאל לימין ולהפך ע"פ הגדרה
+<br>
+בדוגמה העליונה מוצג הרכיב ללא אייקון
+
+<br>
+בדוגמה התחתונה מוצג הרכיב כאשר בתוכו מופיע רכיב פילטור
+כפי שניתן לראות ישנה אפשרות לשלוט  בגובה הרכיב
+
+
+</demo-container>
+
+
+<sliding-menu [rtl]="true"   [titleIcon]="''" [top]="'200px'"> 
+   
+</sliding-menu>
+
+<sliding-menu [rtl]="true" [title]="'filter'" [top]="'300px'"> 
+        <moj-filter [config]="filterConfig" (filterChange)="filterMyData()"  #filter></moj-filter>
+ </sliding-menu>
+
+
+
+
+

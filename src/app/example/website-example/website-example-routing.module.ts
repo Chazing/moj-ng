@@ -15,33 +15,31 @@ import { GridEditInlineExampleComponent } from '../grid-example/grid-edit-inline
 import { ButtonsExampleComponent } from '../buttons/buttons-example.component';
 import { GridServerSideExample } from '../grid-example/grid-server-side/grid-server-side-example.component';
 import { EditorExampleComponent } from '../editor/editor-example.component';
-import { EntityLayoutComponent } from './content-with-tabs/entity-layout/entity-layout.component';
-import { EntityFilesComponent } from './content-with-tabs/entity-files/entity-files.component';
-import { EntityDocsComponent } from './content-with-tabs/entity-docs/entity-docs.component';
-import { EntityRequestsComponent } from './content-with-tabs/entity-requests/entity-requests.component';
-import { ContentWithTabsModule } from './content-with-tabs/content-with-tabs.module';
 import { GridExampleGuard } from '../common/guards/grid-example-guard';
+import { DynamicFormExampleComponent } from '../dynamic-form/dynamic-form-example.component';
+import { MojGuard } from '../../moj-ng/permissions/moj-guard';
 
 const websiteRoutes: Routes = [
     {
         path: '',
         component: WebsiteExampleComponent,
         children: [
-            { path: 'autocomplete', component: AutocompleteExampleComponent },
-            { path: 'multiselect', component: MultiSelectExampleComponent },
-            { path: 'file-upload', component: FileUploadExampleComponent },
-            { path: 'grid', component: GridExampleComponent, canDeactivate: [GridExampleGuard] },
-            { path: 'grid-edit-inline', component: GridEditInlineExampleComponent },
-            { path: 'grid-server-side', component: GridServerSideExample },
-            { path: 'wizard', component: WizardExampleComponent },
-            { path: 'form', component: FormExampleComponent },
-            { path: 'reactiveform', component: ReactiveFormExampleComponent },
-            { path: 'datepicker', component: DatepickerExampleComponent },
-            { path: 'dialog', component: DialogExampleComponent },
-            { path: 'recaptcha', component: RecaptchaExampleComponent },
-            { path: 'buttons', component: ButtonsExampleComponent },
-            { path: 'editor', component: EditorExampleComponent },          
-            { path: "entity", loadChildren: () => ContentWithTabsModule }
+            { path: 'autocomplete', component: AutocompleteExampleComponent,canActivate: [MojGuard],data:{routerID:'#autocomplete'}  },
+            { path: 'multiselect', component: MultiSelectExampleComponent ,canActivate: [MojGuard],data:{routerID:'#multiselect'}},
+            { path: 'file-upload', component: FileUploadExampleComponent ,canActivate: [MojGuard],data:{routerID:'#file-upload'} },
+            { path: 'grid', component: GridExampleComponent, canDeactivate: [GridExampleGuard] ,data:{routerID:'#grid'} },
+            { path: 'grid-edit-inline', component: GridEditInlineExampleComponent ,canActivate: [MojGuard] ,data:{routerID:'gridEdit'}},
+            { path: 'grid-server-side', component: GridServerSideExample ,canActivate: [MojGuard] },
+            { path: 'wizard', component: WizardExampleComponent ,canActivate: [MojGuard] },
+            { path: 'form', component: FormExampleComponent,canActivate: [MojGuard] ,data:{routerID:'#form'} },
+            { path: 'reactiveform', component: ReactiveFormExampleComponent,canActivate: [MojGuard]  },
+            { path: 'datepicker', component: DatepickerExampleComponent,canActivate: [MojGuard]  },
+            { path: 'dialog', component: DialogExampleComponent,canActivate: [MojGuard]  },
+            { path: 'recaptcha', component: RecaptchaExampleComponent,canActivate: [MojGuard]  },
+            { path: 'buttons', component: ButtonsExampleComponent,canActivate: [MojGuard] ,data:{routerID:'#Button'} },
+            { path: 'editor', component: EditorExampleComponent,canActivate: [MojGuard]  },     
+            // { path: 'on-off-switch', component: OnOffSwitchComponent  },     
+            { path: "entity", loadChildren: () => import('./content-with-tabs/content-with-tabs.module').then(m => m.ContentWithTabsModule) }
         // "./content-with-tabs/content-with-tabs.module#ContentWithTabsModule"}          
             // {
             //     path: "entity-layout", component: EntityLayoutComponent, 

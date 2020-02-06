@@ -1,0 +1,91 @@
+@import "../../../css/moj-config-css.scss";
+
+div[role="dialog"]{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    border-color: $moj-blue-color;
+    border-radius: 1px;
+}
+
+.ui-dialog.ui-widget .ui-dialog-titlebar {
+    background-color: transparent;
+    background: none;
+    padding: 0.3em 1em 0.3em 0.6em;
+
+    .ui-dialog-title {
+        color: $moj-primary-color;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .ui-dialog-titlebar-icon {
+        float: left;
+        // margin: 0.3em 0.6em;
+        padding: 0;
+        color: $moj-grey-color;
+        &:hover {
+            color: $moj-primary-text-color;
+            background: none;
+            border-color: transparent;
+        }
+
+        span::before {
+            font-family: "Font Awesome 5 Pro";
+            font-weight: 300;
+            content: "\f00d";
+            font-size: 2em;
+        }
+    }
+}
+
+
+
+
+.ui-dialog-content.ui-widget-content{
+    position: static;
+    flex: 1 1;
+}
+
+.dialog-bottom{
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    padding: 0.7em 1em;
+}
+
+.ui-dialog-footer{
+    height: 3.7em;
+    padding: 0;
+}
+
+@media (max-width: 767px) {
+    .ui-dialog-footer{
+        height: 4em;
+    }
+}
+
+.ui-widget-overlay.ui-dialog-mask {
+    background-color: #fff; 
+}
+.moj-ltr
+{
+    .ui-dialog.ui-widget .ui-dialog-titlebar {
+        padding: 0.3em  0.6em 0.3em 1em !important;
+
+        .ui-dialog-titlebar-icon {
+            float: right !important;
+
+        }
+    }
+    
+    .dialog-bottom{
+        bottom: 0px;
+        left:initial !important;
+        right: 0px !important;
+
+    }
+    
+}
+
+

@@ -7,6 +7,7 @@ import { MojFileUploadDesignType, MojBaseFileUploadComponent } from '../moj-file
 import { TranslateService } from '@ngx-translate/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ElementBase } from '../../base/element.base';
+import { PermissionService } from '../../../../moj-ng/permissions/permission.service';
 
 /**
   * Usage example
@@ -27,30 +28,31 @@ import { ElementBase } from '../../base/element.base';
   *```
  */
 @Component({
-  selector: 'moj-input-file',
-  templateUrl: '../moj-file-upload.component.html',
-  styleUrls: ['../moj-file-upload.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default,
-  providers: [{ 
-    provide: NG_VALUE_ACCESSOR,
-    multi: true,
-    useExisting: forwardRef(() => MojInputFileComponent),
-  },
-  {provide: ElementBase, useExisting: forwardRef(() => MojInputFileComponent)}]
+    selector: 'moj-input-file',
+    templateUrl: '../moj-file-upload.component.html',
+    styleUrls: ['../moj-file-upload.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        multi: true,
+        useExisting: forwardRef(() => MojInputFileComponent),
+    },
+    { provide: ElementBase, useExisting: forwardRef(() => MojInputFileComponent) }]
 })
 export class MojInputFileComponent extends MojBaseFileUploadComponent {
-    
+
     sendFiles(files: any[] = []) {
-        for(var i = 0; i < files.length; i++){
+        for (var i = 0; i < files.length; i++) {
             this.addFileUploadedToFilesArray(files[i]);
             this.fileUploadComplete.emit(files[i]);
         }
         this.generalUploadComplete.emit();
     }
 
-    constructor(protected mojUploadService: MojFileUploadService, protected mojMessagesService: MojMessagesService, 
-        protected translateService: TranslateService, protected cdr: ChangeDetectorRef,protected el: ElementRef, protected _injector: Injector) {
-        super(mojUploadService, mojMessagesService, translateService, cdr, el, _injector);
+    constructor(protected mojUploadService: MojFileUploadService, protected mojMessagesService: MojMessagesService,
+        protected translateService: TranslateService, protected cdr: ChangeDetectorRef, protected el: ElementRef
+        , protected _injector: Injector, permissionService: PermissionService) {
+        super(mojUploadService, mojMessagesService, translateService, cdr, el, _injector, permissionService);
     }
-    
+
 }

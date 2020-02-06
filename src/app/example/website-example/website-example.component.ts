@@ -2,8 +2,9 @@
 import { ButtonStyle } from './../../moj-ng/elements/buttons/button-style';
 import { MojMessagesService } from "../../moj-ng/messages/moj-messages.service";
 import { Link, LinkOpenType } from '../../moj-ng/elements/website/link';
-import { MojConfigService } from '../../moj-ng';
 import { MojLanguage, MojDirection } from '../../moj-ng/elements/website/language';
+import { MojCategoryFilter } from '../../moj-ng/elements/filter/moj-filter.model';
+import { MojDynamicCheckboxComponent } from '../../moj-ng/elements/dynamic-form/dynamic-components';
 
 @Component({
     selector: 'moj-website-example',
@@ -13,9 +14,22 @@ import { MojLanguage, MojDirection } from '../../moj-ng/elements/website/languag
 export class WebsiteExampleComponent {
     menuActive;
     activeMenuId: string;
-    buttonStyle: ButtonStyle = ButtonStyle.Dark;
-    showStickyAlert: boolean;
-
+    buttonStyle: ButtonStyle = ButtonStyle.Primary;
+    filterConfig={
+        categories: [
+            new MojCategoryFilter(
+                "תיקים", null, [
+                    new MojCategoryFilter("תיקי בית משפט מחוזי", null, [
+                            new MojCategoryFilter(
+                                "בימ\"ש", [
+                                    [{ name: "fld1", type: MojDynamicCheckboxComponent, value: true, labelTextKey: "חיפה"}],
+                                    [{ name: "fld2", type: MojDynamicCheckboxComponent, labelTextKey: "ירושלים" }]
+                                ]
+                            )
+                    ]
+                    )])]
+                            
+    };
     links: Link[] = [
         { textKey: "angular 2", href: "https://angular.io/guide/quickstart", linkId: "angular2", linkOpenType:LinkOpenType.Browser },
         { textKey: "primeng", href: "https://www.primefaces.org/primeng/#/", linkId: "primeng", linkOpenType:LinkOpenType.None }
@@ -33,8 +47,7 @@ export class WebsiteExampleComponent {
         this.messageService.showMessage("שלום וברכה", "כותרת");
     }
 
-    constructor(private messageService: MojMessagesService, private _configService: MojConfigService) {
-        this.showStickyAlert = _configService.configuration.isGlassboxOn;
+    constructor(private messageService: MojMessagesService) {
     }
 
     onLinkClick(link: Link) {
@@ -43,5 +56,9 @@ export class WebsiteExampleComponent {
             ///Whatever
             console.log(link)
         }
+    }
+    filterMyData(e)
+    {
+
     }
 }

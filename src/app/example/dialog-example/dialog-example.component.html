@@ -1,50 +1,35 @@
 <form>
-  <!-- <div style="height: 700px;width: 300px"> -->
-  <!-- <moj-panel [titleKey]="'Texts.generalDetails'" [isOpen]="true"> -->
-  <moj-line>
-    <moj-textbox
-      [(ngModel)]="firstName"
-      name="firstName"
-      [rangeLength]="[5, 9]"
-      labelWidthColumns="5"
-      controlWidthColumns="5"
-    ></moj-textbox>
-  </moj-line>
-  <moj-line>
-    <moj-textbox
-      #tt="ngModel"
-      [(ngModel)]="lastName"
-      name="lastName"
-      minlength="3"
-      labelWidthColumns="5"
-      controlWidthColumns="5"
-    >
-    </moj-textbox>
-  </moj-line>
-  <moj-line>
-    <moj-textbox
-      [(ngModel)]="password"
-      name="password"
-      [required]="false"
-      minlength="3"
-      labelWidthColumns="5"
-      controlWidthColumns="5"
-      inputType="password"
-    >
-    </moj-textbox>
-  </moj-line>
-  <moj-line>
-    <moj-datepicker [(ngModel)]="date" name="date" labelWidthColumns="5" controlWidthColumns="5"> </moj-datepicker>
-  </moj-line>
-  <moj-line>
-    <moj-checkbox [(ngModel)]="checkBoxValue" name="checkBoxValue"></moj-checkbox>
-  </moj-line>
-  <!-- </moj-panel> -->
-  <div *ngIf="checkBoxValue"  style="height: 500px;width: 300px;background-color: crimson"></div>
-  <!-- <div > -->
-  <moj-buttons-line [isInDialogFooter]="true">
-    <moj-cancel-button (click)="onCancel($event)"></moj-cancel-button>
-  </moj-buttons-line>
-  <!-- </div> -->
-  <!-- </div> -->
+    <!-- <div style="height: 700px;width: 300px"> -->
+    <!-- <moj-panel [titleKey]="'Texts.generalDetails'" [isOpen]="true"> -->
+    <moj-line>
+        <moj-textbox [(ngModel)]="firstName" name="firstName" [rangeLength]="[5, 9]"
+            controlWidthColumns="5"></moj-textbox>
+    </moj-line>
+    <moj-line>
+        <moj-textbox #tt="ngModel" [(ngModel)]="lastName" name="lastName" minlength="3"
+            controlWidthColumns="5">
+        </moj-textbox>
+    </moj-line>
+    <moj-line>
+        <moj-textbox [(ngModel)]="password" name="password" [required]="false" minlength="3"
+            controlWidthColumns="5" inputType="password">
+        </moj-textbox>
+    </moj-line>
+    <moj-line>
+        <moj-datepicker [(ngModel)]="date" name="date" controlWidthColumns="5"> </moj-datepicker>
+    </moj-line>
+    <moj-line>
+        <moj-checkbox [(ngModel)]="checkBoxValue" ></moj-checkbox>
+    </moj-line>
+    <!-- </moj-panel> -->
+    <div *ngIf="checkBoxValue" style="height: 500px;width: 300px;background-color: crimson"></div>
+
+    <moj-recaptcha name="str5" [(ngModel)]="recaptchaString"></moj-recaptcha>
+
+    <!-- <div > -->
+    <moj-buttons-line [isInDialogFooter]="true">
+        <moj-cancel-button (click)="onCancel($event)"></moj-cancel-button>
+    </moj-buttons-line>
+    <!-- </div> -->
+    <!-- </div> -->
 </form>

@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "paths": {
+      "@moj/moj-ng": [
+        "src/app/moj-ng"
+      ],
+      "@moj/moj-ng/*": [
+        "src/app/moj-ng/*"
+      ]
+    }
+  },
+  "typesRoots": [
+    "src/app/moj-ng"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/app/moj-ng/**/*"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts",
+    "src/app/moj-ng/**/*.spec.ts"
+  ]
+}

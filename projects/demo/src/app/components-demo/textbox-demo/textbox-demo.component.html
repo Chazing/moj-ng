@@ -1,0 +1,34 @@
+<demo-container [title]="'TextBox'">
+  <div class="content-section implementation">
+    <div class="demo-section">
+      <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-textbox class="l-t-r" [(ngModel)]="txtboxValue" name="txtboxName" controlWidthColumns="2">
+        </moj-textbox>
+      </moj-line>
+    </div>
+    <div class="demo-section">
+      <moj-title [textKey]="'עם pattern'" [titleType]="enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-textbox [(ngModel)]="txtboxPatternValue" [pattern]="pattern" name="txtboxName" controlWidthColumns="2">
+        </moj-textbox>
+      </moj-line>
+    </div>
+    <div class="demo-section">
+      <moj-title [textKey]="'עם Mask'" [titleType]="enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-textbox [mask]="pctMask" [(ngModel)]="txtboxMaskValue" [pattern]="pattern" name="txtboxName"
+          controlWidthColumns="2">
+        </moj-textbox>
+      </moj-line>
+    </div>
+    <div class="demo-section">
+      <moj-title [textKey]="'תיבת טקסט לפי גודל'" [titleType]="enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-textbox [(ngModel)]="txtboxValue" name="txtboxNameLarge" controlWidthColumns="2"
+           [size]="elSize.large">
+        </moj-textbox>
+      </moj-line>
+    </div>
+  </div>
+</demo-container>

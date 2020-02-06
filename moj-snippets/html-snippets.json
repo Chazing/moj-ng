@@ -1,0 +1,96 @@
+{
+  "TextBox": {
+    "prefix": [
+      "m-textbox"
+    ],
+    "body": [
+      "<moj-textbox formControlName=\"${1:name}\" labelWidthColumns=\"${2:2}\" controlWidthColumns=\"${3:2}\"></moj-textbox>"
+    ],
+    "description": "moj-textbox"
+  },
+  "Autocomplete": {
+    "prefix": [
+      "m-autocomplete"
+    ],
+    "body": [
+      "<moj-autocomplete [labelWidthColumns]=\"${1:2}\" [controlWidthColumns]=\"${2:2}\" [items]=\"${3:listItems}\" [fieldName]=\"${4:ProductName}\" fieldID=\"${4:ID}\" formControlName=\"${5:name}\"></moj-autocomplete>"
+    ],
+    "description": "moj-autocomplete"
+  },
+  "DatePicker": {
+    "prefix": [
+      "m-datepicker"
+    ],
+    "body": [
+      "<moj-datepicker [labelWidthColumns]=\"${1:2}\" [controlWidthColumns]=\"${2:2}\" formControlName=\"${3:name}\"></moj-datepicker>"
+    ],
+    "description": "moj-datepicker"
+  },
+  "Button": {
+    "prefix": [
+      "m-button"
+    ],
+    "body": [
+      "<moj-button buttonStyle={{buttonStyle.\"${1:Primary}\"}} (click)=\"${2:onButtonClick}\" [textKey]=\"${3:Texts.clickMe}\"></moj-button>"
+    ],
+    "description": "moj-button"
+  },
+  "Checkbox": {
+    "prefix": [
+      "m-checkbox"
+    ],
+    "body": [
+      "<moj-checkbox [labelWidthColumns]=\"${1:2}\" [controlWidthColumns]=\"${2:2}\" [labelTextKey]=\"${3:'Texts.areYouInterested'}\" formControlName=\"${3:name}\"></moj-checkbox>"
+    ],
+    "description": "moj-checkbox"
+  },
+  "DropDown": {
+    "prefix": [
+      "m-dropdownlist"
+    ],
+    "body": [
+      "<moj-dropdownlist [labelWidthColumns]=\"${1:2}\" [controlWidthColumns]=\"${2:2}\" formControlName=\"${3:name}\" [items]=\"${4:listItems}\"></moj-dropdownlist>"
+    ],
+    "description": "moj-checkbox"
+  },
+  "MultiSelect": {
+    "prefix": [
+      "m-multiselect"
+    ],
+    "body": [
+      "<moj-multiselect [labelWidthColumns]=\"${1:2}\" [controlWidthColumns]=\"${2:2}\" formControlName=\"${3:name}\" [items]=\"${4:listItems}\"></moj-multiselect>"
+    ],
+    "description": "moj-multiselect"
+  },
+  "RadioButton": {
+    "prefix": [
+      "m-radiobutton"
+    ],
+    "body": [
+      "<moj-radiobutton [controlWidthColumns]=\"${1:2}\" formControlName=\"${2:name}\" [radiovalue]=\"${3:1}\" [labelTextKey]=\"${4:'Texts.option1'}\"></moj-radiobutton>"
+    ],
+    "description": "moj-radiobutton"
+  },
+  "TextArea": {
+    "prefix": [
+      "m-textarea"
+    ],
+    "body": [
+      "<moj-textarea [labelWidthColumns]=\"${1:2}\" [controlWidthColumns]=\"${2:2}\" formControlName=\"${3:name}\" [maxTextLength]=\"${4:50}\"></moj-textarea>"
+    ],
+    "description": "moj-textarea"
+  },
+  "Grid": {
+    "prefix": [
+      "m-grid"
+    ],
+    "body": [
+      "<moj-grid-panel [gridDescription]=\"${1:'Texts.fileList'}\" [dataViewType]=\"dataViewType.Grid\">",
+      "<ag-grid-angular class=\"ag-theme-balham\" [rowData]=\"${2:rowData}\"",
+      "[columnDefs]=\"${3:columns}\" [gridOptions]=\"${3:gridOptions}\" (gridReady)=\"${4:'onGridReady($$event)}\">",
+      "</ag-grid-angular>",
+      "</moj-grid-panel>"
+    ],
+    "description": "moj-grid"
+  }
+}

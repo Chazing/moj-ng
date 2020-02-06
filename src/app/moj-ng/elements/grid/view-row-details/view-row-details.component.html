@@ -1,7 +1,7 @@
 <div *ngFor="let column of dataList">
-  <div *ngIf="column.title" class="col-sm-1 row-data-title">{{column.title}}:</div>
-  <div *ngIf="column.title" class="col-sm-1 row-data-txt">{{column.value}}</div>
+  <div *ngIf="column.title" class="col-md-1 row-data-title">{{column.title}}:</div>
+  <div *ngIf="column.title" class="col-md-1 row-data-txt">{{column.value}}</div>
   <moj-buttons-line [isInDialogFooter]=true>
-    <moj-button [textKey]="'MojTexts.close'" (click)="onClick($event)" [buttonStyle]="buttonStyle.SmallDark"></moj-button>
+    <moj-button [textKey]="'MojTexts.close'" (click)="onClick($event)" [buttonStyle]="buttonStyle.Secondary"></moj-button>
   </moj-buttons-line>
 </div>

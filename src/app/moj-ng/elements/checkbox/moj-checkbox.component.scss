@@ -1,0 +1,74 @@
+@import "../../../../css/moj-config-css.scss";
+@import "../../../../css/moj-mixins.scss";
+
+input[type="checkbox"].moj-checkbox {
+  opacity: 0;
+  width: 0;
+  float: right;
+
+  + label-for-content {
+    label {
+      &:before {
+        font-family: "Font Awesome 5 Pro";
+        font-weight: 500;
+        content: "\f00c";
+        border: 1px solid $moj-primary-text-color;
+        border-right-color: $moj-primary-text-color !important;
+        border-radius: 0.15em;
+        float: $start-direction;
+        width: 20px;
+        font-size: 0.9em;
+        height: 20px;
+        box-sizing: content-box;
+        color: transparent;
+        background-color: transparent;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px 0.7em 0 0.7em;
+      }
+      &:active:before {
+        transform: scale(0);
+      }
+    }
+  }
+
+  &:checked + label-for-content label:before {
+    background-color: $moj-primary-color;
+    color: #fff;
+  }
+  &:disabled + label-for-content {
+    pointer-events: none;
+    label {
+      color: $moj-radio-checkbox-disabled-text;
+      &:before {
+        transform: scale(1);
+        border-color: $moj-input-disable-border-color;
+      }
+    }
+  }
+  &:checked:disabled + label-for-content label:before {
+    transform: scale(1);
+    background-color: $moj-input-disable-bg-color;
+    border-color: $moj-input-disable-border-color;
+    color: $moj-input-disable-color;
+  }
+  //   &:focus + label-for-content label:before {
+  //     @include input-focus;
+  //   }
+}
+.moj-ltr {
+  input[type="checkbox"].moj-checkbox {
+    float: left;
+    + label-for-content {
+      label {
+        &:before {
+          float: left;
+          margin-right: 0.5em;
+          margin-left: initial !important;
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 ﻿import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Link } from '../link';
+import { Link, SocialLinkType, LinkOpenType } from '../link';
 
 /**
  * ```html
- * <moj-website-footer versionNumber="1.0.0" [links]="links" [showStickyAlert]="showStickyAlert"></moj-website-footer>
+ * <moj-website-footer versionNumber="1.0.0" [links]="links"></moj-website-footer>
  * ```
  * 
  * ```typescript
@@ -13,10 +13,6 @@ export class WebsiteExampleComponent {
         { textKey: "angular 2", href: "https://angular.io/guide/quickstart", linkId: "angular2", linkOpenType:LinkOpenType.Browser },
         { textKey: "primeng", href: "https://www.primefaces.org/primeng/#/", linkId: "primeng", linkOpenType:LinkOpenType.None }
     ]
-    showStickyAlert: boolean;
-    constructor(private _configService: MojConfigService) {
-        this.showStickyAlert = _configService.configuration.isGlassboxOn;
-    }
 }
  * ```
  * <example-url>../screenshots/footer.JPG</example-url>
@@ -24,12 +20,13 @@ export class WebsiteExampleComponent {
 @Component({
     selector: 'moj-website-footer',
     templateUrl: "moj-website-footer.component.html",
-    styleUrls:["moj-website-footer.component.css"],
+    styleUrls:["moj-website-footer.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MojWebsiteFooterComponent {
     @Input() versionNumber: string;
     @Input() links: Link[];
+    @Input() socialSitesLinks: Link[];
     defaultMessage: string = "MojTexts.stickyAlertRecord";
     @Input() message: string = this.defaultMessage;
     /**
@@ -49,7 +46,10 @@ export class MojWebsiteFooterComponent {
 
     curYear: number = new Date().getFullYear()
 
-    constructor(protected translateService: TranslateService) { }
+    constructor(protected translateService: TranslateService) { 
+   
+    }
+    
 
     getBrowserVersion() {
         var ua = navigator.userAgent, tem,

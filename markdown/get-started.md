@@ -1,9 +1,9 @@
 # תחילת העבודה עם אנגולר
-* ###### ** הורדת Nodejs: **
+#### **הורדת Nodejs**
     יש להוריד Node מהכתובת: https://nodejs.org/en/download
 
     לבחור installer עבור windows 64-bit. (השורה הראשונה, הקוביה השניה)
-* ###### **  קונפיגורציה ל npm **
+#### **קונפיגורציה ל npm**
 כדי לעבוד מול ה repository של המשרד
     יש להריץ את הפקודות הבאות בחלון ה command:
 
@@ -30,11 +30,11 @@ npm config set http-proxy http://pac.gov.il:8080
 npm config set https-proxy http://pac.gov.il:8080 
 ```
 
-* ###### ** פתיחת פרוייקט חדש עם תשתיות **
+#### **פתיחת פרוייקט חדש עם תשתיות**
 
 יש להוריד את פרוייקט הבסיס מה tfs, לשנות לו את השם לפרוייקט המבוקש, ועליו להמשיך לפתח.
 
-הנתיב ב tfs: $/Infrastructure_Mvc/Development/Angular/moj-seed-app
+הנתיב ב tfs: $/Infrastructure_WEB/Development/Angular/moj-seed-app
 
 * יש להתקין את התלויות ע"י הפקודה npm install
 * כעת אפשר להריץ עם הפקודה ng serve

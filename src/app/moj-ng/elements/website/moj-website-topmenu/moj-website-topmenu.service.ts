@@ -36,6 +36,7 @@ export class MojTopMenuService {
     }
 
     getItemsByUrl(url: string): MojTopMenuItem[] {
+        
         let mainItem = this.treeNav.find(x => x.internalLink == url || "/" + x.internalLink == url);
         let subItem;
         if (mainItem == undefined) {
@@ -47,6 +48,11 @@ export class MojTopMenuService {
                         mainItem = this.treeNav[i];
                         return [mainItem, subItem];
                     }
+                }
+                else {
+                    
+                    mainItem = this.treeNav.find(x => url.indexOf(x.internalLink + "/") != -1);
+
                 }
             }
             return [];
@@ -76,6 +82,7 @@ export class MojTopMenuService {
     handleActiveItem(url: string) {
         var activeItems = this.getItemsByUrl(url);
         this.breadcrumbsSource.next(activeItems);
+        
         this.mainActiveIdSource.next(activeItems.length > 0 ? activeItems[0].id : 0);
     }
 

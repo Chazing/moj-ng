@@ -35,7 +35,8 @@ export class MojDialogService {
     }
 
 
-    openDialog<T>(title: string, componentType: Type<T>, width: number = 300, height?: number, componentInputData?: any, isAddFooter: boolean = true, preventScroll?: boolean, resolver?: ComponentFactoryResolver, customClass?: string) {
+    openDialog<T>(title: string, componentType: Type<T>, width: number = 300, height?: number, componentInputData?: any, isAddFooter: boolean = true, preventScroll?: boolean, resolver?: ComponentFactoryResolver, customClass?: string,closable?:boolean) {
+        
         var currentResolver = resolver || this.factoryResolver;
         const dialogfactory = currentResolver
             .resolveComponentFactory(DialogWrapperComponent);
@@ -46,6 +47,7 @@ export class MojDialogService {
         (<any>wrapperDialogComponent.instance).isAddFooter = isAddFooter;
         (<any>wrapperDialogComponent.instance).styleClass = customClass;
         (<any>wrapperDialogComponent.instance).preventScroll = preventScroll;
+        (<any>wrapperDialogComponent.instance).closable = closable;
         wrapperDialogComponent.instance.close.subscribe((res) => {
             this.closeDialog(res);
         })
@@ -83,8 +85,9 @@ export class MojDialogService {
     }
 
     private result(result: DialogResult) {
-        this.dialogResult.next(result);
-        this.dialogResult.complete();
+        var prevDialogResult = this.dialogResult;
         this.dialogResult = new ReplaySubject();
+        prevDialogResult.next(result);
+        prevDialogResult.complete();
     }
 }

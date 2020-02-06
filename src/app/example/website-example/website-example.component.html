@@ -1,8 +1,12 @@
-﻿<div moj-dynamic-fontsize mojDir class="moj-container">
+﻿<div moj-dynamic-fontsize  class="ws-wrapper">
     <header>
         <moj-accessible-menu></moj-accessible-menu>
         <moj-website-header [isShowLangs]="true" [languages]="languages" mainSiteName="משרד המשפטים אנגולר" engSiteName="justice angular" [logoutUrl]="'/website-example/reactiveform'" subSiteName="משרד המשפטים" [isShowMember]="true"
-            [userName]="'פנינה אורן'" [userActionLinks]="links2"></moj-website-header>
+                            [userName]="'פנינה אורן'" [userActionLinks]="links2">
+                        <floating-popup [popupTitle]="'favorit'">
+
+                        </floating-popup>
+                        </moj-website-header>
         <moj-website-topmenu>
             <main-item [textKey]="'פקדי Input'">
                 <sub-item [textKey]="'AutoComplete'" [internalLink]="'/website-example/autocomplete'"></sub-item>
@@ -19,28 +23,37 @@
                 <sub-item [textKey]="'Grid Server Side'" [internalLink]="'/website-example/grid-server-side'"></sub-item>
             </main-item>
             <main-item [textKey]="'Wizard'" [internalLink]="'website-example/wizard'"></main-item>
-            <main-item [textKey]="'שונות'">
+            <main-item [textKey]="'טפסים'">
                 <sub-item [textKey]="'Form'" [internalLink]="'/website-example/form'"></sub-item>
                 <sub-item [textKey]="'ReactiveForm'" [internalLink]="'/website-example/reactiveform'"></sub-item>
+                <sub-item [textKey]="'Dynamic Form'" [internalLink]="'/website-example/dynamicform'"></sub-item>
+            </main-item>
+            <main-item [textKey]="'שונות'">
                 <sub-item [textKey]="'Buttons'" [internalLink]="'/website-example/buttons'"></sub-item>
                 <sub-item [textKey]="'Editor'" [internalLink]="'/website-example/editor'"></sub-item>
             </main-item>
             <main-item [textKey]="'תוכן עם טאבים'" [internalLink]="'website-example/entity'"></main-item>
+            <moj-website-support-container phone="05411111111" email="justice@justice.gov.il" emailSubject="{{'Texts.supportEmailSubject' |translate}}"></moj-website-support-container>
 
             <!-- <main-item [textKey]="'Texts.mainItem2'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></main-item>
-            <main-item [textKey]="'Texts.mainItem1'">
-                <sub-item [textKey]="'Texts.subItem1'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></sub-item>
-                <sub-item [textKey]="'Texts.subItem2'" [internalLink]="'/website-example/wizard'"></sub-item>
-            </main-item>
-            <main-item [textKey]="'Texts.mainItem2'" [internalLink]="'/website-example/form'"></main-item> -->
+        <main-item [textKey]="'Texts.mainItem1'">
+            <sub-item [textKey]="'Texts.subItem1'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></sub-item>
+            <sub-item [textKey]="'Texts.subItem2'" [internalLink]="'/website-example/wizard'"></sub-item>
+        </main-item>
+        <main-item [textKey]="'Texts.mainItem2'" [internalLink]="'/website-example/form'"></main-item> -->
         </moj-website-topmenu>
     </header>
-    <div id="layout-content" class="container-fluid">
+    <main>
+            <sliding-menu [rtl]="true"> 
+                    <moj-filter [config]="filterConfig" (filterChange)="filterMyData($event)" #filter></moj-filter>
+
+                </sliding-menu>
         <div class="container">
             <router-outlet></router-outlet>
         </div>
-    </div>
-    <moj-website-footer versionNumber="1.0.0" [links]="links" (linkClick)=onLinkClick($event)></moj-website-footer>
-    <div mojDialogHost></div>
-
+    </main>
+    <footer role="contentinfo">
+        <moj-website-footer versionNumber="1.0.0" [links]="links" (linkClick)=onLinkClick($event)></moj-website-footer>
+    </footer>
+    <!-- <div mojDialogHost></div> -->
 </div>

@@ -1,0 +1,11 @@
+<demo-container [title]="'Radio Button'">
+  <div class="demo-section">
+    <moj-line>
+      <moj-label [textKey]="'Texts.radioOptionstxt'" [widthColumns]="2"></moj-label>
+      <moj-radiobutton [controlWidthColumns]="2" [(ngModel)]="radioOptions" [radiovalue]="1" name="radioOptions"
+        [labelTextKey]="'אפשרות 1'"></moj-radiobutton>
+      <moj-radiobutton [controlWidthColumns]="2" [(ngModel)]="radioOptions" [radiovalue]="2" name="radioOptions"
+        [labelTextKey]="'אפשרות 2'"></moj-radiobutton>
+    </moj-line>
+  </div>
+</demo-container>

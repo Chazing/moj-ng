@@ -83,10 +83,10 @@ import {
     }   
   })
   export class NgbDropdown {
-    @ContentChild(NgbDropdownMenu) 
+    @ContentChild(NgbDropdownMenu, { static: true}) 
     private _menu: NgbDropdownMenu;
   
-    @ContentChild(NgbDropdownAnchor) 
+    @ContentChild(NgbDropdownAnchor, { static: true}) 
     private _anchor: NgbDropdownAnchor;
   
     /**

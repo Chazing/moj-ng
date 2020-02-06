@@ -60,7 +60,7 @@ input + label:not(.single) i {
 input[disabled] + label, .single-delete[disabled] {
     border: 1px solid #C8CAC9;
     cursor: auto !important;
-    color: #C8CAC9;
+    color: #C8CAC9; 
 }
 input[disabled] + label span {
     color: #C8CAC9;

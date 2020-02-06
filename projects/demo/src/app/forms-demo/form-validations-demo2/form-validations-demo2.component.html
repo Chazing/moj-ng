@@ -1,0 +1,30 @@
+<moj-container [title]="'Form Validation Demo'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+<div class="container">
+  <form [formGroup]="exampleForm">
+    <moj-line>
+      <moj-textbox formControlName="firstName" controlWidthColumns="2">
+      </moj-textbox>
+      <moj-textbox formControlName="lastName" controlWidthColumns="2">
+      </moj-textbox>
+    </moj-line>
+    <moj-line>
+      <moj-datepicker formControlName="dateFrom" controlWidthColumns="2">
+      </moj-datepicker>
+      <moj-datepicker formControlName="dateTo" controlWidthColumns="2">
+      </moj-datepicker>
+    </moj-line>
+    <moj-line>
+      <moj-textbox formControlName="age" max="120" [inputType]="'number'" controlWidthColumns="2"></moj-textbox>
+      <moj-autocomplete formControlName="country" controlWidthColumns="2" [items]="countryList"
+        [fieldName]="'name'" [fieldID]="'id'" fieldID="ID">
+      </moj-autocomplete>
+    </moj-line>
+    <moj-line>
+      <moj-checkbox [labelTextKey]="'האם מסכים לקבלת דיוור במייל'" formControlName="isAgree">
+      </moj-checkbox>
+    </moj-line>
+    <moj-buttons-line>
+      <moj-submit-button [form]="exampleForm"></moj-submit-button>
+    </moj-buttons-line>
+  </form>
+</div>

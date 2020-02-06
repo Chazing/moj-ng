@@ -1,6 +1,8 @@
-﻿import { Injectable } from '@angular/core'
+﻿import { FormGroup } from '@angular/forms';
+import { Injectable } from '@angular/core'
 import { WizardItemComponentBase } from '../wizard-item/wizard-item-component.base';
 import * as _ from "lodash";
+import { MojUtilsService } from '../../../shared/utils';
 
 export interface WizardItemModel {
     name: string;
@@ -13,12 +15,21 @@ export class WizardService {
     componentRef;//save ref for destroy
     wizardItemModels: WizardItemModel[] = [];
 
+    constructor(private mojUtilsService: MojUtilsService) { }
 
     getFormValid(): boolean {
-        if (this.wizardComponent &&
-            this.wizardComponent.ngForm &&
-            !this.wizardComponent.ngForm.form.valid) {
-            return false
+        if (this.wizardComponent) {
+            if (this.wizardComponent.ngForm) {
+                this.mojUtilsService.setSubmitToFormGroup(this.wizardComponent.ngForm);
+                if (!this.wizardComponent.ngForm.form.valid) {
+                    return false;
+                }
+            }
+            else if (this.wizardComponent.formGroup) {
+                this.mojUtilsService.setSubmitToFormGroup(this.wizardComponent.formGroup);
+                if (!this.wizardComponent.formGroup.valid)
+                    return false;
+            }
         }
     }
 
@@ -72,7 +83,7 @@ export class WizardService {
     getWizardItemModels(): WizardItemModel[] {
         return this.wizardItemModels;
     }
-    
+
     findModelIndex(name: string): number {
         let index = this.wizardItemModels.map(function (wizardItemModel) { return wizardItemModel.name; })
             .indexOf(name);

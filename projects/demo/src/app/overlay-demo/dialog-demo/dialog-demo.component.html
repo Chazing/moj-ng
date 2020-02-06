@@ -1,0 +1,20 @@
+<form #form="ngForm" >
+  <moj-line>
+      <moj-textbox [(ngModel)]="firstName" name="firstName" [rangeLength]="[5, 9]"
+          controlWidthColumns="5"></moj-textbox>
+  </moj-line>
+  <moj-line>
+      <moj-textbox #tt="ngModel" [(ngModel)]="lastName" name="lastName" minlength="3"
+          controlWidthColumns="5">
+      </moj-textbox>
+  </moj-line>
+  <moj-line>
+      <moj-datepicker [(ngModel)]="date" name="date" controlWidthColumns="5"> </moj-datepicker>
+  </moj-line>
+  
+  <moj-buttons-line [isInDialogFooter]="true">
+      <moj-cancel-button (click)="onCancel($event)"></moj-cancel-button>
+  </moj-buttons-line>
+  <!-- </div> -->
+  <!-- </div> -->
+</form>

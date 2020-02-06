@@ -1,0 +1,10 @@
+<demo-container [title]="'Checkbox'">
+  <div class="content-section implementation">
+    <div class="demo-section">
+      <moj-line>
+        <moj-checkbox [(ngModel)]="checkboxValue" name="checkboxValue" [labelTextKey]="'Texts.areYouInterested'"
+          (onChange)="onValueChanged()"></moj-checkbox>
+      </moj-line>
+    </div>
+  </div>
+</demo-container>

@@ -1,0 +1,42 @@
+<demo-container [title]="'Expansion Panel'">
+      <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
+      <div class="demo-section">
+            <moj-expansion-panel [title]="'כותרת לדוגמה'">
+                  תוכן כלשהו
+
+            </moj-expansion-panel>
+      </div>
+      <moj-title [textKey]="'HTML ב-Header'" [titleType]="enums.TitleType.Secondary"></moj-title>
+      <div class="demo-section">
+            <moj-expansion-panel>
+                  <moj-expansion-panel-header>
+                        <div class="header">
+                              <i class="bankIcon"></i>
+                              <h3>הכנסות</h3>
+                             
+                        </div>
+                        <h6 class="subTitle">כאן יבוא הסבר קצר </h6>
+
+                  </moj-expansion-panel-header>
+                  <div class="body">
+                        <moj-line>
+                              <moj-textbox [(ngModel)]="field1" labelWidthColumns="2" controlWidthColumns="2"
+                                    [labelTextKey]="'משכורות'"></moj-textbox>
+                              <moj-textbox [(ngModel)]="field2" labelWidthColumns="2" controlWidthColumns="2"
+                                    [labelTextKey]="'פנסיה'"></moj-textbox>
+                              <moj-textbox [(ngModel)]="field3" labelWidthColumns="2" controlWidthColumns="2"
+                                    [labelTextKey]="'משרד האוצר/רנטה'"></moj-textbox>
+                        </moj-line>
+
+                        <moj-line>
+                              <moj-textbox [(ngModel)]="field4" labelWidthColumns="2" controlWidthColumns="2"
+                                    [labelTextKey]="'תגמולי משרד הבטחון'"></moj-textbox>
+                              <moj-textbox [(ngModel)]="field5" labelWidthColumns="2" controlWidthColumns="2"
+                                    [labelTextKey]="'תמיכה מהמשפחה'"></moj-textbox>
+                        </moj-line>
+
+
+                  </div>
+            </moj-expansion-panel>
+      </div>
+</demo-container>

@@ -1,0 +1,99 @@
+@import "../../../../css/moj-config-css.scss";
+@import "../../../../css/moj-mixins.scss";
+
+.fu-wrap {
+    grid-template-areas: "input" "progress" "msg" "files";
+}
+
+.fu-wrap-single {
+    grid-template-areas: "files" "input" "progress" "msg";
+
+    .file-input {
+        display: flex;
+        margin-bottom: 0.5em;
+        // ng-content {
+        //     display: inline-flex;
+        // }
+        
+        button, label {
+            @include button-base;
+            margin: 0;
+            margin-right: 5px;
+            min-width: 30px;
+            padding: 1px 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .file-name {
+        @include input-readonly;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    + label {
+        @include button-base;
+        span {
+            margin-right: 0.5em;
+        }
+    }
+
+    &[disabled] + label {
+        @include button-disabled;
+    }
+}
+
+.ul-files {
+    padding: 0; margin: 5px 0 0; list-style-type: none;
+    li {
+        display: flex;
+        padding: 2px 10px;
+
+        span {
+            color: #00a1Ce;
+            flex: 1 1 100%;
+        }
+
+        button {
+            color: #00a1Ce;
+            background-color: transparent;
+            border: none;
+            flex: 0 0 30px;
+        }
+
+        &:hover {
+            background-color: #f5f5f7;
+            span, button {
+                color: #017ea1;
+            }
+        }
+    }
+}
+
+.message {
+    color: red;
+}
+
+.moj-ltr
+{
+    input + label i {
+        margin-right: 5px;
+        margin-left: initial !important;
+    }
+    .ul-files li {
+        padding: 2px 0 0 10px !important;
+    }
+}

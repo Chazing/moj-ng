@@ -1,0 +1,12 @@
+
+
+<demo-container [title]="'Filter'">
+
+<div class="content-section implementation">
+  <br>
+רכיב פילטר הבנוי כעץ ( היררכיה לא מוגבלת)ויכול להכיל את שלל סוגי האינפוט כפקדים לתנאי פילטור
+  <div class="demo-section filter" >
+        <moj-filter [config]="filterConfig" (filterChange)="filterMyData($event)"></moj-filter>
+    </div>
+</div>
+</demo-container>

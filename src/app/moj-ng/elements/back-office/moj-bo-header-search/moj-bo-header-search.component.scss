@@ -2,12 +2,15 @@
 
 .header-search {
     display: flex;
-    @include mobile {
+    @include tablet {
         flex-direction: column;  
     }
 
     p-dropdown {
         @include desktop {
+            margin: 0 1em;
+        }
+        @include wide-desktop {
             margin: 0 1em;
         }
         .ui-state-default, label.ui-dropdown-label {

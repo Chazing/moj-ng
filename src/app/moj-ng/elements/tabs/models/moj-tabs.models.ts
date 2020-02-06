@@ -1,79 +1,83 @@
-import { Subscription, Observable } from "rxjs";
+import { Subscription, Observable, Subject } from 'rxjs';
+import { Type } from '@angular/core';
 
 export class MojTab {
-  id?: string;
-  urlRegex?: string = null;
-  removable?: boolean = true;
-  appMainTab?: boolean;
-  selected?: boolean;
-  mainTab?: boolean;
-  color?: string;
-  asteriskColor?: string;
-  sideMenuItems?: MojSideMenuItem[];
-  sideMenuItemSelected?: MojSideMenuItem;
-  appMainTabMovingSubscriber?: (value: MojTab) => void;
-  data: any;
+    id?: string;
+    urlRegex?: string = null;
+    removable?: boolean = true;
+    appMainTab?: boolean;
+    selected?: boolean;
+    mainTab?: boolean;
+    color?: string;
+    asteriskColor?: string;
+    sideMenuItems?: MojSideMenuItem[];
+    sideMenuItemSelected?: MojSideMenuItem;
+    appMainTabMovingSubscriber?: (value: MojTab) => void;
+    data?: any;
+    headerData?: { [key: string]: string, cssClass?: string }[];
+    //for tab by visibility
+    component?: Type<any>;
+    instance?: any;
+    //end for tab by visibility
+    disabled?: boolean;
+    visible?: boolean;
+    name?: string;
 
-  private movingSubscription?: Subscription;
-  private closingSubscription?: Subscription;
+    private movingSubscription?: Subscription;
+    private closingSubscription?: Subscription;
 
-  constructor(public url: string, public title$: Observable<string>) {
-  }  
+    public closingSubject = new Subject<MojTab>();
+    public closing = this.closingSubject.asObservable();
 
-  public saveMovingSubscription(subscription: Subscription) {
-    this.movingSubscription = subscription;
-  }
+    constructor(public url: string, public title$: Observable<string>) { }
 
-  public saveClosingSubscription(subscription: Subscription) {
-    this.closingSubscription = subscription;
-  }
-
-  public hasMoving(): boolean {
-    return this.movingSubscription != null;
-  }
-  public hasClosing(): boolean {
-    return this.closingSubscription != null;
-  }
-
-  public unsubscribeToMoving() {
-    if (this.movingSubscription) {
-      this.movingSubscription.unsubscribe();
-      this.movingSubscription = null;
+    public saveMovingSubscription(subscription: Subscription) {
+        this.movingSubscription = subscription;
     }
-  }
 
-  public unsubscribeToClosing() {
-    if (this.closingSubscription) {
-      this.closingSubscription.unsubscribe();
-      this.closingSubscription = null;
+    public saveClosingSubscription(closingSubscriber: (value: MojTab) => void) {
+        this.closingSubscription = this.closing.subscribe(closingSubscriber);
     }
-  }
 
-  public unsubscribe() {
-    this.unsubscribeToMoving();
-    this.unsubscribeToClosing();
-  }
+    public hasMoving(): boolean {
+        return this.movingSubscription != null;
+    }
+    public hasClosing(): boolean {
+        return this.closingSubscription != null;
+    }
+
+    public unsubscribeToMoving() {
+        if (this.movingSubscription) {
+            this.movingSubscription.unsubscribe();
+            this.movingSubscription = null;
+        }
+    }
+
+    public unsubscribeToClosing() {
+        if (this.closingSubscription) {
+            this.closingSubscription.unsubscribe();
+            this.closingSubscription = null;
+        }
+    }
+
+    public unsubscribe() {
+        this.unsubscribeToMoving();
+        this.unsubscribeToClosing();
+    }
 }
 
 export interface MojSideMenuItem {
-  id?: string;
-  url: string;
-  title$: Observable<string>;
-  color?: string;
-  imgUrl?: string;
-  icon?: string;
-  asteriskColor?: string;
+    id?: string;
+    url: string;
+    title$: Observable<string>;
+    color?: string;
+    imgUrl?: string;
+    icon?: string;
+    asteriskColor?: string;
 }
 
 export interface TabUrl {
-  url: string;
-  urlWithoutParams?: string;
+    url: string;
+    urlWithoutParams?: string;
 }
-
-export enum TabsColor {
-    red = "red",
-    blue = "blue"
-}
-
-
 

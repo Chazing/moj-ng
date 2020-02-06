@@ -8,15 +8,19 @@ import { DomSanitizer } from "@angular/platform-browser";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocIframeComponent {
+    private _src: string;
+
     @Input()
-    src: string;
+    get src(): string {
+        return this._src;
+    }
+    set src(val:string) {
+        this._src = val;
+        this.srcdoc = this.sanitizer.bypassSecurityTrustResourceUrl(val);
+    }
+    
     srcdoc: any;
 
     constructor(private sanitizer: DomSanitizer) { 
     }
-
-    ngOnInit() {
-        this.srcdoc = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
-    }
-
 }

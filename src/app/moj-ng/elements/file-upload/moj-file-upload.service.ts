@@ -6,11 +6,12 @@ import { MojMessagesService } from "../../messages/moj-messages.service";
 import { MojUtilsService } from "../../shared/utils";
 import { TranslateService } from "@ngx-translate/core";
 import { MojConfigService } from "../../shared/moj-config.service";
+import { FileSizeType } from "./file-size-type";
 
 @Injectable()
 export class MojFileUploadService {
-    constructor(private http: HttpHandler, private mojMessagesService: MojMessagesService, private utils: MojUtilsService, 
-        private translateService: TranslateService, private mojConfigService: MojConfigService){
+    constructor(private http: HttpHandler, private mojMessagesService: MojMessagesService, private utils: MojUtilsService,
+        private translateService: TranslateService, private mojConfigService: MojConfigService) {
 
     }
 
@@ -46,8 +47,8 @@ export class MojFileUploadService {
                     msg = msg + this.getMsg(file, null, this.translateService.instant("MojTexts.fu.zeroSize") + "<br><br>");
                     canAddFiles = false;
                 }
-                if (file.size > config.maxFileSize) {
-                    msg = msg + this.getMsg(file, null, this.utils.stringFormat(this.translateService.instant("MojTexts.fu.maxSize"), [config.maxFileSize / 1000000])) + "<br><br>";
+                if (file.size > (config.maxFileSize*(config.FileSizeType?config.FileSizeType:1))) {
+                    msg = msg + this.getMsg(file, null, this.utils.stringFormat(this.translateService.instant("MojTexts.fu.maxSize"), [this.converBytesToSizetype(config.maxFileSize,config.FileSizeType),(config.FileSizeType && config.FileSizeType!=FileSizeType.byte ?FileSizeType[config.FileSizeType].toString():FileSizeType[FileSizeType.MB].toString())])) + "<br><br>";
                     canAddFiles = false;
                 }
                 //todo: למחוק את הקובץ הפגום!!!!
@@ -58,16 +59,23 @@ export class MojFileUploadService {
                 this.mojMessagesService.showMessage(null, "MojTexts.errorMessage", msg, MessageType.Error).subscribe();
             });
         }
-        
+
         return canAddFiles;
     }
-    
-    uploadFile(file){
+
+    converBytesToSizetype(maxFileSize, sizeType) {
+        if (sizeType == FileSizeType.byte) {
+            return parseFloat((maxFileSize / 1000000).toString())
+        }
+        return maxFileSize
+    }
+
+    uploadFile(file) {
         var formData = new FormData();
         var chunk = file.slice(0, file.size);
         formData.append('file', chunk);
         var data = "?fileName=" + file.name;
-        const headers =  new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+        const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
         //const baseUrl = "https://t.pctonline-sc.justice.gov.il/";
 
         const req = new HttpRequest('POST', this.mojConfigService.configuration.uploadServerUrl + data, formData, {
@@ -75,8 +83,8 @@ export class MojFileUploadService {
             headers: headers,
             responseType: "text"
         });
-        
-        return this.http.handle(req).pipe(map(event => {return {event: event, file: file}}));
+
+        return this.http.handle(req).pipe(map(event => { return { event: event, file: file } }));
     }
 
     getMsg(file?, fileTypes?, msg?) {

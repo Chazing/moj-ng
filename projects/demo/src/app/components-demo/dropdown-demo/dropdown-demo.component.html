@@ -1,0 +1,45 @@
+<demo-container [title]="'DropDown'">
+  <div class="content-section implementation">
+    <div class="demo-section">
+      <moj-title [textKey]="'בסיסי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-dropdownlist  [controlWidthColumns]="2"
+          [(ngModel)]="fileTypeValue" name="fileTypeValue" [items]="dropDownListItems" fieldName="name" fieldID="id">
+        </moj-dropdownlist>
+      </moj-line>
+    </div>
+    <div class="demo-section">
+      <moj-title [textKey]="'עם אפשרות להקליד'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-dropdownlist [editable]=true  labelTextKey="Texts.Choose"
+          [controlWidthColumns]="2" [(ngModel)]="fileTypeEditValue" name="fileTypeEditValue" [items]="dropDownListItems"
+          fieldName="name" fieldID="id">
+        </moj-dropdownlist>
+      </moj-line>
+    </div>
+    <div class="demo-section">
+      <moj-title [textKey]="'עם פילטור'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+      <moj-line>
+        <moj-dropdownlist [editable]=true [filter]="Enums.FilterType.includes"
+          labelTextKey="Texts.Choose" [controlWidthColumns]="2" [(ngModel)]="fileTypeFilterValue"
+          name="fileTypeFilterValue" [items]="dropDownListItems" fieldName="name" fieldID="id">
+        </moj-dropdownlist>
+      </moj-line>
+    </div>
+    <div class="demo-section"></div>
+    <moj-title [textKey]="'עבודה עם ng-template'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-line>עבור צורך בעיצוב מותאם אישית לפריטים ברשימה </moj-line>
+    <moj-line>
+      <moj-dropdownlist  name="fileTypeNgTemplateValue" labelTextKey="Texts.Choose"
+        [controlWidthColumns]="2" [items]="dropDownListItems" [(ngModel)]="fileTypeNgTemplateValue"
+        fieldName="name" fieldID="id">
+        <ng-template let-item pTemplate="custom">
+          <div style="background-color:cadetblue;height: 15px;color: black">{{item.value.name}}</div>
+        </ng-template>
+      </moj-dropdownlist>
+    </moj-line>
+  </div>
+</demo-container>
+
+<!-- @Input() editable: boolean = false;
+  @Input() filter: boolean = false;-->

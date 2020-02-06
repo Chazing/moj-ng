@@ -1,0 +1,58 @@
+<moj-container [title]="'File Upload'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+
+<div class="container">
+    <form #frmSearch="ngForm">
+        <div class="demo-section">
+            <moj-title [textKey]="'טעינה מרובת קבצים בפעם אחת (ניתן לבחור ביותר מקובץ אחד בכל browse)'"
+                [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <moj-input-file name="fld1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files" [controlWidthColumns]="4">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'טעינה של קובץ בודד'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>ניתן לטעון יותר מקובץ אחד ע"י לחיצה על מקש ה +</div>
+            <moj-input-file name="fld2" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files" [controlWidthColumns]="4"
+                [designType]="fuDesignType.Single">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'סיומות מורשות'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>ניתן לאפשר סיומות מסוימות בלבד, בדוגמה זו יהיה ניתן להעלות קבצים מסיומת pdf בלבד</div>
+            <moj-input-file name="fld5" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf'"
+                [(ngModel)]="files" [controlWidthColumns]="4"
+                [designType]="fuDesignType.Single">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'הגדרת ולידציות כמו למשל required'" [titleType]="Enums.TitleType.Secondary">
+            </moj-title>
+            <div>ניתן להגדיר ולידציות כמו בכל פקד אחר, בדוגמה זו הוגדרה ולידצית חובה על לפחות קובץ אחד</div>
+            <moj-input-file name="fld3" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files" [controlWidthColumns]="4"
+                [designType]="fuDesignType.Single" required>
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'הגדרת ולידציות מותנות'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>ניתן להגדיר ולידציות מותנות כמו בכל פקד אחר, בדוגמה זו הוגדרה ולידצית חובה על לפחות קובץ אחד בהתאם
+                לסימון בשדה</div>
+            <moj-line>
+                <moj-checkbox [(ngModel)]="isRequired" name="isRequired"
+                    [labelTextKey]="'לפי סימון בשדה זן יהיה חובה אם לצרף קובץ או לא'">
+                </moj-checkbox>
+            </moj-line>
+            <moj-line>
+                <moj-input-file name="fld4" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                    [(ngModel)]="files" [controlWidthColumns]="4" 
+                    [designType]="fuDesignType.Single" [required]="isRequired">
+                </moj-input-file>
+            </moj-line>
+        </div>
+
+        <moj-submit-button [form]="frmSearch"></moj-submit-button>
+
+    </form>
+
+</div>

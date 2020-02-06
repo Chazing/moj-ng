@@ -2,14 +2,25 @@
 <moj-line>
     <moj-button-toggle
         [items]="buttonToggleItems"
-        [(ngModel)]="toggleValue">
-    </moj-button-toggle> ערך:{{toggleValue}}
+        [(ngModel)]="toggleValue1"
+        [multiple]="true">
+    </moj-button-toggle> ערך:{{toggleValue1|json}}
 </moj-line>
 <br/>
 <moj-line>
     <moj-button-toggle
+        [(ngModel)]="toggleValue2"
         [items]="buttonToggleItems"
-        (onChange)="onToggleChange($event)"
-        buttonCssClasses="orange1 font-20">
-    </moj-button-toggle> 
+        buttonCssClasses="orange1 font-20"
+        [isObjectModel]="true">
+    </moj-button-toggle> ערך:{{toggleValue2|json}}
 </moj-line>
+
+<moj-line>
+        <moj-button-toggle
+            [buttonToggleStyle]="buttonToggleStyleType.List"
+            [buttonCols]="4"
+            [(ngModel)]="toggleValue2"
+            [items]="buttonToggleItems2">
+        </moj-button-toggle> ערך:{{toggleValue2|json}}
+    </moj-line>

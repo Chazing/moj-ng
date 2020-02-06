@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MojNewFileUploadComponent } from "./version-4/moj-file-upload.component" 
+import { MojSyncFileUploadComponent } from "./version-4/moj-file-upload.component" 
 import { MojFileUploadService } from "./moj-file-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
 import { CommonModule } from "@angular/common";
@@ -11,8 +11,8 @@ import { MojInputFileComponent } from "./input-file/moj-input-file.component";
 
 @NgModule({
     imports: [CommonModule, TranslateModule, MojSharedModule, MojDirectiveModule, MojInputModule],
-    exports: [MojNewFileUploadComponent, MojFileUploadComponent, MojInputFileComponent],
-    declarations: [MojNewFileUploadComponent, MojFileUploadComponent, MojInputFileComponent],
+    exports: [MojSyncFileUploadComponent, MojFileUploadComponent, MojInputFileComponent],
+    declarations: [MojSyncFileUploadComponent, MojFileUploadComponent, MojInputFileComponent],
     providers: [MojFileUploadService]
 })
 export class MojFileUploadModule {

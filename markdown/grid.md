@@ -24,34 +24,11 @@ Ag-grid היא טבלה שמקורה בjavascript , וניתנת לשימוש ב
 
 ### החלת הגדרות ברירת מחדל על הגריד
 
-כדי להחיל על הגריד את הגדרות ברירת המחדל של moj יש שתי אפשרויות:
+   יש להגדיר בקומפוננטה אובייקט מסוג GridOptions, למלא אותו ע"י קריאה לפונקציה gridService.getMojGridOptions(), ולהניח את ההגדרות על הגריד.
 
-1.  mojGridOptions – directive שמוגדר על הפקד ומספק הגדרות כלליות כגון דפדוף,
-    מיון, פונקציות עיצוב ועוד הגדרות שונות.
+   ניתן גם לדרוס הגדרות אם צריך.
 
-    ```html
-    <ag-grid-angular
-      style=" height: 230px;"
-      class="ag-theme-balham"
-      mojGridOptions
-      [rowData]="rowData"
-      [columnDefs]="columns"
-    >
-    </ag-grid-angular>
-    ```
-
-    במידה ורוצים גריד עם גובה דינאמי יש לוודא קודם כל שמותקן לכם ag-grid בגירסת 18 ומעלה
-    במידה וכן ניתן להשתמש במאפיין gridAutoHeight ולהוריד את הגדרת הגובה ב style כך:
-
-    ```html
-    <ag-grid-angular class="ag-theme-balham" [gridAutoHeight]="true" ...> </ag-grid-angular>
-    ```
-
-2.  להגדיר בקומפוננטה אובייקט מסוג GridOptions, למלא אותו ע"י קריאה לפונקציה gridService.getMojGridOptions(), ולהניח את ההגדרות על הגריד.
-
-    ניתן גם לדרוס הגדרות אם צריך.
-
-    ניתן לראות את אפשרויות הקונפיגורציה של ag-grid בדף הזה:
+   ניתן לראות את אפשרויות הקונפיגורציה של ag-grid בדף הזה:
     https://www.ag-grid.com/javascript-grid-properties/
 
 ```typescript

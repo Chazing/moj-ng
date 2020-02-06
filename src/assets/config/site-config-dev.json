@@ -1,10 +1,12 @@
 {
     "recaptchaSiteKey":"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-    "webApiAddress": "http://localhost:60980/api/values",
+    "webApiAddress": "http://localhost:4300/api",
     "isWriteUIErrorsToLog": false,
     "logApiFunction":"/log",
     "uploadServerUrl": "http://qa-soa:8092/FilesReceiver.ashx",
     "uploadServerUrl2": "http://localhost:51029/FileStreamReceiver.ashx",
-    "registerHandlerUrl": "http://localhost:49822/UploadRegister.axd",
-    "isGlassboxOn": true
+    "registerHandlerUrl": "UploadRegister.axd/",
+    "isGlassboxOn": true,
+    "isCSRFActive": false,
+    "isParseDate": true
 }

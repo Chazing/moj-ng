@@ -6,12 +6,13 @@ import { MessageData } from './message-data.model';
 
 @Component({
     selector: 'moj-message',
-    templateUrl: 'moj-message.component.html'
+    templateUrl: 'moj-message.component.html',
+    styleUrls: ['moj-message.component.scss']
 })
 export class MojMessageComponent implements AfterViewInit {
     @Input() data: MessageData;
 
-    @ViewChild('approve') approveButton;
+    @ViewChild('approve', { static: true}) approveButton;
     public buttonStyle = ButtonStyle;
 
     ngAfterViewInit(): void {
@@ -25,7 +26,7 @@ export class MojMessageComponent implements AfterViewInit {
     }
 
     get messageTypeString(): string {
-        return MessageType[this.data.messageType].toLowerCase();
+        return MessageType[this.data.messageType];
     }
 
     onCancelButtonClick() {

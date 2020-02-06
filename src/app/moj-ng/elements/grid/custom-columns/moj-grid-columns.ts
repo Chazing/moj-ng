@@ -5,6 +5,7 @@ import { ObjectState } from '../../general/general.enum';
 import { GridIconParams } from '../models/grid-icon-params';
 import { InternalGridService } from '../service/internal-grid.service';
 import { MojGridEditButtonComponent } from '../buttons/moj-grid-buttons';
+import { MojUtilsService } from '../../../shared/utils';
 
 @Component({
   selector: 'moj-link-column',
@@ -19,12 +20,12 @@ export class MojLinkColumnComponent extends MojGridEditButtonComponent implement
   agInit(params: any): void {
     this.params = params;
     if (params.title) {
-      this.title = this.translate.instant('Texts.' + params.title, { value: params.value });
+      this.title =this.utils.stringFormat(this.translate.instant("Texts."+ params.title)+ ' {0}', [params.value]);
       this.title = this.title.indexOf('Texts.') == 0 ? this.title.substr(6) : this.title;
     }
   }
 
-  constructor(protected internalGridService: InternalGridService, protected translate: TranslateService) {
+  constructor(protected internalGridService: InternalGridService, protected translate: TranslateService,private utils:MojUtilsService) {
     super(internalGridService, translate);
   }
 
@@ -94,6 +95,7 @@ export class MojVColumnComponent implements AgRendererComponent {
         [ngStyle]="{ cursor: clickFunction ? 'pointer' : 'normal' }"
         [attr.title]="tooltip ? (tooltip.toString() | translate) : null"
         (click)="onClick()"
+        [attr.href]="clickFunction ? 'javascript:void(0)' : null"
       >
         <i [attr.class]="icon && icon.iconClass"></i> <span class="bidi">{{ text }}</span>
       </a>
@@ -154,6 +156,7 @@ export class MojIconColumnComponent implements AgRendererComponent {
       if (!val && val !== 0) {
         //if field, show icon only if has value
         this.fieldValueExists = false;
+        return;
       }
       return val.toString();
     }

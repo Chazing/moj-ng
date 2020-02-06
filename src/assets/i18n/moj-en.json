@@ -3,7 +3,12 @@
     "required": "required",
     "pattern": "pattern",
     "dateFormat": "dateFormat",
-    "invalidDate": "invalidDate",
+    "dateTimeFormat": "dateTimeFormat",
+    "timeOnlyFormat":"timeOnlyFormat",
+    "rangeDateFormat": "rangeDateFormat",
+    "dateBiggerThan": "dateBiggerThan",
+    "dateSmallerThan":"dateSmallerThan",
+    "invalidRangeDate": "invalidRangeDate",
     "minlength": "minlength",
     "maxlength": "maxlength",
     "min": "min",
@@ -16,7 +21,9 @@
     "securityIf": "securityIf",
     "identification": "identification",
     "greaterThan": "greaterThan",
-    "email": "email"
+    "email": "email",
+    "clearAll":"Clear All",
+    "seeAll":"See All"
   },
   "MojTexts": {
     "today": "Today",
@@ -60,6 +67,9 @@
     "onlineEng": "Online",
     "onlineHeb": "onlineHeb",
     "justice": "justice",
+    "accessibility":"accessibility",
+    "termsConditions":"Terms Conditions",
+    "privacy":"Privacy",
     "main": "Ministry of Justice website",
     "allRightsReserved": "allRightsReserved",
     "versionNo": "versionNo",
@@ -85,6 +95,7 @@
     "previewNotFound": "previewNotFound",
     "print": "print",
     "stickyAlertRecord": "Please note that the actions performed by you on the site are maintained for the purpose of quality control and improvement of service to the citizen.",
+    "permissionError":"no permission",
     "fu": {
       "fileNameError": "\nfileNameError",
       "zeroSize": "",

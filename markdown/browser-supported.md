@@ -20,11 +20,11 @@
             var myNav = navigator.userAgent.toLowerCase();
             return (myNav.indexOf('edge') != -1);
         }
-        (IsSupportBrowser = function (isSupportEdge, isSupportFF) {
-            if ((isInternetExplorer() && isInternetExplorer() < 11) || (!isSupportEdge && isEdge()) || (!isSupportFF && isFF())) {
+        (IsSupportBrowser = function () {
+            if (isInternetExplorer() || isFF() || isEdge()) {
                 window.location.href = "/assets/unsupported-browser.html";
             }
-        })(true, true);
+        })();
     </script>
 ```
 

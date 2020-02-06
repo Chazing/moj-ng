@@ -17,7 +17,7 @@ var ButtonsExampleComponent = /** @class */ (function () {
         ];
     }
     ButtonsExampleComponent.prototype.onToggleChange = function (value) {
-        alert(value);
+        console.log(value);
     };
     ButtonsExampleComponent = __decorate([
         core_1.Component({

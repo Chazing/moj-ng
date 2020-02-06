@@ -1,0 +1,27 @@
+<moj-container [title]="'File Upload'" [containerType]="Enums.ContainerType.Secondary"></moj-container>
+
+<div class="container">
+<div class="content-section introduction">
+    <div>
+      <h2><span class="feature-title">action-popup</span></h2>
+  
+    </div>
+  </div>
+  <br>
+      רכיב חלון המכיל בתוכו פעולה/ות שרוצים להציג בלחיצה על כפתור בגריד
+  <div class="content-section implementation">
+     
+       <div style="width:500px;">
+        <moj-grid-panel [editOptions]="editOptions" [enableChangePageSize]="false">
+            <moj-line>
+                <ag-grid-angular class="ag-theme-balham" mojGridOptions [rowData]="rowData2" [columnDefs]="columns2">
+                </ag-grid-angular>
+            </moj-line>
+        </moj-grid-panel>
+      </div>
+    </div>
+  
+
+  </div>  
+  
+

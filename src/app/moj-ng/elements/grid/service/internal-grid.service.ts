@@ -34,4 +34,8 @@ export class InternalGridService {
     quickFilter(value) {
         this.gridActions.quickFilterSource.next(value);
     }
+
+    dataViewTypeChange(gridType) {
+        this.gridActions.dataViewTypeChangeSource.next(gridType);
+    }
 }

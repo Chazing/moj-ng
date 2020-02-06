@@ -1,0 +1,7 @@
+{
+    "recaptchaSiteKey":"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+    "webApiAddress": "http://localhost:60980/api/values",
+    "isWriteUIErrorsToLog": false,
+    "logApiFunction":"/log",
+    "aa":"aa"
+}

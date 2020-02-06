@@ -1,0 +1,17 @@
+<div>
+    <form #form="ngForm">
+        <moj-line>
+            <moj-textbox [(ngModel)]="editedItem.ID" name="productID" [required]="true" [labelTextKey]="'קוד מוצר'"
+                            controlWidthColumns="2">
+            </moj-textbox>
+
+            <moj-textbox [(ngModel)]="editedItem.ProductName" name="productName" [required]="true" [labelTextKey]="'שם מוצר'"
+                            controlWidthColumns="2">
+            </moj-textbox>
+        </moj-line>
+        <moj-buttons-line>
+            <moj-grid-cancel-button></moj-grid-cancel-button>
+            <moj-grid-save-button [form]="form"></moj-grid-save-button>
+        </moj-buttons-line>
+    </form>
+</div>

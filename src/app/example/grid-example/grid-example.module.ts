@@ -13,7 +13,6 @@ import { ExampleModule } from "../example-component/example.module";
 import { GridEditInlineExampleComponent } from "./grid-edit-inline-example.component";
 import { GridServerSideExample } from "./grid-server-side/grid-server-side-example.component";
 
-
 @NgModule({
     imports: [
         CommonModule,

@@ -8,6 +8,7 @@ export class GridActions {
     cancelClickSource = new Subject();
     duplicateClickSource = new Subject();
     quickFilterSource = new Subject();
+    dataViewTypeChangeSource = new Subject();
 
     addClick$ = this.addClickSource.asObservable();
     deleteClick$ = this.deleteClickSource.asObservable();
@@ -16,4 +17,5 @@ export class GridActions {
     cancelClick$ = this.cancelClickSource.asObservable();
     duplicateClick$ = this.duplicateClickSource.asObservable();
     quickFilter$ = this.quickFilterSource.asObservable();
+    dataViewTypeChangeSource$ = this.dataViewTypeChangeSource.asObservable();
 }

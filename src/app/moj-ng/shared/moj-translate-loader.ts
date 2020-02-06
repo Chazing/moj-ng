@@ -24,7 +24,7 @@ export class MojTranslateLoader implements TranslateLoader {
     });
   }
 
-  constructor(private http: HttpClient,@Optional() moreTranslations?: Object[]) {
+  constructor(private http: HttpClient, @Optional() moreTranslations?: Object[]) {
     this.moreTranslations = moreTranslations;
   }
 

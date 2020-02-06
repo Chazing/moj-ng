@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Moj Demo</title>
+  <base href="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    function isInternetExplorer() {
+        var myNav = navigator.userAgent.toLowerCase();
+        if (myNav.indexOf('msie') != -1)
+            return parseInt(myNav.split('msie')[1]);
+        if (myNav.indexOf('rv:') != -1)
+            return parseInt(myNav.split('rv:')[1]);
+        return false;
+    }
+    function isFF() {
+        var myNav = navigator.userAgent.toLowerCase();
+        return (myNav.indexOf('firefox') != -1);
+    }
+    function isEdge() {
+        var myNav = navigator.userAgent.toLowerCase();
+        return (myNav.indexOf('edge') != -1);
+    }
+    (IsSupportBrowser = function (isSupportEdge, isSupportFF) {
+        if ((isInternetExplorer() && isInternetExplorer() < 11) || (!isSupportEdge && isEdge()) || (!isSupportFF && isFF())) {
+            window.location.href = "/assets/unsupported-browser.html";
+        }
+    })(true, true);
+</script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

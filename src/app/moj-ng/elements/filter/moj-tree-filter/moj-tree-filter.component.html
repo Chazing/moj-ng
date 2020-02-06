@@ -1,0 +1,15 @@
+<ul [formGroup]="form">
+    <li *ngFor="let category of nodes; trackby" [class.main]="category.isMain">
+        <div class="filter-header"  [class.bold]="category.hasFields && !category.hasChildren && !category.isMain">
+          <moj-checkbox [controlWidthColumns]="8"  (change)="category.isOpen = !category.isOpen"  [labelTextKey]="category.category" [formControlName]="category.controlName" *ngIf="category.controlName!=null"  class="header-checkBox"></moj-checkbox> 
+          <div class="filter-header-content" (click)="category.isOpen = !category.isOpen;isOpenClick(category.controlName, category.isOpen)">
+            <span *ngIf="category.controlName==null">{{category.category}} </span>
+            <i class="fas" *ngIf="category.hasChildren || category.isMain" [ngClass]="{ 'fa-chevron-down': !category.isOpen, 'fa-chevron-up': category.isOpen }"></i>
+        </div>     
+        </div>
+        <div class="filter-body" [hidden]="!category.isOpen"   [attr.aria-expanded]="category.isOpen"  >
+            <moj-dynamic-form [form]="form" [fields]="category.fields" *ngIf="category.hasFields"></moj-dynamic-form>
+            <moj-tree-filter  [form]="form" [nodes]="category.sub_categories" *ngIf="category.hasChildren"></moj-tree-filter>
+        </div>
+    </li>
+</ul>

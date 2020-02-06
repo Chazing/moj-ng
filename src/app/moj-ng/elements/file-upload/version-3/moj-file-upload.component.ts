@@ -10,13 +10,15 @@ import { map } from 'rxjs/operators';
 import { MojConfigService } from '../../../shared/moj-config.service';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ElementBase } from '../../base/element.base';
+import { PermissionService } from '../../../../moj-ng/permissions/permission.service';
+import { MessageType } from '../../../../moj-ng/messages/message.enum';
 
 /**
   * Usage example
   ```html
-  <moj-file-upload name="docsForApprove" [labelTextKey]="'Texts.docsForApprove'" [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [isLabelAboveControl]="true" [controlWidthColumns]="4"
+  <moj-file-upload name="docsForApprove" [labelTextKey]="'Texts.docsForApprove'" [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [controlWidthColumns]="4"
 			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)"></moj-file-upload>
-	<moj-file-upload name="docsForCheck" [labelTextKey]="'Texts.docsForCheck'" [enabledFileTypes]="'pdf'" [(ngModel)]="files2" [isLabelAboveControl]="true" [controlWidthColumns]="4"
+	<moj-file-upload name="docsForCheck" [labelTextKey]="'Texts.docsForCheck'" [enabledFileTypes]="'pdf'" [(ngModel)]="files2" [controlWidthColumns]="4"
 			[designType]="fuDesignType.Single" [required]="isRequired2"></moj-file-upload>
   ```
   * ```typescript
@@ -33,224 +35,250 @@ import { ElementBase } from '../../base/element.base';
   *```
  */
 @Component({
-  selector: 'moj-file-upload',
-  templateUrl: '../moj-file-upload.component.html',
-  styleUrls: ['../moj-file-upload.component.css'],
-    changeDetection: ChangeDetectionStrategy.Default,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => MojFileUploadComponent),
-    multi: true
-  },
-  { provide: ElementBase, useExisting: forwardRef(() => MojFileUploadComponent) }]
+    selector: 'moj-file-upload',
+    templateUrl: '../moj-file-upload.component.html',
+    styleUrls: ['../moj-file-upload.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => MojFileUploadComponent),
+        multi: true
+    },
+    { provide: ElementBase, useExisting: forwardRef(() => MojFileUploadComponent) }]
 })
 export class MojFileUploadComponent extends MojBaseFileUploadComponent {
-  uploads = [];
+    uploads = [];
 
-  sendFiles(files: any[] = []) {
-    this.totalSize = 0;
-    this.uploadedChosenFilesSize = 0;
-    this.disabled = true;
-    this.showProgress = true;
-    this.totalProgress = 0;
-    this.errMsg = "";
-    this.generalUploadStart.emit();
-    this.createTickets(files);
-  }
+    sendFiles(files: any[] = []) {
+        this.totalSize = 0;
+        this.uploadedChosenFilesSize = 0;
+        this.disabled = true;
+        this.showProgress = true;
+        this.totalProgress = 0;
+        this.errMsg = "";
+        this.uploads = [];
+        this.generalUploadStart.emit();
+        this.createTickets(files);
+    }
 
-  createTickets(files) {
-    this.pushFilesToUpload(files);
-    var filesToSend = this.uploads;
-    if (filesToSend.length > 0) {
-      var params = "TestControlFiles_97";
-      var registerUrl = this.mojConfigService.configuration.registerHandlerUrl + '?';
+    createTickets(files) {
+        this.pushFilesToUpload(files);
+        var registerUrl = this.mojConfigService.configuration.registerHandlerUrl;
 
-      var JSONArr = [];
-
-      for (var i = 0; i < filesToSend.length; i++) {
-        var JSONObj = {
-          "oldID": filesToSend[i].fileId, "FileName": encodeURI(filesToSend[i].fileName),
-          "FileSize": filesToSend[i].fileSize, "FileType": this.getFileExtension(filesToSend[i].fileName), //filesToSend[i].file.type,
-          "LastModificationDate": filesToSend[i].file.lastModified
-        };
-        JSONArr.push(JSONObj);
-      }
-      var par = GFU.jSONToString(JSONArr);
-
-      registerUrl = registerUrl + params + "&FilesToSend=" + par;
-      //const headers =  new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
-      return this.http.get(registerUrl).subscribe(data => {
-        if (isArray(data)) {
-          (data as Array<any>).forEach(x => {
-            this.uploads.find(y => { return y.fileId == x.OldId; }).fileGUID = x.FileID.toUpperCase();
-          });
+        var filesToSend = new Array();
+        for (var i = 0; i < this.uploads.length; i++) {
+            if (this.uploads[i].isValid == true) {
+                filesToSend.push(this.uploads[i]);
+            }
         }
+
+        if (filesToSend.length > 0) {
+            registerUrl = registerUrl + '?FilesToSend';
+            var files2 = [];
+            for (i = 0; i < filesToSend.length; i++) {
+                files2.push({
+                    oldID: filesToSend[i].fileId,
+                    FileName: encodeURI(filesToSend[i].fileName),
+                    FileSize: filesToSend[i].fileSize,
+                    FileType: this.getFileExtension(filesToSend[i].fileName),
+                    LastModificationDate: filesToSend[i].file.lastModified
+                });
+            }
+        }
+
+        return this.http.post(registerUrl, "FilesToSend=" + JSON.stringify(files2), {
+            headers: { 'Content-Type': "application/x-www-form-urlencoded" }
+        }).subscribe(data => {
+            if (isArray(data)) {
+                (data as Array<any>).forEach(x => {
+                    this.uploads.find(y => { return y.fileId == x.OldId; }).fileGUID = x.FileID.toUpperCase();
+                });
+            }
+            this.uploadFile();
+        }, error => {
+            this.generalUploadError.emit(error);
+            this.mojMessagesService.showMessage(null, "MojTexts.errorMessage", this.translateService.instant("MojTexts.error"), MessageType.Error).subscribe();
+            //this.handleError("Failed To Register Files in CreateTickets function");
+        });
+        // }
+    }
+
+    pushFilesToUpload(files) {
+        var file, id;
+        for (var i = 0; i < files.length; i++) {
+            file = files[i];
+            id = this.generateTempId();
+            file.TotalFilesCount = files.length;
+            file.FileIndex = (i + 1);
+            file.FileType = this.getFileExtension(file.name);
+            file.Name = file.name;
+            var upload = new FileUpload(file, id);
+            this.uploads.push(upload);
+            this.totalSize += file.size;
+
+            // file.TotalFilesCount = file.TotalFilesCount;
+            // file.FileIndex = file.FileIndex;
+            // //*******************************************
+            // //*******************************************
+
+            // file.fileId = id
+            // file.fileGUID = null;
+            // file.fileName = file.name;
+            // file.fileSize = file.size;
+            // file.uploadSize = file.size;
+            // file.isValid = true;
+
+            // file.uploadedBytes = 0;
+        }
+
+
+    }
+
+    uploadNextFile() {
+        this.uploads.splice(0, 1); // remove first element that represents the uploaded file
         this.uploadFile();
-      }, error => {
-        this.generalUploadError.emit(error);
-        this.handleError("Failed To Register Files in CreateTickets function");
-      });
     }
-  }
 
-  pushFilesToUpload(files) {
-    var file, id;
-    for (var i = 0; i < files.length; i++) {
-      file = files[i];
-      id = this.generateTempId();
-      file.TotalFilesCount = files.length;
-      file.FileIndex = (i + 1);
-      var upload = new FileUpload(file, id);
-      this.uploads.push(upload);
-      this.totalSize += file.size;
-    }
-  }
-
-  uploadNextFile() {
-    this.uploads.splice(0, 1); // remove first element that represents the uploaded file
-    this.uploadFile();
-  }
-
-  uploadFile() {
-    if (this.uploads.length > 0) // there are files to upload
-    {
-      if (this.uploads[0].fileGUID == null || this.uploads[0].fileGUID == '' || this.uploads[0].fileGUID == 'undefined') {
-        this.handleError("Cannot upload files without GUID");
-      }
-      else {
-        this.ajaxUpload(this.uploads[0]);
-      }
-    }
-    else // all chosen files uploaded
-    {
-      if (this.designType == MojFileUploadDesignType.Single)
-        this.addMoreFileEnable = false;
-      this.generalUploadComplete.emit();
-      this.init();
-    }
-  }
-
-  ajaxUpload(upload) {
-    // ChunkFile upload
-    var SIZE = upload.file.size;
-    var BYTES_PER_CHUNK = 1024 * 1024; // 1MB chunk sizes.
-    var start = 0;
-    var end = SIZE;
-    var chunkNum = 0;
-    var chunksQuantity = 1
-    var completedChunks = 0;
-    var successfulRequests = 0;
-    var failedRequests = 0;
-
-    // synchroneous upload - next chunk is sent after the current one is successfully uploaded
-    this.loadChunk(start, end, upload, chunkNum,
-      successfulRequests, failedRequests, completedChunks, chunksQuantity, BYTES_PER_CHUNK);
-  }
-
-  loadChunk(start, end, upload, chunkNum, successfulRequests, failedRequests, completedChunks, chunksQuantity, BYTES_PER_CHUNK) {
-    var SIZE = upload.file.size;
-    chunkNum++;
-    var formData = new FormData();
-    var chunk = upload.file.slice(start, end);
-
-    // Append file data:
-    formData.append("file", chunk);
-
-    var uploadURL = this.mojConfigService.configuration.uploadServerUrl + "?isMultiPart=false&fileName=" + //"&action=upload&" +
-      encodeURI(upload.file.name) + "&fileSize=" + SIZE + "&fid=" + upload.fileGUID + "&chunkNum=" + chunkNum + "&TotalFilesCount=" +
-      upload.TotalFilesCount + "&FileIndex=" + upload.FileIndex + "&FileID=" + upload.fileGUID;
-
-
-    const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
-    const req = new HttpRequest('POST', uploadURL, formData, {
-      reportProgress: true,
-      headers: headers,
-      responseType: "text"
-    });
-    return this.httpHandler.handle(req).pipe(map(event => { return { event: event, file: upload.file } })).subscribe(
-      data => {
-        switch (data.event.type) {
-          case HttpEventType.Sent:
-            this.fileUploadStart.emit(data.file);
-            break;
-          case HttpEventType.UploadProgress:
-            if (data.event.total == data.event.loaded) // =100, chunk upload completed
-            {
-              completedChunks++;
+    uploadFile() {
+        if (this.uploads.length > 0) // there are files to upload
+        {
+            if (this.uploads[0].fileGUID == null || this.uploads[0].fileGUID == '' || this.uploads[0].fileGUID == 'undefined') {
+                this.handleError("Cannot upload files without GUID");
             }
-            this.totalProgress = (data.event.loaded + this.uploadedChosenFilesSize) / this.totalSize * 100;
-            if (this.totalProgress > 100) {
-              this.totalProgress = 100;
+            else {
+                this.ajaxUpload(this.uploads[0]);
             }
-            if (data.event.loaded === data.event.total) {
-              this.uploadedChosenFilesSize += data.event.total;
-            }
-            break;
-          case HttpEventType.ResponseHeader:
-            if (!data.event.ok)
-              this.handleError();
-            break;
-          case HttpEventType.Response:
-            if (this.isOK(data.event.body)) {
-              successfulRequests++;
-              if (successfulRequests >= chunksQuantity) {
-                // file upload completed
-                data.file.GUID = upload.fileGUID;
-                this.uploadedChosenFilesSize += upload.fileSize;
-                // add file to array
-                this.addFileUploadedToFilesArray(data.file);
-                this.fileUploadComplete.emit(data.file);
-                this.uploadNextFile();
-              }
-              else {
-                start = end;
-                end = start + BYTES_PER_CHUNK;
-                this.loadChunk(start, end, upload, chunkNum,
-                  successfulRequests, failedRequests, completedChunks, chunksQuantity, BYTES_PER_CHUNK);
-              }
-            }
-            else if (data.event.status != 0) { // xhr.status == 0 and readyState=4 is when the request is cancelled, handled in another place
-              failedRequests++;
-              this.handleError("Failed To Upload file" + upload.fileId + ". Server Response Status: " + data.event.status + ", Response Text=" + data.event.body);
-            }
-            break;
-          default:
-            break;
         }
-      },
-      error => {
-        this.handleError();
-        this.fileUploadError.emit(error);
-      }
-    );
-
-  }
-
-  isOK(xhrResponse) {
-    var isOK = xhrResponse.indexOf("<ok") >= 0;// = $($.parseXML(xhrResponse)).find("ok").length > 0;
-    return isOK;
-  }
-
-  S4() {
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  }
-
-  generateTempId() {
-    var id = (this.S4() + this.S4()).toLowerCase();
-    return id;
-  }
-
-  getFileExtension(filename) {
-    var a = filename.split(".");
-    if (a.length === 1 || (a[0] === "" && a.length === 2)) {
-      return "";
+        else // all chosen files uploaded
+        {
+            this.generalUploadComplete.emit();
+            this.init();
+        }
     }
-    return "." + a.pop();
-  }
 
-  constructor(protected mojUploadService: MojFileUploadService, protected mojMessagesService: MojMessagesService, protected translateService: TranslateService,
-    protected cdr: ChangeDetectorRef, private http: HttpClient, private httpHandler: HttpHandler, private mojConfigService: MojConfigService, protected el: ElementRef, protected _injector: Injector) {
-    super(mojUploadService, mojMessagesService, translateService, cdr, el, _injector);
-  }
+    ajaxUpload(upload) {
+        // ChunkFile upload
+        var SIZE = upload.file.size;
+        var BYTES_PER_CHUNK = 1024 * 1024; // 1MB chunk sizes.
+        var start = 0;
+        var end = SIZE;
+        var chunkNum = 0;
+        var chunksQuantity = 1
+        var completedChunks = 0;
+        var successfulRequests = 0;
+        var failedRequests = 0;
+
+        // synchroneous upload - next chunk is sent after the current one is successfully uploaded
+        this.loadChunk(start, end, upload, chunkNum,
+            successfulRequests, failedRequests, completedChunks, chunksQuantity, BYTES_PER_CHUNK);
+    }
+
+    loadChunk(start, end, upload, chunkNum, successfulRequests, failedRequests, completedChunks, chunksQuantity, BYTES_PER_CHUNK) {
+        var SIZE = upload.file.size;
+        chunkNum++;
+        var formData = new FormData();
+        var chunk = upload.file.slice(start, end);
+
+        // Append file data:
+        formData.append("file", chunk);
+
+        var uploadURL = this.mojConfigService.configuration.uploadServerUrl + "?isMultiPart=false&fileName=" + //"&action=upload&" +
+            encodeURI(upload.file.name) + "&fileSize=" + SIZE + "&fid=" + upload.fileGUID + "&chunkNum=" + chunkNum + "&TotalFilesCount=" +
+            upload.TotalFilesCount + "&FileIndex=" + upload.FileIndex + "&FileID=" + upload.fileGUID;
+
+
+        const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+        const req = new HttpRequest('POST', uploadURL, formData, {
+            reportProgress: true,
+            headers: headers,
+            responseType: "text"
+        });
+        return this.httpHandler.handle(req).pipe(map(event => { return { event: event, file: upload.file } })).subscribe(
+            data => {
+                if (data.event) {
+                    switch (data.event.type) {
+                        case HttpEventType.Sent:
+                            this.fileUploadStart.emit(data.file);
+                            break;
+                        case HttpEventType.UploadProgress:
+                            if (data.event.total == data.event.loaded) // =100, chunk upload completed
+                            {
+                                completedChunks++;
+                            }
+                            this.totalProgress = (data.event.loaded + this.uploadedChosenFilesSize) / this.totalSize * 100;
+                            if (this.totalProgress > 100) {
+                                this.totalProgress = 100;
+                            }
+                            if (data.event.loaded === data.event.total) {
+                                this.uploadedChosenFilesSize += data.event.total;
+                            }
+                            break;
+                        case HttpEventType.ResponseHeader:
+                            if (!data.event.ok)
+                                this.handleError();
+                            break;
+                        case HttpEventType.Response:
+                            if (this.isOK(data.event.body)) {
+                                successfulRequests++;
+                                if (successfulRequests >= chunksQuantity) {
+                                    // file upload completed
+                                    data.file.GUID = upload.fileGUID;
+                                    this.uploadedChosenFilesSize += upload.fileSize;
+                                    // add file to array
+                                    this.addFileUploadedToFilesArray(data.file);
+                                    this.fileUploadComplete.emit(data.file);
+                                    this.uploadNextFile();
+                                }
+                                else {
+                                    start = end;
+                                    end = start + BYTES_PER_CHUNK;
+                                    this.loadChunk(start, end, upload, chunkNum,
+                                        successfulRequests, failedRequests, completedChunks, chunksQuantity, BYTES_PER_CHUNK);
+                                }
+                            }
+                            else if (data.event.status != 0) { // xhr.status == 0 and readyState=4 is when the request is cancelled, handled in another place
+                                failedRequests++;
+                                this.handleError("Failed To Upload file" + upload.fileId + ". Server Response Status: " + data.event.status + ", Response Text=" + data.event.body);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            },
+            error => {
+                this.handleError();
+                this.fileUploadError.emit(error);
+            }
+        );
+
+    }
+
+    isOK(xhrResponse) {
+        var isOK = xhrResponse.indexOf("<ok") >= 0;// = $($.parseXML(xhrResponse)).find("ok").length > 0;
+        return isOK;
+    }
+
+    S4() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+
+    generateTempId() {
+        var id = (this.S4() + this.S4()).toLowerCase();
+        return id;
+    }
+
+    getFileExtension(filename) {
+        var a = filename.split(".");
+        if (a.length === 1 || (a[0] === "" && a.length === 2)) {
+            return "";
+        }
+        return "." + a.pop();
+    }
+
+    constructor(protected mojUploadService: MojFileUploadService, protected mojMessagesService: MojMessagesService, protected translateService: TranslateService,
+        protected cdr: ChangeDetectorRef, private http: HttpClient, private httpHandler: HttpHandler, private mojConfigService: MojConfigService, protected el: ElementRef, protected _injector: Injector, protected permissionService: PermissionService) {
+        super(mojUploadService, mojMessagesService, translateService, cdr, el, _injector, permissionService);
+    }
 
 }

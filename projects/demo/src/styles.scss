@@ -1,0 +1,46 @@
+﻿/* You can add global styles to this file, and also import other style files */
+
+@import "../../../src/css/moj-config-css.scss";
+.moj-ltr {
+    @import "../../../src/css/_direction-ltr.scss";
+    @import "../../../src/css/moj-ag-grid.scss";
+    @import "../../../src/css/moj-common.scss";
+    @import "../../../src/css/moj-fonts.scss";
+    @import "../../../src/css/moj-buttons.scss";
+    @import "../../../src/css/moj-prime.scss";
+    @import "../../../src/css/moj-layout.scss";
+    @import "../../../src/css/moj-website.scss";
+
+}
+.moj-rtl {   
+    @import "../../../src/css/_direction-rtl.scss";
+    @import "../../../src/css/moj-ag-grid.scss";
+    @import "../../../src/css/moj-common.scss";
+    @import "../../../src/css/moj-fonts.scss";
+    @import "../../../src/css/moj-buttons.scss";
+    @import "../../../src/css/moj-prime.scss";
+    @import "../../../src/css/moj-layout.scss";
+    @import "../../../src/css/moj-website.scss";
+}
+
+.demo-section {
+    padding: 1em 0 2em;
+    display: table;
+    width: 100%;
+}
+
+.content-section {
+    
+}
+
+.compodoc-icon{
+    background-image: url('assets/MojImages/icons/compodoc-vectorise.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: cover;
+    width:25px;
+    height: 15px;
+}
+
+
+

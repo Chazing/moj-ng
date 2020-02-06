@@ -12,20 +12,27 @@ import { MojWebsiteTopmenuComponent, MojWebsiteTopmenuMainItemComponent, MojWebs
 import { MojTopMenuService } from "./moj-website-topmenu/moj-website-topmenu.service"
 import { MojAccessibleMenuComponent } from "./moj-accessible-menu/moj-accessible-menu.component";
 import { MojWebsiteFooterComponent } from "./moj-website-footer/moj-website-footer.component";
-import {NgbDropdownMenu, NgbDropdownToggle, NgbDropdown, goBackToggle} from "../../directives/moj-dropdown.directive"
+import { NgbDropdownMenu, NgbDropdownToggle, NgbDropdown, goBackToggle } from "../../directives/moj-dropdown.directive"
 import { RouterModule } from "@angular/router";
 import { StickyAlertComponent } from "../sticky-alert/sticky-alert.component";
+import { MojWebsiteSupportContainerComponent } from "./moj-website-support-container/moj-website-support-container.component";
+import { ValidationsModule } from "../../validations/validation.module";
+import { MojLineModule } from "../general/moj-line.module";;
+import { MojContainerComponent } from './moj-container/moj-container.component'
+
+// import { MojFloatingPopupModule } from "../floating-popup/floating-popup.module";
 
 @NgModule({
-    imports: [CommonModule, TranslateModule, MojPipesModule, RouterModule],
+    imports: [CommonModule, TranslateModule, MojPipesModule, RouterModule, ValidationsModule,MojLineModule],
     exports: [MojAccessibleMenuComponent, MojWebsiteTopmenuComponent, MojWebsiteTopmenuMainItemComponent, MojWebsiteTopmenuSubItemComponent,
-        MojWebsiteHeaderComponent, MojWebsiteFooterComponent, StickyAlertComponent, MojDynamicFontsize, MojRecaptchaComponent, MojRecaptchaDirective,
-        NgbDropdownMenu, NgbDropdownToggle, NgbDropdown, goBackToggle
+        MojWebsiteHeaderComponent, MojWebsiteFooterComponent, StickyAlertComponent, MojDynamicFontsize, MojRecaptchaComponent,MojWebsiteSupportContainerComponent, MojRecaptchaDirective,
+        NgbDropdownMenu, NgbDropdownToggle, NgbDropdown, goBackToggle, MojContainerComponent
     ],
     declarations: [MojAccessibleMenuComponent, MojWebsiteTopmenuComponent, MojWebsiteTopmenuMainItemComponent, MojWebsiteTopmenuSubItemComponent,
-        MojWebsiteHeaderComponent, MojWebsiteFooterComponent, StickyAlertComponent, MojDynamicFontsize, MojRecaptchaComponent, MojRecaptchaDirective,
+        MojWebsiteHeaderComponent, MojWebsiteFooterComponent, StickyAlertComponent, MojDynamicFontsize, MojRecaptchaComponent,MojWebsiteSupportContainerComponent, MojRecaptchaDirective,
         NgbDropdownMenu, NgbDropdownToggle, NgbDropdown, goBackToggle
+, MojContainerComponent
     ],
-    providers: [MojRecaptchaService, MojTopMenuService]
+    providers: [MojTopMenuService]
 })
 export class MojWebsiteModule { }

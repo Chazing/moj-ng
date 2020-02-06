@@ -112,6 +112,7 @@
     font-size: 1em;
     color: #1e7ca8 !important;
     text-decoration: underline !important;
+    cursor: pointer;
   }
   
 .langs-culture {

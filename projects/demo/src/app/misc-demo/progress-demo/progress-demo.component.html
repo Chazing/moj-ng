@@ -1,0 +1,12 @@
+<moj-container [title]="'Progress'" [containerType]="Enums.ContainerType.Secondary">
+</moj-container>
+
+<div class="container">
+
+    <moj-line>
+        <moj-textbox name="percentValue" [(ngModel)]="percentValue" [inputType]="'number'" [controlWidthColumns]=2></moj-textbox>
+        <moj-button [textKey]="'עדכן אחוז'" (click)="update($event)"></moj-button>
+    </moj-line>
+    <moj-progress [percent]=percentValueInput></moj-progress>
+
+</div>

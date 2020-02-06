@@ -1,6 +1,12 @@
 {
     "/api/*": {
-        "target": "http://localhost:57600",
+        "target": "http://localhost:56074",
+        "secure": false,
+        "logLevel": "debug"
+    },
+
+    "/*.axd/": {
+        "target": "http://localhost:56074/",   
         "secure": false,
         "logLevel": "debug"
     }

@@ -1,4 +1,5 @@
-﻿import { Component, Input, ElementRef, Optional, ChangeDetectorRef } from '@angular/core';
+﻿import { Alignment } from './general.enum';
+import { Component, Input, ElementRef, Optional, ChangeDetectorRef } from '@angular/core';
 import { MojFormService } from '../../directives/moj-form.service';
 
 /**
@@ -11,11 +12,13 @@ import { MojFormService } from '../../directives/moj-form.service';
  */
 @Component({
     selector: 'moj-buttons-line',
-    template: `<moj-line [ngClass]="{'dialog-bottom': isInDialogFooter}" *ngIf=isShow><div class="div-buttons"><ng-content></ng-content></div></moj-line>`
+    template: `<moj-line [ngClass]="{'dialog-bottom': isInDialogFooter}" *ngIf=isShow><div class="div-buttons" [ngClass]="{'buttons-right': buttonsAlign==buttonsAlignList.right}"><ng-content></ng-content></div></moj-line>`
 })
 export class MojButtonsLineComponent {
     @Input() hideOnGridEdit: boolean = true;
     @Input() isInDialogFooter: boolean;
+    @Input() buttonsAlign: Alignment = Alignment.left;
+    private buttonsAlignList = Alignment;
     isShow: boolean = true;
     constructor(public el: ElementRef, @Optional() private mojFormService: MojFormService, private cdr: ChangeDetectorRef) {
         if (mojFormService) {

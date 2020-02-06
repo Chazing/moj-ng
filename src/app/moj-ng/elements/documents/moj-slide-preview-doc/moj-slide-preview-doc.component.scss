@@ -83,4 +83,26 @@
         font-size: 16px;
     }
 }
-    
+.moj-ltr
+{
+    .doc-preview-panel {
+        left:initial;
+        right: 0;
+        &.on-resize::after {
+            content: "";
+            top:0; left:initial;right:0;
+        }
+        .open-close {
+            right: initial;
+            left: -30px;
+            padding: 10px 0px 0 5px;
+            border-left-width: initial;
+            border-right-width: 0px;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            border-top-right-radius: initial;
+            border-bottom-right-radius: initial;
+        }
+    }
+        
+}
