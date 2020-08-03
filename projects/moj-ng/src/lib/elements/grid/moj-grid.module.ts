@@ -56,10 +56,6 @@ import { MojGridMenuColumnComponent } from './buttons/moj-grid-menu-column/moj-g
 import { MojSortComponent } from './sort/moj-sort.component'
 import { MojListItemFooterComponent } from './list-view/moj-list-item-footer.component';
 
-LicenseManager.setLicenseKey(
-    "Software_Sources_Ltd._on_behalf_of_Israeli_Ministry_Of_Justice_MultiApp_1Devs11_April_2019__MTU1NDkzNzIwMDAwMA==1baea05d9fd5b715079f6fd9434861d6"
-);
-
 @NgModule({
     imports: [
         CommonModule,
