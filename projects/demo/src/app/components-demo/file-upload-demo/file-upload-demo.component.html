@@ -3,26 +3,42 @@
 <div class="container">
     <form #frmSearch="ngForm">
         <div class="demo-section">
-            <moj-title [textKey]="'טעינה מרובת קבצים בפעם אחת (ניתן לבחור ביותר מקובץ אחד בכל browse)'"
-                [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <moj-title [textKey]="'בסיסי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
             <moj-input-file name="fld1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
-                [(ngModel)]="files" [controlWidthColumns]="4">
+                [(ngModel)]="files" [controlWidthColumns]="6">
             </moj-input-file>
         </div>
         <div class="demo-section">
-            <moj-title [textKey]="'טעינה של קובץ בודד'" [titleType]="Enums.TitleType.Secondary"></moj-title>
-            <div>ניתן לטעון יותר מקובץ אחד ע"י לחיצה על מקש ה +</div>
+            <moj-title [textKey]="'ניתן להגדיר בכל רוחב שהוא'" [titleType]="Enums.TitleType.Secondary"></moj-title>
             <moj-input-file name="fld2" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
-                [(ngModel)]="files" [controlWidthColumns]="4"
-                [designType]="fuDesignType.Single">
+                [(ngModel)]="files" [controlWidthColumns]="10">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'עטוף בפאנל חיצוני'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div style="margin-bottom: 0.5em;">יש להגדיר את הפרמטר isWrapped כ true במידה ורוצים עטיפת פאנל לפקד באופן
+                אוטומטי</div>
+            <moj-input-file name="fld2" [labelTextKey]="'בקשה לרישום מקרקעין'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files" [isWrapped]="true">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'disabled'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <moj-input-file name="fld22" [disabled]="true" [labelTextKey]="'בקשה לרישום מקרקעין'"
+                [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [isWrapped]="true">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'טעינת קובץ בודד בלבד'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <moj-input-file name="fld4" [multiple]="false" [labelTextKey]="'בקשה לרישום מקרקעין'"
+                [enabledFileTypes]="'pdf|png|jpg'" [(ngModel)]="files" [isWrapped]="true">
             </moj-input-file>
         </div>
         <div class="demo-section">
             <moj-title [textKey]="'סיומות מורשות'" [titleType]="Enums.TitleType.Secondary"></moj-title>
             <div>ניתן לאפשר סיומות מסוימות בלבד, בדוגמה זו יהיה ניתן להעלות קבצים מסיומת pdf בלבד</div>
             <moj-input-file name="fld5" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf'"
-                [(ngModel)]="files" [controlWidthColumns]="4"
-                [designType]="fuDesignType.Single">
+                [(ngModel)]="files" [controlWidthColumns]="6">
             </moj-input-file>
         </div>
         <div class="demo-section">
@@ -30,8 +46,7 @@
             </moj-title>
             <div>ניתן להגדיר ולידציות כמו בכל פקד אחר, בדוגמה זו הוגדרה ולידצית חובה על לפחות קובץ אחד</div>
             <moj-input-file name="fld3" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
-                [(ngModel)]="files" [controlWidthColumns]="4"
-                [designType]="fuDesignType.Single" required>
+                [(ngModel)]="files" [controlWidthColumns]="6" required>
             </moj-input-file>
         </div>
         <div class="demo-section">
@@ -45,12 +60,37 @@
             </moj-line>
             <moj-line>
                 <moj-input-file name="fld4" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
-                    [(ngModel)]="files" [controlWidthColumns]="4" 
-                    [designType]="fuDesignType.Single" [required]="isRequired">
+                    [(ngModel)]="files" [controlWidthColumns]="6" [required]="isRequired">
                 </moj-input-file>
             </moj-line>
         </div>
-
+        <div class="demo-section">
+            <moj-title [textKey]="'כפתורי פעולה אישיים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>ניתן להוסיף כל תוכן שהוא - כפתורי פעולה, טקסט וכד'</div>
+            <moj-input-file name="fld44" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files2" [controlWidthColumns]="6">
+                <ng-template #fileActions let-file>
+                    <!-- <i class="far fa-paperclip"></i> -->
+                    <button (click)="click(file)">Click</button>
+                </ng-template>
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'שליטה על מחיקת הקובץ - האם לאפשר מחיקה או לא'"
+                [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>בדוגמה זו על הקבצים הקיימים בתיק בוטלה אפשרות המחיקה, על הקבצים החדשים היא קיימת</div>
+            <moj-input-file name="fld44" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files2" [controlWidthColumns]="6" [enableDeleteFile]="enableDelete">
+            </moj-input-file>
+        </div>
+        <div class="demo-section">
+            <moj-title [textKey]="'בדיקת cutsom regex על שם הקובץ'"
+                [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>בדוגמה זו מתבצעת בדיקה על שם הקובץ שהוא מכיל את האות A בלבד (לצורך הדוגמה כמובן)</div>
+            <moj-input-file name="fld55" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'"
+                [(ngModel)]="files" [controlWidthColumns]="6" [fileNameRegexValidate]="'[A].*[A-Za-z0-9]{3,4}'">
+            </moj-input-file>
+        </div>
         <moj-submit-button [form]="frmSearch"></moj-submit-button>
 
     </form>

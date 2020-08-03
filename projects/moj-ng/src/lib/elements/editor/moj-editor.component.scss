@@ -1,0 +1,8 @@
+p-editor .ql-formats button, p-editor .ql-formats span{ /*rtl support*/
+    float: right
+}
+.moj-ltr{
+    p-editor .ql-formats button, p-editor .ql-formats span{ /*rtl support*/
+        float: left
+    }
+}

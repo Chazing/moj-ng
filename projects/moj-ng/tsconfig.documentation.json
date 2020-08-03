@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [ "es2016", "dom" ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false
+  },
+   "exclude": [
+    "node_modules",
+    "src/app/example/**/*",
+    "typings"
+  ],
+  "include":[
+    "src/lib/**/*"
+  ]
+}

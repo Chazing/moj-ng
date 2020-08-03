@@ -16,7 +16,8 @@ export class DatepickerDemoComponent implements OnInit {
   maxDate: Date = new Date(new Date().setMonth(new Date().getMonth() + 3));
   minDate: Date = new Date();
   tooltipTxt: string;
-  Enums = ENUMS
+  Enums = ENUMS;
+  dragDate;
 
 
   constructor(private translate: TranslateService) { }

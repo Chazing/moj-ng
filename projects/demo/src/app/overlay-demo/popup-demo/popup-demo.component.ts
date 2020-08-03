@@ -1,7 +1,7 @@
 import { Enums, ENUMS } from "../../enums";
 import { Component, ComponentFactoryResolver } from "@angular/core";
 import { Router } from "@angular/router";
-import { MojMessagesService, MojDialogService, MessageType, DialogResultEnum } from "src/app/moj-ng";
+import { MojMessagesService, MojDialogService, MessageType, DialogResultEnum } from "@moj/moj-ng";
 import { DialogDemoComponent } from "../dialog-demo/dialog-demo.component";
 
 
@@ -24,12 +24,12 @@ export class PopupDemoComponent {
   constructor(private router: Router, private messagesService: MojMessagesService, private dialogService: MojDialogService, private resolver: ComponentFactoryResolver, ) {
   }
 
-
+ messageTxt:string="מצטערים, קיימת בעיה באתר אנחנו עושים מאמצים לפתור אותה, אפשר לנסות שוב מאוחר יותר או לפנות לבירור ביחידה.";
   openAttentionDialog() {
-    this.messagesService.showMessage("הודעה לדוגמה", null, null, MessageType.Attention)
+    this.messagesService.showMessage(this.messageTxt, null, null, MessageType.Attention)
   }
   openErrorDialog() {
-    this.messagesService.showMessage("הודעת שגיאה", null, null, MessageType.Error);
+    this.messagesService.showMessage(this.messageTxt, null, null, MessageType.Error);
 
   }
   openAlertDialog() {
@@ -39,12 +39,10 @@ export class PopupDemoComponent {
   openConfirmDialog(closable) {
     this.messagesService
       .confirm(
-        null,
-        undefined,
-        '<b>החיפוש נכשל ולכן לא נמצאו תוצאות.</b><br/><label>כדאי לחזור ולבצע חיפוש חדש וממוקד יותר</label>',
-        null,
-        'כן',
-        'לא', null, closable
+        null,null,
+       
+        'החיפוש נכשל ולכן לא נמצאו תוצאות.<br/><label>כדאי לחזור ולבצע חיפוש חדש וממוקד יותר</label>',null,null,null,true,closable
+               
       )
       .subscribe(result => {
         if (result.dialogResultType === DialogResultEnum.OK) alert('OK');
@@ -53,25 +51,25 @@ export class PopupDemoComponent {
   }
 
   openSuccessDialog() {
-    this.messagesService.showMessage('האימות הסתיים בהצלחה, אתה מועבר לאתר',null, null,MessageType.Message, undefined,'לאישור והעברה לאתר');
+    this.messagesService.showMessage('האימות הסתיים בהצלחה, אתה מועבר לאתר',null, null,MessageType.Success, undefined,'לאישור והעברה לאתר');
   }
 
   openContentDialog() {
     this.autocompleteValueFrom = [{ id: 1, name: '1' }];
-    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 400, 300, { firstName: 'aa', lastName: 'bb' });
+    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 500, 400, { firstName: 'aa', lastName: 'bb' });
     this.dialogService.dialogResult.subscribe(res => {
       alert(JSON.stringify(res));
     });
   }
   openNoScrollDialog() {
-    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 400, 300, { firstName: 'aa', lastName: 'bb' }, true,true);
+    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 500, 400, { firstName: 'aa', lastName: 'bb' }, true,true);
   }
   openScrollDialog() {
-    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 400, 100, { firstName: 'aa', lastName: 'bb' }, true,false);
+    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 500, 200, { firstName: 'aa', lastName: 'bb' }, true,false);
   }
 
   openNoFooterDialog() {
-    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 400,400, { firstName: 'aa', lastName: 'bb' }, false,false);
+    this.dialogService.openDialog("תיבת תוכן ", DialogDemoComponent, 500,300, { firstName: 'aa', lastName: 'bb' }, false,false);
   }
 }
 

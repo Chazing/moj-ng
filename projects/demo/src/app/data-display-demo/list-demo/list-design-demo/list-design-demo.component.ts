@@ -17,7 +17,10 @@ export class ListDesignDemoComponent implements OnInit {
         this.rowData = [{}, {}, {}, {}, {}, {}];
     }
 
-    headerData = new Array({ key: "Texts.ProductName", value: "ירושלים", cssClass: "my-class" }, { key: "Texts.ProductName", value: "שלום כהן" });
+    headerData = new Array({ key: "מספר בקשה/סימן", value: "256845", cssClass: "my-class" }, 
+        { key: "לקוח מוביל", value: "G. DAES ASD" },
+        { key: "מיופה כוח", value: "דר יצחק הס ושותפיו" }
+    );
 
     constructor() { }
 

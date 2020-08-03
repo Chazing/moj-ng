@@ -1,10 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { ButtonStyle } from './../../moj-ng/elements/buttons/button-style';
-import { MojMessagesService } from "../../moj-ng/messages/moj-messages.service";
-import { Link, LinkOpenType } from '../../moj-ng/elements/website/link';
-import { MojLanguage, MojDirection } from '../../moj-ng/elements/website/language';
-import { MojCategoryFilter } from '../../moj-ng/elements/filter/moj-filter.model';
-import { MojDynamicCheckboxComponent } from '../../moj-ng/elements/dynamic-form/dynamic-components';
+import { ButtonStyle, MojCategoryFilter, MojDynamicCheckboxComponent, Link, LinkOpenType, MojLanguage, MojDirection, MojMessagesService } from '@moj/moj-ng';
 
 @Component({
     selector: 'moj-website-example',

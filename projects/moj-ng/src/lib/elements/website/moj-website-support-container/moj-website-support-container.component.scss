@@ -1,0 +1,98 @@
+@mixin component-style($start-dir, $end-dir) {
+    .support-container {
+        width:max-content;
+        position: relative;
+        margin-#{$end-dir}:0.225;
+
+        .header-container {
+            cursor: pointer;
+            position: relative;
+            font-size: 1em;
+            color: #fff;
+        }
+    }
+    
+    .header-container:hover + .support-content-wrap, .support-content-wrap:hover {
+        @include support-active;
+    }
+
+    .support-content-wrap { 
+        position: absolute;
+        width: auto;
+        min-width: 250px;
+        height: 0;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 0;
+        margin-top: 20px;
+        z-index: 9999 !important;
+        float: $end-dir;
+        #{$end-dir}: 0px;
+        border: 1px solid #003468;
+        transition: 0.1s;
+
+        &.active {
+            @include support-active;
+        }
+
+        .arrow-up {
+            &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            #{$end-dir}: 7px;
+            border: 10px solid transparent;
+            border-bottom-color: white;
+            }
+        
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: 100%;
+                width: 0;
+                height: 0;
+                #{$end-dir}: 6px;
+                border: 11px solid transparent;
+                border-bottom-color: #003468;
+            }
+        }
+
+        .support-content {
+            > div {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #ccc;
+                i {
+                    padding-#{$end-dir}: 1em;
+                    margin: 1em;
+                    border-#{$end-dir}: 1px solid #ccc;
+                }
+                a {
+                    white-space: nowrap;
+                    padding-#{$end-dir}: 1em;
+                }
+            }
+        }
+    }
+}
+
+@mixin support-active {
+    //width: auto;
+    //min-width: 250px;
+    opacity: 1;
+    height: unset;
+}
+
+.moj-rtl {
+  @import "../../../../css/_direction-rtl.scss";
+  @include component-style($start-direction, $end-direction);
+}
+
+.moj-ltr {
+  @import "../../../../css/_direction-ltr.scss";
+  @include component-style($start-direction, $end-direction );
+}

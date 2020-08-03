@@ -1,0 +1,11 @@
+<div class="moj-actions-popup">
+    <a *ngFor="let item of items; let i = index; trackby" class="moj-action-popup" (click)="navigate(item.href)" href>
+        <span class="fa-stack fa-lg">
+            <div class="moj-circle fa-stack-2x"></div>
+            <i [class]="item.cssClass + ' moj-icon-in-circle fa-stack-1x'"></i>
+        </span>
+        <span class="block-span">
+            {{item.textKey | translate}}
+        </span>
+    </a>
+</div>

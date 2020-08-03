@@ -1,0 +1,58 @@
+<div class="files-list-title" *ngIf="files && files.length > 0">{{ titleKey | translate }}</div>
+
+<ul class="fu-files">
+    <li *ngFor="let file of files" [class.fu-ok]="file.status && file.status == fileStatusType.Complete" [class.fu-exist]="file.mojId">
+        <div class="file-status-icon">
+            <svg *ngIf="true" xmlns="http://www.w3.org/2000/svg" width="42" height="48" viewBox="0 0 42 48">
+                <g transform="translate(0 0)">
+                    <path
+                        d="M41.7,9.05,32.8.29A1,1,0,0,0,32.1,0H7.63A3.21,3.21,0,0,0,4.4,3.19v9.86a1,1,0,0,0,2,0V3.19A1.21,1.21,0,0,1,7.63,2H31.69L40,10.18V44.81A1.21,1.21,0,0,1,38.77,46H7.63A1.21,1.21,0,0,1,6.4,44.81V41.52a1,1,0,0,0-2,0v3.29A3.21,3.21,0,0,0,7.63,48H38.77A3.21,3.21,0,0,0,42,44.81V9.76a1,1,0,0,0-.3-.71Z" />
+                    <path d="M31,3.29a1,1,0,0,0-1,1v6.57a1,1,0,0,0,1,1h6.67a1,1,0,1,0,0-2H32V4.29A1,1,0,0,0,31,3.29Z" />
+                    <path
+                        d="M28.46,27.27A14.23,14.23,0,1,0,14.23,41.46,14.23,14.23,0,0,0,28.46,27.27ZM2,27.27A12.23,12.23,0,1,1,14.23,39.46,12.23,12.23,0,0,1,2,27.27Z" />
+                    <path
+                        d="M21.45,20.76a1,1,0,0,0-1.4.16L12,31.06,9.14,27.92a1,1,0,1,0-1.48,1.35l3.64,4a1,1,0,0,0,.74.33h0a1,1,0,0,0,.75-.38l8.78-11.06A1,1,0,0,0,21.45,20.76Z" />
+                </g>
+            </svg>
+            <svg *ngIf="false" xmlns="http://www.w3.org/2000/svg" width="42" height="48"
+                viewBox="0 0 42 48">
+                <g transform="translate(0 0)">
+                    <path
+                        d="M19.32,33.34a1,1,0,0,0,.71-1.71l-4.38-4.36L20,22.91a1,1,0,1,0-1.42-1.41L14.2,25.86,9.85,21.5a1,1,0,1,0-1.41,1.41l4.37,4.36L8.44,31.63a1,1,0,0,0,1.41,1.42l4.38-4.37,4.38,4.37A1,1,0,0,0,19.32,33.34Z" />
+                    <path
+                        d="M28.46,27.27A14.23,14.23,0,1,0,14.23,41.46,14.23,14.23,0,0,0,28.46,27.27ZM2,27.27A12.23,12.23,0,1,1,14.23,39.46,12.23,12.23,0,0,1,2,27.27Z" />
+                    <path
+                        d="M41.7,9.05,32.8.29A1,1,0,0,0,32.1,0H7.63A3.21,3.21,0,0,0,4.4,3.19v9.86a1,1,0,0,0,2,0V3.19A1.21,1.21,0,0,1,7.63,2H31.69L40,10.18V44.81A1.21,1.21,0,0,1,38.77,46H7.63A1.21,1.21,0,0,1,6.4,44.81V41.52a1,1,0,0,0-2,0v3.29A3.21,3.21,0,0,0,7.63,48H38.77A3.21,3.21,0,0,0,42,44.81V9.76a1,1,0,0,0-.3-.71Z" />
+                    <path d="M31,3.29a1,1,0,0,0-1,1v6.57a1,1,0,0,0,1,1h6.67a1,1,0,1,0,0-2H32V4.29A1,1,0,0,0,31,3.29Z" />
+                </g>
+            </svg>
+            <svg *ngIf="false" xmlns="http://www.w3.org/2000/svg" width="45" height="48"
+                viewBox="0 0 45 48">
+                <path d="M34,3.29a1,1,0,0,0-1,1v6.57a1,1,0,0,0,1,1h6.67a1,1,0,1,0,0-2H35V4.29A1,1,0,0,0,34,3.29Z"
+                    transform="translate(0 0)" />
+                <path
+                    d="M44.7,9.05,35.8.29A1,1,0,0,0,35.1,0H10.63A3.21,3.21,0,0,0,7.4,3.19v7.67a1,1,0,1,0,2,0V3.19A1.21,1.21,0,0,1,10.63,2H34.69L43,10.18V44.81A1.21,1.21,0,0,1,41.77,46H10.63A1.21,1.21,0,0,1,9.4,44.81V41.52a1,1,0,0,0-2,0v3.29A3.21,3.21,0,0,0,10.63,48H41.77A3.21,3.21,0,0,0,45,44.81V9.76a1,1,0,0,0-.3-.71Z"
+                    transform="translate(0 0)" />
+                <path d="M24,38.27v-3a1,1,0,0,0-2,0v2H2v-2a1,1,0,0,0-2,0v3a1,1,0,0,0,1,1H23A1,1,0,0,0,24,38.27Z"
+                    transform="translate(0 0)" />
+                <path
+                    d="M2.12,24.38H6.61v8.86a1,1,0,0,0,1,1h8.78a1,1,0,0,0,1-1V24.38h4.49a1.006,1.006,0,0,0,.71-1.71l-9.88-9.85a1,1,0,0,0-1.42,0L1.41,22.67a1.006,1.006,0,0,0,.71,1.71ZM12,14.94l7.46,7.44H16.39a1,1,0,0,0-1,1v8.86H8.61V23.38a1,1,0,0,0-1-1H4.54Z"
+                    transform="translate(0 0)" />
+            </svg>
+        </div>
+        <!-- <div>
+                    <img [src]="file.imageUrl" />
+                </div> -->
+        <div class="file-info">
+            <div class="file-name">{{file.name}}</div>
+            <div class="file-size">{{formatBytes(file)}}</div>
+        </div>
+        <div class="file-actions">
+            <!-- fal fa-times-circle -->
+            <ng-container *ngTemplateOutlet="fileActionsRef; context: { $implicit: file }"></ng-container>
+            <button type="button" class="fal fa-trash-alt" (click)="deleteFile(file)" *ngIf="showDeleteFileButton(file)"
+                title="{{'MojTexts.fu.deleteFile' | translate}}"
+                [attr.aria-label]="'MojTexts.fu.deleteFile' | translate"></button>
+        </div>
+    </li>
+</ul>

@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { DialogResult, DialogResultEnum } from 'src/app/moj-ng';
-
+import { DialogResult, DialogResultEnum } from '@moj/moj-ng';
 
 @Component({
   selector: 'dialog-demo',

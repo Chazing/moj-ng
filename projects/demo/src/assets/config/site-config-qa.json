@@ -3,5 +3,6 @@
     "webApiAddress": "http://localhost:60980/api/values",
     "isWriteUIErrorsToLog": false,
     "logApiFunction":"/log",
-    "aa":"aa"
+    "aa":"aa",
+    "BaseUrl":"http://mojng/demo/#"
 }

@@ -17,4 +17,15 @@
         <moj-title [textKey]="'טאבים עם אפשרות סגירה'" [titleType]="Enums.TitleType.Secondary"></moj-title>
         <moj-tabs  [tabs]="items3"></moj-tabs>
     </div>
+
+     <div class="demo-section">
+        <moj-title [textKey]="'טאבים עם אייקונים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-tabs  [tabs]="items4"></moj-tabs>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'טאבים פרוסים באופן שווה לרוחב כל השטח'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <div style="padding-bottom: 1em;">יש לסמן את הפרמטר fixed כ true בשביל לקבל פריסה כזו</div>
+        <moj-tabs  [tabs]="items4" [fixed]="true"></moj-tabs>
+    </div>
 </div>

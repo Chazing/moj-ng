@@ -1,0 +1,11 @@
+<div class="header-search">
+    <p-dropdown [disabled]="disabledSearch" *ngIf="showSearchCombo" [options]="searchItems" [(ngModel)]="selectedSearch" optionLabel="label"
+        placeholder="{{searchSystemText}}" (onChange)="searchComboChange($event)"></p-dropdown>
+    <div class="ui-inputgroup" *ngIf="addSearch">
+        <input type="text" placeholder="{{searchPlaceholder}}" [(ngModel)]="searchInput" (keyup.enter)="search($event)" [disabled]="disabledSearchText">
+        <button type="button" (click)="search($event)" [disabled]="disabledSearchText">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+    <button class="advance-search" [disabled]="disabledSearchText" (click)="advancedSearchClick.emit($event)">חיפוש מתקדם</button>
+</div>

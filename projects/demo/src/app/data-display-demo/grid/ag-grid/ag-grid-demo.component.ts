@@ -1,9 +1,8 @@
-import { MojDataViewType } from './../../../../../../../src/app/moj-ng/elements/grid/models/dataview-type.enum';
 import { ENUMS } from './../../../enums';
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { products } from "../products";
 import { ColDef, GridOptions, GridApi } from "ag-grid-community";
-import { GridService } from "@moj/moj-ng";
+import { GridService, MojDataViewType } from "@moj/moj-ng";
 
 @Component({
     selector: 'ag-grid-demo',
@@ -17,7 +16,7 @@ export class AGGridDemoComponent implements OnInit {
     gridApi: GridApi;
     enums = ENUMS;
     dataViewType = MojDataViewType;
-
+   
     constructor(private gridService: GridService) { }
 
     ngOnInit() {

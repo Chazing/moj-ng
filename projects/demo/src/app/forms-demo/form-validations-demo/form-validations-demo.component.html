@@ -2,10 +2,10 @@
 <div class="container">
   <form #form=ngForm mojForm>
     <moj-line>
-      <moj-textbox [(ngModel)]="model.firstName" name="firstName" [minlength]="3" required
-        controlWidthColumns="3"></moj-textbox>
+      <moj-textbox [(ngModel)]="model.firstName" name="firstName" [minlength]="3" required [helpText]="'יש למלא את השם כפי שמופיע בתעודת הזהות'"
+        controlWidthColumns="3" maxlength="4"> </moj-textbox>
       <moj-textbox [(ngModel)]="model.lastName" name="lastName" minlength="3" required
-        controlWidthColumns="3">
+        controlWidthColumns="3" [showLeftMessage]="false" maxlength="4">
       </moj-textbox>
     </moj-line>
     <moj-line>
@@ -26,8 +26,10 @@
     </moj-line>
     <!-- <nested-form></nested-form> -->
     <moj-line>
-      <moj-checkbox [labelTextKey]="'האם מסכים לקבלת דיוור במייל'" ngModel=[(model.isAgree)] name="isAgree" [helpText]="'חובה לסמן את השדה'"
+      <moj-checkbox [labelTextKey]="'הסכמה לקבלת דיוור במייל'" ngModel=[(model.isAgree)] name="isAgree" [helpText]="'חובה לסמן את השדה'"
         [controlWidthColumns]=3></moj-checkbox>
+        <moj-button-toggle [items]="buttonToggleItems" [(ngModel)]="model.toggleValue" name="toggleValue" required [controlWidthColumns]=3>
+        </moj-button-toggle>
     </moj-line>
     <moj-line>
      <moj-dropdownlist required [controlWidthColumns]="3" [(ngModel)]="model.country1" name="country1" [items]="countryLists" [fieldID]="'id'" [fieldName]="'name'"></moj-dropdownlist>

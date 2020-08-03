@@ -16,8 +16,12 @@ import { ButtonsExampleComponent } from '../buttons/buttons-example.component';
 import { GridServerSideExample } from '../grid-example/grid-server-side/grid-server-side-example.component';
 import { EditorExampleComponent } from '../editor/editor-example.component';
 import { GridExampleGuard } from '../common/guards/grid-example-guard';
+import { StoreExampleComponent } from '../store/store-example.component';
+import { GuidelinesExampleComponent } from '../guidelines/guidelines-example.component';
+import { MojGuard } from '@moj/moj-ng';
+import { SortExampleComponent } from '../sort/sort-example.component';
 import { DynamicFormExampleComponent } from '../dynamic-form/dynamic-form-example.component';
-import { MojGuard } from '../../moj-ng/permissions/moj-guard';
+import { NotificationExampleComponent } from '../notification/notification-example.component';
 
 const websiteRoutes: Routes = [
     {
@@ -33,11 +37,16 @@ const websiteRoutes: Routes = [
             { path: 'wizard', component: WizardExampleComponent ,canActivate: [MojGuard] },
             { path: 'form', component: FormExampleComponent,canActivate: [MojGuard] ,data:{routerID:'#form'} },
             { path: 'reactiveform', component: ReactiveFormExampleComponent,canActivate: [MojGuard]  },
+            { path: 'dynamicform', component: DynamicFormExampleComponent,canActivate: [MojGuard]  },
             { path: 'datepicker', component: DatepickerExampleComponent,canActivate: [MojGuard]  },
             { path: 'dialog', component: DialogExampleComponent,canActivate: [MojGuard]  },
             { path: 'recaptcha', component: RecaptchaExampleComponent,canActivate: [MojGuard]  },
             { path: 'buttons', component: ButtonsExampleComponent,canActivate: [MojGuard] ,data:{routerID:'#Button'} },
             { path: 'editor', component: EditorExampleComponent,canActivate: [MojGuard]  },     
+            { path: 'store', component: StoreExampleComponent,canActivate: [MojGuard]  },   
+            { path: 'guidelines', component: GuidelinesExampleComponent,canActivate: [MojGuard]  },     
+            { path: 'sort', component: SortExampleComponent,canActivate: [MojGuard]  },
+            { path: 'notification', component: NotificationExampleComponent,canActivate: [MojGuard]  },
             // { path: 'on-off-switch', component: OnOffSwitchComponent  },     
             { path: "entity", loadChildren: () => import('./content-with-tabs/content-with-tabs.module').then(m => m.ContentWithTabsModule) }
         // "./content-with-tabs/content-with-tabs.module#ContentWithTabsModule"}          

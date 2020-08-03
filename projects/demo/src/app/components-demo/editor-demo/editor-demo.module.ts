@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 
 import { FormsModule } from "@angular/forms";
 import { EditorDemoComponent } from "./editor-demo.component";
-import { MojEditorModule } from "src/app/moj-ng";
+import { MojEditorModule } from '@moj/moj-ng';
 
 @NgModule({
     imports: [

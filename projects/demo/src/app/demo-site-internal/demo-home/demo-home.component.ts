@@ -19,18 +19,21 @@ export class DemoHomeComponent implements OnInit {
     showInputs: boolean = false;
     buttonToggleStyleType = ButtonToggleStyle;
     searchTypes: ButtonToggleItem[] = [
-        { id: 1, text: "לפי קטגוריה" },
-        { id: 2, text: "לפי מילות חיפוש" }
+        { id: 1, text: "רכיבי תשתית" },
+        { id: 2, text: "מודולים רוחביים" },
+        { id: 3, text: "לפי מילות חיפוש" }
     ];
     searchType: number = 1;
     categories: ButtonToggleItem[];
+    modules: ButtonToggleItem[];
     currentButton: demoMenuItem;
     inputs: any[];
     searchItems: demoMenuItem[];
     searchValue;
-    enums:Enums=ENUMS;
+    enums: Enums = ENUMS;
     constructor(private _router: Router, private demoService: DemoSharedService, private titleService: Title) {
         this.categories = demoService.menuItems.map((x, i) => { return { text: x.label, id: i, iconClass: x.iconClass } });
+        this.modules = demoService.modulesItems.map((x, i) => { return { text: x.label, id: i, iconClass: x.iconClass } });
         this.searchItems = demoService.flatMenuItems;
         this.demoService.currentCategory.pipe(takeWhile(() => this.alive)).subscribe(res => {
             this.currentButton = this.demoService.menuItems[res];
@@ -52,6 +55,12 @@ export class DemoHomeComponent implements OnInit {
 
     changeCategory(id: number) {
         this.demoService.currentCategory.next(id);
+    }
+
+    changeModule(id: number) {
+        this.demoService.currentModule.next(id);
+        if (this.demoService.modulesItems[id].routerLink)
+            window.open(this.demoService.modulesItems[id].routerLink, "_blank");
     }
 
     changeInput(id: number) {

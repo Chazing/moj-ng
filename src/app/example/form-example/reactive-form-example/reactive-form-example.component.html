@@ -7,6 +7,7 @@
           <moj-radiobutton formControlName="type" [controlWidthColumns]="2" [radiovalue]="2" [labelTextKey]="'אפשרות 2'"></moj-radiobutton>
       </radio-buttons-wrapper> -->
       <moj-textbox formControlName='name' [labelTextKey]="'שם'"  [controlWidthColumns]="2"></moj-textbox>
+      <moj-textbox formControlName='name1' [labelTextKey]="'שם'"  [controlWidthColumns]="2"></moj-textbox>
      
     </moj-line> 
     <moj-line>
@@ -27,7 +28,7 @@
     </moj-line>
   </moj-panel>   
   <moj-buttons-line>
-    <moj-submit-button [form]="exampleForm" (onSubmit)="save()" [buttonStyle]="buttonStyle.Primary" [textKey]="'שמור'"></moj-submit-button>
+    <moj-submit-button [form]="exampleForm" (onSubmit)="save()" [buttonStyle]="buttonStyle.Primary" [textKey]="'שמירה'"></moj-submit-button>
   </moj-buttons-line>
   {{exampleForm.value | json}}
   <moj-line>

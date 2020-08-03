@@ -1,0 +1,35 @@
+//*********************************************************************
+//this section has to be here in order not to be ovveride by moj-ltr/mog-trl classes
+@import "./moj-config-css.scss";
+@font-face {
+    font-family: 'opensanshebrew';
+    src: url('../assets/fonts/OpenSansHebrew-Regular.woff') format('woff');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'opensanshebrew';
+    src: url('../assets/fonts/opensanshebrew-bold-webfont.woff') format('woff');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "JOURNAL";
+    src: url('../assets/fonts/journal-webfont.eot');
+    src: url('../assets/fonts/journal-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('../assets/fonts/journal-webfont.woff') format('woff'), 
+    url('../assets/fonts/journal-webfont.ttf') format('truetype'), 
+    url('../assets/fonts/journal-webfont.svg#alefregular') format('svg');
+}
+
+* {
+    font-family: $moj-font-family;
+}
+html {
+    font-size: $moj-font-size;
+}
+body {
+    color: $moj-primary-text-color;
+    font-size: $moj-font-size;
+}
+
+//*******************************************************************************************

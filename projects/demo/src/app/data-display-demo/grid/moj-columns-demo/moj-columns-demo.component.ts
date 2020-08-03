@@ -22,7 +22,7 @@ export class MojColumnsDemoComponent implements OnInit {
   ngOnInit() {
     this.rowData = products;
     this.columns = [
-      this.gridService.getMojCheckBoxSelectColumn("Discontinued"),
+      this.gridService.getMojCheckBoxColumn("Discontinued"),
       this.gridService.getMojColumn('ProductName'),
       this.gridService.getMojDateColumn("FirstOrderedOn"),
       this.gridService.getVColumn("Discontinued"),

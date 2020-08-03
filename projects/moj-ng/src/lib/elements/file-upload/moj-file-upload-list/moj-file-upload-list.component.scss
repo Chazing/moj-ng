@@ -1,0 +1,76 @@
+@import "../../../../css/moj-config-css.scss";
+@import "../../../../css/moj-mixins.scss";
+
+.files-list-title {
+    font-size: $font-18;
+    margin-top: 1em;
+}
+
+.fu-files {
+    padding: 0; margin: 5px 0 0; list-style-type: none;
+    li {
+        display: flex;
+        align-items: center;
+        border: 1px solid #D2D8DE;
+        border-radius: 8px;
+        padding: 0.8rem;
+        margin-top: 1em;
+
+        .file-status-icon {
+            margin-left: 0.8rem;
+        }
+
+        img {
+            width: 50px; height: 50px;
+        }
+
+        .file-info {
+            flex: 1 1 100%;
+            .file-name {
+                font-weight: bold;
+            }
+            .file-size {
+                direction: ltr;
+                color: $moj-secondary-text-color;
+                font-size: $font-14;
+            }
+        }
+
+        .file-actions {
+            display: inline-flex;
+            button {
+                color: $moj-primary-text-color;
+                border: none;
+                background-color: transparent;
+                font-size: $font-24;
+                // @include dark-on-light;
+            }
+        }
+
+        &.fu-error {
+            border-color: $moj-danger-color;
+            background-color: #B000200A;
+            svg path {
+                fill: $moj-danger-color;
+            }
+        }
+        &.fu-ok {
+            border-color: $moj-success-color;
+            background-color: #0098000A;
+            svg path {
+                fill: $moj-success-color;
+            }
+        }
+        &.fu-inprogress {
+            svg path {
+                fill: $moj-primary-color;
+            }
+        }
+        &.fu-exist {
+            border-color: #CFD8DC;
+            svg path {
+                fill: #CFD8DC;
+            }
+        }
+    }
+}

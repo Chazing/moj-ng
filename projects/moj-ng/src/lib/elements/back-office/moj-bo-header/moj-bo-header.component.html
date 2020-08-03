@@ -1,0 +1,31 @@
+<div class="app-env {{ envClass }}">
+    <span id="app-environment"> {{ appEnvTitle }} </span>
+</div>
+<div class="app-header">
+    <img *ngIf="!hideJusticeLogo" src="./assets/MojImages/icons/MenoraLogo.png" />
+    <div *ngIf="appLogoClass" class="app-logo {{ appLogoClass }}"></div>
+    <div class="logo-txt">
+        <span>{{ mainTitle }}</span> <span *ngIf="subTitle"> - </span><span>{{ subTitle }}</span>
+    </div>
+
+    <moj-bo-header-search #headerSearch [searchItems]="searchItems" [addSearch]="addSearch" (searchClick)="searchClick.emit($event)"
+                          [disabledSearch]="disabledSearch" (searchComboChanged)="searchComboChanged.emit($event)"
+                          [selectedSearch]="selectedSearch" [searchPlaceholder]="searchPlaceholder" (advancedSearchClick)="advancedSearchClick($event)"></moj-bo-header-search>
+
+    <div class="login">
+        <div class="login-details" *ngIf="addLogin">
+            <div class="sign-img"><i class="fas fa-user-circle"></i></div>
+            <ul class="user-menu">
+                <li *ngIf="showLogout">
+                    <a (click)="handleLogoutClick($event)">{{ logoutText }}</a>
+                </li>
+                <li *ngFor="let item of moreMenuItems">
+                    <a (click)="item.command($event)" [ngClass]="{'ui-state-disabled':(item.disabled),'moj-disabled':(item.disabled)}">{{ item.text }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="username" *ngIf="username">
+            {{ welcomeText }}, {{ username }}{{ areaName ? ', ' : '' }}{{ areaName }}
+        </div>
+    </div>
+</div>

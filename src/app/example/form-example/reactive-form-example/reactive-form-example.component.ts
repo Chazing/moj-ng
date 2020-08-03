@@ -1,10 +1,7 @@
-import { WizardItemComponentBase } from './../../../moj-ng/elements/wizard/wizard-item/wizard-item-component.base';
-import { LabelAlign } from './../../../moj-ng/elements/label/label.enum';
-import { ButtonStyle } from './../../../moj-ng/elements/buttons/button-style';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MojValidators } from './../../../moj-ng/validations/customValidators/validators';
-// import { MojValidation } from 'src/app/moj-ng/validations/customValidators/required_if.validation';
+import { WizardItemComponentBase, ButtonStyle, LabelAlign } from '@moj/moj-ng';
+import { MojValidators } from 'projects/moj-ng';
 
 @Component({
   selector: 'app-reactive-form-example',
@@ -33,7 +30,8 @@ export class ReactiveFormExampleComponent extends WizardItemComponentBase implem
 
   createForm() {
     this.exampleForm = this.formBuilder.group({
-        name: ['', Validators.required],
+      name: ['', Validators.required],
+      name1: ['',MojValidators.requiredIf(this.myIf)],
       type: '',
       startDate: '',
       endDate: '',
@@ -43,6 +41,10 @@ export class ReactiveFormExampleComponent extends WizardItemComponentBase implem
       // details: this.formBuilder.array([]),
     });
     this.formGroup = this.exampleForm;
+  }
+
+  myIf= () => {
+    return this.exampleForm.get('name').value == 'a';
   }
 
   save() {

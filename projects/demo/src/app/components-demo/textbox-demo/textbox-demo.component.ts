@@ -1,8 +1,7 @@
 import { ENUMS } from './../../enums';
 import { Component, OnInit } from '@angular/core';
 import { TextMaskConfig } from 'angular2-text-mask';
-import { ElementSize } from '@moj/moj-ng';
-import { ValidationPatterns } from 'src/app/moj-ng';
+import { ElementSize, ValidationPatterns } from '@moj/moj-ng';
 
 @Component({
     selector: 'app-textbox-demo',

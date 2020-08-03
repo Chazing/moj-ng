@@ -1,0 +1,7 @@
+<div (click)="select()" class="moj-card-list-item {{listItemType}}" [class.selected]="selected">
+    <!-- <ng-content></ng-content> -->
+    <ng-content select="moj-list-item-header"></ng-content>
+    <ng-content select="moj-list-item-body"></ng-content>
+    <ng-content select="moj-list-item-footer"></ng-content>
+    <ng-content select="moj-list-item-ext"></ng-content>
+</div>

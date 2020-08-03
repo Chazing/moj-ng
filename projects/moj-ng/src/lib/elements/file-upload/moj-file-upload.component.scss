@@ -1,0 +1,153 @@
+@import "../../../css/moj-config-css.scss";
+@import "../../../css/moj-mixins.scss";
+
+.fu-wrap {
+    margin-bottom: 1em;
+    color: $moj-primary-text-color;
+
+    .fu-input {
+        border: 1px dashed $moj-primary-text-color;
+        border-radius: 8px;
+        padding: 0.8em 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-20;
+
+        &.moj-invalid {
+            border-color: $moj-danger-color;
+        }
+
+        svg {
+            fill: $moj-primary-color;
+        }
+
+        &:hover:not(.fu-disabled) {
+            background-color: $site-background-color;
+        }
+
+        &.dragged:not(.fu-disabled) {
+            background-color: $moj-primary-light-color;
+            border: 1px solid $moj-primary-color;
+            transition: 0.3s;
+        }
+
+        &.fu-disabled {
+            border-color: $moj-secondary-text-color;
+            color: $moj-secondary-text-color;
+            svg {
+                fill: $moj-secondary-text-color;
+            }
+        }
+    }
+
+    
+
+    .fu-progress {
+        background-color: #D2D8DE;
+        border-radius: 10px;
+        margin-top: 1em;
+        div {
+            background-color: $moj-primary-color;
+            border-radius: 10px;
+            height: 5px;
+        }
+    }
+}
+
+.fu-panel {
+    .fu-wrap {
+        display: block;
+        float: none;
+    }
+    .moj-list-item-header {
+        display: flex;
+        align-items: center;
+        padding: 0.5em 1em;
+
+        h3 {
+            margin: 0 !important;
+            flex: 1 1 100%;
+        }
+
+        .sum-files {
+            width: 41px;
+            height: 34px;
+            background-image: url(../../../assets/MojImages/icons/folder-icon.svg);
+            background-repeat: no-repeat;
+            position: relative;
+            span {
+                position: absolute;
+                top: 9px;
+                right: 13px;
+                font-weight: bold;
+            }
+
+            .success-notification {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                background-image: url(../../../assets/MojImages/icons/success-notification-icon.svg);
+                transform: translate(50%, -3px);
+            }
+        }
+        > i {
+            margin-left: 0.5em;
+            margin-right: 1em;
+            transition: 0.2s;
+            font-size: 1.5em;
+            color: $moj-primary-color;
+            &.expaneded {
+                transform: rotate(-180deg);
+            }
+            cursor: pointer;          
+            
+
+        }
+    }
+    .moj-list-item-body{
+        overflow-y: hidden;
+        &.expaneded {
+            overflow-y: visible;
+        }
+    }
+    
+}
+
+
+input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    + label {
+        @include button-base;
+        @include button-secondary;
+        margin-right: 1em;
+        //override bootstrap
+        margin-bottom: 0;
+        
+        i {
+            transform: rotate(-45deg);
+        }
+        
+        span {
+            margin-right: 0.2em !important;
+        }
+    }
+
+    &[disabled] + label {
+        @include button-disabled;
+    }
+
+    &:focus + label {
+        background-color: $moj-primary-color;
+        color: #fff;
+    }
+}
+
+
+

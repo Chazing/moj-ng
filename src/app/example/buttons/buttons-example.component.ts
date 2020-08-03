@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ButtonToggleItem } from '../../moj-ng/elements/buttons/button-toggle/button-toggle.model';
-import { ButtonToggleStyle } from '../../moj-ng/elements/buttons/button-style';
+import { ButtonToggleItem, ButtonToggleStyle } from '@moj/moj-ng';
+import { MenuItem } from 'primeng/primeng';
 
 @Component({
   selector: 'moj-buttons-example',
@@ -29,6 +29,13 @@ export class ButtonsExampleComponent {
     toggleValue2:number;
 
     buttonToggleStyleType = ButtonToggleStyle;
+
+    ellipsisItems:MenuItem[] = [{
+            label: 'File'
+        },
+        {
+            label: 'Edit'
+        }];
 
     onToggleChange(value){
         console.log(value);

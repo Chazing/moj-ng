@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RecaptchaModel } from './model';
-import { MojRecaptchaService } from '../../moj-ng/elements/website/moj-recaptcha/moj-recaptcha.service';
-import { ButtonStyle } from '../../moj-ng/elements/buttons/button-style';
-import { MojDialogService } from '../../moj-ng/messages/moj-dialog.service';
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
+import { ButtonStyle, MojRecaptchaService, MojDialogService } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-recaptcha-example',

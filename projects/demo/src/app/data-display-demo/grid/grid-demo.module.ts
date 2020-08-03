@@ -10,6 +10,7 @@ import { EditInlineDemoComponent } from './edit-inline-demo/edit-inline-demo.com
 import { EditPopupDemoComponent } from './edit-popup-demo/edit-popup-demo.component';
 import { MojColumnsDemoComponent } from './moj-columns-demo/moj-columns-demo.component';
 import { ActionPopupDemoComponent } from './action-poup-demo/action-popup-demo.component';
+import { DataViewModule } from 'primeng/components/dataview/dataview';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ActionPopupDemoComponent } from './action-poup-demo/action-popup-demo.c
         MojInputModule,
         MojWebsiteModule,
         DemoSiteInternalModule,
-        GridDemoRoutingModule
+        GridDemoRoutingModule,
+        DataViewModule
     ],
     exports: [MojGridModule,
         AGGridDemoComponent,

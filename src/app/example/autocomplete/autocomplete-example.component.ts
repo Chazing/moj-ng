@@ -1,10 +1,6 @@
 ﻿import { Component } from "@angular/core";
-import { MojMessagesService } from "../../moj-ng/messages/moj-messages.service";
 import { PropertyItem } from "../example-component/model/property.model";
 import { EventItem } from "../example-component/model/event.model";
-import { TranslateService } from "@ngx-translate/core";
-import { Observable } from "rxjs";
-import { ValidationPatterns } from "../../moj-ng/validations/customValidators/validation-patterns";
 
 @Component({
     selector: "moj-autocomplete-example",

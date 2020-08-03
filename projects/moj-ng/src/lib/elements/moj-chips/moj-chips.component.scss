@@ -1,0 +1,104 @@
+@import "../../../../src/css/moj-config-css.scss";
+@import "../../../css/moj-mixins.scss";
+
+
+
+@mixin chips-style($start-dir,$end-dir){
+
+  
+    .moj-chips{
+        display: inline-block;
+        .moj-chip{
+            @include moj-chip($start-dir,$end-dir);
+            .chip-lable{
+                margin-#{$end-dir}: 2em;
+                margin-#{$start-dir}: initial; 
+            }
+            .chip-icon{
+                @include moj-chip-remove-icon($start-dir,$end-dir);
+            }
+
+            & .moj-primary-color {
+                color: $moj-primary-color;
+                border-color: $moj-primary-color;
+            }
+            &.moj-primary-dark-color{
+                color: $moj-primary-dark-color;
+                border-color: $moj-primary-dark-color;
+            }
+            &.moj-primary-light-color{
+                color: $moj-primary-light-color;
+                border-color: $moj-primary-light-color;
+            }
+            &.moj-secondary-dark-color{
+                color: $moj-secondary-dark-color;
+                border-color: $moj-secondary-dark-color;
+            }
+            &.moj-secondary-light-color{
+                color: $moj-secondary-light-color;
+                border-color: $moj-secondary-light-color;
+            }
+            
+            &.moj-secondary-color {
+                color: $moj-secondary-color;
+                border-color: $moj-secondary-color;
+            }
+            
+            &.moj-danger-color {
+                color: $moj-danger-color;
+                border-color: $moj-danger-color;
+            }
+            
+            &.moj-orange-color {
+                color: $moj-orange-color;
+                border-color: $moj-orange-color;
+            }
+            
+            &.moj-purple-color {
+                color: $moj-purple-color;
+                border-color:$moj-purple-color;
+            }
+            
+            &.moj-white-color {
+                color: $moj-white-color;
+                border-color: $moj-white-color;
+            }
+            &.moj-accent1-color{
+                color: $moj-accent1-color;
+                border-color: $moj-accent1-color;
+            }
+            &.moj-accent2-color{
+                color: $moj-accent2-color;
+                border-color: $moj-accent2-color;
+            }
+            &.moj-accent3-color{
+                color: $moj-accent3-color;
+                border-color: $moj-accent3-color;
+            }
+            &.moj-accent4-color{
+                color: $moj-accent4-color;
+                border-color: $moj-accent4-color;
+            }  
+        }
+      
+    }
+}
+ 
+
+
+
+
+.moj-rtl {
+    @import "../../../css/_direction-rtl.scss";
+    @include chips-style( $start-direction,$end-direction);
+    }
+  
+  .moj-ltr{
+    @import "../../../css/_direction-ltr.scss";
+    @include chips-style( $start-direction,$end-direction);
+  }
+  
+
+
+
+

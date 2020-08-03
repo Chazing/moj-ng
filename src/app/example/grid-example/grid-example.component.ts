@@ -4,13 +4,9 @@ import { products } from './products';
 import { Product } from './product.model';
 import { GridExampleService } from './grid-example.service';
 import { EditPopupExampleComponent } from './edit-popup-example.component';
-import { EditOptions, EditType } from '../../moj-ng/elements/grid/edit-component/edit-options.model';
-import { GridService } from '../../moj-ng/elements/grid/service/moj-grid.service';
 import { ColDef, GridOptions, ColGroupDef } from 'ag-grid-community';
-import { EditServiceBase } from '../../moj-ng/elements/grid/service/edit-service.base';
-import { FileType } from '../../moj-ng/elements/grid/custom-columns/moj-document-format-column/file-type.model';
 import { StoreService } from '../common/services/store.service';
-import { MojGridPanelComponent } from '../../moj-ng/elements/grid/moj-grid-panel.component';
+import { EditServiceBase, EditOptions, FileType, MojGridPanelComponent, GridService, EditType } from '@moj/moj-ng';
 
 @Component({
   selector: 'grid-example',
@@ -54,7 +50,7 @@ export class GridExampleComponent implements OnInit {
     this.rowData2 = products;
 
     this.columns1 = [
-      this.gridService.getMojCheckBoxColumn("",{ colDef: { width: 1 } },"mycheck"),
+      this.gridService.getMojCheckBoxColumn("",{ colDef: { width: 1 } }),
       this.gridService.getMojColumn('ID', { colDef: { filter: 'agNumberColumnFilter' } }),
       this.gridService.getMojHebrewEnglishColumn('ProductName', { colDef: { hide: true } }),
       this.gridService.getMojColumn('UnitPrice', {

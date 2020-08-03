@@ -1,0 +1,128 @@
+@import '../css/moj-config-css.scss';
+
+.font-12 {
+  font-size: $font-12;
+}
+.font-14 {
+    font-size: $font-14;
+}
+
+.font-16 {
+    font-size: $font-16;
+}
+
+.font-18 {
+    font-size: $font-18;
+}
+
+.font-20 {
+    font-size: $font-20;
+}
+
+.font-22 {
+    font-size: $font-22;
+}
+
+.font-24 {
+    font-size: $font-24;
+
+}
+.font-28 {
+    font-size: $font-28;
+
+}
+.font-34 {
+    font-size: $font-34;
+
+}
+.font-48 {
+    font-size: $font-48;
+
+}
+.font-52 {
+    font-size: $font-52;
+
+}
+
+.moj-uppercase {
+    text-transform: uppercase;
+}
+
+.moj-bold {
+    font-weight: bold;
+}
+
+.moj-bold label{
+    font-weight: bold;
+}
+.moj-primary-color {
+    color: $moj-primary-color;
+}
+.moj-primary-dark-color{
+    color: $moj-primary-dark-color;
+}
+.moj-primary-light-color{
+    color: $moj-primary-light-color;
+}
+.moj-secondary-color {
+    color: $moj-secondary-text-color;
+}
+.moj-secondary-dark-color{
+    color: $moj-secondary-dark-color;
+}
+.moj-secondary-light-color{
+    color: $moj-secondary-light-color;
+}
+
+.moj-danger-color {
+    color: $moj-danger-color;
+}
+.moj-success-color{
+    color: $moj-success-color;
+}
+.moj-alert-color{
+    color: $moj-alert-color;
+}
+.moj-info-color{
+    color: $moj-info-color;
+}
+.moj-warning-color{
+    color: $moj-warning-color;
+}
+
+.moj-orange-color {
+    color: $moj-orange-color;
+}
+
+.moj-purple-color {
+    color: $moj-purple-color;
+}
+
+.moj-white-color {
+    color: $moj-white-color;
+}
+.moj-accent1-color{
+    color: $moj-accent1-color;
+}
+.moj-accent2-color{
+    color: $moj-accent2-color;
+}
+.moj-accent3-color{
+    color: $moj-accent3-color;
+}
+.moj-accent4-color{
+    color: $moj-accent4-color;
+}
+.line-before{
+
+    &::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 1.1em;
+        background-color: $moj-primary-color;
+        float: right;
+        margin-left: 0.4em;
+        
+    }
+}

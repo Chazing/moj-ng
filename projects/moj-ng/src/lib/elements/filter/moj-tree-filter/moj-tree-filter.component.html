@@ -1,0 +1,27 @@
+<ul [formGroup]="form">
+    <ng-container  *ngFor="let category of nodes">
+    <li [class.main]="category.isMain" *ngIf="category.isDisplay">
+         <div class="filter-header" [class.bold]="category.hasFields && !category.hasChildren && !category.isMain">
+            <div class="filter-header-content" (click)="openCategory(category,isString(category.category))" >
+                <span *ngIf="isString(category.category)">{{category.category}}</span>
+                <moj-dynamic-form  *ngIf="!isString(category.category)" [form]="form" [fields]="category.category"> </moj-dynamic-form>
+                <i *ngIf="category.haschildrenToDisplay || category.isMain" class="fas chevron-center"
+                    [ngClass]="{ 'fa-chevron-down': !category.isOpen, 'fa-chevron-up': category.isOpen }" (click)="openCategory(category,!isString(category.category))"></i>
+            </div> 
+        </div>
+        <div class="filter-body"  [attr.aria-expanded]="category.isOpen" [ngClass]="{'expanded':category.isOpen}" [@bodyExpansion]="category.isOpen ? 'expanded' : 'collapsed'" >
+           
+            <div class="search-text"  *ngIf="category.isDisplaySearchBox">
+                <input class="search-text-input"  placeholder="{{'MojTexts.search' | translate}}" #searchInput (keyup)="searchKeyUp(searchInput.value, category)">
+                <i class='far fa-search search-icon fa-lg'></i>
+              </div>
+
+            <moj-dynamic-form *ngIf="category.hasFields" [form]="form" [fields]="category.fields"></moj-dynamic-form>
+            <moj-tree-filter *ngIf="category.hasChildren" [form]="form"   [nodes]="getNodesByMaxRecords(category)"></moj-tree-filter>
+
+            <a *ngIf="category.isOpen && category.hasChildren && category.maxRecords!=null && category.sub_categories.length>category.maxRecords"
+                (click)="seeAll(category);" href="javascript:void(0)" class="see-all">{{'MojTexts.seeAll' | translate}}</a>
+        </div>
+    </li>
+</ng-container>
+</ul>

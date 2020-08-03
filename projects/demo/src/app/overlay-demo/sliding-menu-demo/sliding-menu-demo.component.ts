@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { onOffSwitchType, MojCategoryFilter, MojDynamicCheckboxComponent } from 'src/app/moj-ng';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { onOffSwitchType, MojCategoryFilter, MojDynamicCheckboxComponent, Enums } from '@moj/moj-ng';
+import { ENUMS } from '../../enums';
 
 
 @Component({
   selector: 'app-sliding-menu-demo',
+  
   templateUrl: './sliding-menu-demo.component.html',
+  encapsulation:ViewEncapsulation.None
  
 })
 export class SlidingMenuDemoComponent implements OnInit {
+  enums: Enums = ENUMS;
   filterConfig={
     categories: [
         new MojCategoryFilter(
@@ -20,15 +24,15 @@ export class SlidingMenuDemoComponent implements OnInit {
                             ]
                         )
                 ]
-                )])]
-                        
+                )])]              
 };
+
   constructor() { }
 
   ngOnInit() {
   }
-  filterMyData()
-  {
+
+  filterMyData(){
 
   }
   

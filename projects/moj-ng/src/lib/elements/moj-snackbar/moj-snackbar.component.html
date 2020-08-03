@@ -1,0 +1,11 @@
+<div class="snackbar-div" *ngIf="show">
+    <div class="text-div">
+        <i class="icon {{_snackbarData.iconClass}}"></i>
+        <span class="message-text">{{_snackbarData.messageTextKey | translate}}</span>
+        <button class="close-button" (click)="closeClick()" *ngIf="!_snackbarData.hideCloseButton"></button>
+    </div>
+    <moj-buttons-line *ngIf="_snackbarData.buttons && _snackbarData.buttons.length > 0">
+        <button *ngFor="let button of _snackbarData.buttons" class="custom-action"
+            (click)="customButtonClick(button)">{{button.textKey|translate}}</button>
+    </moj-buttons-line>
+</div>

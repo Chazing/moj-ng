@@ -1,0 +1,43 @@
+<!-- <div [ngClass]="groupColWidth" mojDir [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}">
+    <label-for-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [textKey]="labelTextKey">
+    </label-for-content>
+    <div class="moj-input-container" [ngClass]="controlColWidth">
+        <input type="checkbox"
+               [id]="identifier"
+               [(ngModel)]="value"
+               [name]="identifier"
+               (blur)="onBlur()"
+               [disabled]="disabled"
+               [readOnly]="readOnly" />
+        <label [for]="identifier" [attr.data-text-off]="textKeyOff | translate" [attr.data-text-on]="textKeyOn | translate"></label>
+        <validation-messages [forId]="identifier"
+                             *ngIf="control.invalid && ((control.touched) || control.submitted)"
+                             [controlName]="labelTextKey"
+                             [messages]="control.errors"
+                             [customValidationErrors]="customValidationErrors" role="alert">
+        </validation-messages>
+    </div>
+</div> -->
+
+<div [ngClass]="controlColWidth" mojDir [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}">
+    <label-for-content  [forId]="identifier" [isLabelAboveControl]=true [isRequiredIndication]="isControlRequired$ | async" [textKey]="labelTextKey">
+    </label-for-content>
+    <div class="moj-input-container">
+        <input type="checkbox"
+               [id]="identifier"
+               [(ngModel)]="value"
+               name="identifier"
+               (blur)="onBlur()"
+               [disabled]="disabled"
+               [readOnly]="readOnly" />
+        <label [for]="identifier" [attr.data-text-off]="textKeyOff | translate" [attr.data-text-on]="textKeyOn | translate"  [ngClass]="{'icon-switch':switchType==onOffSwitchType.icon,'text-switch':switchType==onOffSwitchType.text,'back-office-switch':switchType==onOffSwitchType.backoffice}">
+          
+        </label>
+        <validation-messages [forId]="identifier"
+                             *ngIf="control.invalid && ((control.touched) || control.submitted)"
+                             [controlName]="labelTextKey"
+                             [messages]="control.errors"
+                             [customValidationErrors]="customValidationErrors"  role="alert">
+        </validation-messages>
+    </div>
+  </div>

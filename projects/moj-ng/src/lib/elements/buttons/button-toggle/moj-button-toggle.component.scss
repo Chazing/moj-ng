@@ -1,0 +1,173 @@
+@import "../../../../css/moj-config-css.scss";
+@import "../../../../css/moj-mixins.scss";
+
+.moj-button-toggle {
+    background-color: #fff;
+    border-color: $moj-primary-color;
+    font-size: 20px;
+    padding: 12px 2em;
+
+    .toggle-icon {
+        min-height: 1em;
+        background-repeat: no-repeat;
+    }
+}
+
+.moj-btn-group-default {
+    display: inline-grid;
+    grid-auto-flow: column;
+    position: relative;
+    button {
+        display: block;
+        border-width: 1px;
+        border-left-width: 0px;
+        &:last-of-type{
+            border-left-width: 1px;
+        }
+        border-radius: 0px 0px 0px 0px;
+        &:not(.moj-button-toggle-checked) {
+            color: $moj-toggle-text-color;
+        }
+        border-color: $moj-toggle-text-color;
+        &:first-of-type {
+            border-radius: 0px 50px 50px 0px;
+        }
+        &:last-of-type {
+            border-radius: 50px 0px 0px 50px;
+        }
+        &.moj-button-toggle-checked {
+            font-weight: normal;
+        }
+    }
+}
+
+.moj-ltr {
+    .moj-btn-group-default {
+        button {
+            border-right-width: 0px;
+            &:first-of-type {
+                border-radius: 50px 0px 0px 50px;
+            }
+            &:last-of-type {
+                border-radius: 0px 50px 50px 0px;
+                border-right-width: 1px;
+            }
+        }
+    }
+    .moj-btn-group-list {
+        button {
+            .toggle-icon {
+                margin-right: 0.5em;
+                margin-left: unset;
+            }
+        }
+    }
+}
+
+.moj-button-toggle-checked {
+    color: #fff;
+    font-weight: bold;
+    background-color: $moj-primary-color;
+}
+
+.btn.moj-button-toggle:hover:not(.moj-button-toggle-checked) {
+    background-color: #dee1e6;
+}
+
+.moj-btn-group-list {
+    display: grid;
+    button {
+        padding: 0.8em;
+        display: flex;
+        justify-content: center;
+        color: $moj-primary-color;
+        font-size: $font-18;
+        border: 1px solid $site-background-color;
+        height: 128px;
+        align-items: center;
+        &:hover {
+            //background-color: $moj-disable-color;
+        }
+        .toggle-icon {
+            font-size: 1.5em;
+            margin-left: 0.5em;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            box-shadow: 0px 3px 6px #0000004d;
+            border: 1px solid #eceff1;
+            border-radius: 50px;
+        }
+        &.moj-button-toggle-checked,
+        &:hover {
+            background-color: $moj-primary-light-color;
+            color: $moj-primary-dark-color;
+            font-weight: normal;
+            .toggle-icon {
+                border-color: $moj-primary-dark-color;
+                background-color: #fff;
+                // color: $moj-primary-dark-color;
+            }
+        }
+        &:hover {
+            background-color: #e2f1fc !important;
+        }
+    }
+}
+
+.moj-btn-group-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+
+    button {
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid #eef6ff;
+        color: #fff !important;
+        font-size: 1.428em;
+        padding: 0.5em 2em;
+        position: relative;
+
+        &:hover {
+            background-color: transparent !important;
+        }
+
+        &:not(.moj-button-toggle-checked) {
+            @include item-hover-effect(centerToOut, #fff);
+        }
+
+        &.moj-button-toggle-checked {
+            border-bottom: 4px solid #eef6ff;
+            background-color: transparent;
+            color: #fff;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .moj-btn-group-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    .moj-btn-group-tabs button {
+        padding: 0.5em 1em;
+    }
+}
+
+.moj-toggle-container .moj-invalid {
+    button {
+        border-color: $moj-danger-color;
+    }
+    &:after {
+        @include error-icon;
+        position: absolute;
+        bottom: 0px;
+        right: 1em;
+        transform: translateY(100%);
+    }
+}
+
+button:focus {
+    outline: none;
+}

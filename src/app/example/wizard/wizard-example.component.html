@@ -1,6 +1,7 @@
 ﻿<h3>בקשה לרישום פטנט</h3>
 <moj-wizard [items]="items" 
             (onSubmit)="submit($event)" [checkValidationOnPrevious]=false>
+            <moj-guidelines [guidelines]="guidelines" [isVisible]="false"></moj-guidelines>
 </moj-wizard> 
 <!--[activeIndex]="1"
 [subActiveIndex]="1"

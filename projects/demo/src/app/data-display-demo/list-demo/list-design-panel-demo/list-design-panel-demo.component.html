@@ -7,12 +7,20 @@
                 <moj-list-item [listItemType]="Enums.ListItemType.Info">
                     <moj-list-item-header>
                         <h3>הפרטה בעברית</h3>
+                        <div style="float: left;">
+                            <moj-button [textKey]="'השלמת מסמכים'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-eye'"></moj-button>
+                            <moj-button [textKey]="'בקשה חוזרת'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-redo-alt'"></moj-button>
+                        </div>
                     </moj-list-item-header>
                     <moj-list-item-body>
                         סוגים לחידוש: <b>12</b>
                         <br>
                         <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
                     </moj-list-item-body>
+                    <moj-list-item-footer>
+                        פוטר דינאמי, ניתן לשים כאן כפתורים, קישורים וכד'
+                        <moj-button [textKey]="'לצפייה בתיק'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-eye'"></moj-button>
+                    </moj-list-item-footer>
                 </moj-list-item>
             </ng-template>
         </p-dataView>
@@ -40,6 +48,30 @@
                         </moj-list-item-ext>
                     </moj-list-item-body>
 
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
+    </moj-grid-panel>
+
+    <moj-title [textKey]="'רשימת פאנלים עם כפתורי פעולה קבועים'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+    <moj-grid-panel [gridDescription]="'בקשות'" [dataViewType]="Enums.DataViewType.List">
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="Enums.ListItemType.Info">
+                    <moj-list-item-header>
+                        <h3>הפרטה בעברית</h3>
+                    </moj-list-item-header>
+                    <moj-list-item-body>
+                        סוגים לחידוש: <b>12</b>
+                        <br>
+                        <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                        <moj-list-item-ext [fixed]="item.fixed">
+                            <button><i class="fas fa-lock-alt"></i></button>
+                            <button><i class="fas fa-exclamation"></i></button>
+                            <button><i class="fas fa-pencil"></i></button>
+                            <button><i class="fas fa-share-alt"></i></button>
+                        </moj-list-item-ext>
+                    </moj-list-item-body>
                 </moj-list-item>
             </ng-template>
         </p-dataView>
@@ -75,4 +107,5 @@
             </ng-template>
         </p-dataView>
     </moj-grid-panel>
+
 </div>

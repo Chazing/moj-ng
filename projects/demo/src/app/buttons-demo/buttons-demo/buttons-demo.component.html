@@ -17,6 +17,7 @@
             <moj-button [textKey]="'כפתור'" buttonStyle="{{Enums.ButtonStyle.Primary }}"></moj-button>
             <moj-button [textKey]="'כפתור'" buttonStyle="{{Enums.ButtonStyle.Success }}"></moj-button>
             <moj-button [textKey]="'כפתור'" buttonStyle="{{Enums.ButtonStyle.Attention }}"></moj-button>
+            <moj-button [textKey]="'כפתור כלינק'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-eye'"></moj-button>
         </moj-buttons-line>
     </div>
 
@@ -71,6 +72,13 @@
         <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.List" [buttonCols]="4" [(ngModel)]="toggleValue2"
             [items]="buttonToggleItems2">
         </moj-button-toggle>
+    </div>
+
+    <div class="demo-section">
+        <moj-title [textKey]="'כפתור Ellipsis'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+        <moj-ellipsis-button
+            [items]="ellipsisItems">
+        </moj-ellipsis-button>
     </div>
 </demo-container>
 

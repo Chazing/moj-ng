@@ -1,6 +1,6 @@
-import { ButtonStyle } from './../../../../../../src/app/moj-ng/elements/buttons/button-style';
 import { Component, OnInit } from '@angular/core';
 import { Enums, ENUMS } from '../../enums';
+import { ButtonStyle } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-invisible-recaptcha-demo',

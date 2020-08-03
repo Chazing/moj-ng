@@ -1,0 +1,17 @@
+<div class="popup-container" (click)="isExpended=true" (clickOutside)="isExpended=false">
+  <div class="popup-header-container" [ngStyle]="{'color':headerColor}">
+    <i class="{{titleIcon}}  title-icon"></i>
+    {{popupTitle | translate}}
+  </div>
+     <div class="popup-content-wrap" [ngClass]="{'bottom-right': popupDir==popupDirection.bottomRight,'bottom-left': popupDir==popupDirection.bottomLeft
+     ,'top-right': popupDir==popupDirection.topRight,'top-left': popupDir==popupDirection.topLeft}"
+       [ngStyle]="{'display':isExpended ? 'block' : 'none'}" >  
+         <div class="arrow-up"></div>
+       <div class="popup-content">
+        <!-- class="popup-ltr" -->
+           <div >
+                <ng-content></ng-content>
+           </div>
+       </div>
+     </div>
+</div>

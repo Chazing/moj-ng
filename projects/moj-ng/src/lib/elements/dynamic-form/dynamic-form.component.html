@@ -1,0 +1,13 @@
+<div [formGroup]="form">
+    <div *ngFor="let fields_ of fields; trackby">
+        <moj-line> 
+            <div *ngFor="let field of fields_; trackby">
+                <ng-container 
+                    mojDynamicField
+                    [field]="field"
+                    [group]="form">
+                </ng-container>
+            </div>
+        </moj-line>
+    </div>
+</div>

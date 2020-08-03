@@ -1,0 +1,58 @@
+@import "../../../../css/moj-config-css.scss";
+
+.moj-expansion-panel {
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px  6px #00000033;
+    border-radius: 8px;
+    padding: 1em;
+    margin-bottom: 1em;
+    &.expaneded {
+        box-shadow: 10px 10px 30px #00000033;
+    }
+
+    .moj-expansion-panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+       > div {
+            flex: 1 1 100%;
+            color: $moj-primary-text-color;
+            font-weight: bold;
+            font-size: 1.5em;
+          
+          
+        }
+       > i {
+            margin-left: 1em;
+            transition: 0.2s;
+            font-size: 1.5em;
+            color: $moj-primary-color;
+            &.expaneded {
+                transform: rotate(-180deg);
+            }
+            cursor: pointer;
+            
+            
+
+        }
+    }
+
+    .moj-expansion-panel-body {
+        overflow-y: hidden;
+        > div {
+            padding-top: 1em;
+           
+        }
+        &.expaneded {
+            overflow-y: visible;
+        }
+    }
+
+
+}
+
+

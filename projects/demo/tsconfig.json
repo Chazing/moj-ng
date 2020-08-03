@@ -4,23 +4,20 @@
     "outDir": "../../out-tsc/app",
     "paths": {
       "@moj/moj-ng": [
-        "src/app/moj-ng"
+        "projects/moj-ng/"
       ],
       "@moj/moj-ng/*": [
-        "src/app/moj-ng/*"
+        "projects/moj-ng/*"
       ]
     }
   },
-  "typesRoots": [
-    "src/app/moj-ng"
-  ],
   "include": [
     "src/**/*.ts",
-    "src/app/moj-ng/**/*"
-  ],
+    "projects/moj-ng/**/*"
+],
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts",
-    "src/app/moj-ng/**/*.spec.ts"
+    "projects/moj-ng/**/*.spec.ts"
   ]
 }

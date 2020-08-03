@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Moj Demo</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <base href="">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script>
     function isInternetExplorer() {
         var myNav = navigator.userAgent.toLowerCase();
@@ -25,7 +25,7 @@
         return (myNav.indexOf('edge') != -1);
     }
     (IsSupportBrowser = function (isSupportEdge, isSupportFF) {
-        if ((isInternetExplorer() && isInternetExplorer() < 11) || (!isSupportEdge && isEdge()) || (!isSupportFF && isFF())) {
+        if ((isInternetExplorer() && isInternetExplorer() <= 11) || (!isSupportEdge && isEdge()) || (!isSupportFF && isFF())) {
             window.location.href = "/assets/unsupported-browser.html";
         }
     })(true, true);

@@ -1,11 +1,28 @@
-<div class="demo-section">
-    <h1>זו דוגמה לכותרת ראשית h1</h1>
-</div>
+<demo-container [title]="'טקסטים'">
+  הדגמה לשימוש ברכיב .moj-dynamic-label ניתן לשלוט על מראהו באמצעות שימוש ב- fontStyle enum.להלן הקטגוריות הקיימות בenum זה:
+  <table>
+    <th>קטגוריה</th>
+    <th>דוגמה</th>
+    <th>גופן</th>
+    <th>משקל</th>
+    <th>גודל</th>
+   <!--the usage of the dynamic lable is:  
+          <moj-dynamic-label [textKey]="'כל הפעולות במקום אחד'" [fontStyle]="enums.FontStyle.XXLBold"
+          [captionType]="enums.CaptionType.H1"></moj-dynamic-label> -->
+ 
+          
+    <!-- the code below is doing iteration throgh the font style enum -->
+    <tr *ngFor="let fontStyle of FontStyles">
+      <td>{{fontStyle}}</td>
+      <td>
 
-<div class="demo-section">
-<h2>זו דוגמה לכותרת ראשית h2</h2>
-</div>
+        <moj-dynamic-label [textKey]="'כל הפעולות במקום אחד'" [fontStyle]="enums.FontStyle[fontStyle]"
+          [captionType]="enums.CaptionType.H1" [tooltip]="'דוגמא'"></moj-dynamic-label>
+      </td>
+      <td>{{this.getFontSize(fontStyle)+'px'}}</td>
+      <td>{{this.fontFamily}}</td>
+      <td>{{this.getFontWheight(fontStyle)}}</td>
 
-<div class="demo-section">
-  <h3>זו דוגמה לכותרת ראשית h3</h3>
-</div>
+    </tr>
+  </table>
+</demo-container>

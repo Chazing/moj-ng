@@ -1,0 +1,15 @@
+<div class="sliding-menu-wrapper"  [ngClass]="{'expanded':expanded,'sliding':isSliding,'dir-ltr':!isrtl ,'dir-rtl':isrtl }" >
+    <div class="toggle-button" (click)="toggleMenu()">
+        <i class="{{titleIcon}} title-icon" aria-hidden="true" *ngIf="!expanded"></i>
+    </div>
+    <div class="sliding-content"  [@bodyExpansion]="expanded? 'expanded' : 'collapsed'" [@conentExpansion]="expanded?'displayed' : 'fade'">
+      <div class="header"  (click)="toggleMenu()">     
+            <i class="{{constrictedTitleIcon}} title-icon" aria-hidden="true" *ngIf="expanded"></i>
+            <span >{{title}}</span>
+        </div>
+        <div class="content-wraapper"  [ngStyle]="{'background-color': bgColor}">
+            <ng-content > </ng-content>
+        </div>
+    </div>
+ 
+</div>

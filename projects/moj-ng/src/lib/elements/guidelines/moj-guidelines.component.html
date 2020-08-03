@@ -1,0 +1,13 @@
+<div class="guidelines" [class.is-visible]="isVisible">
+    <button (click)="onButtonClick()">
+        <i [ngClass]="{'fal fa-times': isVisible, 'fas fa-info': !isVisible}"></i>
+    </button>
+    <div class="guidelines-panel">
+        <h4>{{title}}</h4>
+        <ul class="guidelines-list">
+            <li *ngFor="let guideline of guidelines; trackBy">
+                <moj-guideline [guideline]="guideline" [isVisible]="isVisible"></moj-guideline>
+            </li>
+        </ul>
+    </div>
+</div>

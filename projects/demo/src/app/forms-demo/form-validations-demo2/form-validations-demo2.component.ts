@@ -1,8 +1,7 @@
 import { Validators } from '@angular/forms';
-import { MojValidators } from './../../../../../../src/app/moj-ng/validations/customValidators/validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ContainerType } from '@moj/moj-ng';
+import { ContainerType, MojValidators } from '@moj/moj-ng';
 import { Enums, ENUMS } from '../../enums';
 
 @Component({

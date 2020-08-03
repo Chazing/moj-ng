@@ -1,8 +1,7 @@
-import { ContainerType } from './../../../../../../../src/app/moj-ng/elements/website/moj-container/moj-container.component';
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { products } from "../products";
 import { ColDef, GridOptions } from "ag-grid-community";
-import { GridService } from "@moj/moj-ng";
+import { GridService, ContainerType } from "@moj/moj-ng";
 
 @Component({
     selector: 'quick-filter-demo',

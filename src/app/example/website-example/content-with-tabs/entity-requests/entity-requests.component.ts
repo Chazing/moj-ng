@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MojTabsService } from '../../../../moj-ng/elements/tabs/services/moj-tabs.service';
-import { MojTab } from '../../../../moj-ng/elements/tabs/models/moj-tabs.models';
+import { MojTab, MojTabsService } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-entity-requests',

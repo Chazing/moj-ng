@@ -1,24 +1,24 @@
 
-@import "src/css/moj-config-css.scss";
+@import "../projects/moj-ng/src/css/moj-config-css.scss";
 
 .moj-ltr {
-    @import "src/css/_direction-ltr.scss";
-    @import "src/css/moj-ag-grid.scss";
-    @import "src/css/moj-common.scss";
-    @import "src/css/moj-fonts.scss";
-    @import "src/css/moj-buttons.scss";
-    @import "src/css/moj-prime.scss";
-    @import "src/css/moj-layout.scss";
-    @import "src/css/moj-tabs.scss";
+    @import "../projects/moj-ng/src/css/_direction-ltr.scss";
+    @import "../projects/moj-ng/src/css/moj-ag-grid.scss";
+    @import "../projects/moj-ng/src/css/moj-common.scss";
+    @import "../projects/moj-ng/src/css/moj-fonts.scss";
+    @import "../projects/moj-ng/src/css/moj-buttons.scss";
+    @import "../projects/moj-ng/src/css/moj-prime.scss";
+    @import "../projects/moj-ng/src/css/moj-layout.scss";
+    @import "../projects/moj-ng/src/css/moj-tabs.scss";
 }
 
 .moj-rtl {
-    @import "src/css/_direction-rtl.scss";
-    @import "src/css/moj-ag-grid.scss";
-    @import "src/css/moj-common.scss";
-    @import "src/css/moj-fonts.scss";
-    @import "src/css/moj-buttons.scss";
-    @import "src/css/moj-prime.scss";
-    @import "src/css/moj-layout.scss";
-    @import "src/css/moj-tabs.scss";
+    @import "../projects/moj-ng/src/css/_direction-rtl.scss";
+    @import "../projects/moj-ng/src/css/moj-ag-grid.scss";
+    @import "../projects/moj-ng/src/css/moj-common.scss";
+    @import "../projects/moj-ng/src/css/moj-fonts.scss";
+    @import "../projects/moj-ng/src/css/moj-buttons.scss";
+    @import "../projects/moj-ng/src/css/moj-prime.scss";
+    @import "../projects/moj-ng/src/css/moj-layout.scss";
+    @import "../projects/moj-ng/src/css/moj-tabs.scss";
 }

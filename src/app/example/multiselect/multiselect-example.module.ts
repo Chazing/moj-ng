@@ -1,9 +1,8 @@
 ﻿import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
-import { MojInputModule } from "../../moj-ng/elements/input.module";
 import { MultiSelectExampleComponent } from "./multiselect-example.component";
 import { ExampleModule } from "../example-component/example.module";
+import { MojInputModule } from '@moj/moj-ng';
 
 @NgModule({
 	imports: [

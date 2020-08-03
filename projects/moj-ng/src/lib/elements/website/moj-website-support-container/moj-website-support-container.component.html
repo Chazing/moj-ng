@@ -1,0 +1,23 @@
+<div class="support-container" (click)="isExpended=true" (clickOutside)="isExpended=false">
+    <div class="header-container">
+        <i class="{{titleIcon}}"></i>
+        <!-- {{'MojTexts.supportMenuTitle' | translate}}  -->
+    </div>
+    <div class="support-content-wrap" [class.active]="isExpended">
+        <div class="arrow-up"></div>
+        <div class="support-content">
+            <div>
+                <i class="fal fa-phone-volume"></i>
+                <span id="supportphone">{{phone}}</span>
+            </div>
+            <div>
+                <i class="fal fa-envelope"></i>
+                <a id="supportEmail" href="mailto:{{email}}?subject={{emailSubject}}"> {{email}}</a>
+            </div>
+            <!-- <div class="support-bottom" aria-describedby="supportHeadline supportText">
+                <span class="font-12" id="supportHeadline">{{supportHeadline}}</span>
+                <span class="bold font-12" id="supportText">{{supportText}}</span>
+            </div> -->
+        </div>
+    </div>
+</div>

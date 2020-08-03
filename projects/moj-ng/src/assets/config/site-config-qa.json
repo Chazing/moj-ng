@@ -1,0 +1,11 @@
+{
+    "recaptchaSiteKey":"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+    "webApiAddress": "http://localhost:60980/api/values",
+    "isWriteUIErrorsToLog": false,
+    "logApiFunction":"/log",
+    "aa":"aa",
+    "uploadServerUrl": "http://qa-soa:8092/FilesReceiver.ashx",
+    "registerHandlerUrl": "http://localhost:55916/UploadRegister.axd",
+    "isGlassboxOn": true
+    
+}

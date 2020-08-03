@@ -1,0 +1,23 @@
+﻿<div class="moj-message-container">
+    <div *ngIf="!data.iconClass" class="{{'icon '+messageTypeString.toLowerCase()}}"></div>
+    <div *ngIf="data.iconClass" class="{{'icon '+data.iconClass}}"></div>
+
+    <div class="title">
+        {{data.messageTitle | translate}}
+    </div>
+    <div class="body">
+        <span *ngIf="data.messageText" id='ui-dialog-description'>
+            {{data.messageText | translate}}
+        </span>
+        <span *ngIf="data.messageHtml" [innerHtml]="data.messageHtml" id='ui-dialog-description'></span>
+    </div>
+</div>
+<moj-buttons-line class="msg-buttons" [isInDialogFooter]=true [buttonsAlign]="buttonsAlign.center">
+    <!-- this hidden button is to prevent focus from the cancel button--><button hidden></button>
+    <moj-button *ngIf="data.messageType==messageType.Confirm" buttonStyle={{buttonStyle.Secondary}}
+        (click)="onCancelButtonClick()" [textKey]="data.cancelButtonText ? data.cancelButtonText : 'MojTexts.cancel'">
+    </moj-button>
+    <moj-button #approve buttonStyle={{buttonStyle.Primary}} (click)="onApproveButtonClick()"
+        [textKey]="data.okButtonText ? data.okButtonText : 'MojTexts.approve'"></moj-button>
+</moj-buttons-line>
+<a id='stopFocus' tabindex='0'></a>

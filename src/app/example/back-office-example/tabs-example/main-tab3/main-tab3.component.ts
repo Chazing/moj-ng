@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MojTab, MojTabsService, ButtonStyle, MojSideMenuItem } from '../../../../moj-ng';
-import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { MojTab, ButtonStyle, MojTabsService } from '@moj/moj-ng';
 
 @Component({
     selector: 'app-main-tab3',
@@ -28,8 +27,9 @@ export class MainTab3Component implements OnInit {
     }
 
     initMainTab() {
-        this.tab = new MojTab(`/bo-example/root/tab3`, of('טאב 3'));
-        this.tab = this.mojTabsService.addOrGetTab(this.tab, null, this.closeTab);
+      let url = `/bo-example/root/tab3${this.id != null && this.id != 0 ? `/${this.id}` : ''}`;
+      this.tab = new MojTab(url, of('טאב 3'));
+       this.tab = this.mojTabsService.addOrGetTab(this.tab, null, this.closeTab);
     }
 
     ngOnInit() { }

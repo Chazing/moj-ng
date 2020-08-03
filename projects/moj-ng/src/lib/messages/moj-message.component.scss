@@ -1,0 +1,84 @@
+@import "../../css/moj-config-css.scss";
+:host {
+    display: flex;
+}
+.moj-message-container {
+    width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+    
+
+    .title {
+        display:block;
+        font-size: $font-34;
+        padding-bottom:36px;
+        position: relative;
+
+        
+        &::after {
+                content: "";
+            position: absolute;
+                width: 56px;
+                height: 6px;
+                background-color: $moj-primary-color;
+                left: 50%;
+                bottom: 0.5rem;
+                transform: translate(-50%, -0.5em);
+            }
+    }
+    .body {
+        display: block;
+        font-size: $font-20;
+        padding:8px 24px 48px 24px;
+        #ui-dialog-description
+        {
+            word-break:break-all;
+          
+        }
+    }
+
+    .icon {
+        height: 200px;
+        width: 200px;
+        background-repeat: no-repeat;
+        margin-bottom: 34px;
+       
+    }
+    
+    .error{
+        background-image:url('../../assets/MojImages/icons/error-icon.svg') ;
+       
+    }
+    .message{
+        background-image:url('../../assets/MojImages/icons/alert-icon.svg') ;
+    }
+    .alert{
+        background-image:url('../../assets/MojImages/icons/alert-icon.svg') ;
+    
+    }
+    .attention{
+        background-image:url('../../assets/MojImages/icons/alert-icon.svg') ;
+    }
+    .success{
+        background-image:url('../../assets/MojImages/icons/success-icon.svg') ;
+    }
+    .confirm{
+       background-image:url('../../assets/MojImages/icons/alert-icon.svg')
+    }
+}
+
+.msg-buttons {
+    moj-button + moj-button {
+        margin-right: 20px;
+    }
+    .moj-button {
+        min-width: 160px;
+    }
+}
+
+
+   
+
+  

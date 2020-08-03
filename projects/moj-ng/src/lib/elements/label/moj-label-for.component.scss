@@ -1,0 +1,41 @@
+@import "../../../css/moj-config-css.scss";
+
+@mixin component-style($start-dir, $end-dir) {
+  .padding-right-0 {
+    padding-right: 0px;
+  }
+
+  .label-for {
+    float: $start-dir;
+    margin-#{$end-dir}: 0.5em;
+  }
+
+  .content-label-for {
+    float: $start-dir;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .auto-width {
+    display: inline-block;
+    max-width: 100%;
+  }
+}
+
+.moj-rtl {
+  @import "../../../css/_direction-rtl.scss";
+  @include component-style($start-direction, $end-direction);
+}
+
+.moj-ltr {
+  @import "../../../css/_direction-ltr.scss";
+  @include component-style($start-direction, $end-direction);
+}
+
+.text-rtl {
+  direction: rtl;
+}
+
+.text-ltr {
+  direction: ltr;
+}

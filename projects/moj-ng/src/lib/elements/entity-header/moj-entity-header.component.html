@@ -1,0 +1,30 @@
+<div class="entity-header-card">
+    <div class="aside" *ngIf="!isEditMode">
+        <label *ngIf="asideTitle">{{asideTitle}}</label>
+        <i [class]="asideIconClass"></i>
+        <div class="aside-bottom" *ngIf="asideBottomData">
+            <span class={{asideBottomData.styleClass}}>
+                <label for="lblData">{{asideBottomData.key}}</label>
+                <label class="moj-bold" id="lblData">{{asideBottomData.value}}</label>
+            </span>
+        </div>
+    </div>
+    <div class="main" *ngIf="!isEditMode">
+        <button *ngIf="showEditButton" class="edit-button" (click)="editClick()"></button>
+        <div class="header">
+            <ng-content select="moj-entity-header-header"></ng-content>
+            <span *ngFor="let item of headerData;index as i;" class={{item.styleClass}}>
+                <label for="lblHeaderData{{i}}">{{item.key+': '}}</label>
+                <label class="moj-bold header-value" id="lblHeaderData{{i}}">{{item.value}}</label>
+            </span>
+        </div>
+        <div class="content">
+            <ng-content select="moj-entity-header-body"></ng-content>
+            <span *ngFor="let item of bodyData;index as i;" class="{{item.styleClass + ' col-sm-' + (item.colWidth?item.colWidth:3)}}">
+                <label for="lblBodyData{{i}}">{{item.key+': '}}</label>
+                <label class="moj-bold .moj-ellipsis" id="lblBodyData{{i}}">{{item.value}}</label>
+            </span>
+        </div>
+    </div>
+    <ng-content select="moj-entity-header-edit" *ngIf="isEditMode"></ng-content>
+</div>

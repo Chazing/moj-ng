@@ -9,16 +9,27 @@ import { ENUMS, Enums } from '../../enums';
     styleUrls: ['./file-upload-demo.component.css']
 })
 export class FileUploadDemoComponent implements OnInit {
-    Enums:Enums=ENUMS;
-    files = [];
+    Enums: Enums = ENUMS;
+    files = [];// = [{name: "file.pdf"}];
+    files2 = [{name: "file.pdf", size: 1234, mojId: 1234, date: "12/01/2020"}];
 
-    fuDesignType = MojFileUploadDesignType; 
+    fuDesignType = MojFileUploadDesignType;
 
     isRequired: boolean;
 
-      constructor() { }
+    constructor() { }
 
     ngOnInit() {
+    }
+
+    click(file) {
+        console.log(file);
+    }
+
+    enableDelete(file) {
+        if (file.mojId)
+            return false;
+        return true;
     }
 
 }

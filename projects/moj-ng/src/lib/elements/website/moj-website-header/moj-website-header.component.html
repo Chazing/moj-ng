@@ -1,0 +1,71 @@
+﻿<!--<div [ngClass]="" class="QA">
+    <div class="container">
+        <span class="app-environment">
+            סביבת בדיקות
+        </span>
+    </div>
+</div>-->
+
+<div class="web-site-header " role="contentinfo">
+    <div class="header-top">
+        <div class="header-container">
+            <div class="top-left-side">
+                <div class="support-container-area" [ngClass]="{'after-content': hasContentAfterSupport}">
+                    <ng-content select="'moj-website-support-container'"></ng-content>
+                </div>
+                <div #dynamic class="dynamic-content" [ngClass]="{'after-content': isShowMember}">
+                    <ng-content></ng-content>
+                </div>
+                <div *ngIf="isShowMember" class="web-site-header-userlog">
+                    <div class="helow-member"> <i class="fal fa-user-circle  "></i> {{userName}}</div>
+                    <!-- <a class="log-out" href="javascript:void(0)" (click)="onLogoutClick()">{{'MojTexts.logout' | translate}}</a> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="head-content header-container ">
+        <div class="site-logo" routerLink="/">
+            <div class="moj-logo"></div>
+            <!-- <img src="./assets/MojImages/Layout/LightLogoMoj.png"> -->
+            <div class="site-name">
+                <div>
+                    <span class="font-{{siteNameSize}} main-name">{{mainSiteName | translate}}</span>
+                    <span
+                    [ngClass]="{'online-eng': onlineType == onlineTypeEnum.onlineEng, 'online-heb': onlineType == onlineTypeEnum.onlineHeb}">{{'MojTexts.' + onlineType | translate}}</span>
+                </div>
+                
+                <div *ngIf="engSiteName" class="main-eng-name">{{engSiteName | translate}}</div>
+                <!-- <span *ngIf="subSiteName" class="sub-name">{{subSiteName | translate}}</span> -->
+            </div>
+        </div>
+        <div class="top-menu">
+            <ng-content select="'moj-website-topmenu'"></ng-content>
+        </div>
+        <ul *ngIf="isShowLangs" class="langs-culture">
+            <li *ngFor="let lanuage of languages" [class.active]="lanuage.code==currentLang"><a
+                    href="javascript:void(0)" (click)="changeLang(lanuage)">{{lanuage.value}}</a></li>
+        </ul>
+    </div>
+</div>
+<!--<div class="breadcrumb-wrapper">
+    <div class="header-container breadcrumb" *ngIf="breadcrumbsArr | async; let bcItems">
+        <ol class="breadcrumb" *ngIf="bcItems.length > 1">
+            <li class="breadcrumb-item" [class.active]="item.active" *ngFor="let item of bcItems"><a
+                    href="javascript:void(0);" (click)="breadcrumbslinkClick(item)">{{ item.textKey | translate }}</a>
+                    </li>
+        </ol>
+    </div>
+</div>-->
+
+
+<div class="layout-line" *ngIf="addLineAfterHeader"></div>
+
+
+<!--<div class="personal-details">
+<div  class="header">
+<span>
+    <span class="userAcronyms">{{userAcronyms}}</span></span> 
+{{userName}}
+</div>
+</div>-->

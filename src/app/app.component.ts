@@ -1,8 +1,4 @@
-﻿import { Component, OnInit, Renderer2 } from "@angular/core"
-import { TranslateService } from '@ngx-translate/core';
-import { MojUtilsService } from "./moj-ng";
-import { MojDirection } from "./moj-ng/elements/website/language";
-
+﻿import { Component} from "@angular/core"
 
 @Component({
     selector: "my-app",

@@ -1,9 +1,40 @@
+<!-- <div class="cube"></div>
+    <div class="cube">טקסט דגכיחיל </div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div> -->
+
+
 <div mojDir moj-dynamic-fontsize class="ws-wrapper">
     <header>
         <moj-accessible-menu></moj-accessible-menu>
-        <moj-website-header mainSiteName="אתר דוגמה" engSiteName="justice angular">
-                <moj-website-support-container phone="05411111111" email="justice@justi.gov.il"
-                emailSubject="{{'Texts.supportEmailSubject' |translate}}"></moj-website-support-container>
+        <moj-website-header mainSiteName="אתר דוגמה" engSiteName="justice angular" isShowMember="true" [isShowLangs]=true [userName]="'ישראל ישראלי'">
+            <moj-website-support-container phone="05411111111" email="justice@justi.gov.il"
+                emailSubject="{{'Texts.supportEmailSubject' | translate}}"></moj-website-support-container>
+            <floating-popup [popupDir]="popupDir.bottomRight" [popupTitle]="'קישור'">
+                כאן יהיה תוכן דינאמי
+                <br>
+                ניתן לשים כאן כל תוכן שהוא
+            </floating-popup>
+            
+            <moj-website-topmenu>
+                <main-item [textKey]="'רכיבי תשתית'">
+                    <sub-item [textKey]="'autocomplete'" [internalLink]="'/components/autocomplete-demo'" [linkTarget]="'_blank'"></sub-item>
+                    <sub-item [textKey]="'form-validations'" [internalLink]="'/forms/form-validations-demo'"></sub-item>
+                    <sub-item [textKey]="'קישור שנפתח בדף חדש'" [internalLink]="'/data/list-demo/list-design'" [linkTarget]="'_blank'"></sub-item>
+                </main-item>
+                <main-item [textKey]="'מודולים רוחביים'">
+                    <sub-item [textKey]="'כפתורים'" [internalLink]="'/buttons/buttons-demo'"></sub-item>
+                    <sub-item [textKey]="'טקסטים'" [internalLink]="'/components/labels-demo'"></sub-item>
+                    <sub-item [textKey]="'טאבים'" [internalLink]="'/content-layout/tabs-demo/tabs'"></sub-item>
+                </main-item>
+                <main-item [textKey]="'פריט ראשי'">
+                    <sub-item [textKey]="'options-card'" [internalLink]="'/cards-demo/options-card'"></sub-item>
+                    <sub-item [textKey]="'loading'" [internalLink]="'/misc/loading-demo'"></sub-item>
+                    <sub-item [textKey]="'resize'" [internalLink]="'/misc/resize-demo'"></sub-item>
+                </main-item>
+                <main-item [textKey]="'תוכן עם טאבים'" [internalLink]="'/misc/resize-demo'" [linkTarget]="'_blank'"></main-item>
+            </moj-website-topmenu>
         </moj-website-header>
     </header>
     <main>
@@ -12,6 +43,6 @@
         <router-outlet></router-outlet>
     </main>
     <footer role="contentinfo">
-        <!-- <moj-website-footer versionNumber="1.0.0" [links]="links"></moj-website-footer> -->
+        <moj-website-footer versionNumber="1.0.0" [links]="links"  [socialSitesLinks]="SocialLink"></moj-website-footer>
     </footer>
 </div>

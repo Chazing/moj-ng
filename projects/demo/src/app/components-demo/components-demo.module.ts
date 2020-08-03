@@ -1,11 +1,5 @@
 import { DemoSiteInternalModule } from './../demo-site-internal/demo-site-internal.module';
 import { EditorDemoModule } from './editor-demo/editor-demo.module';
-import { MojGridModule } from './../../../../../src/app/moj-ng/elements/grid/moj-grid.module';
-import { MojFilterModule } from './../../../../../src/app/moj-ng/elements/filter/moj-filter.module';
-import { MojSlidingMenuModule } from './../../../../../src/app/moj-ng/elements/sliding-menu/sliding-menu.module';
-import { MojProgressModule } from './../../../../../src/app/moj-ng/elements/moj-progress/moj-progress.module';
-import { FormsModule } from '@angular/forms';
-import { MojWizardModule } from './../../../../../src/app/moj-ng/elements/wizard/moj-wizard.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { RouterModule } from '@angular/router';
@@ -20,7 +14,7 @@ import { TextboxDemoComponent } from './textbox-demo/textbox-demo.component';
 import { MojSliderDemoComponent } from './moj-slider-demo/moj-slider-demo.component';
 import { MultiselectDemoComponent } from './multiselect-demo/multiselect-demo.component';
 import { OnOffSwitchDemoComponent } from './on-off-switch-demo/on-off-switch-demo.component';
-import { MojSharedModule, MojInputModule, MojWebsiteModule} from '@moj/moj-ng';
+import { MojSharedModule, MojInputModule, MojWebsiteModule, MojGridModule, MojFilterModule, MojSlidingMenuModule, MojProgressModule, MojWizardModule } from '@moj/moj-ng';
 import { TranslateModule } from '@ngx-translate/core';
 import { TabViewModule } from "primeng/primeng";
 import { TextsDemoComponent } from './texts-demo/texts-demo.component';
@@ -28,6 +22,9 @@ import { FileUploadDemoComponent } from './file-upload-demo/file-upload-demo.com
 import { MojFileUploadModule, MojResizableModule } from '@moj/moj-ng';
 import { EditorDemoComponent } from './editor-demo/editor-demo.component';
 import { FilterDemoComponent } from './filter-demo/filter-demo-component';
+import { SelectionCardDemoComponent } from './selection-card-demo/selection-card-demo.component';
+
+
 
 @NgModule({
     imports: [
@@ -64,7 +61,7 @@ import { FilterDemoComponent } from './filter-demo/filter-demo-component';
             { path: 'filter-demo', component: FilterDemoComponent },
             { path: 'fileupload-demo', component: FileUploadDemoComponent },
             { path: 'editor-demo', component: EditorDemoComponent },
-
+            { path: 'selection-card-demo', component: SelectionCardDemoComponent }
 
         ])
 
@@ -84,6 +81,7 @@ import { FilterDemoComponent } from './filter-demo/filter-demo-component';
         TextsDemoComponent,
         FileUploadDemoComponent,
         FilterDemoComponent,
+        SelectionCardDemoComponent
 
     ],
 

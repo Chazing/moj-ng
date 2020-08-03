@@ -1,4 +1,3 @@
-import { WizardItemModel } from './../../../../../../../src/app/moj-ng/elements/wizard/service/moj-wizard.service';
 import { Component, OnInit } from '@angular/core';
 import { WizardItemComponentBase } from '@moj/moj-ng';
 
@@ -16,8 +15,10 @@ export class Step1Component extends WizardItemComponentBase implements OnInit {
   constructor() {
     super();
     this.wizardItemModel = 'step1Model';
+    console.log("Step1Component created");
   }
 
   ngOnInit() {
+      console.log("Step1Component init");
   }
 }

@@ -1,12 +1,11 @@
 import { Observable, of } from 'rxjs';
-import { OnMovedEventParams } from './../../../../../../src/app/moj-ng/elements/wizard/moj-wizard.component';
 import { Step4Component } from './step4/step4.component';
 import { Step2Component } from './step2/step2.component';
 import { Step1Component } from './step1/step1.component';
-// import { MojSlidePreviewDocModule } from './../../../../../../src/app/moj-ng/elements/documents/moj-slide-preview-doc/moj-slide-preview-doc.module';
 import { Component, OnInit } from '@angular/core';
-import { WizardItem, WizardItemModel, ButtonStyle } from '@moj/moj-ng';
+import { WizardItem, WizardItemModel, ButtonStyle, OnMovedEventParams } from '@moj/moj-ng';
 import { Step3Component } from './step3/step3.component';
+import { Guideline } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-wizard-demo',
@@ -17,6 +16,9 @@ export class WizardDemoComponent implements OnInit {
   items: WizardItem[];
   buttonStyle = ButtonStyle;
 
+  guidelines:Guideline[] = [
+    {guidelineTitle:'תדריכים להגשת בקשות', guidelineMessage:'איתור גוש וחלקה לפי כתובת, ניתן לבצע באתר האינטרנט של המרכז'},
+  ];
   constructor() { }
 
   ngOnInit() {
@@ -46,6 +48,6 @@ export class WizardDemoComponent implements OnInit {
   }
 
     beforeMove(params: OnMovedEventParams): Observable<boolean> {
-        return of(false);
+        return of(true);
     }
 }

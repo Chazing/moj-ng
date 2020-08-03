@@ -1,4 +1,4 @@
-<div class="bo-wrapper">
+<div class="bo-wrapper" moj-dynamic-fontsize>   
     <header>
         <moj-bo-header [hideJusticeLogo]=false [moreMenuItems]="moreMenuItems" [version]="'1.0.0.1'" [appLogoClass]="'someClass'" username="פנינה אורן" mainTitle="אופק 2" subTitle="אגף שומת מקרקעין" [envType]="currentEnvType"
         [searchItems]="searchItems" (searchComboChanged)="searchComboChanged($event)" [searchPlaceholder]="searchPlaceholder" (searchClick)="searchClick($event)"></moj-bo-header>
@@ -9,10 +9,10 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-folder-plus"></i>
             <i class="fas fa-folders"></i>
-            <!-- <button (click)="openNewTab()">פתיחת טאב חדש</button> -->
+             <button (click)="openNewTab()">פתיחת טאב חדש</button> 
         </moj-bo-menubar>
     </nav>
     <main>
-        <moj-url-tabs [colorizable]="true" [limit]="8"></moj-url-tabs>
+        <moj-url-tabs [colorizable]="true" [limit]="4"></moj-url-tabs>
     </main>
 </div>

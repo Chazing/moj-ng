@@ -1,0 +1,30 @@
+<demo-container [title]="'Flip Card'">
+    בדוגמה זו הפקד משמש כתפריט ראשי אך ניתן לשלבו בכל מקום. כל כרטיסיה היא מופע נפרד של הפקד. בכרטיסיה אחת מוגדר צד שני
+    ובכרטיסיה שנייה לא.
+</demo-container>
+<moj-container [containerType]="Enums.ContainerType.Primay" [title]="'שלום ליאת, איך אפשר לעזור לך?'">
+    <moj-flip-card-container>
+        <moj-flip-card #card1 [textKey]="'הגשת בקשה חדשה'" [iconClass]="'new-submission'">
+        </moj-flip-card>
+        <moj-flip-card [(isEditMode)]="isEditMode" #card2 [textKey]="'הגשת בקשה חוזרת'" [iconClass]="'re-submmission'">
+            <flip-card-edit>
+                <span [ngClass]="{'title':true}">הגשת בקשה חוזרת</span>
+                <moj-line>
+                    <moj-textbox [(ngModel)]="fileNumber" controlWidthColumns="12" [labelTextKey]="'מספר תיק'">
+                    </moj-textbox>
+                </moj-line>
+                <moj-buttons-line [buttonsAlign]="Enums.Alignment.center">
+                    <moj-button [textKey]="'שמירה'" (click)="save()"
+                        buttonStyle="{{Enums.ButtonStyle.Secondary }}" [iconClass]="'fas fa-search'">
+                    </moj-button>
+                </moj-buttons-line>
+            </flip-card-edit>
+        </moj-flip-card>
+        <moj-flip-card [textKey]="'השלמת מסמכים'" [iconClass]="'new-submission'">
+        </moj-flip-card>
+    </moj-flip-card-container>
+</moj-container>
+
+<div class="body">
+
+</div>

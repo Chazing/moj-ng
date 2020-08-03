@@ -1,0 +1,11 @@
+<h6>{{guideline.guidelineTitle}}</h6>
+<div #message class="guideline-message"
+    [class.is-open]="isOpen"
+    [class.message-ellipsis]="!isOpen && isHeightExceeds">
+    <div [innerHTML]="guideline.guidelineMessage"></div>
+    <span (click)="onArrowClick()">
+        <i *ngIf="isHeightExceeds"
+        class="far" 
+        [ngClass]="{'fa-chevron-up': isOpen, 'fa-chevron-down': !isOpen}"></i>
+    </span>
+</div>

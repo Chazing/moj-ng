@@ -7,11 +7,11 @@ import { Enums, ENUMS } from '../../../enums';
 })
 export class ListDesignPanelDemoComponent implements OnInit {
     Enums: Enums = ENUMS;
-    rowData = [{}, {}, {}];
+    rowData = [{ fixed: true }, { fixed: true }, { fixed: true }];
     cols: number = 2;
 
     changeCols() {
-        this.rowData = [{}, {}, {}, {}, {}, {}];
+        this.rowData = [{ fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }, { fixed: true }];
     }
 
     constructor() { }

@@ -1,0 +1,151 @@
+
+@import "../../../../css/moj-config-css.scss";
+@mixin component-style($start-dir,$end-dir)
+{
+.footer-container {
+    padding:1em 0 1em ;
+    width: 90%;
+    color: $footer-color;
+    margin-#{$end-dir}: auto;
+    margin-#{$start-dir}: auto;
+    .footer-logo
+    {
+      background: url('../../../../assets/MojImages/Icons/sm-logo.png') no-repeat #{$start-dir} 2px;
+      background-size: contain;
+      min-height: 26px;
+      background-size: auto;
+      background-position-y: top;
+    }
+    .row
+{
+  display: flex;
+  justify-content: space-between;
+  &::before,&::after
+  {
+    content: none;
+  }
+}
+}
+
+  
+.ftrLnks {
+  width: fit-content;
+  align-self: flex-start;
+  ul {
+    padding: 0;
+    margin: 0;
+    display: table;
+  }
+  li {
+    float: $start-dir;
+    padding: 0 0.8em;
+    a {
+      font-size: $font-14;
+      color: $footer-color;
+      &:hover{
+        text-decoration: underline;
+        color: $moj-active-color;
+  
+
+    }
+    }
+  }
+  
+}
+  
+.version
+{
+  width: fit-content;
+  font-size: $font-13;
+  align-self: flex-start;
+  color: $moj-secondary-text-color;
+  
+}
+.noPadding
+{
+  padding: 0 0 !important;
+}
+.copy {
+  width: max-content;
+  font-size:$font-14;
+  text-align: $end-dir;
+  align-self: flex-start;
+  img
+  {
+  margin-#{$end-dir}: 5px;
+  }
+  .copy-text
+  {
+  
+  >span
+  {
+    margin-#{$start-dir}: 15px;
+  }
+    &::before
+  {
+  content: "";
+  height: 1.4rem;
+  width: 1px;
+  position: absolute;
+  background-color: $moj-secondary-text-color;
+  #{$start-dir}: 25px;
+  }
+  }
+  
+}
+
+
+@media (max-width: 767px) {
+  .copy {
+    text-align: $start-dir;
+  }
+}
+}
+// .moj-ltr
+// {
+//   .ftrLnks li {
+//     float: left;
+//     padding: 0 0 0 1.125em;
+//   }
+//    .footer-logo
+//   {
+//     background: url('../../../../../assets/MojImages/Icons/sm-logo.png') no-repeat left 2px;
+//   }
+
+//   .copy {
+//     text-align: right;
+     
+//       .copy-text
+//       {
+      
+//       >span
+//       {
+//         margin-right: initial !important;
+//         margin-left: 13px ;
+//       }
+//       &::before
+//       {
+//         right: initial !important;
+//         left: 24px;
+//       }
+//   }
+// }
+  
+//   @media (max-width: 767px) {
+//     .copy {
+//       text-align: left;
+//     }
+//   }
+
+
+// }
+
+.moj-rtl {
+  @import "../../../../css/_direction-rtl.scss";
+  @include component-style( $start-direction,$end-direction);
+  }
+
+.moj-ltr{
+  @import "../../../../css/_direction-ltr.scss";
+  @include component-style( $start-direction,$end-direction );
+}

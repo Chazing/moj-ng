@@ -1,0 +1,5 @@
+<div [class]="type" *ngIf="isOpen">
+    <i *ngIf="iconClass" class="{{iconClass}} notification-icon"></i>
+    {{message |translate}}  
+    <i  *ngIf="closable" class="far fa-times-circle close-icon" (click)=" closwNotification()"></i></div>
+   

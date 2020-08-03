@@ -1,0 +1,10 @@
+﻿<div [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}" class="moj-input-container"
+    [ngClass]="[(isShowValidationMessage$ | async) ? 'moj-invalid': '',controlColWidth]">
+    <span>
+        <input [(ngModel)]="value" (change)="onCheckedChange($event)" type="radio" [value]="radiovalue"
+            [id]="identifier" [name]="name" [disabled]="disabled" />
+        <label-for-content [forId]="identifier" [textKey]="labelTextKey"
+            [labelAlign]="labelAlignEnum.Right" class="check-radio-label">
+        </label-for-content>
+    </span>
+</div>

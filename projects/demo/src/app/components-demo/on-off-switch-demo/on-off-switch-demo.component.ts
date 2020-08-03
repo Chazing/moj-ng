@@ -1,6 +1,6 @@
 import { Enums, ENUMS } from './../../enums';
 import { Component, OnInit } from '@angular/core';
-import { onOffSwitchType } from 'src/app/moj-ng';
+import { onOffSwitchType } from '@moj/moj-ng';
 
 
 @Component({

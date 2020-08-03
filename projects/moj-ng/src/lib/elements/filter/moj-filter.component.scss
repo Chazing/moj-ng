@@ -1,0 +1,116 @@
+@import "../../../css/moj-config-css.scss";
+
+@mixin component-style( $start-dir,$end-dir )
+{
+    .moj-filter-list {
+        background: #ffffff;
+        padding: 0.562rem 0 0.562rem 0;
+        padding-#{$start-dir}:0 ;
+        padding-#{$end-dir}:0.562rem ;
+        box-shadow: 0px 3px 6px rgba(0,0,0, 0.16);
+        min-width: 300px;
+    
+        li {
+            padding: 0.5em 0;
+            margin-#{$start-dir}: 0.562rem;
+            &.main {
+                border-bottom: 1px solid $moj-panel-border-color;
+            
+                padding: 0.562rem 0;
+            }
+            
+            .search-icon{
+               color: #005797;
+               align-self: center;
+            }
+            .search-text{
+                border: 1px solid #707070;
+                box-shadow: none;
+                height: 30px;
+                border-radius: 4px;
+                margin: 0.562rem  8px;
+                margin-bottom: 11px;
+                display: flex;
+            }
+            .search-text-input{
+                border: transparent;
+                width: 90%;
+                margin-#{$start-dir}: 2px;
+                align-self: center;
+            }
+            .see-all    
+            {
+                display: inline-block;
+                text-align: $end-dir;
+                width: 100%;
+                margin-#{$end-dir}: 0.562rem;
+            }
+           
+            
+        }
+        .header-checkBox
+        {
+            min-width: 300px;
+            
+        }
+        .filter-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size:$font-16;
+            color: $moj-text-color;
+            overflow-wrap: break-word;
+            &.bold {
+                font-weight: bold;
+            }
+            
+        
+        }
+        .filter-body{
+            overflow-y: hidden;
+            &.expanded{
+                overflow-y: visible !important;
+            }
+        }
+    
+        .filter-header-content
+        {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width:100%;
+            input[type=checkbox].moj-checkbox + label-for-content label:before{
+                margin-#{$start-dir}:0px !important;
+            }
+            .chevron-center
+            {
+                align-self: center;
+            }
+        }
+    
+        .label-above, .moj-label-content {
+            &[class*='col-sm'] {
+                padding: 0 !important;
+            }
+        }
+    
+        .moj-form-line {
+            margin-top: 7px !important;
+        }
+    }
+}
+
+
+.moj-rtl {
+    @import "../../../css/_direction-rtl.scss";
+   @include component-style( $start-direction ,$end-direction);
+    
+    }
+  
+  .moj-ltr{
+     @import "../../../css/_direction-ltr.scss";
+     @include component-style( $start-direction,$end-direction);
+  }
+  

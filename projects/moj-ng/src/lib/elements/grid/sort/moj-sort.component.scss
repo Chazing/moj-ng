@@ -1,0 +1,22 @@
+.moj-sort{
+    display: flex;
+
+    moj-dropdownlist{
+        flex: 1 1 100%;
+    }
+
+    button{
+        border-radius: 50px;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 3px 6px #0000004d;
+        border: 1px solid #eceff1;
+        background-color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        i {
+            font-size: 1.5em;
+        }
+    }
+}

@@ -18,7 +18,7 @@ export class MultiSelectExampleComponent {
         { name: "items", type: "array", default: "null", description: "מערך של נתונים להצגה" },
         { name: "fieldName", type: "string", default: "value", description: "שדה להצגה ברשימה" },
         { name: "fieldID", type: "string", default: "key", description: "שדה לקבל ID model" },
-        { name: "placeholder", type: "string", default: "Texts.Choose - בחר", description: "placeholder" },
+        { name: "placeholder", type: "string", default: "Texts.Choose - בחירה", description: "placeholder" },
         { name: "filter", type: "boolean", default: "false", description: "חיפוש" },
         { name: "maxSelectedLabels", type: "number", default: "4", description: "כאשר נבחרו מספר זה של פריטים, במקום להציג את הרשימה יוצג: נבחרו 4 פריטים" }
     ];

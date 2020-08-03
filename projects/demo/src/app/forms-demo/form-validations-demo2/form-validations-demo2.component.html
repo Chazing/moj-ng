@@ -15,15 +15,16 @@
     </moj-line>
     <moj-line>
       <moj-textbox formControlName="age" max="120" [inputType]="'number'" controlWidthColumns="2"></moj-textbox>
-      <moj-autocomplete formControlName="country" controlWidthColumns="2" [items]="countryList"
-        [fieldName]="'name'" [fieldID]="'id'" fieldID="ID">
+      <moj-autocomplete formControlName="country" controlWidthColumns="2" [items]="countryList" [fieldName]="'name'"
+        [fieldID]="'id'" fieldID="ID">
       </moj-autocomplete>
     </moj-line>
     <moj-line>
-      <moj-checkbox [labelTextKey]="'האם מסכים לקבלת דיוור במייל'" formControlName="isAgree">
+      <moj-checkbox [labelTextKey]="'הסכמה לקבלת דיוור במייל'" formControlName="isAgree">
       </moj-checkbox>
     </moj-line>
     <moj-buttons-line>
+      <moj-clear-button [form]="exampleForm"></moj-clear-button>
       <moj-submit-button [form]="exampleForm"></moj-submit-button>
     </moj-buttons-line>
   </form>

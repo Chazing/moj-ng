@@ -1,7 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { MojDialogService } from '../../moj-ng/messages/moj-dialog.service';
-import { DialogResult } from '../../moj-ng/messages/dialog-result';
-import { DialogResultEnum } from '../../moj-ng/messages/message.enum';
+import { DialogResult, DialogResultEnum } from '@moj/moj-ng';
 
 @Component({
   selector: 'dialog-example',

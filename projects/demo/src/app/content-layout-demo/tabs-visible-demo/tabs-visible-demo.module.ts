@@ -5,10 +5,11 @@ import { Tab2ContentComponent } from "./tab2-content/tab2-content.component";
 import { Tab3ContentComponent } from "./tab3-content/tab3-content.component";
 import { MojTabsModule, MojWebsiteModule, MojLabelModule } from "@moj/moj-ng";
 import { RouterModule } from "@angular/router";
+import { DemoSiteInternalModule } from "../../demo-site-internal/demo-site-internal.module";
 
 @NgModule({
     declarations: [TabsVisibleDemoComponent, Tab1ContentComponent, Tab2ContentComponent, Tab3ContentComponent],
-    imports: [MojTabsModule, MojWebsiteModule, MojLabelModule, RouterModule.forChild([
+    imports: [MojTabsModule, MojWebsiteModule, MojLabelModule, DemoSiteInternalModule, RouterModule.forChild([
         {path: "", pathMatch: "full", redirectTo: "tabs"},
         {path: "tabs", component: TabsVisibleDemoComponent}
     ])],

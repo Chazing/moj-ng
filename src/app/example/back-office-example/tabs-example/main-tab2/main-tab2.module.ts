@@ -1,17 +1,15 @@
+import { NavigationService } from './../../../../../../projects/moj-ng/src/lib/elements/tabs/services/navigation.service';
 import { NgModule } from "../../../../../../node_modules/@angular/core";
 import { CommonModule } from "../../../../../../node_modules/@angular/common";
 import { RouterModule } from "../../../../../../node_modules/@angular/router";
 import { MainTab2Component } from "./main-tab2.component";
-import { NavigationService } from "../../../../moj-ng/elements/tabs/services/navigation.service";
 import { GridExampleModule } from "../../../grid-example/grid-example.module";
-import { MojSharedModule } from "../../../../moj-ng/shared/moj.shared.module";
-import { MojSlidePreviewDocModule } from "../../../../moj-ng/elements/documents/moj-slide-preview-doc/moj-slide-preview-doc.module"
 import { Tab2SecondComponent } from "./tab2-second/tab2-second.component";
 import { Tab2Side1Component } from "./tab2-side1/tab2-side1.component";
 import { Tab2Side3Component } from "./tab2-side3/tab2-side3.component";
 import { Tab2Side2Component } from "./tab2-side2/tab2-side2.component";
 import {DataViewModule} from 'primeng/dataview';
-import { MojFilterModule } from "../../../../moj-ng/elements/filter/moj-filter.module";
+import { MojSlidePreviewDocModule, MojSharedModule, MojFilterModule } from '@moj/moj-ng';
 
 @NgModule({
     imports: [CommonModule, DataViewModule, MojSharedModule, GridExampleModule, MojSlidePreviewDocModule, MojFilterModule, RouterModule.forChild([

@@ -1,24 +1,14 @@
 ﻿import { Component, OnInit, ViewContainerRef, ViewChild, OnDestroy } from '@angular/core';
 import { TranslateService } from '../../../../../../node_modules/@ngx-translate/core';
-import { MojTab, MojSideMenuItem } from '../../../../moj-ng/elements/tabs/models/moj-tabs.models';
-import { MojTabsService } from '../../../../moj-ng/elements/tabs/services/moj-tabs.service';
 import { Product } from '../../../grid-example/product.model';
 import { EditPopupExampleComponent } from '../../../grid-example/edit-popup-example.component';
 import { ColDef, GridOptions } from '../../../../../../node_modules/ag-grid-community';
-import { EditOptions } from '../../../../moj-ng/elements/grid/edit-component/edit-options.model';
-import { EditServiceBase } from '../../../../moj-ng/elements/grid/service/edit-service.base';
 import { HttpClient } from '../../../../../../node_modules/@angular/common/http';
 import { GridExampleService } from '../../../grid-example/grid-example.service';
-import { FileType } from '../../../../moj-ng/elements/grid/custom-columns/moj-document-format-column/file-type.model';
 import { products } from '../../../grid-example/products';
-import { GridService } from '../../../../moj-ng/elements/grid/service/moj-grid.service';
-import { ActionPopUpItem } from '../../../../moj-ng/elements/actions-popup/action-popup.model';
 import { of } from 'rxjs';
-import { MojDynamicTextboxComponent, MojDynamicDatePickerComponent, MojDynamicAutoCompleteComponent, MojDynamicCheckboxComponent } from '../../../../moj-ng/elements/dynamic-form/dynamic-components';
-import { MojFilter, MojCategoryFilter } from '../../../../moj-ng/elements/filter/moj-filter.model';
-import { ButtonToggleItem } from '../../../../moj-ng/elements/buttons/button-toggle/button-toggle.model';
-import { MojListItemType } from '../../../../moj-ng/elements/grid/list-view/moj-list-view-type.enum';
-import { MojDataViewType } from '../../../../moj-ng/elements/grid/models/dataview-type.enum';
+import { MojTab, MojListItemType, MojFilter, MojCategoryFilter, MojDynamicCheckboxComponent, MojDynamicDatePickerComponent, MojDynamicAutoCompleteComponent, MojDynamicTextboxComponent, MojTabsService, GridService, MojSideMenuItem, EditOptions, EditServiceBase, MojDataViewType, ActionPopUpItem, FileType, ButtonToggleItem } from '@moj/moj-ng';
+
 
 @Component({
     selector: 'moj-bo-example-mainTab',

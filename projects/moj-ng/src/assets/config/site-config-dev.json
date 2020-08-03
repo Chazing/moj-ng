@@ -1,0 +1,14 @@
+{
+    "recaptchaSiteKey":"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+    "webApiAddress": "http://localhost:4300/api",
+    "isWriteUIErrorsToLog": false,
+    "logApiFunction":"/log",
+    "uploadServerUrl2": "http://qa-soa:8092/FilesReceiver.ashx",
+    "uploadServerUrl": "http://qa-srv12app2:8200/FileStreamReceiver.ashx",
+    "uploadServerUrl3": "https://test-op.justice.gov.il/FileStreamReceiver.ashx",
+    "fums": "4458e545-795a-45a7-a021-b6aa9ff33b63",
+    "registerHandlerUrl": "UploadRegister.axd/",
+    "isGlassboxOn": true,
+    "isCSRFActive": false,
+    "isParseDate": true
+}

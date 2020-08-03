@@ -6,42 +6,48 @@
                         <floating-popup [popupTitle]="'favorit'">
 
                         </floating-popup>
+                        <moj-website-topmenu>
+                            <main-item [textKey]="'פקדי Input'">
+                                <sub-item [textKey]="'AutoComplete'" [internalLink]="'/website-example/autocomplete'"></sub-item>
+                                <sub-item [textKey]="'MultiSelect'" [internalLink]="'/website-example/multiselect'"></sub-item>
+                                <sub-item [textKey]="'DatePicker'" [internalLink]="'/website-example/datepicker'"></sub-item>
+                            </main-item>
+                            <main-item [textKey]="'פקדים לאתר חיצוני'">
+                                <sub-item [textKey]="'Recaptcha'" [internalLink]="'/website-example/recaptcha'"></sub-item>
+                                <sub-item [textKey]="'File Upload'" [internalLink]="'/website-example/file-upload'"></sub-item>
+                            </main-item>
+                            <main-item [textKey]="'Grid'">
+                                <sub-item [textKey]="'Grid Edit Popup'" [internalLink]="'/website-example/grid'"></sub-item>
+                                <sub-item [textKey]="'Grid Edit Inline'" [internalLink]="'/website-example/grid-edit-inline'"></sub-item>
+                                <sub-item [textKey]="'Grid Server Side'" [internalLink]="'/website-example/grid-server-side'"></sub-item>
+                                <sub-item [textKey]="'מיון'" [internalLink]="'/website-example/sort'"></sub-item>
+                            </main-item>
+                            <main-item [textKey]="'Wizard'" [internalLink]="'website-example/wizard'"></main-item>
+                            <main-item [textKey]="'טפסים'">
+                                <sub-item [textKey]="'Form'" [internalLink]="'/website-example/form'"></sub-item>
+                                <sub-item [textKey]="'ReactiveForm'" [internalLink]="'/website-example/reactiveform'"></sub-item>
+                                <sub-item [textKey]="'Dynamic Form'" [internalLink]="'/website-example/dynamicform'"></sub-item>
+                            </main-item>
+                            <main-item [textKey]="'שונות'">
+                                <sub-item [textKey]="'Buttons'" [internalLink]="'/website-example/buttons'"></sub-item>
+                                <sub-item [textKey]="'Editor'" [internalLink]="'/website-example/editor'"></sub-item>
+                                <sub-item [textKey]="'Store'" [internalLink]="'/website-example/store'"></sub-item>
+                                <sub-item [textKey]="'הנחיות'" [internalLink]="'/website-example/guidelines'"></sub-item>
+                            </main-item>
+                            <main-item [textKey]="'תוכן עם טאבים'" [internalLink]="'website-example/entity'"></main-item>
+                            <main-item textKey="הודעות">
+                                <sub-item textKey="notification" internalLink="website-example/notification"></sub-item>
+                            </main-item>
+                            <!-- <moj-website-support-container phone="05411111111" email="justice@justice.gov.il" emailSubject="{{'Texts.supportEmailSubject' |translate}}"></moj-website-support-container> -->
+                
+                            <!-- <main-item [textKey]="'Texts.mainItem2'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></main-item>
+                        <main-item [textKey]="'Texts.mainItem1'">
+                            <sub-item [textKey]="'Texts.subItem1'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></sub-item>
+                            <sub-item [textKey]="'Texts.subItem2'" [internalLink]="'/website-example/wizard'"></sub-item>
+                        </main-item>
+                        <main-item [textKey]="'Texts.mainItem2'" [internalLink]="'/website-example/form'"></main-item> -->
+                        </moj-website-topmenu>
                         </moj-website-header>
-        <moj-website-topmenu>
-            <main-item [textKey]="'פקדי Input'">
-                <sub-item [textKey]="'AutoComplete'" [internalLink]="'/website-example/autocomplete'"></sub-item>
-                <sub-item [textKey]="'MultiSelect'" [internalLink]="'/website-example/multiselect'"></sub-item>
-                <sub-item [textKey]="'DatePicker'" [internalLink]="'/website-example/datepicker'"></sub-item>
-            </main-item>
-            <main-item [textKey]="'פקדים לאתר חיצוני'">
-                <sub-item [textKey]="'Recaptcha'" [internalLink]="'/website-example/recaptcha'"></sub-item>
-                <sub-item [textKey]="'File Upload'" [internalLink]="'/website-example/file-upload'"></sub-item>
-            </main-item>
-            <main-item [textKey]="'Grid'">
-                <sub-item [textKey]="'Grid Edit Popup'" [internalLink]="'/website-example/grid'"></sub-item>
-                <sub-item [textKey]="'Grid Edit Inline'" [internalLink]="'/website-example/grid-edit-inline'"></sub-item>
-                <sub-item [textKey]="'Grid Server Side'" [internalLink]="'/website-example/grid-server-side'"></sub-item>
-            </main-item>
-            <main-item [textKey]="'Wizard'" [internalLink]="'website-example/wizard'"></main-item>
-            <main-item [textKey]="'טפסים'">
-                <sub-item [textKey]="'Form'" [internalLink]="'/website-example/form'"></sub-item>
-                <sub-item [textKey]="'ReactiveForm'" [internalLink]="'/website-example/reactiveform'"></sub-item>
-                <sub-item [textKey]="'Dynamic Form'" [internalLink]="'/website-example/dynamicform'"></sub-item>
-            </main-item>
-            <main-item [textKey]="'שונות'">
-                <sub-item [textKey]="'Buttons'" [internalLink]="'/website-example/buttons'"></sub-item>
-                <sub-item [textKey]="'Editor'" [internalLink]="'/website-example/editor'"></sub-item>
-            </main-item>
-            <main-item [textKey]="'תוכן עם טאבים'" [internalLink]="'website-example/entity'"></main-item>
-            <moj-website-support-container phone="05411111111" email="justice@justice.gov.il" emailSubject="{{'Texts.supportEmailSubject' |translate}}"></moj-website-support-container>
-
-            <!-- <main-item [textKey]="'Texts.mainItem2'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></main-item>
-        <main-item [textKey]="'Texts.mainItem1'">
-            <sub-item [textKey]="'Texts.subItem1'" [externalLink]="'http://www.ica.justice.gov.il/Request/Register'"></sub-item>
-            <sub-item [textKey]="'Texts.subItem2'" [internalLink]="'/website-example/wizard'"></sub-item>
-        </main-item>
-        <main-item [textKey]="'Texts.mainItem2'" [internalLink]="'/website-example/form'"></main-item> -->
-        </moj-website-topmenu>
     </header>
     <main>
             <sliding-menu [rtl]="true"> 

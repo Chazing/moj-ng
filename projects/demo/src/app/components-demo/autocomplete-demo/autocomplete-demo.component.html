@@ -4,7 +4,7 @@
         <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
         <moj-line>
             <moj-autocomplete name="autocompleteValue" labelTextKey="Texts.Choose"
-                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'" [fieldID]="'key'"
+                controlWidthColumns="6" [items]="listItems" [fieldName]="'value'" [fieldID]="'key'"
                 [(ngModel)]="autocompleteValue">
             </moj-autocomplete>
         </moj-line>
@@ -14,10 +14,10 @@
         מיועד למקרים בהם יש צורך לתת לכל פריט ברשימה תבנית מסויימת לדוג':הוספת אייקון או צבע מסויים וכד'
         <moj-line>
             <moj-autocomplete name="autocompleteCustomTemplateValue" labelTextKey="Texts.Choose"
-                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'" [fieldID]="'key'"
+                controlWidthColumns="6" [items]="listItems" [fieldName]="'value'" [fieldID]="'key'"
                 [(ngModel)]="autocompleteCustomTemplateValue">
                 <ng-template let-item pTemplate="custom">
-                    <div style="background-color:cadetblue;height: 15px;color: black">{{item.value}}</div>
+                    <div style="border-radius: 4px;background-color: aquamarine;color: black;padding: 5px;">{{item.value}}</div>
                 </ng-template>
             </moj-autocomplete>
         </moj-line>
@@ -26,7 +26,7 @@
         <moj-title [textKey]="'רשימה נפתחת'" [titleType]="enums.TitleType.Secondary"></moj-title>
         <moj-line>
             <moj-autocomplete name="autocompleteValueDropDown" [dropdown]=true labelTextKey="Texts.Choose"
-                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'"
+                controlWidthColumns="6" [items]="listItems" [fieldName]="'value'"
                 [fieldID]="'key'" [(ngModel)]="autocompleteValueDropDown">
             </moj-autocomplete>
         </moj-line>
@@ -35,8 +35,8 @@
         <moj-title [textKey]="'בחירה מרובה'" [titleType]="enums.TitleType.Secondary"></moj-title>
         <moj-line>
             <moj-autocomplete name="autocompleteValueMultiple" [multiple]=true labelTextKey="Texts.Choose"
-                controlWidthColumns="2" [items]="listItems" [fieldName]="'value'"
-                [fieldID]="'key'" [(ngModel)]="autocompleteValueMultiple">
+                controlWidthColumns="6" [items]="listItems" [fieldName]="'value'"
+                [fieldID]="'key'" [(ngModel)]="autocompleteValueMultiple" [dropdown]=true>
             </moj-autocomplete>
         </moj-line>
     </div>

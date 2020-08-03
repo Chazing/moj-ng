@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { MojDynamicFormService } from '../../moj-ng/elements/dynamic-form/dynamic-form.service';
-import { MojDynamicDropdownComponent, MojDynamicAutoCompleteComponent, MojDynamicDatePickerComponent, MojDynamicLabelForComponent, MojDynamicTextboxComponent } from '../../moj-ng/elements/dynamic-form/dynamic-components';
-import { MojDynamicDropdownField, MojDynamicAutocompleteField, MojDynamicDatepickerField, MojDynamicLabelField, MojDynamicField, MojDynamicTextboxField } from '../../moj-ng/elements/dynamic-form/dynamic-fields';
+import { MojDynamicFormService, MojDynamicField, MojDynamicDatepickerField, MojDynamicTextboxField, MojDynamicTextboxComponent, MojDynamicDropdownField, MojDynamicDropdownComponent, MojDynamicAutocompleteField, MojDynamicAutoCompleteComponent, MojDynamicDatePickerComponent, MojDynamicLabelField, MojDynamicLabelForComponent } from '@moj/moj-ng';
 
 @Component({
     selector: 'dynamic-form-example',

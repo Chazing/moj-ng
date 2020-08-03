@@ -4,6 +4,7 @@ import { EditOptions, EditServiceBase, MojDataViewType, ActionPopUpItem, FileTyp
 import { Enums, ENUMS } from "../../../enums";
 import { products } from "../../grid/products";
 import { EditPopupDemoComponent } from "../../../components-demo/edit-popup-demo/edit-popup-demo.component";
+import { MenuItem } from 'primeng/primeng';
 
 
 
@@ -31,6 +32,14 @@ export class ListDemoComponent {
         { id: 1, text: "שדגשדג", iconClass: 'far fa-clock' },
         { id: 2, text: "שדג", iconClass: 'far fa-file' }];
 
+    dropdownSortItems = [{id:'ProductName', name:'שם מוצר'}];
+
+    ellipsisItems:MenuItem[] = [{
+        label: 'הדפס לקונסול',
+        command: (event) => {
+            console.log(event.item.data);
+        }}]
+
     ngOnInit() {
         this.rowData1 = products;
         this.rowData2 = products
@@ -54,6 +63,10 @@ export class ListDemoComponent {
     }
 
 
+    selectItem(selected: boolean, item) {
+        console.log(selected);
+        console.log(item);
+    }
 }
 
 

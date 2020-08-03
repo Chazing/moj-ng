@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Enums, ENUMS } from '../../enums';
 import { ButtonToggleItem, ButtonToggleStyle } from '@moj/moj-ng';
+import { MenuItem } from 'primeng/primeng';
 
 
 @Component({
@@ -44,6 +45,13 @@ export class ButtonsDemoComponent implements OnInit {
         { id: 7, text: 'פניות שונות', iconClass: "fal fa-passport" },
         { id: 8, text: "בקשות שהוגשו", iconClass: 'fal fa-passport' }
     ];
+
+    ellipsisItems:MenuItem[] = [{
+            label: 'העבר',
+        },
+        {
+            label: 'השב',
+        }]
 
 
     constructor() { }

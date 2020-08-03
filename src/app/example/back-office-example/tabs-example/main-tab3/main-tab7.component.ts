@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MojTab, MojTabsService } from '../../../../moj-ng';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
+import { MojTab, MojTabsService } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-main-tab7',

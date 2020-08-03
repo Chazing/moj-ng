@@ -1,0 +1,41 @@
+﻿<div  [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}" class="moj-input-container" [ngClass]="[(isShowValidationMessage$ | async) ? 'moj-invalid': '',controlColWidth]">
+    <span class="float-label">
+    <div [ngClass]="{'lds-ring':loadingData}"></div> 
+        <p-autoComplete [(ngModel)]="value" [ngClass]="{'moj-input-filled':isInputFilled$ | async,'moj-overlay-visible':isOverlayVisible, 'drop-down':dropdown, 'moj-input-disabled':disabled}"
+                        [suggestions]="filteredItems"
+                        field={{fieldName}}
+                        [placeholder]="placeholder| translate"
+                        (completeMethod)="search($event)"
+                        [disabled]="disabled"
+                        (onFocus)="onFocusIn()"
+                        (onBlur)="onBlur($event)"
+                        (onKeyUp)="onkeyup($event)"
+                        (onSelect)="onselect($event)"
+                        (onClear)="onclear($event)"
+                        [minLength]="minLength"
+                        [multiple]="multiple"
+                        [dropdown]="dropdown"
+                        [forceSelection]="forceSelection"
+                        [dropdownMode]="dropdownMode"
+                        [delay]="delay"
+                        [dropdownIcon]="dropdownIcon"
+                        [inputId]="identifier"
+                        [emptyMessage]="emptyMessage | translate" [title]="fieldName!=''&& value?value[fieldName]?value[fieldName]:'':''">
+            <ng-template let-item let-index="index" pTemplate="item">
+                <ng-container *ngTemplateOutlet="customTemplate; context: {$implicit: item, index:index}"></ng-container>
+                <label *ngIf="!customTemplate" [title]="fieldName != ''? item[fieldName]:item ">{{fieldName != ''? item[fieldName]:item}}</label>
+            </ng-template>
+        </p-autoComplete>
+        <label-for-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async"
+                          [textKey]="labelTextKey">
+        </label-for-content>
+    </span>
+        <validation-messages [forId]="identifier"
+                             *ngIf="isShowValidationMessage$ | async"
+                             role="alert"
+                             [controlName]="labelTextKey"
+                             [messages]="control.errors"
+                             [customValidationErrors]="customValidationErrors">
+        </validation-messages>
+        <input-help-text [forId]="identifier" [rightMessage]=helpText *ngIf="!(isShowValidationMessage$ | async)"></input-help-text>
+</div>

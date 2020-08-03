@@ -1,0 +1,47 @@
+﻿<sticky-alert [message]="message"></sticky-alert>
+<div class=" footer-container">
+
+    <div class="row">
+        <!-- footer-logo -->
+        <div class="col-md-5 copy footer-logo">
+           
+            <!-- <img src="./assets/MojImages/icons/sm-logo.png"> -->
+            <!-- <img src="../../../../../assets/MojImages/icons/sm-logo.png -->
+            <span class="copy-text"> 
+                <span>{{'MojTexts.justice' | translate}} © {{curYear}}</span> 
+            </span>
+
+        </div>
+        <div class="col-md-7 ftrLnks">
+            <ul>
+                <li><a title="{{'MojTexts.justice' | translate}}"
+                        href="{{currentLang=='he'?'https://www.gov.il/he/Departments/ministry_of_justice':'https://www.gov.il/en/Departments/ministry_of_justice'}}"
+                        target="_blank">{{'MojTexts.main' | translate}}</a></li>
+                <li><a title="{{'MojTexts.justice' | translate}}"
+                        href="{{currentLang=='he'?'https://www.justice.gov.il/Pages/TermsConditions.aspx' :'https://www.gov.il/en/general/terms_of_use'}}"
+                        target="_blank">{{'MojTexts.termsConditions' | translate}}</a></li>
+                <li><a title="{{'MojTexts.justice' | translate}}"   href="{{currentLang=='he'?'https://www.gov.il/he/Departments/General/accessibility':'https://www.gov.il/en/Departments/General/accessibility'}}"
+                        target="_blank">{{'MojTexts.accessibility' | translate}}</a></li>
+
+                <li *ngFor="let link of links">
+                    <a title="{{link.textKey | translate}}" href="{{link.href}}" target="_blank"
+                        (click)="onLinkClick($event)" [attr.id]="link.linkId">{{link.textKey | translate}}</a>
+                </li>
+               <li class="noPadding" *ngIf="socialSitesLinks && socialSitesLinks.length" >|</li>
+
+                <li *ngFor="let link of socialSitesLinks">
+                    <a href="{{link.href}}" target="_blank" (click)="onLinkClick($event)" [attr.id]="link.linkId">
+                        <i class="{{link.iconClass}} socialIcon"></i></a>
+                </li>
+                
+                
+            </ul>
+        </div>
+        <div class="col-md-5 version">
+             <span>{{'MojTexts.browser' | translate}}: {{getBrowserVersion()}}</span>
+            <br>
+            <span>{{'MojTexts.versionNo' | translate}}: {{versionNumber}}</span>
+        </div>
+
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Alignment, ButtonStyle, PanelStyle, FilterType, LabelStyle, LabelAlign, FontSize, FontWeight, MojColor, ContainerType, MojListItemType, MojDataViewType, TitleType, CaptionType } from '@moj/moj-ng';
+import { Alignment, ButtonStyle, PanelStyle, FilterType, LabelStyle, LabelAlign, FontSize, FontWeight, MojColor, ContainerType, MojListItemType, MojDataViewType, TitleType, CaptionType, FontStyle } from '@moj/moj-ng';
 
 export class Enums {
     ButtonStyle = ButtonStyle;
@@ -14,7 +14,8 @@ export class Enums {
     DataViewType = MojDataViewType;
     TitleType = TitleType;
     Alignment = Alignment;
-    CaptionType = CaptionType
+    CaptionType = CaptionType;
+    FontStyle= FontStyle
 }
 
 export const ENUMS = new Enums();

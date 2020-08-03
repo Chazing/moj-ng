@@ -1,0 +1,34 @@
+﻿<div  [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}" class="moj-input-container" [ngClass]="[(isShowValidationMessage$ | async) ? 'moj-invalid': '',controlColWidth]">
+    <span class="float-label">
+        <p-multiSelect [options]="itemsValue" [ngClass]="{'moj-input-filled':isInputFilled$ | async,'moj-input-disabled':disabled}"
+                       optionLabel="{{fieldName}}"
+                       [(ngModel)]="value"
+                       [disabled]="disabled"
+                       [filter]="filter"
+                       [maxSelectedLabels]="maxSelectedLabels"
+                       [selectedItemsLabel]="selectedItemsLabel| translate"
+                       (onChange)="onchange($event)"
+                       (onFocus)="onFocusIn()"
+                       (onBlur)="onBlur()"
+                       [defaultLabel]="''"
+                       [inputId]="identifier" 
+                       (onPanelShow)="onPanelshow($event)"
+                       (onPanelHide)="onPanelhide($event)">
+                    <ng-template let-item pTemplate="item">
+                        <ng-container *ngTemplateOutlet="customTemplate; context: {$implicit: item}"></ng-container>
+                        <label *ngIf="!customTemplate" [title]="item.label">{{item.label}}</label>
+                    </ng-template>
+        </p-multiSelect>
+        <label-for-content  [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" 
+        [textKey]="labelTextKey">
+       </label-for-content>
+     </span>
+        <validation-messages [forId]="identifier"
+                             *ngIf="isShowValidationMessage$ | async"
+                             [controlName]="labelTextKey"
+                             [messages]="control.errors"
+                             [customValidationErrors]="customValidationErrors"  role="alert"> 
+        </validation-messages>
+        <input-help-text [forId]="identifier" [rightMessage]=helpText *ngIf="!(isShowValidationMessage$ | async)"></input-help-text>
+</div>
+

@@ -1,8 +1,29 @@
 <demo-container [title]="'Grid Demo'">
+
     <moj-grid-panel [gridDescription]="'רשימת מוצרים'" [dataViewType]="dataViewType.Grid">
+        <moj-line>
+              <moj-dataview-toggle></moj-dataview-toggle> 
+        </moj-line>
         <ag-grid-angular class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columns" [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)">
         </ag-grid-angular>
+        <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="5" >
+            <ng-template let-item pTemplate="listItem">
+                <moj-list-item [listItemType]="enums.ListItemType.Info"  >
+                    <moj-list-item-header [ngClass]="{'expired-date':item.isDueDatePass,'high-priority':item.isHighPriority &&!item.isDueDatePass}" > 
+                    <div>
+                       demo
+                    </div>   
+                  
+                </moj-list-item-header>
+                    <moj-list-item-body>
+                    </moj-list-item-body>
+                    <moj-list-item-ext>
+                        <moj-grid-edit-button [item]="item"></moj-grid-edit-button> 
+                    </moj-list-item-ext>
+                </moj-list-item>
+            </ng-template>
+        </p-dataView>
     </moj-grid-panel>
     <moj-buttons-line>
         <moj-button (click)="printDataToConsole()" textKey="הדפס נתונים לconsole"></moj-button>

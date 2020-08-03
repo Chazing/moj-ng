@@ -5,12 +5,10 @@
         <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
             <ng-template let-item pTemplate="listItem">
                 <moj-list-item [listItemType]="Enums.ListItemType.Details">
-                    <moj-list-item-header>
-                        <div class="demo-title-item">מספר בקשה/סימן: <b>256845</b></div>
-                        <div class="demo-title-item">לקוח מוביל: <b>G. DAES ASD</b></div>
-                        <div class="demo-title-item">מיופה כוח: <b>ד"ר יצחק הס ושותפיו</b></div>
+                    <moj-list-item-header [data]="headerData">
                         <div style="float: left;">
-                            <i class="fas fa-trash"></i>
+                            <moj-button [textKey]="'השלמת מסמכים'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-eye'"></moj-button>
+                            <moj-button [textKey]="'בקשה חוזרת'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-redo-alt'"></moj-button>
                         </div>
                     </moj-list-item-header>
                     <moj-list-item-body>
@@ -27,10 +25,14 @@
                             </ul>
                         </div>
                         <div style="text-align: left;">
-                            <moj-dynamic-label [color]="Enums.MojColor.Primary" [fontWeight]="Enums.FontWeight.bold">סה"כ: 12,345
+                            <moj-dynamic-label [color]="Enums.MojColor.Primary" [fontStyle]="Enums.FontStyle.XXSBold">סה"כ: 12,345
                             </moj-dynamic-label>
                         </div>
                     </moj-list-item-body>
+                    <moj-list-item-footer>
+                        פוטר דינאמי, ניתן לשים כאן כפתורים, קישורים וכד'
+                        <moj-button [textKey]="'לצפייה בתיק'" buttonStyle="{{Enums.ButtonStyle.Link }}" [iconClass]="'fal fa-eye'"></moj-button>
+                    </moj-list-item-footer>
                 </moj-list-item>
             </ng-template>
         </p-dataView>
@@ -41,11 +43,7 @@
         <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
             <ng-template let-item pTemplate="listItem">
                 <moj-list-item [listItemType]="Enums.ListItemType.Details">
-                    <moj-list-item-header [data]="headerData">
-                        <div class="moj-list-item-key">מספר בקשה/סימן: <span class="moj-list-item-value">256845</span></div>
-                        <div class="moj-list-item-key">לקוח מוביל: <span class="moj-list-item-value">G. DAES ASD</span></div>
-                        <div class="moj-list-item-key">מיופה כוח: <span class="moj-list-item-value">ד"ר יצחק הס ושותפיו</span></div>
-                    </moj-list-item-header>
+                    <moj-list-item-header [data]="headerData"></moj-list-item-header>
                     <moj-list-item-body [data]="headerData">
                         סוגים לחידוש: <b>12</b>
                         <br>
@@ -74,11 +72,7 @@
         <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="10">
             <ng-template let-item pTemplate="listItem">
                 <moj-list-item [listItemType]="Enums.ListItemType.Details" [cols]="cols">
-                    <moj-list-item-header>
-                        <div class="demo-title-item">מספר בקשה/סימן: <b>256845</b></div>
-                        <div class="demo-title-item">לקוח מוביל: <b>G. DAES ASD</b></div>
-                        <div class="demo-title-item">מיופה כוח: <b>ד"ר יצחק הס ושותפיו</b></div>
-                    </moj-list-item-header>
+                    <moj-list-item-header [data]="headerData"></moj-list-item-header>
                     <moj-list-item-body>
                         סוגים לחידוש: <b>12</b>
                         <br>

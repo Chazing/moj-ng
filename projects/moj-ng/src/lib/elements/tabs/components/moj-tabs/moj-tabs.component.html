@@ -1,0 +1,17 @@
+<!-- <p-tabView>
+    <p-tabPanel [header]="item.header" leftIcon="pi pi-calendar"
+    [closable]="item.removable"
+    rightIcon="pi pi-inbox" tooltip="1972" *ngFor="let item of items; let i = index" [selected]="item.selected">
+        {{item.header}}
+    </p-tabPanel>
+</p-tabView> -->
+
+<p-tabView #tabRef [activeIndex]="tabActiveIndex" (onChange)="handleChange($event)" (onClose)="handleClose($event)">
+    <p-tabPanel *ngFor="let tab of tabs;let i=index;" header="{{tab.title$ | async}}" [leftIcon]="tab.iconBefore" [rightIcon]="tab.iconAfter"
+        [selected]="i==tabActiveIndex" [closable]="tab.removable" [disabled]="tab.disabled" 
+        [hidden]="tab?.visible !=undefined  && !tab.visible" [headerStyleClass]="fixed ? 'fixed' : ''">
+        <ng-template pTemplate="content">
+            <dynamic-tab-panel [tabItem]="tab"></dynamic-tab-panel>
+        </ng-template>
+    </p-tabPanel>
+</p-tabView>

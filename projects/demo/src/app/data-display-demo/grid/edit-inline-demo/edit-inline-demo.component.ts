@@ -1,8 +1,7 @@
-import { MojDataViewType } from './../../../../../../../src/app/moj-ng/elements/grid/models/dataview-type.enum';
 import { ENUMS } from './../../../enums';
 import { Component, OnInit } from '@angular/core';
 import { ColDef, GridOptions } from 'ag-grid-community';
-import { EditOptions, GridService, EditType, FilterType } from '@moj/moj-ng';
+import { EditOptions, GridService, EditType, FilterType, MojDataViewType } from '@moj/moj-ng';
 import { products } from '../products';
 import { Validators } from '@angular/forms';
 

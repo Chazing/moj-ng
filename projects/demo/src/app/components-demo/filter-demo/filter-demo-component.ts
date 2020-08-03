@@ -1,5 +1,5 @@
 import { Component, ViewChild, ViewContainerRef } from "@angular/core";
-import { MojFilter, MojCategoryFilter, MojDynamicCheckboxComponent, MojDynamicDatePickerComponent, MojDynamicAutoCompleteComponent, MojDynamicTextboxComponent, MojTabsService, GridService, MojSideMenuItem, MojTab, EditOptions, EditServiceBase, MojDataViewType, ActionPopUpItem, FileType, ButtonToggleItem } from "src/app/moj-ng";
+import { MojFilter, MojCategoryFilter, MojDynamicCheckboxComponent, MojDynamicDatePickerComponent, MojDynamicAutoCompleteComponent, MojDynamicTextboxComponent, MojTabsService, GridService, MojSideMenuItem, MojTab, EditOptions, EditServiceBase, MojDataViewType, ActionPopUpItem, FileType, ButtonToggleItem } from "@moj/moj-ng";
 
 
 @Component({
@@ -67,7 +67,7 @@ export class FilterDemoComponent {
                             ]
                         )
                     ])
-                ])
+                ],null,null,true)
             ,
             new MojCategoryFilter(
                 "נוצר ע\"י",

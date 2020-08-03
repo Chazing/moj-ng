@@ -1,0 +1,28 @@
+<demo-container [title]="'Chips'">
+
+    <div class="content-section implementation">
+
+        <div class="demo-section">
+            <moj-title [textKey]="'בסיסי'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div class="chips-div">
+                <moj-chips [(ngModel)]="items"></moj-chips>
+            </div>
+            <moj-buttons-line>
+                <moj-button buttonStyle={{Enums.ButtonStyle.Primary}} (click)="addItem(1)" [textKey]="'הוספה'">
+                </moj-button>
+            </moj-buttons-line>
+        </div>
+
+        <div class="demo-section">
+            <moj-title [textKey]="' עם שינוי צבע לכל תגית'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            במקרה כזה לכל item ב-list יש להוסיף property של chipColor ובו לתת צבע מתוך הצבעים שב-MojColor enum
+            <div class="chips-div">
+                <moj-chips [(ngModel)]="items2" (ngModelChange)="modelChange()"></moj-chips>
+            </div>
+            <moj-buttons-line>
+                <moj-button buttonStyle={{Enums.ButtonStyle.Primary}} (click)="addItem(2)" [textKey]="'הוספה'">
+                </moj-button>
+            </moj-buttons-line>
+        </div>
+    </div>
+</demo-container>

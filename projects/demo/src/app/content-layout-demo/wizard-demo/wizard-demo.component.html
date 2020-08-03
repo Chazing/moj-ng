@@ -1,6 +1,10 @@
 <moj-wizard [items]="items" (onSubmit)="submit($event)" [checkValidationOnPrevious]=false
     [customBackButtonText]="'חזרה להגשת בקשה'" (customBackButtonClicked)="returnClick($event)" [beforeMove]="beforeMove"
     [title]="'הגשת בקשה חדשה לתיקון תוקף סימן'">
+    <moj-wizard-sub-title>
+        אור הנר ע"ר 5823356765
+    </moj-wizard-sub-title>
+    <moj-guidelines [guidelines]="guidelines" [isVisible]="false"></moj-guidelines>
     <moj-wizard-buttons>
         <div style="float: left;">
             <moj-button [textKey]="'אמשיך בפעם אחרת'" [iconClass]="'fal fa-save'" [buttonStyle]="buttonStyle.Secondary">

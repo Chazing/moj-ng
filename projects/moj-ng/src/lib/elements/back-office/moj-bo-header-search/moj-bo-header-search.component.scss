@@ -1,0 +1,105 @@
+@import "../../../../css/moj-config-css.scss";
+@import "../../../../css/moj-mixins.scss";
+
+.header-search {
+    display: flex;
+    @include tablet {
+        flex-direction: column;  
+    }
+
+    p-dropdown {
+        @include desktop {
+            margin: 0 1em;
+        }
+        @include wide-desktop {
+            margin: 0 1em;
+        }
+        .ui-state-default, label.ui-dropdown-label {
+            background: transparent !important;
+            color: #fff;
+            border: none;
+            min-height: 0px !important;
+
+            &:hover {
+                border-right: solid 0px !important;
+            }
+              
+            
+        }
+      
+       
+    }
+
+    input, button {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        &:disabled
+        {
+            border-color:  $moj-disable-color;
+            background-color: transparent !important ;
+            color: $moj-disable-color;
+        }
+    }
+
+    input {
+        padding: 0 0.3em;
+    }
+
+    .advance-search {
+        border: 1px solid #fff;
+        padding: 0 0.5em;
+        white-space: nowrap;
+        margin-right: 1em;
+    }
+
+    ::placeholder { 
+        color: #fff;
+        opacity: 0.5;
+        font-size: 1em !important;
+      }
+       .ui-dropdown:not(.ui-state-disabled).ui-state-focus {
+        border-right: solid 0px !important;
+        border-color: transparent !important;
+    } 
+  }
+
+
+.moj-ltr
+{
+    .header-search {
+
+    
+        p-dropdown {
+            @include desktop {
+                margin: 0 0 0 1em !important ;
+            }
+            .ui-state-default, label.ui-dropdown-label {
+                background: transparent !important;
+                color: #fff;
+                border: none;
+                min-height: 0px !important;
+    
+                &:hover {
+                    border-right: solid 0px !important;
+                }
+                
+            }
+                  
+        }
+        
+        input {
+            padding: 0  0 0 0.3em !important ;
+        }
+    
+        .advance-search {
+            padding: 0 0 0 0.5em!important ;
+            @include desktop {
+                margin: 0 0 0 1em !important ;
+            }
+        }
+    
+
+    }
+}

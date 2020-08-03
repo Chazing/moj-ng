@@ -1,0 +1,23 @@
+<demo-container [title]="'שורת הודעה'">
+    <div class="demo-section">
+        <moj-notification 
+            message="מספרי האליפסות נבדקו ואושרו, ניתן להתקדם בתהליך"
+            [type]="mojNotificationType.Info">
+        </moj-notification>
+        <br>
+        <moj-notification 
+            message="מספרי האליפסות נבדקו ואושרו, ניתן להתקדם בתהליך"
+            [type]="mojNotificationType.Success">
+        </moj-notification>
+        <br>
+        <moj-notification 
+            message="יש לתקן או להסיר את מספרי האליפסות השגויים, ולבצע בדיקת רשימה על מנת להתקדם בתהליך"
+            [type]="mojNotificationType.Warning">
+        </moj-notification>
+        <br>
+        <moj-notification 
+            message="יש לתקן או להסיר את מספרי האליפסות השגויים, ולבצע בדיקת רשימה על מנת להתקדם בתהליך"
+            [type]="mojNotificationType.Error">
+        </moj-notification>
+    </div>
+</demo-container>

@@ -1,4 +1,4 @@
-import { MojConfigModel } from "../../moj-ng/shared/moj-config";
+import { MojConfigModel } from '@moj/moj-ng';
 
 export class SiteConfigModel extends MojConfigModel {
     MoreConfigParameter: any;

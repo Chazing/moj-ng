@@ -4,11 +4,9 @@ import { RouterModule } from '@angular/router';
 import { EntityLayoutComponent } from './entity-layout/entity-layout.component';
 import { EntityFilesComponent } from './entity-files/entity-files.component';
 import { EntityDocsComponent } from './entity-docs/entity-docs.component';
-import { MojTabsModule } from '../../../moj-ng/elements/tabs/moj-tabs.module';
 import { EntityRequestsComponent } from './entity-requests/entity-requests.component';
-import { MojGridModule } from '../../../moj-ng/elements/grid/moj-grid.module';
 import { DataViewModule } from 'primeng/dataview';
-//import { MojGuard } from '../../../moj-ng/permissions/moj-guard';
+import { MojTabsModule, MojGridModule } from '@moj/moj-ng';
 
 @NgModule({
   imports: [

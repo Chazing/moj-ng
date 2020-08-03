@@ -1,10 +1,9 @@
 import { Component ,ChangeDetectionStrategy } from "@angular/core";
 import { GridOptions, ColDef, GridApi } from "ag-grid-community";
 import { products } from "../products";
-import { GridService } from "../../../moj-ng/elements/grid/service/moj-grid.service";
 import { ServerSideDatasource } from "./server-side-data-source.model";
-import { EditOptions } from "../../../moj-ng/elements/grid/edit-component/edit-options.model";
 import { EditPopupExampleComponent } from "../edit-popup-example.component";
+import { EditOptions, GridService } from '@moj/moj-ng';
 
 
 @Component({

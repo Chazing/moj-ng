@@ -1,0 +1,59 @@
+@import "./moj-config-css.scss";
+.bo-wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: $moj-layout-areas;
+    grid-template-rows: $moj-layout-rows;
+    grid-template-columns: $moj-layout-columns;
+
+    header {
+        background: $moj-bo-header-bg;
+        grid-area: header;
+    }
+    nav {
+        background: #F2F8FA;
+        border-bottom: 1px solid $moj-border-area-color;
+        grid-area: header-nav;
+        height: 40px;
+    }
+    main {
+        background: #f5f7f9;
+        grid-area: main;
+    }
+    aside.right {
+        grid-area: #{$start-direction}-side;
+        background-color: red;
+    }
+    aside.left {
+        grid-area: #{$end-direction}-side;
+    }
+    footer {
+        
+        grid-area: footer;
+    }
+}
+
+.ws-wrapper {
+    direction: $direction;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: $moj-layout-areas;
+    grid-template-rows: $moj-layout-rows;
+    grid-template-columns: $moj-layout-columns;
+
+    header {
+        grid-area: header;
+    }
+    main {
+        grid-area: main;
+        background-color: #F6F7F8;
+        padding-bottom: 20px;
+    }
+    footer {
+        grid-area: footer;
+        border-top: $footer-color 3px solid;
+       // background: #c8d7e5;
+        color: $footer-color;
+        //margin-top: 20px;
+    }
+}

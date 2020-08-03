@@ -1,48 +1,68 @@
 ﻿<form #frmSearch="ngForm">
-<moj-line>
-	<moj-line>
-		<moj-checkbox [(ngModel)]="isRequired1" name="isRequired1"></moj-checkbox>
-		<moj-checkbox [(ngModel)]="isRequired2" name="isRequired2"></moj-checkbox>
-	</moj-line>
-	<moj-line>
-		<moj-file-upload name="fldold1" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg|doc|docx|ppt|pptx|xls|xlsx'" 
-			[(ngModel)]="files"  [controlWidthColumns]="4"
-			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)" [maxFileSize]="1048576">
-		</moj-file-upload>
-		<moj-file-upload name="fld3" [labelTextKey]="'Texts.fileToUpload2'" [enabledFileTypes]="'pdf'" 
-			[(ngModel)]="files2"  [controlWidthColumns]="4"
-			[designType]="fuDesignType.Single" [required]="isRequired2" [multiple]="false" [disabled]="true" (fileUploadComplete)="fileUploadComplete($event)">
-		</moj-file-upload>
-	</moj-line>
-	<moj-line>
+    <moj-line>
+        <moj-line>
+            <moj-checkbox [(ngModel)]="isRequired1" name="isRequired1"></moj-checkbox>
+            <moj-checkbox [(ngModel)]="isRequired2" name="isRequired2"></moj-checkbox>
+        </moj-line>
+        <moj-line>
+            <moj-file-upload [maxFileSize]="30"
+            name="files1" labelTextKey="צרוף מסמכי זיהוי והכרת לקוח"
+            [enabledFileTypes]="'pdf|tif|jpg|png'"
+            [(ngModel)]="files1"
+            [controlWidthColumns]="4">
+    </moj-file-upload>
+            <!-- <moj-file-upload name="fldold1" [labelTextKey]="'Texts.fileToUpload'"
+                [enabledFileTypes]="'pdf|png|jpg|doc|docx|ppt|pptx|xls|xlsx'" [(ngModel)]="files"
+                [isLabelAboveControl]="true" [controlWidthColumns]="4" [required]="isRequired1"
+                (fileUploadComplete)="fileUploadComplete($event)" [maxFileSize]="1048576">
+            </moj-file-upload>
+            <moj-file-upload name="fld3" [labelTextKey]="'Texts.fileToUpload2'" [enabledFileTypes]="'pdf'"
+                [(ngModel)]="files2" [isLabelAboveControl]="true" [controlWidthColumns]="4"
+                [designType]="fuDesignType.Single" [required]="isRequired2" [multiple]="false" [disabled]="false"
+                (fileUploadComplete)="fileUploadComplete($event)">
+            </moj-file-upload> -->
+            <div *ngFor="let i of arr">
+                <moj-sync-file-upload name="{{i.id}}" [labelTextKey]="'Texts.fileToUpload'"
+                    [enabledFileTypes]="'pdf|png|jpg|doc|docx|ppt|pptx|xls|xlsx'" 
+                    [(ngModel)]="i.docs"
+                    [controlWidthColumns]="6" [required]="isRequired1"
+                    (fileUploadComplete)="fileUploadComplete($event)" [maxFileSize]="1048576" [enableDeleteFile]="enableDelete">
+                    <ng-template #fileActions let-file>
+                        <button (click)="click(file)">Click</button>
+                    </ng-template>
+                </moj-sync-file-upload>
+            </div>
+        </moj-line>
+        <!-- {{arr | json}} -->
+        <!-- <moj-line>
 		<moj-file-upload name="fldold11" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg'" 
-			[(ngModel)]="files"  [controlWidthColumns]="4"
+			[(ngModel)]="files" [isLabelAboveControl]="false" [controlWidthColumns]="4" [labelWidthColumns]="2"
 			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)">
 		</moj-file-upload>
 		<moj-file-upload name="fld31" [labelTextKey]="'Texts.fileToUpload2'" [enabledFileTypes]="'pdf'" 
-			[(ngModel)]="files2"  [controlWidthColumns]="4"
+			[(ngModel)]="files2" [isLabelAboveControl]="false" [controlWidthColumns]="4" [labelWidthColumns]="2"
 			[designType]="fuDesignType.Single" [required]="isRequired2" (fileUploadComplete)="fileUploadComplete($event)">
 		</moj-file-upload>
     </moj-line>
     <moj-line>
         <moj-input-file name="fldold9" [labelTextKey]="'Texts.fileToUpload'" [enabledFileTypes]="'pdf|png|jpg|doc|docx|ppt|pptx|xls|xlsx'" 
-			[(ngModel)]="files"  [controlWidthColumns]="4"
+			[(ngModel)]="files" [isLabelAboveControl]="true" [controlWidthColumns]="4"
 			[required]="isRequired1" (fileUploadComplete)="fileUploadComplete($event)">
 		</moj-input-file>
-    </moj-line>
-	<ul>
-		<li *ngFor="let item of files">{{item.name}} == GUID: {{item.GUID}} == docType: {{item.docType}}</li>
-    </ul>
-    <ul>
+    </moj-line> -->
+        <ul>
+            <li *ngFor="let item of files">{{item.name}} == GUID: {{item.GUID}} == docType: {{item.docType}}</li>
+        </ul>
+        <ul>
             <li *ngFor="let item of files2">{{item.name}} == GUID: {{item.GUID}} == docType: {{item.docType}}</li>
         </ul>
-</moj-line>
+    </moj-line>
 
-{{frmSearch.valid}}
-{{
+    {{frmSearch.valid}}
+    {{
 	frmSearch.errors | json
 }}
-<moj-submit-button [form]="frmSearch"></moj-submit-button>
+    <moj-submit-button [form]="frmSearch"></moj-submit-button>
 
 </form>
 <style>
@@ -56,13 +76,15 @@
 
     <div>
         <moj-textbox [(ngModel)]="files2" name="searchText" minlength="3" [size]="size.large"
-                    controlWidthColumns="8" labelTextKey="Texts.textField" style="display: inline-block; width: 90%;">
-                    
+            controlWidthColumns="8" labelTextKey="Texts.textField"
+            style="display: inline-block; width: 90%;">
+
         </moj-textbox>
-        <moj-button [textKey]="'חיפוש'" [iconClass]="'fas fa-search'"  style="display: inline-block; width: 10%;"></moj-button>
+        <moj-button [textKey]="'חיפוש'" [iconClass]="'fas fa-search'" style="display: inline-block; width: 10%;">
+        </moj-button>
     </div>
-    
-    </form>
+
+</form>
 <br>
 <!-- <moj-grid-panel [editOptions]="editOptions" [gridDescription]="'קבצים'" [supportResponsive]="false" >
 	<moj-line>

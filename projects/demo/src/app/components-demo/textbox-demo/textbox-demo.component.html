@@ -3,7 +3,7 @@
     <div class="demo-section">
       <moj-title [textKey]="'בסיסי'" [titleType]="enums.TitleType.Secondary"></moj-title>
       <moj-line>
-        <moj-textbox class="l-t-r" [(ngModel)]="txtboxValue" name="txtboxName" controlWidthColumns="2">
+        <moj-textbox [(ngModel)]="txtboxValue" name="txtboxName" controlWidthColumns="2">
         </moj-textbox>
       </moj-line>
     </div>
@@ -30,5 +30,20 @@
         </moj-textbox>
       </moj-line>
     </div>
+    <div class="demo-section">
+        <moj-title [textKey]="'תיבת טקסט עם אייקון'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+          <moj-textbox [(ngModel)]="txtboxValue" name="txtboxNameLarge" controlWidthColumns="2"
+             [addIcon]="true">
+          </moj-textbox>
+        </moj-line>
+      </div>
+      <div class="demo-section">
+        <moj-title [textKey]="'ניתן לכוון את הטקסט לצורך מספרים וכו'" [titleType]="enums.TitleType.Secondary"></moj-title>
+        <moj-line>
+          <moj-textbox [dir]="'ltr'" [(ngModel)]="txtboxValue" name="txtboxName" controlWidthColumns="2" required>
+          </moj-textbox>
+        </moj-line>
+      </div>
   </div>
 </demo-container>

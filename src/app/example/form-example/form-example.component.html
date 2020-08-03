@@ -1,4 +1,3 @@
-
 <div #exDiv>
     <!-- {{ff(exDiv) | async }} -->
     <ul>
@@ -6,15 +5,67 @@
     </ul>
 </div>
 
+<div class="favorite-container">
+    <div class="remove-favorites">
+            <i (click)="remove()" class="fas fa-times remove-btn">
+            </i>
+    </div>
+</div>
+<div class="file-favorite-item-content">
+    <moj-line>
+            <a target="_blank">
+                    <moj-dynamic-label class="title-part-1 col-sm-3" [fontStyle]="Enums.FontStyle.Default"
+                            [fontStyle]="Enums.FontStyle.XXSBold" *ngIf="fileTitle != null && fileTitle != ''"
+                            [textKey]="fileTitle">
+                    </moj-dynamic-label>
+
+                    <moj-dynamic-label class="title-part-2 col-sm-5" [fontStyle]="Enums.FontStyle.Default"
+                            *ngIf="fileStatus != null && fileStatus != ''" [textKey]="fileStatus"
+                            [fontStyle]="Enums.FontStyle.XXSBold" [color]="Enums.MojColor.Purple">
+                    </moj-dynamic-label>
+            </a>
+    </moj-line>
+    <moj-line *ngIf="fileInformation.applicantName" [noMargin]="true">
+        <moj-label-for [color]="Enums.MojColor.Secondary" [(ngModel)]="fileInformation.applicantName"
+                    [contentColor]="Enums.MojColor.Secondary" [contentFontWeight]="Enums.FontWeight.bold"
+                    [labelTextKey]="'Texts.applicants'" [controlWidthColumns]="6" [labelAlign]="Enums.LabelAlign.Left" [contentLabelAlign]="Enums.LabelAlign.Left"> 
+                    <!--[controlWidthColumns]="8" [size]="ElementSize.small"  -->
+            </moj-label-for>
+    </moj-line>
+    <moj-line *ngIf="fileInformation.inventorName" [noMargin]="true">
+            <moj-label-for [color]="Enums.MojColor.Secondary" [(ngModel)]="fileInformation.inventorName"
+                    [contentColor]="Enums.MojColor.Secondary" [contentFontWeight]="Enums.FontWeight.bold"
+                    [labelTextKey]="'Texts.inventors'">
+            </moj-label-for>
+    </moj-line>
+    <moj-line *ngIf="pctNo" [noMargin]="true">
+            <moj-label-for [color]="Enums.MojColor.Secondary" [(ngModel)]="pctNo" [labelTextKey]="'Texts.pct'"
+                    [contentColor]="Enums.MojColor.Secondary" [contentFontWeight]="Enums.FontWeight.bold" [labelWidthColumns]="3">
+            </moj-label-for>
+    </moj-line>
+    
+    <moj-line>
+            <div class="horizontal-bar"></div>
+    </moj-line>
+</div>
+
 
 <form #form="ngForm" #pnlGeneral mojForm name="myform">
+
+    <moj-line>
+        <div class="col-sm-4">
+            <moj-label-for [contentColor]="enums.MojColor.Primary" [(ngModel)]="labelTxt" name="Measure">
+            </moj-label-for>
+        </div>
+    </moj-line>
+
     <button (click)="addItemToArr()">addItemToArr</button>
     <h1>זו דוגמה לכותרת ראשית</h1>
     <moj-panel [titleKey]="'Texts.generalDetails'" [isOpen]="true">
         <h1>זו דוגמה לכותרת ראשית</h1>
         <h2>זו דוגמה לכותרת ראשית</h2>
         <h3>זו דוגמה לכותרת ראשית</h3>
-        <moj-dynamic-label [textKey]="'Texts.productID'" [color]="mojColor.Purple" [captionType]="'h3'">
+        <moj-dynamic-label [textKey]="'Texts.productID'" [color]="enums.MojColor.Purple" [captionType]="">
         </moj-dynamic-label>
         <moj-dynamic-label [textKey]="'Texts.productID'"></moj-dynamic-label>
     </moj-panel>
@@ -31,11 +82,11 @@
             <moj-label textKey="{{ labelText }}" [widthColumns]="1" [isAutoWidth]="true"></moj-label>
             <moj-label-for name="labelText" [(ngModel)]="labelText">
             </moj-label-for>
-            <moj-textbox [(ngModel)]="formModel.textField" name="textField"
-                controlWidthColumns="2" email [required]="checkBoxValue">
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField" controlWidthColumns="2" email
+                [required]="checkBoxValue">
             </moj-textbox>
-            <moj-textbox [(ngModel)]="formModel.textField" name="textField1"
-                controlWidthColumns="2" email [required]="checkBoxValue"[mask]="mask">
+            <moj-textbox [(ngModel)]="formModel.textField" name="textField1" controlWidthColumns="2" email
+                [required]="checkBoxValue" [mask]="mask">
             </moj-textbox>
         </moj-line>
         <moj-line>
@@ -61,7 +112,7 @@
         </moj-line>
     </moj-panel>
     <moj-panel [titleKey]="'Texts.generalDetails'" [isOpen]="true" [id]="'pnl1'" [addCloseButton]="true"
-        [isExpandable]="true">
+        [resizeable]="true" [isExpandable]="true">
         <div #pnlToAddHtml></div>
         <moj-line>
             <moj-on-off-switch [(ngModel)]="checkBoxValue" name="checkBoxValue" [textKeyOff]="'Texts.exampleTextOff'"
@@ -79,24 +130,25 @@
         </moj-line>
         <div class="advanced-section">
             <moj-line>
-                <moj-checkbox [required]="true" [controlWidthColumns]="1" [(ngModel)]="checkBoxValue" name="checkBoxValue13"
-                    [labelTextKey]="'נפטר'">
+                <moj-checkbox [required]="true" [controlWidthColumns]="1" [(ngModel)]="checkBoxValue"
+                    name="checkBoxValue13" [labelTextKey]="'נפטר'">
                 </moj-checkbox>
                 <moj-label [textKey]="'שלום וברכה'" [widthColumns]="3" [labelStyle]="labelStyle.White"></moj-label>
             </moj-line>
             <moj-line>
-                <moj-checkbox [controlWidthColumns]="1" [(ngModel)]="checkBoxValue"
-                    name="checkBoxValue12" [labelTextKey]="'Texts.areYouInterested'">
+                <moj-checkbox [controlWidthColumns]="1" [(ngModel)]="checkBoxValue" name="checkBoxValue12"
+                    [labelTextKey]="'Texts.areYouInterested'">
                 </moj-checkbox>
 
                 <moj-label [textKey]="'שלום וברכה'" [widthColumns]="3" [labelStyle]="labelStyle.White"></moj-label>
             </moj-line>
         </div>
     </moj-panel>
+    <button>hfdhjfhjhfjhdjhf</button>
     <moj-panel [titleKey]="'וולידציות חדשות'" [isOpen]="true">
         <moj-line>
             <moj-textbox [(ngModel)]="formModel.textField" name="textField2" [labelTextKey]="'טקסטבוקס מעל'"
-                 controlWidthColumns="2" email [required]="checkBoxValue" [readOnly]="true" minlength="10">
+                controlWidthColumns="2" email [required]="checkBoxValue" [readOnly]="true" minlength="10">
                 <span>sdfsdfsdf</span>
                 <span>werrwerw</span>
             </moj-textbox>
@@ -106,48 +158,48 @@
             </moj-textbox>
         </moj-line>
         <moj-line>
-            <moj-textarea [(ngModel)]="stringFrom" name="stringFrom222" required
-                controlWidthColumns="2" [maxTextLength]="5" [labelTextKey]="'טקסט מעל'">
+            <moj-textarea [(ngModel)]="stringFrom" name="stringFrom222" required controlWidthColumns="2"
+                [maxTextLength]="5" [labelTextKey]="'טקסט מעל'">
             </moj-textarea>
-            <moj-textarea [(ngModel)]="stringFrom" name="stringFrom333" required
-                controlWidthColumns="2" [maxTextLength]="5" [labelTextKey]="'טקסט ליד'"></moj-textarea>
+            <moj-textarea [(ngModel)]="stringFrom" name="stringFrom333" required controlWidthColumns="2"
+                [maxTextLength]="5" [labelTextKey]="'טקסט ליד'"></moj-textarea>
         </moj-line>
         <moj-line>
-            <moj-dropdownlist required [controlWidthColumns]="2"
-                [required]="true" [(ngModel)]="fileTypeValue" name="fileTypeValue" [filter]="true" [editable]="false"
-                [items]="dropDownListItems" [fieldID]="'id'" [fieldName]="'name'">
+            <moj-dropdownlist required [controlWidthColumns]="2" [required]="true" [(ngModel)]="fileTypeValue"
+                name="fileTypeValue" [filter]="true" [editable]="false" [items]="dropDownListItems" [fieldID]="'id'"
+                [fieldName]="'name'">
             </moj-dropdownlist>
-            <moj-dropdownlist required [controlWidthColumns]="2" [required]="true"
-                [(ngModel)]="fileTypeValue" name="fileTypeValue2" [editable]="false" [items]="dropDownListItems"
-                [fieldID]="'id'" [fieldName]="'name'">
+            <moj-dropdownlist required [controlWidthColumns]="2" [required]="true" [(ngModel)]="fileTypeValue"
+                name="fileTypeValue2" [editable]="false" [items]="dropDownListItems" [fieldID]="'id'"
+                [fieldName]="'name'">
             </moj-dropdownlist>
         </moj-line>
         <moj-line>
-            <moj-datepicker [(ngModel)]="dateFrom" name="dateFrom"
-                [controlWidthColumns]="2" #dateFromVal="ngModel" required [labelTextKey]="'תאריך מעל'"></moj-datepicker>
+            <moj-datepicker [(ngModel)]="dateFrom" name="dateFrom" [controlWidthColumns]="2" #dateFromVal="ngModel"
+                required [labelTextKey]="'תאריך מעל'"></moj-datepicker>
             <moj-datepicker [(ngModel)]="dateTo[0]" [showButtonBar]="true" [numberOfMonths]="3"
-                [selectionMode]="'range'" name="dateTo" [controlWidthColumns]="2"
-                #dateToVal="ngModel" [greaterThan]="dateFromVal" required [labelTextKey]="'תאריך ליד'"></moj-datepicker>
+                [selectionMode]="'range'" name="dateTo" [controlWidthColumns]="2" #dateToVal="ngModel"
+                [greaterThan]="dateFromVal" required [labelTextKey]="'תאריך ליד'"></moj-datepicker>
         </moj-line>
         <moj-line>
-            <moj-multiselect name="autocompleteValueFrom" labelTextKey="Texts.Choose"
-                controlWidthColumns="2" [items]="numberItems" [fieldName]="'name'"
-                [(ngModel)]="autocompleteValueFrom" #autocompleteValueFrom1="ngModel" (onSelect)="select($event)"
-                [required]="true" [labelTextKey]="'בחר מעל'">
+            <moj-multiselect name="autocompleteValueFrom" labelTextKey="Texts.Choose" controlWidthColumns="2"
+                [items]="numberItems" [fieldName]="'name'" [(ngModel)]="autocompleteValueFrom"
+                #autocompleteValueFrom1="ngModel" (onSelect)="select($event)" [required]="true"
+                [labelTextKey]="'בחירה מעל'">
             </moj-multiselect>
-            <moj-multiselect name="autocompleteValueTo2" labelTextKey="Texts.Choose"
-                controlWidthColumns="2" [items]="numberItems" [fieldName]="'name'" [required]="true"
-                [labelTextKey]="'בחר ליד'" [(ngModel)]="autocompleteValueTo" [greaterThan]="autocompleteValueFrom1">
+            <moj-multiselect name="autocompleteValueTo2" labelTextKey="Texts.Choose" controlWidthColumns="2"
+                [items]="numberItems" [fieldName]="'name'" [required]="true" [labelTextKey]="'בחר ליד'"
+                [(ngModel)]="autocompleteValueTo" [greaterThan]="autocompleteValueFrom1">
             </moj-multiselect>
         </moj-line>
         <moj-line>
-            <moj-autocomplete [controlWidthColumns]="2"
-                [required]="true" [dropdown]="true" [(ngModel)]="fileTypeValue" name="fileTypeValue3"
-                [items]="dropDownListItems" [labelTextKey]="'בחר מעל'" [fieldID]="'id'" [fieldName]="'name'">
+            <moj-autocomplete [controlWidthColumns]="2" [required]="true" [dropdown]="true" [(ngModel)]="fileTypeValue"
+                name="fileTypeValue3" [items]="dropDownListItems" [labelTextKey]="'בחר מעל'" [fieldID]="'id'"
+                [fieldName]="'name'">
             </moj-autocomplete>
-            <moj-autocomplete [controlWidthColumns]="2" [required]="true"
-                [(ngModel)]="fileTypeValue" [dropdown]="true" name="fileTypeValue4" [items]="dropDownListItems"
-                [labelTextKey]="'בחר ליד'" [fieldID]="'id'" [fieldName]="'name'">
+            <moj-autocomplete [controlWidthColumns]="2" [required]="true" [(ngModel)]="fileTypeValue" [dropdown]="true"
+                name="fileTypeValue4" [items]="dropDownListItems" [labelTextKey]="'בחר ליד'" [fieldID]="'id'"
+                [fieldName]="'name'">
                 <ng-template let-item pTemplate="custom">
                     <i style="color: orange;padding-left: 15px"
                         class="far fa-smile-beam"></i><label>{{ item.name }}</label>
@@ -164,7 +216,7 @@
         </moj-button>
         <moj-button buttonStyle="{{ buttonStyle.Attention }}" (click)="openContentDialog()" [textKey]="'פתח חלון תוכן'">
         </moj-button>
-        <moj-button buttonStyle="{{ buttonStyle.Primary }}" (click)="save()" [textKey]="'שמור'"></moj-button>
+        <moj-button buttonStyle="{{ buttonStyle.Primary }}" (click)="save()" [textKey]="'שמירה'"></moj-button>
         <moj-button buttonStyle="{{ buttonStyle.Secondary }}" [iconClass]="'fab fa-accessible-icon'"
             [textKey]="'כפתור'">
         </moj-button>
@@ -193,7 +245,7 @@
         <moj-submit-button [form]="form" textKey="אישור" iconClass="fas fa-plus" name="mysubmit"></moj-submit-button>
     </moj-buttons-line>
     <moj-line *ngFor="let item of checkBoxListItems; let i = index">
-        <moj-checkbox [controlWidthColumns]=1  [(ngModel)]="item.value" name="checkBoxValue{{i}}"
+        <moj-checkbox [controlWidthColumns]=1 [(ngModel)]="item.value" name="checkBoxValue{{i}}"
             [labelTextKey]="item.text"></moj-checkbox>
     </moj-line>
 </form>

@@ -1,0 +1,252 @@
+
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// =============================================================================
+// Media Queries
+// =============================================================================
+// $mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 992px;
+$wide-desktop-width: 1200px;
+
+@mixin tablet {
+    @media (max-width: #{$tablet-width - 1px}) {
+      @content;
+    }
+  }
+
+@mixin desktop {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin wide-desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+
+// =============================================================================
+// items hover effect
+// =============================================================================
+$moj-item-hover-effect-type: (
+  centerToOut: 1,
+  rightToLeft: 2,
+  leftToRight: 3
+);
+
+@mixin item-hover-effect($effect-type: centerToOut, $effect-color: $moj-border-area-color) {
+    &:after {
+        position: absolute;
+        transition: .2s;
+        content: '';
+        width: 0;
+        left: 50%;
+        bottom: 0;
+        height: 3px;
+        background: $effect-color;
+    }
+    @if map-has-key($moj-item-hover-effect-type, $effect-type) {
+      @if($effect-type == leftToRight) {
+        &:after {
+          left: 0;
+        }
+      }
+      @if($effect-type == rightToLeft) {
+        &:after {
+         right: 0;
+          left: auto;
+        }
+      }
+    }
+    &:hover, &.ui-state-active {
+        cursor: pointer;
+        &:after {
+          width: 100%;
+          left: 0;
+        }
+    }
+}
+
+// =============================================================================
+// input focus
+// =============================================================================
+@mixin input-off {
+  outline: none !important;
+  border-color: $moj-input-border-color;
+  box-shadow: none;
+  border-width: 1px;
+  //for prime calendar
+  border-right: solid 1px;
+}
+
+@mixin input-focus {
+    outline: none !important;
+    //for prime calendar
+    border-right: solid 2px;
+    border-color: $moj-input-focus-border-color;
+    box-shadow: none;
+    border-width: 2px !important;
+}
+
+@mixin input-disabled {
+    background-color: $moj-input-disable-bg-color !important;
+    border-color: $moj-input-disable-border-color !important;
+    color: $moj-input-disable-color !important;
+}
+
+@mixin input-readonly {
+    background-color: $moj-input-readonly-bg-color !important;
+    border-color: $moj-input-readonly-border-color !important;
+    color: $moj-input-readonly-color !important;
+}
+
+@mixin error-icon {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 400;
+    content: "\f06a";
+    color: $moj-danger-color;
+    font-size: 1em;
+}
+
+// =============================================================================
+// button
+// =============================================================================
+
+@mixin button-base {
+    font-size: $font-20;
+    transition: 0.3s;
+    padding: 0.5em 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: $moj-primary-color;
+    color: #fff;
+    border: 1px solid transparent;
+
+    &[disabled] {
+        @include button-disabled;
+    }
+
+    &:not([disabled]):hover, &:not([disabled]):focus {
+        background-color: #0D62BB;
+        text-decoration: underline;
+    }
+
+    &:not([disabled]):active {
+        background-color: $moj-primary-dark-color !important;
+    }
+
+    i + span:not(:empty), span + i {
+        margin-right: 0.5em;
+    }
+}
+
+@mixin button-secondary {
+    background-color: transparent;
+    border: 1px solid $moj-primary-color;
+    color: $moj-primary-color;
+
+    &[disabled] {
+        color: $moj-secondary-text-color;
+        border-color: $moj-secondary-text-color;
+        background-color: #fff !important;
+    }
+    
+    &:not([disabled]):hover, &:not([disabled]):focus {
+        background-color: $moj-primary-color;
+        color: #fff;
+    }
+}
+
+@mixin button-disabled {
+    cursor: auto;
+    background-color: $moj-disabled-bg-color !important;
+    color: $moj-secondary-text-color;
+}
+
+@mixin moj-button  {
+    width: auto;
+    display: inline-block;
+
+    button {
+        @include button-base;
+        width: 100%;
+    }
+}
+// =============================================================================
+// chips
+// =============================================================================
+@mixin moj-chip  ($start-dir,$end-dir){
+  font-size: 1em;
+  padding: 0.2145em 0.429em;
+  margin-top: 6px;
+  margin-#{$start-dir}: 0.286em;
+  background-color: #fff;
+  color: #007ad9;
+  border: 1px solid #1970c0;
+  border-radius: 15px;
+  position: relative;
+  display: inline-block;
+  cursor: default;
+
+}
+
+@mixin moj-chip-remove-icon ($start-dir,$end-dir) {
+  #{$end-dir}: 0.2em;
+  #{$start-dir}: initial;
+  font-family: "Font Awesome 5 Pro";
+  position: absolute;
+  font-weight: 900;
+  margin-top: -10px;
+  cursor: pointer;
+  top: 50%;
+  &.pi-times::before {
+    content: "\f057";
+  }
+
+}

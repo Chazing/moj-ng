@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { EditComponentWithFileBase } from "../../moj-ng/elements/grid/edit-component/edit-component-with-file.base";
-import { MojFileUploadService } from "../../moj-ng/elements/file-upload/moj-file-upload.service";
+import { EditComponentWithFileBase, MojFileUploadService } from '@moj/moj-ng';
 
 @Component({
     selector: "new-file",

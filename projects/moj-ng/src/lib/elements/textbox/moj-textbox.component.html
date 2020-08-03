@@ -1,0 +1,39 @@
+<div  [ngStyle]="{'visibility':visible ? 'visible' : 'hidden'}" class="moj-input-container" [ngClass]="[(isShowValidationMessage$ | async) ? 'moj-invalid': '',controlColWidth]">
+    <span class="input-pure float-label">
+            <input class="ui-textbox ui-inputtext ui-state-default ui-corner-all {{size}}"
+                   [ngClass]="{'ui-state-disabled':disabled,'input-with-icon':addIcon,'moj-input-filled':isInputFilled$ | async}"
+                   [id]="identifier"
+                   [(ngModel)]="value"
+                   [pattern]="pattern"
+                   (change)="onchange($event)"
+                   (keyup)="onKeyUp($event)"
+                   [name]="identifier"
+                   [dir]="dir"
+                   [type]="inputType"
+                   (focus)="onFocusIn($event)"
+                   (blur)="onBlur()"
+                   [disabled]="disabled"
+                   [readOnly]="readOnly"
+                   [attr.maxlength]="maxlength"
+                   [placeholder]="placeholder"
+                   [attr.max]="max"
+                   [attr.min]="min"
+                   [textMask]="mask"
+                   [autocomplete]="autocomplete" 
+                   (paste)="onPaste($event)"
+                   />
+                   <label-for-content [forId]="identifier" [isRequiredIndication]="isControlRequired$ | async" [textKey]="labelTextKey">
+                   </label-for-content>   
+                   <i *ngIf="addIcon" class='{{iconClass}} textbox-icon' (click)="iconClick()" tabindex="0"></i>
+        </span>
+        <validation-messages [forId]="identifier"
+                             *ngIf="isShowValidationMessage$ | async"
+                             [controlName]="labelTextKey"
+                             [messages]="control.errors"
+                             [customValidationErrors]="customValidationErrors" role="alert">
+        </validation-messages>
+        <ng-content></ng-content>
+
+        <input-help-text [forId]="identifier" [rightMessage]=helpText [leftMessage]=leftText *ngIf="!(isShowValidationMessage$ | async) && !isShowTemporaryAlert" [showLeftMessage]="showLeftMessage"></input-help-text>
+        <input-temporary-alert [forId]="identifier" *ngIf="isShowTemporaryAlert"> {{ 'Validations.noticeCutText'| translate}}</input-temporary-alert>
+    </div>

@@ -1,0 +1,27 @@
+<demo-container [title]="'מיון רשימה'">
+    <div class="demo-section">
+        <p>moj-sort יכול למיין כל סוג של רשימה<br>
+            ניתן לשלוח data למיון<br>
+            וניתן לממש לבד את המיון באירוע onSortChange
+        </p>
+    </div>
+
+    <div class="demo-section">
+        <div class="row">
+            <div class="col-sm-5">
+                <moj-sort [dropdownItems]="dropdownItems"
+                        [data]="data"
+                        fieldID="id"
+                        fieldName="name">
+                </moj-sort>
+            </div>
+            <div class="col-sm-5">
+                <div *ngFor="let item of data; trackby">
+                    קוד: {{item.id}} <br/>
+                    שם: {{item.name}} <br/>
+                    תאריך:{{item.date| date:'dd/MM/yyyy'}} <br/> <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</demo-container>

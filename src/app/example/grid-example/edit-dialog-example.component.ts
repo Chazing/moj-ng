@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { EditComponentBase } from "../../moj-ng/elements/grid/edit-component/edit-component.base";
+import { EditComponentBase } from '@moj/moj-ng';
 
 @Component({
     selector: "edit-dialog-example",

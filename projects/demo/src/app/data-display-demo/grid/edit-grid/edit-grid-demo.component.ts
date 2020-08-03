@@ -1,8 +1,7 @@
-import { ContainerType } from './../../../../../../../src/app/moj-ng/elements/website/moj-container/moj-container.component';
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { products } from "../products";
 import { ColDef, GridOptions } from "ag-grid-community";
-import { GridService, EditOptions, EditType } from "@moj/moj-ng";
+import { GridService, EditOptions, EditType, ContainerType } from "@moj/moj-ng";
 import { EditGridComponentDemoComponent } from "./edit-grid-component.component";
 
 @Component({

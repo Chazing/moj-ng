@@ -1,13 +1,7 @@
 import { Component } from "@angular/core";
 import { TranslateService } from "../../../../../../node_modules/@ngx-translate/core";
-import { MojTabsService } from "../../../../moj-ng/elements/tabs/services/moj-tabs.service";
-import { NavigationService } from "../../../../moj-ng/elements/tabs/services/navigation.service";
-import { MojTab } from "../../../../moj-ng/elements/tabs/models/moj-tabs.models";
-import { LabelStyle } from "../../../../moj-ng/elements/label/label.enum";
-import { PanelStyle } from "../../../../moj-ng/elements/panels/moj-panel/moj-panel.enum";
-import { ButtonStyle } from "../../../../moj-ng/elements/buttons/button-style";
-import { MojFileUploadDesignType } from "../../../../moj-ng/elements/file-upload/moj-file-upload.base";
 import { HttpClient } from "@angular/common/http";
+import { MojTab, LabelStyle, PanelStyle, ButtonStyle, MojFileUploadDesignType, NavigationService, MojTabsService } from '@moj/moj-ng';
 
 @Component({
     templateUrl: './app-main-tab.component.html'

@@ -1,0 +1,21 @@
+<demo-container [title]="'כותרת ישות'">
+    <moj-entity-header [(isEditMode)]=isHeaderInEditMode [asideTitle]="'ממתינה לאישור היתכנות'"
+        [asideIconClass]="'most-of-the-funding-icon'" [asideBottomData]="asideBottomData" [headerData]="headerData"
+        [bodyData]="bodyData" [showEditButton]=true>
+        <moj-entity-header-edit>
+            <form [formGroup]="form">
+                <moj-line>
+                    <moj-textbox formControlName="fileId" [labelTextKey]="'מספר תיק'" controlWidthColumns="3">
+                    </moj-textbox>
+                    <moj-textbox formControlName="district" [labelTextKey]="'מחוז'" controlWidthColumns="3"
+                        [showLeftMessage]="false">
+                    </moj-textbox>
+                </moj-line>
+                <moj-buttons-line>
+                    <moj-cancel-button (click)="cancel()"></moj-cancel-button>
+                    <moj-submit-button [form]="form" (click)="click()"></moj-submit-button>
+                </moj-buttons-line>
+            </form>
+        </moj-entity-header-edit>
+    </moj-entity-header>
+</demo-container>

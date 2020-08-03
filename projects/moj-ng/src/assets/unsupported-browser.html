@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <style>
+        html {
+            background: #fff;
+            height: 100vh;
+            font-family: Arial;
+            color: #0b2784;
+            direction: rtl;
+        }
+        header { border-bottom: 8px solid #0b2784; }
+        main { text-align: center; }
+        main .img {
+            margin: 20px auto 50px;
+            width: 375px;
+            height: 248px;
+        }
+        .font-24 {
+            font-size: 24px;
+            line-height: 1.5em;
+        }
+    </style>
+    <script>
+        function isInternetExplorer() {
+            var myNav = navigator.userAgent.toLowerCase();
+            if (myNav.indexOf('msie') != -1)
+                return parseInt(myNav.split('msie')[1]);
+            if (myNav.indexOf('rv:') != -1)
+                return parseInt(myNav.split('rv:')[1]);
+            return false;
+        }
+        function isFF() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('firefox') != -1);
+        }
+        function isEdge() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('edge') != -1);
+        }
+        (function redirectToBaseUrl() {
+            if (!isInternetExplorer() && !isFF() && !isEdge()) {
+                var curUrl = window.location.href;
+                var i = curUrl.indexOf('/assets/unsupported-browser.html');
+                if (i > 0) {
+                    var newRedirectUrl = curUrl.substring(0, i);
+                    console.log(newRedirectUrl);
+                    window.location.href = newRedirectUrl;
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <img src="./MojImages/unsupported-browser/LogoJustice.png">
+    </header>
+    <main>
+        <div class="img">
+            <img src="./MojImages/unsupported-browser/EX.png">
+        </div>
+        <div class="font-24">
+            מצטערים, האתר אינו נתמך בדפדפן זה<br>
+            עליך לגלוש בדפדפן מסוג כרום Chrome</div>
+    </main>
+</body>
+</html>

@@ -1,4 +1,3 @@
-import { WizardItemModel } from './../../../../../../../src/app/moj-ng/elements/wizard/service/moj-wizard.service';
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { WizardItemComponentBase } from '@moj/moj-ng';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';

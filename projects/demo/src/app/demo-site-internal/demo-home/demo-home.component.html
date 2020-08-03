@@ -2,17 +2,22 @@
 </moj-container>
 <div class="container">
     <div style="display: block;text-align: center;transform: translateY(50%);position: relative;z-index: 1;">
-        <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.Default" [items]="searchTypes"
+        <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.Default" [items]="searchTypes" [clearItemSelectOnReClick]=false
             [(ngModel)]="searchType" name="searchType">
         </moj-button-toggle>
     </div>
 
     <ng-container *ngIf="searchType==1">
         <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.List" [buttonCols]="4" [items]="categories"
-            (onChange)="changeCategory($event)">
+            (onChange)="changeCategory($event)" [clearItemSelectOnReClick]=false>
         </moj-button-toggle>
     </ng-container>
     <ng-container *ngIf="searchType==2">
+        <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.List" [buttonCols]="4" [items]="modules"
+            (onChange)="changeModule($event)">
+        </moj-button-toggle>
+    </ng-container>
+    <ng-container *ngIf="searchType==3">
         <div class="search-input-wrapper">
             <div class="search-input">
                 <moj-autocomplete name="searchValue" [placeholder]="'תוכלו להקליד כאן טקסט חופשי, לדוגמה גריד'"
@@ -29,7 +34,7 @@
     <br>
     <moj-buttons-line [buttonsAlign]=enums.Alignment.right *ngIf="searchType==1 && showInputs">
         <moj-button *ngFor="let input of inputs" [buttonStyle]=enums.ButtonStyle.Secondary [textKey]=input.text
-            (click)="changeInput(input.id)"></moj-button>
+            [isAutoWidth]=true (click)="changeInput(input.id)"></moj-button>
         <!-- <moj-button-toggle [buttonToggleStyle]="buttonToggleStyleType.List" [buttonCols]="5" [items]="inputs"
             (onChange)="changeInput($event)">
         </moj-button-toggle> -->

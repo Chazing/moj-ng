@@ -1,0 +1,90 @@
+.div-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    &.buttons-right{
+        justify-content: flex-start;
+    }
+    &.buttons-center{
+        justify-content: center;
+    }
+}
+
+.moj-button {
+    @include moj-button;
+    min-width: 200px;
+    &.auto-width{
+        min-width: auto;
+        width: auto;
+    }
+    &.moj-primary {
+        button {
+            box-shadow: 0px 3px 6px #0000004D;
+        }
+    }
+
+    &.moj-secondary {
+        button {
+            @include button-secondary;
+        }
+    }
+
+    &.moj-attention {
+        button {
+            background-color: $moj-secondary-color;
+            border: 1px solid $moj-primary-dark-color;
+            color: $moj-primary-dark-color;
+
+            &:not([disabled]):hover, &:not([disabled]):focus {
+                background-color: #56ECCA;
+            }
+
+            &:not([disabled]):active {
+                background-color: $moj-secondary-light-color !important;
+            }
+
+            &[disabled] {
+                @include button-disabled;
+                border: none;
+            }
+        }
+    }
+
+    &.moj-link {
+        min-width: auto;
+        width: auto;
+        button {
+            background-color: transparent;
+            color: $moj-primary-color;
+            font-size: $font-18;
+            padding: 0em 0.5em;
+            
+            &[disabled] {
+                @include button-disabled;
+                background-color: transparent !important;
+            }
+        
+            &:not([disabled]):hover, &:not([disabled]):focus, &:not([disabled]):active {
+                background-color: transparent !important;
+                color: $moj-primary-dark-color !important;
+            }
+        }
+    }
+
+    button:focus {
+        outline: none;
+    }
+}
+
+
+.moj-col-button {
+    cursor: pointer;
+    height: 16px !important;
+    width: 16px !important;
+    min-width: 16px !important;
+    display: inline-block;
+    background: none;
+    border: none;
+    background-repeat: no-repeat;
+}

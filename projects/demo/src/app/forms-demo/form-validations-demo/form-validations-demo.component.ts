@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { ENUMS } from './../../enums';
 import { Component, OnInit } from '@angular/core';
+import { ButtonToggleItem } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-form-validations-demo',
@@ -19,7 +20,8 @@ export class FormValidationsDemoComponent implements OnInit {
     isAgree: false,
     country1: 2,
     countries:[1,2],
-    radioOptions:1
+    radioOptions:1,
+    toggleValue:null
   }
   customValidateErrorsMsgs = [{ key: "required", value: "filesAmtCustomRequired" }, { key: "max", value: "filesAmtCustomMax" }, { key: "min", value: "filesAmtCustomMin" }]
   countryLists = [{ id: 1, name: 'ישראל' },
@@ -30,6 +32,11 @@ export class FormValidationsDemoComponent implements OnInit {
   { id: 6, name: 'ספרד' },
   { id: 7, name: 'קנדה' },
   { id: 8, name: 'שווייץ' }]
+
+  buttonToggleItems: ButtonToggleItem[] = [
+    { id: 1, text: 'בית פרטי' },//, cssClasses:'orange1'
+    { id: 2, text: 'רכוש משותף', },
+];
 
   constructor() { }
 

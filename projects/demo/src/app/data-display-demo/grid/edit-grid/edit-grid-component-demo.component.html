@@ -2,11 +2,11 @@
     <form #form="ngForm">
         <moj-line>
             <moj-textbox [(ngModel)]="editedItem.ID" name="productID" [required]="true" [labelTextKey]="'קוד מוצר'"
-                            controlWidthColumns="2">
+                            controlWidthColumns="6">
             </moj-textbox>
 
             <moj-textbox [(ngModel)]="editedItem.ProductName" name="productName" [required]="true" [labelTextKey]="'שם מוצר'"
-                            controlWidthColumns="2">
+                            controlWidthColumns="6">
             </moj-textbox>
         </moj-line>
         <moj-buttons-line>

@@ -1,0 +1,13 @@
+<div class="selection-card"   [ngClass]="{'disabled': disabled, 'selected': value}">
+ <moj-checkbox [(ngModel)]="value" [name]="identifier" [labelTextKey]="''"
+    (onChange)="onchange($event)" [disabled]="disabled" ></moj-checkbox>  
+
+    <div class="{{iconClass}}" [ngClass]="{'disabled': disabled, 'icon':true}"></div>
+    <div class="title">
+        <span class="main">{{titleTextKey |translate}}</span>
+        <span class="sub">
+            <ng-content></ng-content>
+            
+        </span>
+    </div>
+</div>

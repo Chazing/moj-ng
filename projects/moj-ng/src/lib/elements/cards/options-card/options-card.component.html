@@ -1,0 +1,20 @@
+<div class="moj-card" [attr.data-options-label]="'MojTexts.or' | translate">
+  <div>
+    <i class="{{iconClass}}"></i>
+    <br />
+    <moj-dynamic-label *ngIf="titleTextKey" [fontStyle]=enums.FontStyle.SBold [color]=enums.MojColor.Primary
+      [textKey]="titleTextKey" [captionType]=enums.CaptionType.H2>
+    </moj-dynamic-label>
+    <br />
+    <span class="font-20">{{contentTextKey |translate}}</span>
+    <!-- <moj-dynamic-label *ngIf="contentTextKey" [color]=enums.MojColor.Default [textKey]="contentTextKey">
+    </moj-dynamic-label> -->
+    <br />
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="buttonTextKey">
+    <moj-buttons-line [buttonsAlign]=enums.Alignment.center>
+      <moj-button buttonStyle={{enums.ButtonStyle.Primary}} [textKey]="buttonTextKey"></moj-button>
+    </moj-buttons-line>
+  </div>
+</div>

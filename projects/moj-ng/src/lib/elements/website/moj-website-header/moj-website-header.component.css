@@ -1,0 +1,148 @@
+.web-site-header {
+    background: url('../../../../../assets/MojImages/Layout/general-bg.png') repeat-x scroll 0 0 transparent;
+    min-height: 87px;
+  }
+  
+  .web-site-header .head-content {
+    min-height: inherit;
+    background: url('../../../../../assets/MojImages/Layout/header-top-img.png') no-repeat left;
+    background-size: cover;
+  }
+  
+  .web-site-header .site-logo {
+    background: url('../../../../../assets/MojImages/Layout/LightLogoMoj.png') no-repeat right 17px;
+    padding-right: 65px;
+    display: inline-block;
+    min-height: inherit;
+  }
+
+
+  
+  .web-site-header .main-name {
+    font-family: 'opensanshebrew';
+    color: #00316f;
+    /*display: inline-block;*/
+    padding-left: 5px;
+  }
+  
+  .web-site-header .main-name.only {
+    padding-top: 15px;
+  }
+  
+  .web-site-header .online-eng {
+    font-family: 'JOURNAL';
+    font-size: 32px;
+    color: #934201;
+  }
+  
+  .web-site-header .online-heb {
+    font-family: 'Assistant-Regular';
+    font-size: 24px;
+    color: #a35216;
+  }
+  
+  .web-site-header .main-eng-name {
+    font-size: 1em;
+    color: #1c61a5;
+    display: block;
+  }
+  
+  .web-site-header .main-name:not(.only) ~ .main-eng-name {
+    margin-top: -3px;
+    font-size: 0.9em;
+  }
+  
+  .web-site-header .main-name:not(.only) ~ .sub-name {
+    margin-top: 0px;
+  }
+  
+  .web-site-header .sub-name {
+    font-size: 1em;
+    color: #13447e;
+    display: block;
+  }
+  
+  .web-site-header .left-side {
+    display: inline-grid;
+    grid-template-rows: 1fr;
+    grid-auto-rows: auto;
+    align-items: end;
+    float: left;
+    text-align: left;
+    min-height: inherit;
+  }
+  
+  .web-site-header-userlog {
+    padding-bottom: 6px;
+  }
+  
+  .web-site-header .ul-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .web-site-header .ul-links li {
+    margin-right: 5px;
+  }
+  .web-site-header .ul-links a {
+    font-size: 1em;
+    color: #1e7ca8;
+  }
+  .web-site-header .ul-links li:not(:last-child):after {
+    content: ' | ';
+  }
+  
+  @media (max-width: 767px) {
+    .web-site-header-userlog {
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .langs-culture + .web-site-header-userlog {
+    /* margin-top: 22px; */
+  }
+  
+  .helow-member {
+    font-size: 1em;
+    color: #184e84;
+  }
+  
+  .log-out,
+  .log-out a {
+    padding-right: 5px;
+    font-size: 1em;
+    color: #1e7ca8 !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+  }
+  
+.langs-culture {
+    padding: 3px 0 0;
+    margin: 0;
+    list-style-type: none;
+    align-self: start;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .langs-culture li a {
+    font-size: 0.8em;
+    color: #575757;
+    font-weight: bold;
+    display: inline-block;
+  }
+  .langs-culture li.active a {
+    background-color: #ccc;
+    border-radius: 3px;
+    padding: 0 10px;
+  }
+
+  .langs-culture li a:focus {
+    text-decoration: underline !important;
+  }
+  
+  .langs-culture li:not(:first-child):before {
+    content: '|'; /* Insert content that looks like bullets */
+    margin: 0 8px;
+  }

@@ -1,0 +1,56 @@
+﻿<div class="wizard-wrapper">
+    <div class="container content-wrapper">
+        <div class="wizard-header">
+            <moj-dynamic-label [textKey]="title" [fontStyle]="fontStyle.MRegular" [captionType]="captionType.H1">
+            </moj-dynamic-label>
+            <ng-content select="moj-wizard-sub-title"></ng-content>
+        </div>
+        <div class="steps">
+            <ul class="ul-steps" #steps role="tablist" [ngClass]="{'disabled': PreventNavigateBySteps}">
+                <li *ngFor="let item of items; let i = index; trackBy"
+                    [ngClass]="{'active': (i === activeIndex), 'disabled': item.preventNavigateByStep, 'valid': item.valid }"
+                    (click)="itemChange($event, i)">
+                    <div class="wizard-item-number">
+                        <span>{{i + 1}}</span>
+                    </div>
+                    <a class="wizard-item-title">{{item.label | translate}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="guidelines-container-top-left">
+                <ng-content select="moj-guidelines"></ng-content>
+            </div>
+            <div class="content-items">
+                <ng-container *ngFor="let item of items;let i=index">
+                    <fieldset [disabled]="(readonly || item.readonly)">
+                        <moj-wizard-item *ngIf="activeIndex == i" [item]="item">
+                        </moj-wizard-item>
+                    </fieldset>
+                </ng-container>
+            </div>
+            <div *ngIf="showButtonLine" class="wizard-navigation-container">
+                <div class="wizard-prev-btn">
+                    <moj-button [tooltip]="customBackButtonText" [textKey]="customBackButtonText" [isAutoWidth]="true"
+                        *ngIf="(isFirstItem && customBackButtonText)" (click)="customBackButtonClick($event)"
+                        [iconClass]="'fas fa-chevron-right'" [buttonStyle]="buttonStyle.Secondary">
+                    </moj-button>
+                    <moj-button [tooltip]="backText" [textKey]="backText" *ngIf="!isFirstItem" [isAutoWidth]="true"
+                        (click)="prevClick($event)" [iconClass]="'fas fa-chevron-right'"
+                        [buttonStyle]="buttonStyle.Secondary">
+                    </moj-button>
+                </div>
+                <ng-content select="moj-wizard-buttons"></ng-content>
+                <div class="wizard-next-btn">
+                    <moj-button *ngIf="!isLastItem" [tooltip]="nextText" [textKey]="nextText" [isAutoWidth]="true"
+                        [iconClassLeft]="'fas fa-chevron-left'" (click)="nextClick($event)"
+                        [buttonStyle]="buttonStyle.Primary">
+                    </moj-button>
+                    <moj-button *ngIf="submitButton && isLastItem" [isEnable]="!readonly" [tooltip]="submitText" [textKey]="submitText"
+                        [isAutoWidth]="true" [buttonStyle]="buttonStyle.Primary" (click)="nextClick($event)">
+                    </moj-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

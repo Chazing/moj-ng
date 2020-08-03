@@ -1,0 +1,111 @@
+@import "../../css/moj-config-css.scss";
+
+div[role="dialog"]{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    border-color: $moj-blue-color;
+    border-radius: 8px;
+    background-color: #fff;
+}
+body .ui-dialog .ui-dialog-titlebar {
+    border: none;
+  }
+
+.ui-dialog.ui-widget .ui-dialog-titlebar {
+    background-color: transparent;
+    background: none;
+    padding: 0.3em 1em 0.3em 0.6em;
+
+    .ui-dialog-title {
+        color: $moj-primary-color;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .ui-dialog-titlebar-icon {
+        float: left;
+        margin: 0.5em 0.6em;
+        padding: 0;
+        color: $moj-primary-color;
+        font-size: 0.7em;
+        &:hover {
+            color: $moj-primary-dark-color;
+            background: none;
+            border-color: transparent;
+        }
+
+        span::before {
+            font-family: "Font Awesome 5 Pro";
+            font-weight: 300;
+            content: "\f00d";
+            font-size: 2em;
+        }
+    }
+}
+
+
+body .ui-dialog .ui-dialog-content {
+    background-color: transparent;
+    border:none;
+}
+
+.ui-dialog-content.ui-widget-content{
+    position: static;
+    flex: 1 1;
+}
+
+.dialog-bottom{
+    bottom: 0.5rem;
+    left: 0px;
+    position: absolute;
+    padding: 0.7em 1em;
+    z-index: 9999;
+    moj-button {
+        margin-bottom: 0;
+        height: 52px;    
+        
+    }
+}
+.ui-dialog .ui-dialog-footer {
+     border: none; 
+     background-color:transparent;
+}
+
+.ui-dialog-footer{
+    height:96px;
+    padding: 0;
+    box-shadow: 0px -2px 6px #00000029;
+}
+
+@media (max-width: 767px) {
+    .ui-dialog-footer{
+        height: 4em;
+    }
+}
+
+.ui-widget-overlay.ui-dialog-mask {
+    background-color: black;
+    opacity: 0.68; 
+}
+.moj-ltr
+{
+    .ui-dialog.ui-widget .ui-dialog-titlebar {
+        padding: 0.3em  0.6em 0.3em 1em !important;
+
+        .ui-dialog-titlebar-icon {
+            float: right !important;
+
+        }
+    }
+    
+    .dialog-bottom{
+        bottom: 0px;
+        left:initial !important;
+        right: 0px !important;
+
+    }
+    
+}
+
+

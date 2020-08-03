@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    // "baseUrl": "./",
+    "module": "commonjs",
+    "types": [],
+    "paths": {
+      "@moj/moj-ng": [
+        "projects/moj-ng/"
+      ],
+      "@moj/moj-ng/*": [
+        "projects/moj-ng/*"
+      ]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

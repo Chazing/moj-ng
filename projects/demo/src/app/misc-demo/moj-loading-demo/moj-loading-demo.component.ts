@@ -1,7 +1,5 @@
-import { MojPanelComponent } from '../../../../../../src/app/moj-ng/elements/panels/moj-panel/moj-panel.component';
-import { ButtonStyle } from './../../../../../../src/app/moj-ng/elements/buttons/button-style';
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { MojLoadingService } from '@moj/moj-ng';
+import { MojLoadingService, ButtonStyle, MojPanelComponent } from '@moj/moj-ng';
 import { Enums, ENUMS } from '../../enums';
 
 @Component({

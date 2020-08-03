@@ -1,6 +1,36 @@
 <demo-container [title]="'Editor'">
     <div class="demo-section">
-        <moj-editor [(ngModel)]="value">
+        <moj-editor>
+            <p-editor [(ngModel)]="value">
+                <p-header>
+                    <span class="ql-formats">
+                        <button class="ql-bold" aria-label="Bold"></button>
+                        <button class="ql-italic" aria-label="Italic"></button>
+                        <button class="ql-underline" aria-label="Underline"></button>
+                        <button class="ql-strike" aria-label="Strike"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <select class="ql-color"></select>
+                        <select class="ql-background"></select>
+                    </span>
+                    <span class="ql-formats">
+                        <select class="ql-align">
+                            <option selected></option>
+                            <option value="center"></option>
+                            <option value="right"></option>
+                            <option value="justify"></option>
+                        </select>
+                        <button class="ql-list" value="ordered" aria-label="Ordered List"></button>
+                        <button class="ql-list" value="bullet" aria-label="Unordered List"></button>
+                        <button class="ql-indent" value="-1" aria-label="indent -"></button>
+                        <button class="ql-indent" value="+1" aria-label="indent +"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-link" aria-label="Link"></button>
+                    </span>
+                </p-header>
+            </p-editor>
         </moj-editor>
+        {{value}}
     </div>
 </demo-container>

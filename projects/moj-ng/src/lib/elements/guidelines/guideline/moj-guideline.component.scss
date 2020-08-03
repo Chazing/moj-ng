@@ -1,0 +1,43 @@
+@import "../../../../../src/css/moj-config-css.scss";
+
+h6{
+    font-weight: bold;
+    font-size:$font-16;
+}
+.guideline-message{
+    display:flex;
+    color: white;
+    padding-top: 0.25rem;
+
+    &.is-open{
+        max-height: 400px;//max height can be - for animation
+        transition: max-height 1s;
+    }
+
+    &.message-ellipsis{
+        overflow-y: hidden;
+        max-height: 3em;
+        transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    }
+
+    div{
+        flex:10;
+        padding-left: $font-16;
+    }
+    span{
+        flex:1;
+        
+        i {
+            font-size: 14px;
+        }
+    }
+}
+ 
+.moj-ltr {
+    .guideline-message{
+        div{
+            padding-left:initial;
+            padding-right: $font-16; 
+        }
+     }
+}

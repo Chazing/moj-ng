@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MojSideMenuItem, MojTab } from '../../../../../moj-ng/elements/tabs/models/moj-tabs.models';
-import { MojTabsService } from '../../../../../moj-ng/elements/tabs/services/moj-tabs.service';
 import { of } from 'rxjs';
-
 import { DocsliderService } from "./DocsliderService";
-import { MojSlidePreviewDocComponent } from '../../../../../moj-ng/elements/documents/moj-slide-preview-doc/moj-slide-preview-doc.component';
+import { MojSlidePreviewDocComponent, MojTabsService, MojTab } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-tab2-second',

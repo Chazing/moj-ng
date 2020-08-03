@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewContainerRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GridService, MojGridPanelComponent, EditOptions } from 'src/app/moj-ng';
 import { ColDef } from 'ag-grid-community/dist/lib/entities/colDef';
 import { GridOptions } from 'ag-grid-community/dist/lib/entities/gridOptions';
 import { Enums, ENUMS } from '../../../enums';
+import { EditOptions, MojGridPanelComponent, GridService } from '@moj/moj-ng';
 
 @Component({
   selector: 'action-popup-demo',

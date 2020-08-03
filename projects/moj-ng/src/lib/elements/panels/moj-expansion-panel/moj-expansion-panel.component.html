@@ -1,0 +1,16 @@
+<div class="moj-expansion-panel" [ngClass]="{'expaneded':isOpen}" [ngStyle]="{'min-height.px':minHeight}">
+    <div class="moj-expansion-panel-header">
+        <div>
+            <span (click)="isOpen=!isOpen">{{this.title}}</span>
+            <ng-content select="moj-expansion-panel-header"></ng-content>
+        </div>
+        <i *ngIf="!hideToggle" class="fas fa-chevron-down" [ngClass]="{'expaneded':isOpen}"
+            (click)="isOpen=!isOpen"></i>
+    </div>
+    <div class="moj-expansion-panel-body" [ngClass]="{'expaneded':isOpen}"
+        [@bodyExpansion]="isOpen? 'expanded' : 'collapsed'" [@bodyOpacity]="isOpen?'expanded' : 'collapsed'">
+        <div>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

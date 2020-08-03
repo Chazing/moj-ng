@@ -1,11 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { products } from './products';
-import { GridService } from "../../moj-ng/elements/grid/service/moj-grid.service";
 import { ColDef, GridOptions } from "ag-grid-community";
 import { Validators } from "@angular/forms";
-import { FilterType } from "../../moj-ng/elements/autocomplete/autocomplete.enum";
-import { EditOptions, EditType } from "../../moj-ng/elements/grid/edit-component/edit-options.model";
-
+import { EditOptions, GridService, FilterType, EditType } from '@moj/moj-ng';
 
 @Component({
     selector: "grid-edit-inline-example",

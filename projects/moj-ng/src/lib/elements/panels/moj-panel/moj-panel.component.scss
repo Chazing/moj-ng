@@ -1,0 +1,197 @@
+@import "../../../../css/moj-config-css.scss";
+
+.moj-panel {
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 3px 3px 5px #E5E8ED;
+    margin-bottom: 1.5em;
+
+    &.hide {
+        display: none !important;
+    }
+
+    .moj-panel-container {
+        padding: 0 1em;
+        overflow-y: hidden;
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 10px;
+        }
+        &.expanded{
+            overflow-y: visible;
+        }
+        #advanced-section.collapsed
+        {
+            overflow-y: hidden;          
+        }
+    }
+    .moj-panel-title {
+        cursor: pointer;
+        border-bottom: 1px solid $moj-panel-border-color;
+        display: flex;
+        justify-items: flex-end;
+        align-items: center;
+        color: $moj-primary-text-color;
+        padding-right: 0.5em;
+        
+        > i {
+            font-size: 1.5em;
+            margin: 0.3em 0;
+        }
+        i+.txt {
+            margin-right: 0.5em;
+        }
+        .txt {
+            flex: 1 1 100%;
+            padding: 0.5em;
+            h1, h2, h3, h4 {
+                font-weight: bold;
+                font-size: $moj-font-size !important;
+                margin: 0 !important;
+            }
+        }
+    
+        a {
+            display: flex;
+            align-items: center;
+            align-self: stretch;
+            i {
+                margin: 0.5em;
+                color: $moj-primary-text-color;
+            }
+            &::before {
+                content: "";
+                background-color: $moj-panel-border-color;
+                width: 1px;
+                height: 100%;
+            }
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .moj-badge {
+            padding: 0.2em 0.8em;
+            color: #fff;
+            font-weight: bold;
+            background-color: $moj-primary-text-color;
+            border-radius: 1em;
+            margin: 0.3em 0.5em;
+        }
+        
+        &.purple {
+            color: $moj-panel-color-1;
+            .moj-badge {
+                background-color: $moj-panel-color-1;
+            }
+        }
+        &.brown {
+            color: $moj-panel-color-2;
+            .moj-badge {
+                background-color: $moj-panel-color-2;
+            }
+        }
+        &.blue {
+            color: $moj-panel-color-3;
+            .moj-badge {
+                background-color: $moj-panel-color-3;
+            }
+        }
+        &.turquoise {
+            color: $moj-panel-color-4;
+            .moj-badge {
+                background-color: $moj-panel-color-4;
+            }
+        }
+        &.orange {
+            color: $moj-panel-color-5;
+            .moj-badge {
+                background-color: $moj-panel-color-5;
+            }
+        }
+
+    }
+    
+}
+
+@media (max-width: 767px) {
+    .moj-panel fieldset {
+        padding: 0 10px !important;
+        width: 100%;
+    }
+}
+
+
+
+.moj-card-panel {
+    margin-bottom: 10px;
+    padding: 1em;
+}
+
+.toggle-additional {
+    padding: 4px 30px 4px 0px;
+    text-align: left;
+    float: left;
+    margin: 0px 0px 0px 20px;
+    color: #0079EA !important;
+    font-size: 13.2px;
+    cursor: pointer;
+
+    a {
+        color: #0079EA !important;
+    }
+
+    i {
+        padding-left: 7px;
+    }           
+}
+.moj-ltr{
+
+    .moj-panel {
+        .moj-panel-container {
+            overflow-y: hidden;
+            padding: 0 initial initial 1em;
+            &.expanded{
+                overflow-y: visible;
+            }
+        }
+    
+        .moj-panel-title {
+            padding-right: initial;
+            padding-left: 0.5em;
+            
+            > i {
+                margin: 0.3em initial initial 0;
+            }
+            i+.txt {
+                margin-right: initial !important;
+                margin-left: 0.5em;
+            }
+            .moj-badge {
+                margin: 0.3em  initial initial 0.5em !important;
+            }
+        }
+        
+    }
+    
+    @media (max-width: 767px) {
+        .moj-panel fieldset {
+            padding: 0 initial initial 10px !important;
+            width: 100%;
+        }
+    }
+    
+    .toggle-additional {
+        padding: 4px 0px 4px 30px!important;
+        text-align: right;
+        float: right;
+        margin: 0px 20px 0px 0px!important;
+
+        i {
+            padding-left: initial;
+            padding-right: 7px;
+        }           
+    }    
+}

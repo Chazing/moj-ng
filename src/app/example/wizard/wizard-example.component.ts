@@ -1,12 +1,9 @@
-﻿import { Component, OnInit, ViewChildren, QueryList, Type, ViewContainerRef, ViewChild } from '@angular/core';
-import { WizardItem } from '../../moj-ng/elements/wizard/wizard-item/wizard-item.model';
-import { AutocompleteExampleComponent } from '../autocomplete/autocomplete-example.component';
+﻿import { Component, OnInit } from '@angular/core';
 import { MultiSelectExampleComponent } from '../multiselect/multiselect-example.component';
 import { FormExampleComponent } from '../form-example/form-example.component';
-import { Alignment } from '../../moj-ng/elements/general/general.enum';
-import { WizardItemModel } from '../../moj-ng/elements/wizard/service/moj-wizard.service';
 import { FileUploadExampleComponent } from '../file-upload-example/file-upload-example.component';
 import { ReactiveFormExampleComponent } from '../form-example/reactive-form-example/reactive-form-example.component';
+import { WizardItem, Alignment, WizardItemModel } from '@moj/moj-ng';
 
 @Component({
     selector: 'moj-wizard-example',
@@ -17,6 +14,12 @@ export class WizardExampleComponent implements OnInit {
 
     items: WizardItem[]
     alighment = Alignment;
+
+    guidelines = [
+        {guidelineTitle:'הנחיה ראשונה', guidelineMessage:'איתור גוש וחלקה לפי כתובת, ניתן לבצע באתר האינטרנט של המרכז'},
+        {guidelineTitle:'הנחיה שניה', guidelineMessage:'<p><span style="background-color: rgb(249, 249, 249); color: rgb(50, 50, 50);">בתדריכים מפורטים הנחיות ודגשים בנוגע להגשת הבקשות&nbsp;</span><a href="666666666666" target="_blank">666666666666</a></p><p>דגכדכג525gk</p><p>דגכדכג657657657</p><p>דגכדכ</p>'},
+        {guidelineTitle:'תדריכים להגשת בקשות', guidelineMessage:'איתור גוש וחלקה לפי כתובת, ניתן לבצע באתר האינטרנט של המרכז'},
+    ]
 
     constructor() { }
 

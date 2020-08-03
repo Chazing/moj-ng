@@ -1,0 +1,6 @@
+<ul *ngFor="let chip of value" class="moj-chips">
+    <li class="moj-chip {{' '+ chip.chipColor}}">
+        <span class="chip-lable">{{chip[fieldName]}}</span>
+        <span class="chip-icon pi pi-times" (click)="removeChip(chip)"></span>
+    </li>
+</ul>

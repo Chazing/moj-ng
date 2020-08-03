@@ -1,0 +1,172 @@
+@import "../../../../css/moj-config-css.scss";
+@import "../../../../css/moj-mixins.scss";
+
+.app-env {
+    border-bottom: 1px solid #1e3764;
+    background: linear-gradient(to bottom, #324b82, #506eaa);
+    color: #ffffff;
+    font-size: 1.7em;
+    text-align: center;
+
+    &.Dev {
+        background: linear-gradient(to bottom, #2073b4, #2073b4);
+    }
+
+    &.QA {
+        background: linear-gradient(to bottom, #e12a2b, #e02428);
+    }
+
+    &.Integration {
+        background: linear-gradient(to bottom, #4db849, #4ab148);
+    }
+
+    &.Customers {
+        background: linear-gradient(to bottom, #fcd209, #e6b221);
+    }
+
+    &.Production {
+        height: 0;
+        display: none;
+    }
+}
+
+.app-header {
+    display: flex;
+    padding: 0.5em 1em;
+    align-items: center;
+
+    @include tablet {
+        flex-wrap: wrap;
+    }
+
+    img {
+        margin-left: 10px;
+    }
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+
+    .user-menu {
+        position: absolute;
+        border: 1px solid #a9a9a9;
+        border-radius: 3px;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-2em);
+        z-index: -1;
+        height: 0px;
+        transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, transform 0.3s ease-in-out 0.25s;
+
+        a {
+            color: #00a0dc;
+            text-decoration: none;
+            background: white;
+            padding: 7px;
+            cursor: pointer;
+            display: block;
+        }
+
+        li:hover a {
+            background: -webkit-linear-gradient(top,#e6e6e6 0%,#EDEDED 50%,#e6e6e6 100%);
+        }
+
+        li:not(:last-child) {
+            list-style: none;
+            border-bottom: rgb(204, 204, 204) 1px dashed;
+        }
+
+        li .ui-state-disabled {
+            background: rgb(212, 209, 209);
+            opacity: 1 !important;
+
+            &:hover {
+                background: rgb(212, 209, 209) !important;
+                opacity: 1 !important;
+            }
+        }
+    }
+
+    &:hover .user-menu {
+        visibility: visible; /* shows sub-menu */
+        opacity: 1;
+        z-index: 1;
+        height: auto;
+        transform: translateY(0%);
+        transition-delay: 0s, 0s, 0.3s;
+    }
+
+    .username {
+        display: inline-block;
+        color: #fff;
+        white-space: nowrap;
+    }
+}
+
+.logo-txt {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex: 1 1 100%;
+}
+
+.sign-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $moj-blue-color;
+    border-radius: 50%;
+    border-width: 0px;
+    margin-left: 10px;
+    color: #fff;
+
+    &:hover {
+        background-color: #005797;
+    }
+
+    i {
+        font-size: 1.5rem;
+    }
+}
+
+moj-bo-header-search + .login::before {
+    content: "";
+    margin: 0 2em 0 1em;
+    width: 1px;
+    height: 2em;
+    background-color: #fff;
+}
+
+.moj-ltr {
+
+    .app-header {
+        //TODO
+        padding: 0.5em 1em;
+
+        img {
+            margin-right: 10px;
+            margin-left: 0px !important;
+        }
+    }
+
+    .login {
+        padding-left: initial;
+        padding-right: 2em;
+    }
+
+    .sign-img {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: $moj-blue-color;
+        border-radius: 50%;
+        border-width: 0px;
+        margin-left: initial !important;
+        margin-right: 10px;
+        color: #fff;
+    }
+
+    moj-bo-header-search + .login::before {
+        margin: 0 1em 0 2em !important;
+    }
+}

@@ -1,0 +1,88 @@
+@import "../../../css/moj-config-css.scss";
+@import "../../../css/moj-mixins.scss";
+
+input[type="radio"] {
+  opacity: 0;
+  width: 0;
+  float: right;
+  &:not(:disabled) + label-for-content label::before {
+    border-right-color: $moj-primary-text-color !important;
+  }
+  + label-for-content {
+    label {
+      &:before {
+        content: "\2714";
+        border: 1px solid $moj-primary-text-color;
+        border-radius: 50%;
+        float: right;
+        width: 20px;
+        height: 20px;
+        box-sizing: content-box;
+        color: transparent;
+        font-weight: bold;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px 0.7em 0 0.7em;
+      }
+      &:active:before {
+        transform: scale(0);
+      }
+    }
+  }
+  &:checked + label-for-content label:after {
+    content: "";
+    background-color: $moj-primary-color;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: calc(50% - 1px);
+    transform: translate(0, -50%);
+    right: calc(0.7em + 5px);
+  }
+  &:disabled + label-for-content {
+    pointer-events: none;
+    label {
+      color: $moj-radio-checkbox-disabled-text;
+      &:before {
+        transform: scale(1);
+        border-color: $moj-input-disable-border-color;
+      }
+    }
+  }
+  &:checked:disabled + label-for-content label {
+    &:before {
+      transform: scale(1);
+      background-color: $moj-input-disable-bg-color;
+      border-color: $moj-input-disable-border-color;
+    }
+    &:after {
+      background-color: $moj-input-disable-color;
+    }
+  }
+  // &:focus + label-for-content label:before {
+  //     @include input-focus;
+  // }
+}
+.moj-ltr {
+  input[type="radio"] {
+    opacity: 0;
+    width: 0;
+    float: left !important;
+    + label-for-content {
+      label {
+        &:before {
+          float: left;
+          margin-right: 0.5em;
+          margin-left: initial !important;
+        }
+      }
+    }
+    &:checked + label-for-content label:after {
+      right: initial !important;
+      left: 1.35em !important ;
+    }
+  }
+}

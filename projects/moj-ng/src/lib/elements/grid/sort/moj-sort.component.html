@@ -1,0 +1,15 @@
+<div class="moj-sort">
+    <moj-dropdownlist
+        [items]="dropdownItems"
+        [labelTextKey]="sortText"
+        [fieldName]="fieldName"
+        (onChange)="itemChange($event)"
+        [(ngModel)]="selectedItem">
+    </moj-dropdownlist>
+    <button>
+        <i class="fas fa-2x"
+            (click)="sortOrderChange()"
+            [class.fa-sort-amount-down]="sortOrder==mojSortOrder.Asc"
+            [class.fa-sort-amount-up]="sortOrder==mojSortOrder.Desc"></i>
+    </button> 
+</div>

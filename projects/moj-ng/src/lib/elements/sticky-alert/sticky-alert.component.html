@@ -1,0 +1,6 @@
+<div *ngIf="showAlert" class="sticky-alert">
+    <div class="alert-text">
+        {{ message | translate }}
+    </div>
+    <i class="far fa-times-circle"(click)="hideAlert()"></i>
+</div>

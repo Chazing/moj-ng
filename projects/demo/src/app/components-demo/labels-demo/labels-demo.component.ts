@@ -8,8 +8,8 @@ import { Enums, ENUMS } from '../../enums';
 })
 export class LabelsDemoComponent implements OnInit {
   Enums:Enums=ENUMS;
-  contactName:string='ישראל ישראלי';
-  constructor() { }
+  labelText: string = 'משרד הבריאות';
+    constructor() { }
 
   ngOnInit() {
   }

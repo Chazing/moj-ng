@@ -1,8 +1,8 @@
 <div style="position: absolute; width: auto;left: 20px;z-index: 1;" *ngIf="currentItem && (currentItem.tfsLink || currentItem.compodocLink)">
   <moj-line>
-    <moj-button [iconClass]="'far fa-code'" [buttonStyle]="buttonStyle.Secondary" [tooltip]="'קוד המקור של הדוגמה'"
+    <moj-button [iconClass]="'far fa-code'" [buttonStyle]="buttonStyle.Primary" [tooltip]="'קוד המקור של הדוגמה'" [isAutoWidth]=true
       (click)="onCodeClick()"></moj-button>
-    <moj-button [iconClass]="'compodoc-icon'" [buttonStyle]="buttonStyle.Secondary" [tooltip]="'לקומפוננטה באתר התיעוד'"
+    <moj-button [iconClass]="'compodoc-icon'" [buttonStyle]="buttonStyle.Primary" [tooltip]="'לקומפוננטה באתר התיעוד'" [isAutoWidth]=true
       (click)="onCompodocClick()"></moj-button>
   </moj-line>
 </div>

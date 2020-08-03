@@ -1,0 +1,129 @@
+$moj-font-family: "opensanshebrew";
+$moj-font-size: 16px;
+
+$moj-primary-color: #1976d2;
+$moj-primary-dark-color: #004ba0;
+$moj-primary-light-color: #e3f2fd;
+
+$moj-secondary-color: #2fdab0;
+$moj-secondary-dark-color: #00a781;
+$moj-secondary-light-color: #72ffe2;
+
+$moj-danger-color: #b00020;
+$moj-success-color: #009800;
+$moj-alert-color: #ffc122;
+$moj-info-color: #1b3445;
+$moj-warning-color: #9c5800;
+
+$moj-accent1-color: #cc347f;
+$moj-accent2-color: #c0c5fd;
+$moj-accent3-color: #ffc122;
+$moj-accent4-color: #3d479d;
+
+$moj-primary-text-color: #1b3445;
+$moj-secondary-text-color: #5c6b7c;
+$moj-disable-color: #a9a9a9;
+
+$moj-primary-gradient: transparent
+  linear-gradient(112deg, #1976d2 0%, #1a7ad1 30%, #2fdab0 100%) 0% 0% no-repeat
+  padding-box;
+// linear-gradient(105deg, $moj-primary-color 0%, $moj-secondary-color 100%) 0% 0% no-repeat;
+$moj-secondary-gradient: linear-gradient(
+    105deg,
+    $moj-primary-color 0%,
+    $moj-primary-dark-color 100%
+  )
+  0% 0% no-repeat;
+
+$moj-disabled-bg-color: #eceff1;
+
+// inputs
+$moj-input-text-color: #5c6b7c;
+$moj-input-border-color: #5c6b7c;
+$moj-input-focus-border-color: $moj-primary-color;
+$moj-input-bg-color: #fff;
+
+$moj-input-disable-color: #a9a9a9;
+$moj-input-disable-bg-color: #fff;
+$moj-input-disable-border-color: #90a4ae;
+
+$moj-input-readonly-color: #092b48;
+$moj-input-readonly-bg-color: #fff;
+$moj-input-readonly-border-color: #1b3445;
+
+$moj-input-hover-text-color: $moj-input-text-color;
+$moj-input-hover-bg-color: #fff;
+$moj-input-hover-border-color: #092b48;
+
+// radio and checkbox
+$moj-radio-border-color: #087c8d;
+$moj-radio-checkbox-disabled-text: #707070;
+
+$moj-toggle-text-color: #5c6b7c;
+
+// layout
+$moj-layout-areas: "header header header" "header-nav header-nav header-nav"
+  "right-side main left-side" "footer footer footer";
+$moj-layout-rows: [header] minmax(50px, auto) [menubar] minmax(0, auto) [body]
+  1fr [footer] minmax(0, auto);
+$moj-layout-columns: [right] minmax(0, auto) [main] 1fr [left] minmax(0, auto);
+// $moj-border-area-color: #0796B7;
+$moj-border-area-color: #0177bd;
+
+// header
+$moj-bo-header-bg: linear-gradient(
+  to left,
+  #087c8d 0%,
+  #087c8d 40%,
+  #0069b7 92%
+);
+
+$moj-light-color: #e7f0f9;
+
+// tabs
+$moj-tab-min-width: 50px;
+$moj-tab-max-width: auto;
+
+/*BO*******************************************/
+$moj-color: #323131;
+$moj-orange-color: #af5302;
+$moj-purple-color: #41088d;
+$moj-white-color: #ffff;
+
+//for tabs!!
+$moj-grey-color: #707070;
+$moj-blue-color: #0068b9;
+
+// panels
+$moj-panel-border-color: #cfcfcf;
+$moj-panel-color-1: #7e01ac;
+$moj-panel-color-2: #9a484c;
+$moj-panel-color-3: #0079a0;
+$moj-panel-color-4: #0079a0;
+$moj-panel-color-5: #ba4b25;
+
+$moj-list-hover-color: #1976d2;
+$moj-list-selected-color: #0d62bb;
+$moj-checkbox-hover-color: #e3f2fd;
+
+$moj-active-color: #1970c0;
+$moj-text-color: #092b48;
+
+$footer-color: #1b3445;
+$site-background-color: #f6f7f8;
+$dark-background-color: #1b3445;
+
+$font-12: 0.75rem;
+$font-13: 0.813rem;
+$font-14: 0.875rem;
+$font-16: 1rem;
+$font-18: 1.125rem;
+$font-20: 1.25rem;
+$font-22: 1.375rem;
+$font-24: 1.5rem;
+$font-28: 1.75rem;
+$font-34: 2.125rem;
+$font-48: 3rem;
+$font-52: 3.25rem;
+
+@import "./moj-mixins.scss";

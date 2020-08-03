@@ -1,3 +1,4 @@
+import { ENUMS } from '@moj/moj-ng';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options-card-demo.component.css']
 })
 export class OptionsCardDemoComponent implements OnInit {
-
+  enums = ENUMS
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,17 @@
+<demo-container [title]="'Selection Card'">
+   רכיב זה מהווה מעטפת לצ'קבוקס של התשית ומעניק לו מראה ועיצוב עכשווי
+   <moj-line>
+      <moj-selection-card [(ngModel)]="selectionValue" name="selectionValue"
+         [disabled]="true" [titleTextKey]="'עיקר המימון מישויות מדיניות זרות'"
+         [iconClass]="'most-of-the-funding-icon'">
+         עפ"י סעיף 2 לחוק
+      </moj-selection-card>
+
+      <moj-selection-card [(ngModel)]="selectionValue2" name="selectionValue2" 
+         [disabled]="!selectionValue2 && selectionValue" 
+         [titleTextKey]="'תרומות מישויות מדיניות זרות'"
+         [iconClass]="'most-of-the-funding-icon'">
+         עפ"י סעיף 2 לחוק
+      </moj-selection-card>
+   </moj-line>
+</demo-container>

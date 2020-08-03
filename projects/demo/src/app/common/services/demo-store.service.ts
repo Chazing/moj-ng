@@ -12,9 +12,8 @@ const INITIAL_DATA: DemoData = {
   providedIn: 'root'
 })
 export class DemoStoreService extends Store<DemoData> {
-  key: "[Demo]";
   constructor() {
-    super();
+    super("[Demo]", INITIAL_DATA); 
     // this.initState(this.key, INITIAL_DATA);
   }
 }

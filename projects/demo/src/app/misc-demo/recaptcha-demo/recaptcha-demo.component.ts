@@ -1,5 +1,3 @@
-import { ContainerType } from './../../../../../../src/app/moj-ng/elements/website/moj-container/moj-container.component';
-import { ButtonStyle } from './../../../../../../src/app/moj-ng/elements/buttons/button-style';
 import { Component, OnInit } from '@angular/core';
 import { Enums, ENUMS } from '../../enums';
 

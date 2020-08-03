@@ -1,0 +1,13 @@
+<div class="moj-flip-card" tabindex="0">
+    <div (click)="click()" [ngClass]="{'content':true,'hidden':!!isEditMode}" [@contentHeigt]="!isEditMode? 'show' : 'hide'"
+        [@contentOpacity]="!isEditMode? 'show' : 'hide'">
+        <i *ngIf="iconClass && !isEditMode" class="icon {{iconClass}}"></i>
+        <label class="title" *ngIf="textKey && !isEditMode">{{textKey | translate}}</label>
+        <ng-content *ngIf="!isEditMode" select="flip-card-content"></ng-content>
+    </div>
+    <div [ngClass]="{'content':true,'hidden':!isEditMode}" [@contentHeigt]="isEditMode? 'show' : 'hide'"
+        [@contentOpacity]="isEditMode? 'show' : 'hide'">
+        <ng-content *ngIf="isEditMode" select="flip-card-edit"></ng-content>
+        <button class="far fa-times close-icon" (click)="closeEdit($event)" *ngIf="isEditMode"></button>
+    </div>
+</div>

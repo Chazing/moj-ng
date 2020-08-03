@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { MojTab } from '../../../moj-ng/elements/tabs/models/moj-tabs.models';
 import { TranslateService } from '../../../../../node_modules/@ngx-translate/core';
-import { MojTabsService } from '../../../moj-ng/elements/tabs/services/moj-tabs.service';
-import { NavigationService } from '../../../moj-ng/elements/tabs/services/navigation.service';
-import { eEnvType, BOHeaderMenuItem } from '../../../moj-ng/elements/back-office/moj-bo-header/moj-bo-header.component';
-import { of } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/primeng';
+import { MojTab, eEnvType, BOHeaderMenuItem, MojTabsService, NavigationService } from '@moj/moj-ng';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './bo-example.component.html'
@@ -14,7 +12,7 @@ export class BOExampleComponent {
   tab: MojTab;
   barItems: MenuItem[] = [
     { label: "טופס", icon: "fas fa-home", routerLink: "/bo-example/root/tab9"  },
-    { label: "tab2", icon: "fas fa-map-marker-alt", routerLink: "/bo-example/root/tab2/" },
+    { label: "tab2", icon: "fas fa-map-marker-alt", routerLink: "/bo-example/root/tab2" },
     { label: "tab2 second", icon: "fas fa-map-marker-alt", routerLink: "/bo-example/root/tab2/hello-tab2-second" },
     { label: "tab3", icon: "far fa-sunset", routerLink: "/bo-example/root/tab3" },
     { label: "tab3 more parameter", icon: "far fa-sunset", routerLink: "/bo-example/root/tab3" },
@@ -46,11 +44,16 @@ export class BOExampleComponent {
   searchItems = [{ label: 'פניה', value: 1 }, { label: 'בקשה', value: 2 }];
   moreMenuItems: BOHeaderMenuItem[];
   searchPlaceholder: string;
+  private subscription: Subscription = new Subscription();
+  
+  requestId;
 
   constructor(
     private translate: TranslateService,
     private mojTabsService: MojTabsService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private route: ActivatedRoute,
+    private _router: Router
   ) {
     this.initMainTab();
     this.moreMenuItems = [{ text: 'עדכון פרטים אישיים', command: this.onUpdateDetails ,name:"personalDetails"}];
@@ -83,13 +86,34 @@ export class BOExampleComponent {
     ];
 
     this.tab = this.mojTabsService.addOrGetTab(this.tab);
-    // this.mojTabsService.addOrGetTab(new MojTab("/fff", of("sdfsfsf")));
-    // this.mojTabsService.addOrGetTab(new MojTab("/ddd", of("sdfsfsf")));
   }
 
   openNewTab() {
-    this.navigationService.navigate('/bo-example/root/tab2');
-  }
+
+      this.navigationService.navigate('/bo-example/root/tab3','3');
+    }
+  
+  
 
   searchClick(e) {}
+
+  async initTab(requestId) {
+  let url = `/patent-file/patent-file${requestId != null && requestId != 0 ? `/${requestId}` : ''}`;
+  let tab = new MojTab(url,this.getTitle(requestId) );
+  tab.color = "#f06292";
+  tab.id = requestId;
+   this.mojTabsService.addOrGetTab(this.tab, this.onTabMoved.bind(this), this.onCloseTab.bind(this));
+  }
+  async onTabMoved(tab: MojTab) {
+   
+  }
+  async onCloseTab(tab: MojTab) {
+   
+  }
+  
+  getTitle(requestId) {
+    return requestId != null && requestId != 0
+      ? this.translate.get("Texts.request ", { id: requestId })
+      : this.translate.get("Texts.request ");
+  }
 }

@@ -1,0 +1,22 @@
+<demo-container [title]="'סינון'">
+    <div class="demo-section">
+        <moj-grid-panel [dataViewType]="dataViewType.List">
+            <moj-line>
+                <moj-quick-filter filterBy="ProductName,ID"></moj-quick-filter>
+            </moj-line>
+            <moj-line>
+                <p-dataView #listView [value]="rowData" [paginator]="true" [rows]="3">
+                    <ng-template let-item pTemplate="listItem">
+                        <moj-list-item [listItemType]="Enums.ListItemType.Info">
+                            <moj-list-item-body>
+                                סוגים לחידוש: <b>12</b>
+                                <br>
+                                <span>עוד טקסט דינאמי, ניתן לשים כאן תמונות, קישורים וכל דבר</span>
+                            </moj-list-item-body>
+                        </moj-list-item>
+                    </ng-template>
+                </p-dataView>
+            </moj-line>
+        </moj-grid-panel>
+    </div>
+</demo-container>    

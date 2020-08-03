@@ -1,7 +1,6 @@
-import { EditType } from './../../../../../../../src/app/moj-ng/elements/grid/edit-component/edit-options.model';
 import { Component, OnInit } from '@angular/core';
 import { EditGridDemoComponent } from '../edit-grid/edit-grid-demo.component';
-import { GridService } from '@moj/moj-ng';
+import { GridService, EditType } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-edit-popup-demo',

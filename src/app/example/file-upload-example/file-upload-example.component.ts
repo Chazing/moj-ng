@@ -1,13 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { ColDef, GridOptions } from "ag-grid-community";
-import { EditOptions } from "../../moj-ng/elements/grid/edit-component/edit-options.model";
-import { EditServiceBase } from "../../moj-ng/elements/grid/service/edit-service.base";
-import { GridService } from "../../moj-ng/elements/grid/service/moj-grid.service";
 import { NewFileComponent } from "./new-file.component";
-import { MojFileUploadDesignType } from "../../moj-ng/elements/file-upload/moj-file-upload.base";
-import { ElementSize } from "../../moj-ng/elements/base/element-size.enum";
-import { MojDataViewType } from "../../moj-ng/elements/grid/models/dataview-type.enum";
-import { FileSizeType } from "../../moj-ng/elements/file-upload/file-size-type";
+import { MojDataViewType, ElementSize, EditOptions, EditServiceBase, GridService } from '@moj/moj-ng';
 
 @Component({
     selector: "file-upload-example",
@@ -15,19 +9,32 @@ import { FileSizeType } from "../../moj-ng/elements/file-upload/file-size-type";
 })
 export class FileUploadExampleComponent implements OnInit {
 
-    // files = [{name: "file1.pdf", GUID: "0c496f04-4030-4b13-8ba8-dc8a615bd4cf", docType: 3}, {name: "file2.pdf", GUID: "0cec6cf0-0bb0-4e3e-ba29-d34c3d1fa233", docType: 2}, {name: "file3.pdf", GUID: "1bf5010d-f6f5-4bd2-9cbb-7a34d1cab0ab", docType: 3}];
-    files: any; 
+    files = [{ name: "file1.pdf", GUID: "0c496f04-4030-4b13-8ba8-dc8a615bd4cf", docType: 3, mojId: 111 }, { name: "file2.pdf", GUID: "0cec6cf0-0bb0-4e3e-ba29-d34c3d1fa233", docType: 2 }, { name: "file3.pdf", GUID: "1bf5010d-f6f5-4bd2-9cbb-7a34d1cab0ab", docType: 3 }];
+    // files: any; 
     dataViewType = MojDataViewType;
+    files1;
     files2;// = [{name: "files2"}, {name: "files2"}, {name: "files2"}];
     files3;
 
-    sizeType = FileSizeType;
+    arr = [
+        { id: 1, docs: this.files },
+        { id: 2, docs: [] }
+    ]
 
-    fuDesignType = MojFileUploadDesignType;
     size = ElementSize;
 
     fileUploadComplete(file) {
         file.docType = 4;
+    }
+
+    click(file) {
+        console.log(file);
+    }
+
+    enableDelete(file) {
+        if (file.mojId)
+            return false;
+        return true;
     }
 
     rowData;

@@ -1,12 +1,10 @@
 ﻿import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { MojInputModule } from "../../moj-ng/elements/input.module";
 import { AutocompleteExampleComponent } from "./autocomplete-example.component";
-import { MojSharedModule } from "../../moj-ng/shared/moj.shared.module";
-import { MojGridModule } from "../../moj-ng/elements/grid/moj-grid.module";
 import { TabViewModule, AutoCompleteModule } from "primeng/primeng";
 import { TranslateModule } from "@ngx-translate/core";
+import { MojSharedModule, MojGridModule, MojInputModule } from '@moj/moj-ng';
 
 @NgModule({
     imports: [

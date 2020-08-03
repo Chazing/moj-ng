@@ -30,6 +30,12 @@ export class TabsVisibleDemoComponent implements OnInit {
         { title$: of("טאב נוסף"), component: Tab2ContentComponent, removable: true },
         { title$: of("טאב שלישי"), component: Tab3ContentComponent, removable: true }
     ]
+  
+    items4: any[] = [
+        { title$: of("טאב לדוגמה"),iconBefore:"far fa-heart", component: Tab1ContentComponent },
+        { title$: of("טאב נוסף"), iconBefore:"far fa-envelope", component: Tab2ContentComponent },
+        { title$: of("טאב שלישי"),iconBefore:"far fa-user" ,component: Tab3ContentComponent }
+    ];
     constructor() { }
 
     ngOnInit() {

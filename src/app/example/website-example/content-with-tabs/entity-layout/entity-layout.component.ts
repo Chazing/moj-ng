@@ -3,8 +3,7 @@ import { EntityFilesComponent } from '../entity-files/entity-files.component';
 import { EntityDocsComponent } from '../entity-docs/entity-docs.component';
 import { EntityRequestsComponent } from '../entity-requests/entity-requests.component';
 import { of } from 'rxjs';
-import { MojListItemType } from '../../../../moj-ng/elements/grid/list-view/moj-list-view-type.enum';
-import { MojDataViewType } from '../../../../moj-ng/elements/grid/models/dataview-type.enum';
+import { MojListItemType, MojDataViewType } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-entity-layout',

@@ -57,6 +57,10 @@ const appRoutes: Routes = [
     {
         path: "cards-demo", loadChildren: () =>
             import("./cards-demo/cards-demo.module").then(am => am.CardsDemoModule)
+    },
+    {
+        path: "message", loadChildren: () =>
+            import("./message-demo/message-demo.module").then(am => am.MessageDemoModule)
     }
    
 ];

@@ -1,0 +1,30 @@
+@import "../../../../css/moj-config-css.scss";
+
+.moj-card {
+  background: transparent;
+  opacity: 1;
+  position: relative;
+  width: 500px;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  i {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto 0 auto;
+    background-color: #e2f1fc;
+    border-radius: 50%;
+    margin-top: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 7em;
+  }
+
+  moj-dynamic-label,
+  span {
+    text-align: center;
+    display: block;
+    padding: 0 3em 0 3em;
+  }
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MojTab, MojTabsService, MojSideMenuItem } from '../../../../moj-ng';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { MojTab, MojTabsService, MojSideMenuItem } from '@moj/moj-ng';
 
 @Component({
   selector: 'app-main-tab8',

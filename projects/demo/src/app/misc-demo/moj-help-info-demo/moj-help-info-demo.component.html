@@ -1,0 +1,25 @@
+<demo-container [title]="'Help-Info'">
+
+    <div class="content-section implementation">
+
+        <div class="demo-section">
+            <moj-title [textKey]="'ליד טקסט'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <moj-dynamic-label [textKey]="'מגיש הבקשה הכוללת'" [fontStyle]="Enums.FontStyle.SBold"></moj-dynamic-label>
+            <moj-help-info style="margin-right: 5px;" [text]="'כאן יבוא טקסט עזרה'"></moj-help-info>
+        </div>
+
+        <div class="demo-section">
+            <moj-title [textKey]="'ליד input'" [titleType]="Enums.TitleType.Secondary"></moj-title>
+            <div>יש לסמן את הפרמטר nearInput כ true במידה ורוצים למרכז את האייקון לשורת הפקדים</div>
+            <moj-line>
+                <moj-textbox [(ngModel)]="editedItem" name="productID" [required]="true" labelTextKey="'קוד מוצר'"
+                    controlWidthColumns="3">
+                </moj-textbox>
+                <moj-help-info [nearInput]="true"
+                    [text]="'כאן יופיע טקסט עזרה שהוא ארוך יותר ומתפרש על כמה שורות'"></moj-help-info>
+            </moj-line>
+
+        </div>
+
+    </div>
+</demo-container>
